@@ -1,0 +1,19 @@
+{
+  "name": "orbit",
+  "version": "1.0.0",
+  "description": "This is a fresh install of WordPress 5.8.1, created on 04/11/2021 by Annie Kyles",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node-sass -w wp-content/themes/orbit2021/assets/sass/ -o wp-content/themes/orbit2021/assets/css/ --output-style compressed"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/federationlimited/orbit.git"
+  },
+  "author": "Annie Kyles",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/federationlimited/orbit/issues"
+  },
+  "homepage": "https://github.com/federationlimited/orbit#readme"
+}
