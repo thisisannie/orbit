@@ -2,8 +2,8 @@
 Tags: css, visual css, css editor, design, customize
 Requires at least: 3.9
 Tested up to: 5.8
-Stable tag: 1.4.1
-Build time: 2021-11-02T22:36:20+02:00
+Stable tag: 1.4.2
+Build time: 2021-11-08T20:49:29+02:00
 License: GPLv2 or later
 Contributors: gpriday, alexgso
 Donate link: https://siteorigin.com/downloads/premium/
@@ -70,6 +70,9 @@ Free support is available on the [SiteOrigin support forums](https://siteorigin.
 SiteOrigin Premium includes access to our professional email support service, perfect for those times when you need fast and effective technical support. We're standing by to assist you in any way we can.
 
 == Changelog ==
+
+= 1.4.2 - 08 November 2021 =
+* Fixed string translation functions.
 
 = 1.4.1 - 02 November 2021 =
 * Removed Save button rounding.
