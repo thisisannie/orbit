@@ -1,30 +1,18 @@
-=== Twenty Twenty-One ===
-Contributors: wordpressdotorg
+=== Orbit 2021 ===
+Contributors: wordpressdotorg, Annie Kyles
 Requires at least: 5.3
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.4
+Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-Twenty Twenty-One is a blank canvas for your ideas and it makes the block editor your best brush.
-
-With new block patterns, which allow you to create a beautiful layout in a matter of seconds, this theme’s soft colors and eye-catching — yet timeless — design will let your work shine.
-
-Take it for a spin! See how Twenty Twenty-One elevates your portfolio, business website, or personal blog.
-
-== Installation ==
-
-1. In your admin panel, go to Appearance -> Themes and click the 'Add New' button.
-2. Type in Twenty Twenty-One in the search form and press the 'Enter' key on your keyboard.
-3. Click on the 'Activate' button to use your new theme right away.
-4. Go to INSERT ABOUT PAGE for a guide on how to customize this theme.
-5. Navigate to Appearance > Customize in your admin panel and customize to your taste.
+Orbit 2021 is a custom-made theme built for Orbit Travel's new website in 2021. It was created as an adaption of Wordpress' Twenty Twenty-One.
 
 == Privacy ==
-Twenty Twenty-One uses LocalStorage to save the setting when Dark Mode support is turned on or off.
+This theme uses LocalStorage to save the setting when Dark Mode support is turned on or off.
 LocalStorage is necessary for the setting to work and is only used when a user clicks on the Dark Mode button.
 No data is saved in the database or transferred.
 
