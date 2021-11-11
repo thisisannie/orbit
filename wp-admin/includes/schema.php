@@ -400,11 +400,11 @@ function populate_options( array $options = array() ) {
 	$defaults = array(
 		'siteurl'                         => $guessurl,
 		'home'                            => $guessurl,
-		'blogname'                        => __( 'My Site' ),
+		'blogname'                        => __( 'Orbit Travel' ),
 		/* translators: Site tagline. */
-		'blogdescription'                 => __( 'Just another WordPress site' ),
+		'blogdescription'                 => __( 'Welcome to Orbit, a 100% owned and operated travel management company.' ),
 		'users_can_register'              => 0,
-		'admin_email'                     => 'you@example.com',
+		'admin_email'                     => 'anniek@federation.net.nz',
 		/* translators: Default start of the week. 0 = Sunday, 1 = Monday. */
 		'start_of_week'                   => _x( '1', 'start of week' ),
 		'use_balanceTags'                 => 0,

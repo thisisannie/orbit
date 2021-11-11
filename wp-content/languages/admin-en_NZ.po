@@ -13723,8 +13723,8 @@ msgstr "Just another %s site"
 
 #. translators: Site tagline.
 #: wp-admin/includes/schema.php:405
-msgid "Just another WordPress site"
-msgstr "Just another WordPress site"
+msgid "Welcome to Orbit, a 100% owned and operated travel management company."
+msgstr "Welcome to Orbit, a 100% owned and operated travel management company."
 
 #: wp-admin/includes/post.php:1489
 msgid "Change Permalinks"
