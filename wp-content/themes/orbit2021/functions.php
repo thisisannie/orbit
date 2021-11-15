@@ -637,3 +637,10 @@ function twentytwentyone_add_ie_class() {
 	<?php
 }
 add_action( 'wp_footer', 'twentytwentyone_add_ie_class' );
+
+// Site Origin Custom Widgets
+function orbit_widgets( $folders ) {
+	$folders[] = 'themes/orbit2021/assets/orbit_widgets/'; // important: Slash on end string is required.
+	return $folders;
+}
+add_filter( 'siteorigin_widgets_widget_folders', 'orbit_widgets' );
