@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Vollkorn:wght@600&display=swap');
+
+@font-face {
+  font-family: "Karbon";
+  src: url("./fonts/karbon/Karbon-Regular.otf");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Karbon";
+  src: url("./fonts/karbon/Karbon-Semibold.otf");
+  font-weight: bold;
+  font-style: normal;
+}
+
+body, h1, h2, h3, h4, h5, p, body, li {
+  color: $darkestblue;
+}
+
+h1 {
+  font-family: 'Karbon', tahoma;
+}
+
+h2, h3 {
+  font-family: 'Vollkorn', georgia;
+}
+
+h4, h5, p, body, li {
+  font-family: 'Karbon', tahoma;
+}
+

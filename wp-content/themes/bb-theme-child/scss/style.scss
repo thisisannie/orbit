@@ -7,6 +7,5 @@ Author URI: https://federation.net.nz/
 template: bb-theme
 */
 
-div {
-  outline: 1px red solid; 
-}
+@import 'variables.scss';
+@import 'fonts.scss';
