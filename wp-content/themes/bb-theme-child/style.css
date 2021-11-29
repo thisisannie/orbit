@@ -19,7 +19,7 @@ template: bb-theme
   font-weight: bold;
   font-style: normal; }
 
-body, h1, h2, h3, h4, h5, p, body, li {
+body, h1, h2, h3, h4, h5, p, li {
   color: #0b212c; }
 
 h1 {
@@ -31,7 +31,6 @@ h2, h3 {
 h4, h5, p, body, li {
   font-family: 'Karbon', tahoma; }
 
-
-#slider-module .uabb-module-content {
-    height: 200px!important;
-}
+.hero {
+  background: url("./images/arch.png") #cbebea no-repeat bottom;
+  background-size: 100% 96px; }
