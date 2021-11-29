@@ -30,3 +30,8 @@ h2, h3 {
 
 h4, h5, p, body, li {
   font-family: 'Karbon', tahoma; }
+
+
+#slider-module .uabb-module-content {
+    height: 200px!important;
+}
