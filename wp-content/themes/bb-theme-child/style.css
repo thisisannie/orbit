@@ -19,17 +19,39 @@ template: bb-theme
   font-weight: bold;
   font-style: normal; }
 
-body, h1, h2, h3, h4, h5, p, li {
-  color: #0b212c; }
-
 h1 {
-  font-family: 'Karbon', tahoma; }
+  font-family: 'Karbon', tahoma;
+  line-height: 1;
+  color: #42777e; }
 
 h2, h3 {
-  font-family: 'Vollkorn', georgia; }
+  font-family: 'Vollkorn', georgia;
+  line-height: 1;
+  color: #003c4b; }
 
 h4, h5, p, body, li {
   font-family: 'Karbon', tahoma; }
+
+body, h4, h5, p, li {
+  color: #0b212c; }
+
+body, p, li {
+  font-size: 22px; }
+
+h1 {
+  font-size: 40px; }
+
+h2 {
+  font-size: 65px; }
+
+h3 {
+  font-size: 50px; }
+
+h4 {
+  font-size: 30px; }
+
+.fl-row-fixed-width {
+  max-width: 1300px; }
 
 .hero {
   background: url("./images/arch.png") #cbebea no-repeat bottom;

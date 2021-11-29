@@ -13,19 +13,46 @@
   font-style: normal;
 }
 
-body, h1, h2, h3, h4, h5, p, li {
-  color: $darkestblue;
-}
+// Font Family and colours
 
 h1 {
   font-family: 'Karbon', tahoma;
+  line-height: 1;
+  color: $blue;
 }
 
 h2, h3 {
   font-family: 'Vollkorn', georgia;
+  line-height: 1;
+  color: $darkblue;
 }
 
 h4, h5, p, body, li {
   font-family: 'Karbon', tahoma;
 }
 
+body, h4, h5, p, li {
+  color: $darkestblue;
+}
+
+// Font sizes
+
+body, p, li {
+  font-size: 22px;
+}
+
+h1 {
+  font-size: 40px;
+}
+
+h2 {
+  font-size: 65px;
+}
+
+h3 {
+  font-size: 50px;
+}
+
+h4 {
+  font-size: 30px;
+}
