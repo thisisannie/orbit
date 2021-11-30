@@ -1,0 +1,29 @@
+footer.fl-builder-content {
+  background-color: $darkestblue;
+  color: $lightestblue;
+
+  h2, h3 {
+    color: $lightblue;
+  }
+
+  h4, h5, h6, p, li, a {
+    color: $lightblue;
+  }
+
+  small {
+    color: $lightestblue;
+  }
+
+  h6 {
+    margin-bottom: 0;
+    font-weight: bold;
+  }
+
+  .copy p {
+    color: $lightblue;
+    font-size: 14px;
+  }
+  .menu a {
+    padding: 5px 0 5px 0;
+  }
+}
