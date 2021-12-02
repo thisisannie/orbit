@@ -12,7 +12,7 @@ header.fl-builder-content {
       background: url('./images/arrow-blue.svg') center center no-repeat;
       background-size: 15px;
       transform: rotate(180deg);
-      transition: all 0.3s ease;
+      transition: $transition;
       @media (max-width:767px) {
         background-image: url('./images/arrow-orange.svg');
 

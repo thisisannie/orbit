@@ -1,0 +1,21 @@
+input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url], textarea {
+  border-radius: 100px;
+  border: 1px $blue solid;
+  padding: 12px 25px 10px;
+  color: $darkblue;
+  font-weight: bold;
+}
+
+select, .button, button, input[type=select] {
+  border: 2px transparent solid;
+  border-radius: 100px;
+  padding: 12px 25px 10px;
+  background-color: $orange;
+  font-weight: bold;
+  transition: $transition;
+  &:hover {
+    border: 2px $orange solid;
+    background-color: white;
+    color: $orange;
+  }
+}

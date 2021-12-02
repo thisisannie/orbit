@@ -107,6 +107,25 @@ header.fl-builder-content {
   .hero#home-hero {
     padding-bottom: 96px; }
 
+input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url], textarea {
+  border-radius: 100px;
+  border: 1px #42777e solid;
+  padding: 12px 25px 10px;
+  color: #003c4b;
+  font-weight: bold; }
+
+select, .button, button, input[type=select] {
+  border: 2px transparent solid;
+  border-radius: 100px;
+  padding: 12px 25px 10px;
+  background-color: #d86227;
+  font-weight: bold;
+  transition: all 0.3s ease; }
+  select:hover, .button:hover, button:hover, input[type=select]:hover {
+    border: 2px #d86227 solid;
+    background-color: white;
+    color: #d86227; }
+
 footer.fl-builder-content {
   background-color: #0b212c;
   color: #cbebea; }
