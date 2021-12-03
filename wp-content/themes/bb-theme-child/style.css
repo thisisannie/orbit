@@ -110,6 +110,8 @@ header.fl-builder-content {
   background-size: 100% 96px; }
   .hero#home-hero {
     padding-bottom: 96px; }
+  .hero img {
+    border-radius: 10px; }
 
 input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url], textarea {
   border-radius: 100px;
