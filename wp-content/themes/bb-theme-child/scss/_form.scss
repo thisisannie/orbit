@@ -1,21 +1,37 @@
 input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url], textarea {
   border-radius: 100px;
   border: 1px $blue solid;
-  padding: 12px 25px 10px;
+  padding: 12px 25px 8px;
   color: $darkblue;
   font-weight: bold;
+  
 }
 
 select, .button, button, input[type=select] {
+  -webkit-appearance: none;
   border: 2px transparent solid;
   border-radius: 100px;
-  padding: 12px 25px 10px;
+  padding: 12px 25px 8px;
   background-color: $orange;
+  color: white;
   font-weight: bold;
-  transition: $transition;
-  &:hover {
+  transition: $transitionslow;
+  &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
     border: 2px $orange solid;
     background-color: white;
     color: $orange;
+  }
+}
+select {
+  padding-right: 50px;
+  position: relative;
+  background: $orange url('./images/arrow-down-white.svg') calc(100% - 20px) center no-repeat;
+  background-size: 14px;
+  &:hover {
+    background: white url('./images/arrow-down-orange.svg') calc(100% - 20px) center no-repeat;
+    background-size: 14px;
+  }
+  &:focus-visible {
+    outline: none;
   }
 }

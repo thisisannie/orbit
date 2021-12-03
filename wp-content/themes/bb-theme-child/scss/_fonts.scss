@@ -19,12 +19,16 @@ h1 {
   font-family: 'Karbon', tahoma;
   line-height: 1;
   color: $blue;
+  font-weight: bold;
 }
 
 h2, h3 {
   font-family: 'Vollkorn', georgia;
   line-height: 1;
   color: $darkblue;
+}
+h4 {
+  font-weight: bold;
 }
 
 h4, h5, h6, p, body, li {

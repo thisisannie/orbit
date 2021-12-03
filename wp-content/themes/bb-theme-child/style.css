@@ -22,12 +22,16 @@ template: bb-theme
 h1 {
   font-family: 'Karbon', tahoma;
   line-height: 1;
-  color: #42777e; }
+  color: #42777e;
+  font-weight: bold; }
 
 h2, h3 {
   font-family: 'Vollkorn', georgia;
   line-height: 1;
   color: #003c4b; }
+
+h4 {
+  font-weight: bold; }
 
 h4, h5, h6, p, body, li {
   font-family: 'Karbon', tahoma; }
@@ -110,21 +114,34 @@ header.fl-builder-content {
 input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url], textarea {
   border-radius: 100px;
   border: 1px #42777e solid;
-  padding: 12px 25px 10px;
+  padding: 12px 25px 8px;
   color: #003c4b;
   font-weight: bold; }
 
 select, .button, button, input[type=select] {
+  -webkit-appearance: none;
   border: 2px transparent solid;
   border-radius: 100px;
-  padding: 12px 25px 10px;
+  padding: 12px 25px 8px;
   background-color: #d86227;
+  color: white;
   font-weight: bold;
-  transition: all 0.3s ease; }
-  select:hover, .button:hover, button:hover, input[type=select]:hover {
+  transition: all 0.6s ease; }
+  select:hover, select:active, select:focus, select:focus-visible, select:focus-within, .button:hover, .button:active, .button:focus, .button:focus-visible, .button:focus-within, button:hover, button:active, button:focus, button:focus-visible, button:focus-within, input[type=select]:hover, input[type=select]:active, input[type=select]:focus, input[type=select]:focus-visible, input[type=select]:focus-within {
     border: 2px #d86227 solid;
     background-color: white;
     color: #d86227; }
+
+select {
+  padding-right: 50px;
+  position: relative;
+  background: #d86227 url("./images/arrow-down-white.svg") calc(100% - 20px) center no-repeat;
+  background-size: 14px; }
+  select:hover {
+    background: white url("./images/arrow-down-orange.svg") calc(100% - 20px) center no-repeat;
+    background-size: 14px; }
+  select:focus-visible {
+    outline: none; }
 
 footer.fl-builder-content {
   background-color: #0b212c;
