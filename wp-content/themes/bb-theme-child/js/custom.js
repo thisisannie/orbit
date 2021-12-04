@@ -1,7 +1,7 @@
 //trigger change - select staff default posts on page load
 jQuery(window).load(function() {
     jQuery('select#category-select').trigger('change').find('option:eq(0)').prop('selected', true);
-    
+    jQuery('select#dropdown-selector').trigger('change').find('option:eq(0)').prop('selected', true);
 })
 
 //show/hide selected posts from home page header
