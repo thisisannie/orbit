@@ -70,7 +70,7 @@ small {
 #slider-module .uabb-module-content, div.dropdown-selector {
   height: 300px !important; }
 
-#filter, #response, #default-response {
+#filter, #response, #default-response, #filter-event, #event-response {
   margin-left: 200px; }
 
 .flex-container {

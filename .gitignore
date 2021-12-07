@@ -11,3 +11,5 @@
 
 # Local History for Visual Studio Code
 .history/
+wp-config.php
+wp-content/uploads/

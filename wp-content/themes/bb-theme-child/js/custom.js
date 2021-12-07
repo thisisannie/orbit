@@ -2,6 +2,7 @@
 jQuery(window).load(function() {
     jQuery('select#category-select').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#dropdown-selector').trigger('change').find('option:eq(0)').prop('selected', true);
+    jQuery('select#event-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
 })
 
 //show/hide selected posts from home page header
@@ -17,7 +18,6 @@ jQuery(function() {
 jQuery(function($){
     $('select').change(function(){
         var filter = $('#filter');
-        jQuery('#default-response').empty();
         $.ajax({
             url:filter.attr('action'),
             data:filter.serialize(), // form data
@@ -28,6 +28,26 @@ jQuery(function($){
             success:function(data){
                 
                 $('#response').html(data); // insert data
+            }
+        });
+        return false;
+    });
+});
+
+//ajax call for event category/city filter
+jQuery(function($){
+    $('select').change(function(){
+        var filter = $('#filter-event');
+        $.ajax({
+            url:filter.attr('action'),
+            data:filter.serialize(), // form data
+            type:filter.attr('method'), // POST
+            beforeSend:function(xhr){
+            
+            },
+            success:function(data){
+                
+                $('#event-response').html(data); // insert data
             }
         });
         return false;
