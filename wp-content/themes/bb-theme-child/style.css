@@ -65,13 +65,18 @@ h6 {
 small {
   font-size: 16px; }
 
+.color-reverse {
+  color: white; }
+  .color-reverse h1, .color-reverse h2, .color-reverse h3, .color-reverse h4, .color-reverse h5, .color-reverse h6, .color-reverse p, .color-reverse body, .color-reverse li {
+    color: white; }
+
 .fl-row-fixed-width {
   max-width: 1300px; }
 
 #slider-module .uabb-module-content, div.dropdown-selector {
   height: 300px !important; }
 
-#filter, #response, #default-response, #filter-event, #event-response {
+#filter, #response, #default-response {
   margin-left: 200px; }
 
 .flex-container {
@@ -149,6 +154,9 @@ header.fl-builder-content {
   .hero p {
     font-size: 24px;
     color: #42777e; }
+    @media (max-width: 768px) {
+      .hero p {
+        font-size: 22px; } }
   .hero .h2-container .fl-node-content,
   .hero .p-container .fl-node-content {
     margin-top: 0; }
@@ -157,8 +165,12 @@ input[type=text], input[type=password], input[type=email], input[type=tel], inpu
   border-radius: 100px;
   border: 1px #42777e solid;
   padding: 12px 25px 8px;
-  color: #003c4b;
-  font-weight: bold; }
+  color: #42777e;
+  font-weight: bold;
+  background-color: transparent;
+  margin-bottom: 20px; }
+  input[type=text]:last-child, input[type=password]:last-child, input[type=email]:last-child, input[type=tel]:last-child, input[type=date]:last-child, input[type=month]:last-child, input[type=week]:last-child, input[type=time]:last-child, input[type=number]:last-child, input[type=search]:last-child, input[type=url]:last-child, textarea:last-child {
+    margin-bottom: 0; }
 
 select, .button, button, input[type=select] {
   -webkit-appearance: none;

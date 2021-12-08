@@ -30,6 +30,9 @@
   p {
     font-size: 24px;
     color: $blue;
+    @media (max-width: 768px) {
+      font-size: 22px;
+    }
   }
   .h2-container .fl-node-content, 
   .p-container .fl-node-content {
