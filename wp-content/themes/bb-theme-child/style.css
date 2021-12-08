@@ -40,10 +40,11 @@ body, h4, h5, p, li {
   color: #0b212c; }
 
 body, p, li {
-  font-size: 22px; }
+  font-size: 22px;
+  line-height: 1.3; }
 
 h1 {
-  font-size: 40px; }
+  font-size: 30px; }
 
 h2 {
   font-size: 65px; }
@@ -122,12 +123,35 @@ header.fl-builder-content {
   left: 0; }
 
 .hero {
-  background: url("./images/arch.png") #cbebea no-repeat bottom;
-  background-size: 100% 96px; }
+  font-size: 24px;
+  background: #cbebea;
+  color: #42777e; }
+  .hero.hero-arch {
+    background: url("./images/arch-246.png") #cbebea no-repeat bottom;
+    background-size: 100% 240px; }
+    @media (max-width: 768px) {
+      .hero.hero-arch {
+        background-size: 100% 120px; } }
   .hero#home-hero {
+    background: url("./images/arch-96.png") #cbebea no-repeat bottom;
+    background-size: 100% 96px;
     padding-bottom: 96px; }
+    @media (max-width: 768px) {
+      .hero#home-hero {
+        background-size: 100% 40px; } }
+    .hero#home-hero h1 {
+      font-size: 40px;
+      text-transform: initial; }
+  .hero h1 {
+    text-transform: uppercase; }
   .hero img {
     border-radius: 20px; }
+  .hero p {
+    font-size: 24px;
+    color: #42777e; }
+  .hero .h2-container .fl-node-content,
+  .hero .p-container .fl-node-content {
+    margin-top: 0; }
 
 input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url], textarea {
   border-radius: 100px;
