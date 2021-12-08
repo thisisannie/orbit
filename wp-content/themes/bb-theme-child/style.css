@@ -197,6 +197,9 @@ select {
   select:focus-visible {
     outline: none; }
 
+.uabb-blog-posts img {
+  border-radius: 10px !important; }
+
 footer.fl-builder-content {
   background-color: #0b212c;
   color: #cbebea; }
