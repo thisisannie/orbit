@@ -73,9 +73,6 @@ small {
 .fl-row-fixed-width {
   max-width: 1300px; }
 
-#slider-module .uabb-module-content, div.dropdown-selector {
-  height: 300px !important; }
-
 #filter, #response, #default-response {
   margin-left: 200px; }
 
