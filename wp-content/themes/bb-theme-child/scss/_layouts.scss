@@ -2,6 +2,11 @@
 // (max-width: 767px)
 // (min-width: 768px)
 
+// Bojana's suggestion
+.fl-full-width .container {
+  max-width: 100%!important;
+}
+
 .fl-row-fixed-width {
   max-width: 1300px;
 }
