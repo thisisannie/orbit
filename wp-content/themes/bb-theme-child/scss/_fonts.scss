@@ -13,17 +13,21 @@
   font-style: normal;
 }
 
+$ff-main: 'karbon', tahoma;
+$ff-feature: 'Vollkorn', georgia;
+
+
 // Font Family and colours
 
 h1 {
-  font-family: 'Karbon', tahoma;
+  font-family: $ff-main;
   line-height: 1;
   color: $blue;
   font-weight: bold;
 }
 
 h2, h3 {
-  font-family: 'Vollkorn', georgia;
+  font-family: $ff-feature;
   line-height: 1;
   color: $darkblue;
 }
@@ -32,7 +36,7 @@ h4 {
 }
 
 h4, h5, h6, p, body, li {
-  font-family: 'Karbon', tahoma;
+  font-family: $ff-main;
 }
 
 body, h4, h5, p, li {

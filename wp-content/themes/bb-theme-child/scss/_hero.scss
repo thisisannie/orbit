@@ -26,6 +26,9 @@
   }
   img {
     border-radius: $img-radius;
+    @media (max-width: 768px) {
+      border-radius: $img-radius-small;
+    }
   }
   p {
     font-size: 24px;

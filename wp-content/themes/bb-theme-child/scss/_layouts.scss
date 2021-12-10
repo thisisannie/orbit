@@ -1,6 +1,38 @@
+// Breakpoints:
+// (max-width: 767px)
+// (min-width: 768px)
+
 .fl-row-fixed-width {
   max-width: 1300px;
 }
+
+@media (min-width: 1450px) {
+  .extend-left, .extend-right {
+    &:after {
+      content: "";
+      display: block;
+      padding-top: 87%; // image aspect ratio for 620x500, at 115%
+    }
+    .fl-photo-content {
+      position: absolute;
+      max-width: 115%;
+      width: 115%;
+
+    }
+    img {
+      width: 100%!important;
+      max-width: 100%!important;
+      height: auto!important;
+    }
+  }
+  .extend-left .fl-photo-content {
+    right: 0;
+  }
+  .extend-right .fl-photo-content {
+    left: 0;
+  }
+}
+
 
 // Homepage dropdown and Staff members posts module
 #slider-module .uabb-module-content, div.dropdown-selector {

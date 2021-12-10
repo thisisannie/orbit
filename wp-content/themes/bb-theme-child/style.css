@@ -20,13 +20,13 @@ template: bb-theme
   font-style: normal; }
 
 h1 {
-  font-family: 'Karbon', tahoma;
+  font-family: "karbon", tahoma;
   line-height: 1;
   color: #42777e;
   font-weight: bold; }
 
 h2, h3 {
-  font-family: 'Vollkorn', georgia;
+  font-family: "Vollkorn", georgia;
   line-height: 1;
   color: #003c4b; }
 
@@ -34,7 +34,7 @@ h4 {
   font-weight: bold; }
 
 h4, h5, h6, p, body, li {
-  font-family: 'Karbon', tahoma; }
+  font-family: "karbon", tahoma; }
 
 body, h4, h5, p, li {
   color: #0b212c; }
@@ -72,6 +72,24 @@ small {
 
 .fl-row-fixed-width {
   max-width: 1300px; }
+
+@media (min-width: 1450px) {
+  .extend-left:after, .extend-right:after {
+    content: "";
+    display: block;
+    padding-top: 87%; }
+  .extend-left .fl-photo-content, .extend-right .fl-photo-content {
+    position: absolute;
+    max-width: 115%;
+    width: 115%; }
+  .extend-left img, .extend-right img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important; }
+  .extend-left .fl-photo-content {
+    right: 0; }
+  .extend-right .fl-photo-content {
+    left: 0; } }
 
 #filter, #response, #default-response {
   margin-left: 200px; }
@@ -148,6 +166,9 @@ header.fl-builder-content {
     text-transform: uppercase; }
   .hero img {
     border-radius: 20px; }
+    @media (max-width: 768px) {
+      .hero img {
+        border-radius: 10px; } }
   .hero p {
     font-size: 24px;
     color: #42777e; }
@@ -158,18 +179,19 @@ header.fl-builder-content {
   .hero .p-container .fl-node-content {
     margin-top: 0; }
 
-input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url], textarea {
+.fl-page input[type=text], .fl-page input[type=password], .fl-page input[type=email], .fl-page input[type=tel], .fl-page input[type=date], .fl-page input[type=month], .fl-page input[type=week], .fl-page input[type=time], .fl-page input[type=number], .fl-page input[type=search], .fl-page input[type=url], .fl-page textarea {
   border-radius: 100px;
   border: 1px #42777e solid;
   padding: 12px 25px 8px;
+  background-color: transparent;
   color: #42777e;
   font-weight: bold;
-  background-color: transparent;
+  font-family: "karbon", tahoma;
   margin-bottom: 20px; }
-  input[type=text]:last-child, input[type=password]:last-child, input[type=email]:last-child, input[type=tel]:last-child, input[type=date]:last-child, input[type=month]:last-child, input[type=week]:last-child, input[type=time]:last-child, input[type=number]:last-child, input[type=search]:last-child, input[type=url]:last-child, textarea:last-child {
+  .fl-page input[type=text]:last-child, .fl-page input[type=password]:last-child, .fl-page input[type=email]:last-child, .fl-page input[type=tel]:last-child, .fl-page input[type=date]:last-child, .fl-page input[type=month]:last-child, .fl-page input[type=week]:last-child, .fl-page input[type=time]:last-child, .fl-page input[type=number]:last-child, .fl-page input[type=search]:last-child, .fl-page input[type=url]:last-child, .fl-page textarea:last-child {
     margin-bottom: 0; }
 
-select, .button, button, input[type=select] {
+.fl-page select, .fl-page .button, .fl-page button, .fl-page input[type=select] {
   -webkit-appearance: none;
   border: 2px transparent solid;
   border-radius: 100px;
@@ -177,25 +199,34 @@ select, .button, button, input[type=select] {
   background-color: #d86227;
   color: white;
   font-weight: bold;
+  font-family: "karbon", tahoma;
   transition: all 0.6s ease; }
-  select:hover, select:active, select:focus, select:focus-visible, select:focus-within, .button:hover, .button:active, .button:focus, .button:focus-visible, .button:focus-within, button:hover, button:active, button:focus, button:focus-visible, button:focus-within, input[type=select]:hover, input[type=select]:active, input[type=select]:focus, input[type=select]:focus-visible, input[type=select]:focus-within {
+  .fl-page select:hover, .fl-page select:active, .fl-page select:focus, .fl-page select:focus-visible, .fl-page select:focus-within, .fl-page .button:hover, .fl-page .button:active, .fl-page .button:focus, .fl-page .button:focus-visible, .fl-page .button:focus-within, .fl-page button:hover, .fl-page button:active, .fl-page button:focus, .fl-page button:focus-visible, .fl-page button:focus-within, .fl-page input[type=select]:hover, .fl-page input[type=select]:active, .fl-page input[type=select]:focus, .fl-page input[type=select]:focus-visible, .fl-page input[type=select]:focus-within {
     border: 2px #d86227 solid;
     background-color: white;
     color: #d86227; }
 
-select {
+.fl-page select {
   padding-right: 50px;
   position: relative;
   background: #d86227 url("./images/arrow-down-white.svg") calc(100% - 20px) center no-repeat;
   background-size: 14px; }
-  select:hover {
+  .fl-page select:hover {
     background: white url("./images/arrow-down-orange.svg") calc(100% - 20px) center no-repeat;
     background-size: 14px; }
-  select:focus-visible {
+  .fl-page select:focus-visible {
     outline: none; }
+
+.fl-page .button-inline {
+  display: inline-block; }
+  .fl-page .button-inline div {
+    display: inline-block; }
 
 .uabb-blog-posts img {
   border-radius: 10px !important; }
+
+img.rounded, .rounded img {
+  border-radius: 10px; }
 
 footer.fl-builder-content {
   background-color: #0b212c;
