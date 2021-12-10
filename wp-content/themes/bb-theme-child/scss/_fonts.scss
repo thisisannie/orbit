@@ -29,7 +29,7 @@ h1 {
 h2, h3 {
   font-family: $ff-feature;
   line-height: 1;
-  color: $darkblue;
+  color: $blue-dark;
 }
 h4 {
   font-weight: bold;
@@ -40,7 +40,7 @@ h4, h5, h6, p, body, li {
 }
 
 body, h4, h5, p, li {
-  color: $darkestblue;
+  color: $blue-darkest;
 }
 
 // Individual font styling
@@ -83,5 +83,17 @@ small {
   color: white;
   h1, h2, h3, h4, h5, h6, p, body, li {
     color: white;
+  }
+}
+
+a {
+  color: $orange;
+  transition: $transition;
+  &:visited {
+    color: $orange;
+  }
+  &:hover,
+  &:active {
+    color: $orange-dark;
   }
 }

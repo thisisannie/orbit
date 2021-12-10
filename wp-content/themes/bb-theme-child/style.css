@@ -70,6 +70,14 @@ small {
   .color-reverse h1, .color-reverse h2, .color-reverse h3, .color-reverse h4, .color-reverse h5, .color-reverse h6, .color-reverse p, .color-reverse body, .color-reverse li {
     color: white; }
 
+a {
+  color: #d86227;
+  transition: all 0.3s ease; }
+  a:visited {
+    color: #d86227; }
+  a:hover, a:active {
+    color: #ac4e1e; }
+
 .fl-full-width .container {
   max-width: 100% !important; }
 
