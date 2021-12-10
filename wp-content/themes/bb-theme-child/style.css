@@ -233,6 +233,54 @@ header.fl-builder-content {
   .fl-page .button-inline div {
     display: inline-block; }
 
+.fl-page button.button-alt,
+.fl-page .button.button-alt,
+.fl-page .button.button-alt {
+  background-color: white;
+  color: #d86227; }
+  .fl-page button.button-alt *,
+  .fl-page .button.button-alt *,
+  .fl-page .button.button-alt * {
+    color: inherit; }
+  .fl-page button.button-alt:hover, .fl-page button.button-alt:active, .fl-page button.button-alt:focus, .fl-page button.button-alt:focus-visible, .fl-page button.button-alt:focus-within,
+  .fl-page .button.button-alt:hover,
+  .fl-page .button.button-alt:active,
+  .fl-page .button.button-alt:focus,
+  .fl-page .button.button-alt:focus-visible,
+  .fl-page .button.button-alt:focus-within,
+  .fl-page .button.button-alt:hover,
+  .fl-page .button.button-alt:active,
+  .fl-page .button.button-alt:focus,
+  .fl-page .button.button-alt:focus-visible,
+  .fl-page .button.button-alt:focus-within {
+    border: 2px #ac4e1e solid;
+    background-color: white;
+    color: #ac4e1e; }
+    .fl-page button.button-alt:hover *, .fl-page button.button-alt:active *, .fl-page button.button-alt:focus *, .fl-page button.button-alt:focus-visible *, .fl-page button.button-alt:focus-within *,
+    .fl-page .button.button-alt:hover *,
+    .fl-page .button.button-alt:active *,
+    .fl-page .button.button-alt:focus *,
+    .fl-page .button.button-alt:focus-visible *,
+    .fl-page .button.button-alt:focus-within *,
+    .fl-page .button.button-alt:hover *,
+    .fl-page .button.button-alt:active *,
+    .fl-page .button.button-alt:focus *,
+    .fl-page .button.button-alt:focus-visible *,
+    .fl-page .button.button-alt:focus-within * {
+      color: inherit; }
+
+.fl-page .button-alt a, .fl-page .button-alt a.fl-button {
+  background-color: white;
+  color: #d86227; }
+  .fl-page .button-alt a *, .fl-page .button-alt a.fl-button * {
+    color: inherit; }
+  .fl-page .button-alt a:hover, .fl-page .button-alt a:active, .fl-page .button-alt a:focus, .fl-page .button-alt a:focus-visible, .fl-page .button-alt a:focus-within, .fl-page .button-alt a.fl-button:hover, .fl-page .button-alt a.fl-button:active, .fl-page .button-alt a.fl-button:focus, .fl-page .button-alt a.fl-button:focus-visible, .fl-page .button-alt a.fl-button:focus-within {
+    border: 2px #ac4e1e solid;
+    background-color: white;
+    color: #ac4e1e; }
+    .fl-page .button-alt a:hover *, .fl-page .button-alt a:active *, .fl-page .button-alt a:focus *, .fl-page .button-alt a:focus-visible *, .fl-page .button-alt a:focus-within *, .fl-page .button-alt a.fl-button:hover *, .fl-page .button-alt a.fl-button:active *, .fl-page .button-alt a.fl-button:focus *, .fl-page .button-alt a.fl-button:focus-visible *, .fl-page .button-alt a.fl-button:focus-within * {
+      color: inherit; }
+
 .uabb-blog-posts img {
   border-radius: 10px !important; }
 

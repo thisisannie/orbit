@@ -50,10 +50,38 @@
       display: inline-block;
     }
   }
-  // button.button-alt,
-  // .button.button-alt,
-  // .button.button-alt,
-  // {
-
-  // }
+  button.button-alt,
+  .button.button-alt,
+  .button.button-alt {
+    background-color: white;
+    color: $orange;
+    * {
+      color: inherit;
+    }
+    &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
+      border: 2px $orange-dark solid;
+      background-color: white;
+      color: $orange-dark;
+      * {
+        color: inherit;
+      }
+    }
+  }
+  .button-alt {
+    a, a.fl-button {
+      background-color: white;
+      color: $orange;
+      * {
+        color: inherit;
+      }
+      &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
+        border: 2px $orange-dark solid;
+        background-color: white;
+        color: $orange-dark;
+        * {
+          color: inherit;
+        }
+      }
+    }
+  }
 }
