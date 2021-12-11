@@ -331,8 +331,8 @@ function default_staff_posts(){
 add_shortcode('default_staff', 'default_staff_posts');
 
 
-//MODULE 12 - EVENT FILTERS
 
+//MODULE 12 - EVENT FILTERS
 
 /*
  * Register Custom Post Types - Events
@@ -399,7 +399,7 @@ add_action( 'init', 'orbit_event_custom_taxonomies' );
 //Orbit custom meta box for Events
 $prefix = 'orb_';
 
-$meta_box = array(
+$meta_box_events = array(
     'id' => 'orbit_custom_fields',
     'title' => 'Orbit Events Custom Fields',
     'page' => 'event',
@@ -429,24 +429,24 @@ add_action('admin_menu', 'orbit_add_event_box');
 
 // Add meta box
 function orbit_add_event_box() {
-    global $meta_box;
+    global $meta_box_events;
 
-    add_meta_box($meta_box['id'], $meta_box['title'], 'orbit_show_event_box', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
+    add_meta_box($meta_box_events['id'], $meta_box_events['title'], 'orbit_show_event_box', $meta_box_events['page'], $meta_box_events['context'], $meta_box_events['priority']);
 }
 
 
 // Callback function to show fields in meta box
 function orbit_show_event_box() {
-    global $meta_box, $post;
+    global $meta_box_events, $post;
 
 
 
      // Use nonce for verification
-    echo '<input type="hidden" name="orbit_meta_box_event_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+    echo '<input type="hidden" name="orbit_meta_box_events_event_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
 
     echo '<table class="form-table">';
 
-    foreach ($meta_box['fields'] as $field) {
+    foreach ($meta_box_events['fields'] as $field) {
         // get current post meta data
         $meta = get_post_meta($post->ID, $field['id'], true);
 
@@ -490,10 +490,10 @@ add_action('save_post', 'orbit_save_event_data');
 
 // Save data from meta box
 function orbit_save_event_data($post_id) {
-    global $meta_box;
+    global $meta_box_events;
 
     // verify nonce
-    if (!wp_verify_nonce($_POST['orbit_meta_box_event_nonce'], basename(__FILE__))) {
+    if (!wp_verify_nonce($_POST['orbit_meta_box_events_event_nonce'], basename(__FILE__))) {
         return $post_id;
     }
 
@@ -511,7 +511,7 @@ function orbit_save_event_data($post_id) {
         return $post_id;
     }
 
-    foreach ($meta_box['fields'] as $field) {
+    foreach ($meta_box_events['fields'] as $field) {
         $old = get_post_meta($post_id, $field['id'], true);
         $new = $_POST[$field['id']];
 
