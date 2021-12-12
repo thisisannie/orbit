@@ -1,3 +1,4 @@
+@charset "UTF-8";
 /*
 Theme Name: Orbit Travel Beaver Builder Child Theme
 Version: 1.0
@@ -30,7 +31,7 @@ h2, h3 {
   line-height: 1;
   color: #003c4b; }
 
-h4 {
+h4, h5 {
   font-weight: bold; }
 
 h4, h5, h6, p, body, li {
@@ -57,7 +58,9 @@ h4 {
   text-transform: uppercase; }
 
 h5 {
-  font-size: 25px; }
+  font-size: 22px;
+  text-transform: uppercase;
+  margin-bottom: 0; }
 
 h6 {
   font-size: 18px; }
@@ -77,6 +80,17 @@ a {
     color: #d86227; }
   a:hover, a:active {
     color: #ac4e1e; }
+
+blockquote, .blockquote h2 {
+  position: relative; }
+  blockquote:before, .blockquote h2:before {
+    content: "“"; }
+    @media (min-width: 768px) {
+      blockquote:before, .blockquote h2:before {
+        position: absolute;
+        left: -34px; } }
+  blockquote:after, .blockquote h2:after {
+    content: "”"; }
 
 .fl-full-width .container {
   max-width: 100% !important; }

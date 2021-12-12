@@ -31,7 +31,7 @@ h2, h3 {
   line-height: 1;
   color: $blue-dark;
 }
-h4 {
+h4, h5 {
   font-weight: bold;
 }
 
@@ -68,7 +68,9 @@ h4 {
 }
 
 h5 {
-  font-size: 25px;
+  font-size: 22px;
+  text-transform: uppercase;
+  margin-bottom: 0;
 }
 
 h6 {
@@ -95,5 +97,19 @@ a {
   &:hover,
   &:active {
     color: $orange-dark;
+  }
+}
+
+blockquote, .blockquote h2 {
+  position: relative;
+  &:before {
+    content: "“";
+    @media (min-width:768px) {
+      position: absolute;
+      left: -34px;
+    }
+  }
+  &:after {
+    content: "”";
   }
 }
