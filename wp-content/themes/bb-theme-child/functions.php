@@ -223,26 +223,23 @@ function orbit_save_data($post_id) {
 
 //Shortcode to show dropdown filters [staff_posts]
 function staff_category(){
-    ?>
-    <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter">
-    <?php
+    $content .= '<form action="'. site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter">';
+   
         if( $terms = get_terms( array( 'taxonomy' => 'staff-category', 'orderby' => 'name' ) ) ) : 
     
-            echo '<select id="category-select" name="categoryfilter"><option value="" selected>Our Staff</option>';
+            $content .= '<select id="category-select" name="categoryfilter"><option value="" selected>Our Staff</option>';
             foreach ( $terms as $term ) :
-                echo '<option value="' . $term->term_id . '">' . $term->name . '</option>'; // ID of the category as the value of an option
+                $content .= '<option value="' . $term->term_id . '">' . $term->name . '</option>'; // ID of the category as the value of an option
             endforeach;
-            echo '</select>';
+            $content .= '</select>';
         endif;
-    ?>
     
-    <input type="hidden" name="action" value="myfilter">
-</form>
+    $content .= '<input type="hidden" name="action" value="myfilter">';
+    $content .= '</form>';
 
-<div id="response"></div>
+    $content .= '<div id="response"></div>';
 
-<?php
-
+    return $content;
 }
 add_shortcode('staff_posts','staff_category');
 
@@ -528,25 +525,21 @@ function orbit_save_event_data($post_id) {
 
 //Shortcode to show dropdown filters [event_posts]
 function event_category(){
-    ?>
-    <form action="<?php echo site_url() ?>/wp-admin/admin-ajax.php" method="POST" id="filter-event">
-    <?php
+   $content .= '<form action="'.site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter-event">';
+
         if( $terms_ev = get_terms( array( 'taxonomy' => 'event-category', 'orderby' => 'name' ) ) ) : 
     
-            echo '<select id="event-category-select" name="categoryfilter_event"><option value="" selected>All Events</option>';
+            $content .=  '<select id="event-category-select" name="categoryfilter_event"><option value="" selected>All Events</option>';
             foreach ( $terms_ev as $term_ev ) :
-                echo '<option value="' . $term_ev->term_id . '">' . $term_ev->name . '</option>'; // ID of the category as the value of an option
+                $content .=  '<option value="' . $term_ev->term_id . '">' . $term_ev->name . '</option>'; // ID of the category as the value of an option
             endforeach;
-            echo '</select>';
+            $content .=  '</select>';
         endif;
-    ?>
+   $content .= '<input type="hidden" name="action" value="myfilter_event">';
+   $content .= '</form>';
+   $content .= '<div id="event-response"></div>';
     
-    <input type="hidden" name="action" value="myfilter_event">
-</form>
-
-<div id="event-response"></div>
-
-<?php
+    return $content;
 
 }
 add_shortcode('event_posts','event_category');
