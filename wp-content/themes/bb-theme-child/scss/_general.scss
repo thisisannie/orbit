@@ -1,3 +1,7 @@
-img.rounded, .rounded img {
+img.rounded, .rounded img, .rounded {
   border-radius: $img-radius-small;
+}
+
+.bg-blue-lightest {
+  background-color: $blue-lightest;
 }

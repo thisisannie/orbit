@@ -129,6 +129,10 @@ blockquote, .blockquote h2 {
   text-align: left;
   font-size: 14px; }
 
+.row-fat .fl-row-content-wrap {
+  padding-top: 100px;
+  padding-bottom: 100px; }
+
 header.fl-builder-content {
   background-color: #cbebea;
   color: #7f9da5; }
@@ -298,8 +302,11 @@ header.fl-builder-content {
 .uabb-blog-posts img {
   border-radius: 10px !important; }
 
-img.rounded, .rounded img {
+img.rounded, .rounded img, .rounded {
   border-radius: 10px; }
+
+.bg-blue-lightest {
+  background-color: #cbebea; }
 
 footer.fl-builder-content {
   background-color: #0b212c;
