@@ -223,6 +223,7 @@ function orbit_save_data($post_id) {
 
 //Shortcode to show dropdown filters [staff_posts]
 function staff_category(){
+    $content = '';
     $content .= '<form action="'. site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter">';
    
         if( $terms = get_terms( array( 'taxonomy' => 'staff-category', 'orderby' => 'name' ) ) ) : 
