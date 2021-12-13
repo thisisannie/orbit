@@ -100,7 +100,7 @@ a {
   }
 }
 
-blockquote, .blockquote h2 {
+blockquote, .blockquote h2, .blockquote h3 {
   position: relative;
   &:before {
     content: "“";

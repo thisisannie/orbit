@@ -81,15 +81,15 @@ a {
   a:hover, a:active {
     color: #ac4e1e; }
 
-blockquote, .blockquote h2 {
+blockquote, .blockquote h2, .blockquote h3 {
   position: relative; }
-  blockquote:before, .blockquote h2:before {
+  blockquote:before, .blockquote h2:before, .blockquote h3:before {
     content: "“"; }
     @media (min-width: 768px) {
-      blockquote:before, .blockquote h2:before {
+      blockquote:before, .blockquote h2:before, .blockquote h3:before {
         position: absolute;
         left: -34px; } }
-  blockquote:after, .blockquote h2:after {
+  blockquote:after, .blockquote h2:after, .blockquote h3:after {
     content: "”"; }
 
 .fl-full-width .container {
