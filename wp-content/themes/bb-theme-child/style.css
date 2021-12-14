@@ -116,9 +116,6 @@ blockquote, .blockquote h2, .blockquote h3 {
   .extend-right .fl-photo-content {
     left: 0; } }
 
-#filter, #response, #default-response {
-  margin-left: 200px; }
-
 .flex-container {
   display: flex;
   flex-wrap: nowrap; }
