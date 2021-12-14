@@ -353,6 +353,11 @@ img.rounded, .rounded img, .rounded {
   color: #003c4b;
   font-weight: bold; }
 
+.card .background-image {
+  padding-top: 60%;
+  background-position: center center;
+  background-size: cover; }
+
 footer.fl-builder-content {
   background-color: #0b212c;
   color: #cbebea; }

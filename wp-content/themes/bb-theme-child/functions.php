@@ -266,10 +266,10 @@ function orbit_homepagecards_filter_function(){
     echo '<div class="flex-container">';
     if( $query_cards->have_posts() ) :
         while( $query_cards->have_posts() ): $query_cards->the_post();
-            echo '<div>';
+            echo '<div class="card">';
             if(has_post_thumbnail()){
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
-                echo '<div class="rounded" style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
+                echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';
                 
              }
             
