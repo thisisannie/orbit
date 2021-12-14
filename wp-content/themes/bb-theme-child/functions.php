@@ -97,13 +97,13 @@ $meta_box = array(
             'type' => 'text',
             'std' => ''
         ),
-        array(
+        /*array(
             'name' => 'Phone number',
             'desc' => 'Enter phone number',
             'id' => $prefix . 'phone',
             'type' => 'text',
             'std' => ''
-        ),
+        ),*/
         array(
             'name' => 'Email address',
             'desc' => 'Enter email',
@@ -250,6 +250,7 @@ add_action('wp_ajax_myfilter', 'orbit_filter_function');
 add_action('wp_ajax_nopriv_myfilter', 'orbit_filter_function');
 
 function orbit_filter_function(){
+    
     $args = array(
         'order' => 'ASC',
         'orderby' => 'title',
@@ -272,13 +273,18 @@ function orbit_filter_function(){
         while( $query->have_posts() ): $query->the_post();
             echo '<div>';
             if(has_post_thumbnail()){
-                the_post_thumbnail('thumbnail');
+                //the_post_thumbnail('thumbnail');
+                $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+                //echo $thumb[0]; // thumbnail url
+                echo '<div style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
+
+                
              }
             echo '<h4>' . $query->post->post_title . '</h4>';
             echo '<span>'.get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
-            echo get_post_meta(get_the_ID(), 'orb_phone', TRUE) .'<br>';
-            echo get_post_meta(get_the_ID(), 'orb_email', TRUE) .'<br>';
-            echo get_post_meta(get_the_ID(), 'orb_linkedin', TRUE) .'</span>';
+            /*echo get_post_meta(get_the_ID(), 'orb_phone', TRUE) .'<br>';*/
+            echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch > </a><br>';
+            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin-in"></i> Connect ></a></span>';
             echo '</div>';
         endwhile;
         wp_reset_postdata();
@@ -312,13 +318,18 @@ function default_staff_posts(){
         while( $query_def->have_posts() ): $query_def->the_post();
             echo '<div>';
             if(has_post_thumbnail()){
-                the_post_thumbnail('thumbnail');
+                //the_post_thumbnail('thumbnail');
+                $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+                //echo $thumb[0]; // thumbnail url
+                echo '<div style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
+
+                
              }
             echo '<h4>' . $query_def->post->post_title . '</h4>';
             echo '<span>'.get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
-            echo get_post_meta(get_the_ID(), 'orb_phone', TRUE) .'<br>';
-            echo get_post_meta(get_the_ID(), 'orb_email', TRUE) .'<br>';
-            echo get_post_meta(get_the_ID(), 'orb_linkedin', TRUE) .'</span>';
+            /*echo get_post_meta(get_the_ID(), 'orb_phone', TRUE) .'<br>';*/
+           echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch > </a><br>';
+            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin-in"></i> Connect ></a></span>';
             echo '</div>';
         endwhile;
         wp_reset_postdata();
@@ -573,11 +584,13 @@ function orbit_filter_event_function(){
         while( $query_ev->have_posts() ): $query_ev->the_post();
             echo '<div>';
             if(has_post_thumbnail()){
-                //the_post_thumbnail('thumbnail');
+                $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+                echo '<div style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;">';
                 echo '<a href="'.get_permalink( $query_ev->post->ID).'">';
                 the_post_thumbnail('thumbnail');
-                echo '</a>';
+                echo '</a></div>';                
              }
+            
             $date = get_post_meta(get_the_ID(), 'orb_event_date', TRUE);
             echo '<h4><a href="'.get_permalink( $query_ev->post->ID).'">' . $query_ev->post->post_title . '</a></h4>';
             echo '<span>'.get_post_meta(get_the_ID(), 'orb_event_place', TRUE) .'<br>';
@@ -617,10 +630,11 @@ function default_event_posts(){
         while( $query_event_def->have_posts() ): $query_event_def->the_post();
             echo '<div>';
             if(has_post_thumbnail()){
-                //the_post_thumbnail('thumbnail');
-                echo '<a href="'.get_permalink( $query->post->ID).'">';
+                $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+                echo '<div style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;">';
+                echo '<a href="'.get_permalink( $query_ev->post->ID).'">';
                 the_post_thumbnail('thumbnail');
-                echo '</a>';
+                echo '</a></div>';                
              }
             $date = get_post_meta(get_the_ID(), 'orb_event_date', TRUE);
             echo '<h4><a href="'.get_permalink( $query_event_def->post->ID).'">' . $query_event_def->post->post_title . '</a></h4>';
@@ -634,4 +648,8 @@ function default_event_posts(){
 
 }
 add_shortcode('default_events', 'default_event_posts');
+
+//add excerpt for the post
+add_post_type_support( 'page', 'excerpt' );
+
 
