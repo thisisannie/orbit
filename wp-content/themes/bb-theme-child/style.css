@@ -227,8 +227,7 @@ header.fl-builder-content {
     margin-top: 0; }
 
 form#filter-cards {
-  display: inline;
-  border-radius: 28px; }
+  display: inline; }
 
 .fl-page label {
   padding: 0 25px 0;
@@ -247,10 +246,13 @@ form#filter-cards {
   .fl-page input[type=text]:last-child, .fl-page input[type=password]:last-child, .fl-page input[type=email]:last-child, .fl-page input[type=tel]:last-child, .fl-page input[type=date]:last-child, .fl-page input[type=month]:last-child, .fl-page input[type=week]:last-child, .fl-page input[type=time]:last-child, .fl-page input[type=number]:last-child, .fl-page input[type=search]:last-child, .fl-page input[type=url]:last-child, .fl-page textarea:last-child {
     margin-bottom: 0; }
 
+.fl-page input[type=text], .fl-page input[type=password], .fl-page input[type=email], .fl-page input[type=tel], .fl-page input[type=date], .fl-page input[type=month], .fl-page input[type=week], .fl-page input[type=time], .fl-page input[type=number], .fl-page input[type=search], .fl-page input[type=url] {
+  border-radius: 50px; }
+
 .fl-page select, .fl-page .button, .fl-page button, .fl-page input[type=select] {
   -webkit-appearance: none;
   border: 2px transparent solid;
-  border-radius: 21px;
+  border-radius: 50px;
   padding: 12px 25px 8px;
   background-color: #d86227;
   color: white;

@@ -1,7 +1,6 @@
 // home page dropdown
 form#filter-cards { 
   display: inline;
-  border-radius: 28px;
 }
 .fl-page {
   label {
@@ -22,11 +21,14 @@ form#filter-cards {
       margin-bottom: 0;
     }
   }
+  input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url] {
+    border-radius: 50px;
+  }
 
   select, .button, button, input[type=select] {
     -webkit-appearance: none;
     border: 2px transparent solid;
-    border-radius: 21px;
+    border-radius: 50px;
     padding: 12px 25px 8px;
     background-color: $orange;
     color: white;
