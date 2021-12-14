@@ -323,6 +323,22 @@ img.rounded, .rounded img, .rounded {
 .bg-blue-lightest {
   background-color: #cbebea; }
 
+.fl-accordion .fl-accordion-item {
+  margin-bottom: 0;
+  border: none;
+  border-bottom: 1px #003c4b solid; }
+  .fl-accordion .fl-accordion-item:first-child {
+    border-top: 1px #003c4b solid; }
+  .fl-accordion .fl-accordion-item .fl-accordion-button {
+    padding-top: 15px;
+    padding-right: 0;
+    padding-left: 0; }
+
+.fl-accordion .fl-accordion-button-label {
+  text-transform: uppercase;
+  color: #003c4b;
+  font-weight: bold; }
+
 footer.fl-builder-content {
   background-color: #0b212c;
   color: #cbebea; }

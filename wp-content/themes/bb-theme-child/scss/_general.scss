@@ -5,3 +5,23 @@ img.rounded, .rounded img, .rounded {
 .bg-blue-lightest {
   background-color: $blue-lightest;
 }
+.fl-accordion {
+  .fl-accordion-item {
+    margin-bottom: 0;
+    border: none;
+    border-bottom: 1px $blue-dark solid;
+    &:first-child {
+      border-top:  1px $blue-dark solid;
+    }
+    .fl-accordion-button {
+      padding-top: 15px;
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+  .fl-accordion-button-label {
+    text-transform: uppercase;
+    color: $blue-dark;
+    font-weight: bold;
+  }
+}
