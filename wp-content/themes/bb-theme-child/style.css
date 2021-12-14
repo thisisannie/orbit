@@ -223,8 +223,17 @@ header.fl-builder-content {
   .hero .p-container .fl-node-content {
     margin-top: 0; }
 
+form#filter-cards {
+  display: inline;
+  border-radius: 28px; }
+
+.fl-page label {
+  padding: 0 25px 0;
+  color: #42777e;
+  font-size: 16px; }
+
 .fl-page input[type=text], .fl-page input[type=password], .fl-page input[type=email], .fl-page input[type=tel], .fl-page input[type=date], .fl-page input[type=month], .fl-page input[type=week], .fl-page input[type=time], .fl-page input[type=number], .fl-page input[type=search], .fl-page input[type=url], .fl-page textarea {
-  border-radius: 100px;
+  border-radius: 21px;
   border: 1px #42777e solid;
   padding: 12px 25px 8px;
   background-color: transparent;
@@ -238,7 +247,7 @@ header.fl-builder-content {
 .fl-page select, .fl-page .button, .fl-page button, .fl-page input[type=select] {
   -webkit-appearance: none;
   border: 2px transparent solid;
-  border-radius: 100px;
+  border-radius: 21px;
   padding: 12px 25px 8px;
   background-color: #d86227;
   color: white;
@@ -255,7 +264,7 @@ header.fl-builder-content {
   position: relative;
   background: #d86227 url("./images/arrow-down-white.svg") calc(100% - 20px) center no-repeat;
   background-size: 14px; }
-  .fl-page select:hover {
+  .fl-page select:hover, .fl-page select:active, .fl-page select:focus, .fl-page select:focus-visible, .fl-page select:focus-within {
     background: white url("./images/arrow-down-orange.svg") calc(100% - 20px) center no-repeat;
     background-size: 14px; }
   .fl-page select:focus-visible {
