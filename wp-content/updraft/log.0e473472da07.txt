@@ -1,0 +1,264 @@
+0000.000 (0) Opened log file at time: Tue, 14 Dec 2021 03:17:44 +0000 on http://localhost:8888/orbit
+0000.002 (0) UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.16.66 WP: 5.8.2 PHP: 8.0.8 (apache2handler, Darwin Annies-27-iMac.local 19.6.0 Darwin Kernel Version 19.6.0: Tue Oct 12 18:34:05 PDT 2021; root:xnu-6153.141.43~1/RELEASE_X86_64 x86_64) MySQL: 5.7.34 (max packet size=4194304) WPLANG: en_NZ Server: Apache/2.4.48 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.13 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 57.4M | 6.5M) multisite: N openssl: OpenSSL 1.0.2u  20 Dec 2019 mcrypt: N LANG:  ZipArchive::addFile: Y
+0000.003 (0) Free space on disk containing Updraft's temporary directory: 809789.5 MB
+0000.014 (0) Tasks: Backup files: 1 (schedule: manual) Backup DB: 1 (schedule: manual)
+0000.017 (0) Requesting semaphore lock (fd) (apparently not via scheduler)
+0000.020 (0) Set semaphore last lock (fd) time to 2021-12-14 03:17:44
+0000.020 (0) Semaphore lock (fd) complete
+0000.040 (0) Backup run: resumption=0, nonce=0e473472da07, file_nonce=0e473472da07 begun at=1639451864 (0s ago), job type=backup
+0000.042 (0) Scheduling a resumption (1) after 300 seconds (1639452164) in case this run gets aborted
+0000.060 (0) Checking if we have a zip executable available
+0000.062 (0) Testing: /usr/bin/zip
+0000.069 (0) Output: zip warning: binziptest/test.zip not found or empty
+0000.070 (0) Output: adding: binziptest/subdir1/	(in=0) (out=0) (stored 0%)
+0000.071 (0) Output: adding: binziptest/subdir1/subdir2/	(in=0) (out=0) (stored 0%)
+0000.072 (0) Output: adding: binziptest/subdir1/subdir2/test.html	(in=131) (out=107) (deflated 18%)
+0000.074 (0) Output: total bytes=131, compressed=107 -> 18% savings
+0000.081 (0) Output: adding: binziptest/subdir1/subdir2/test2.html	(in=138) (out=113) (deflated 18%)
+0000.083 (0) Output: total bytes=269, compressed=220 -> 18% savings
+0000.095 (0) Working binary zip found: /usr/bin/zip
+0000.097 (0) Zip engine: found/will use a binary zip: /usr/bin/zip
+0000.098 (0) Creation of backups of directories: beginning
+0000.103 (0) Beginning creation of dump of plugins (split every: 400 MB)
+0000.493 (0) Total entities for the zip file: 1200 directories, 4223 files (0 skipped as non-modified), 64.6 MB
+0000.499 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 100 files added (on-disk size: 0 KB)
+0000.506 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 200 files added (on-disk size: 0 KB)
+0000.511 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 300 files added (on-disk size: 0 KB)
+0000.517 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 400 files added (on-disk size: 0 KB)
+0000.522 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 500 files added (on-disk size: 0 KB)
+0000.527 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 600 files added (on-disk size: 0 KB)
+0000.532 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 700 files added (on-disk size: 0 KB)
+0000.539 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 800 files added (on-disk size: 0 KB)
+0000.544 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 900 files added (on-disk size: 0 KB)
+0000.549 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1000 files added (on-disk size: 0 KB)
+0000.550 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (13.5 MB, 4223 files batched, 1001 (1001) added so far); re-opening (prior size: 0 KB)
+0001.329 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: size is now: 3.10 MB
+0001.337 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1100 files added (on-disk size: 3128.5 KB)
+0001.344 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1200 files added (on-disk size: 3128.5 KB)
+0001.350 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1300 files added (on-disk size: 3128.5 KB)
+0001.357 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1400 files added (on-disk size: 3128.5 KB)
+0001.362 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1500 files added (on-disk size: 3128.5 KB)
+0001.368 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1600 files added (on-disk size: 3128.5 KB)
+0001.375 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1700 files added (on-disk size: 3128.5 KB)
+0001.380 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1800 files added (on-disk size: 3128.5 KB)
+0001.387 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 1900 files added (on-disk size: 3128.5 KB)
+0001.393 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2000 files added (on-disk size: 3128.5 KB)
+0001.394 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (19.9 MB, 4223 files batched, 1001 (2002) added so far); re-opening (prior size: 3128.5 KB)
+0002.383 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: size is now: 8.00 MB
+0002.391 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2100 files added (on-disk size: 8237.6 KB)
+0002.396 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2200 files added (on-disk size: 8237.6 KB)
+0002.402 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2300 files added (on-disk size: 8237.6 KB)
+0002.407 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2400 files added (on-disk size: 8237.6 KB)
+0002.412 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2500 files added (on-disk size: 8237.6 KB)
+0002.417 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2600 files added (on-disk size: 8237.6 KB)
+0002.423 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2700 files added (on-disk size: 8237.6 KB)
+0002.428 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2800 files added (on-disk size: 8237.6 KB)
+0002.433 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 2900 files added (on-disk size: 8237.6 KB)
+0002.438 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3000 files added (on-disk size: 8237.6 KB)
+0002.440 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (11.1 MB, 4223 files batched, 1001 (3003) added so far); re-opening (prior size: 8237.6 KB)
+0003.305 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: size is now: 11.40 MB
+0003.312 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3100 files added (on-disk size: 11658.1 KB)
+0003.317 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3200 files added (on-disk size: 11658.1 KB)
+0003.322 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3300 files added (on-disk size: 11658.1 KB)
+0003.328 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3400 files added (on-disk size: 11658.1 KB)
+0003.333 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3500 files added (on-disk size: 11658.1 KB)
+0003.339 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3600 files added (on-disk size: 11658.1 KB)
+0003.344 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3700 files added (on-disk size: 11658.1 KB)
+0003.349 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3800 files added (on-disk size: 11658.1 KB)
+0003.355 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 3900 files added (on-disk size: 11658.1 KB)
+0003.360 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 4000 files added (on-disk size: 11658.1 KB)
+0003.361 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 1000 files added on this batch (16.2 MB, 4223 files batched, 1001 (4004) added so far); re-opening (prior size: 11658.1 KB)
+0004.597 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: size is now: 16.50 MB
+0004.605 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 4100 files added (on-disk size: 16901.8 KB)
+0004.610 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.tmp: 4200 files added (on-disk size: 16901.8 KB)
+0005.126 (0) Creating zip file manifest (/Applications/MAMP/htdocs/orbit/wp-content/updraft/backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.list-temp.tmp)
+0005.148 (0) Successfully created zip file manifest (size: 381710)
+0005.596 (0) Created plugins zip (0) - 18497.6 KB in 5.5 s (3368.4 KB/s) (sha1: 87cc8d087661fce64c8465b53a4ee4da4ef722d7, sha256: 7ebb847b514ab6bc2e79c211661e18c9cab61a9168c6cb74a902453be044d44b)
+0005.600 (0) Beginning creation of dump of themes (split every: 400 MB)
+0005.634 (0) Total entities for the zip file: 86 directories, 481 files (0 skipped as non-modified), 8.3 MB
+0005.640 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-themes.zip.tmp: 100 files added (on-disk size: 0 KB)
+0005.645 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-themes.zip.tmp: 200 files added (on-disk size: 0 KB)
+0005.650 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-themes.zip.tmp: 300 files added (on-disk size: 0 KB)
+0005.660 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-themes.zip.tmp: 400 files added (on-disk size: 0 KB)
+0006.183 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-themes.zip.tmp: size is now: 4.40 MB
+0006.228 (0) Creating zip file manifest (/Applications/MAMP/htdocs/orbit/wp-content/updraft/backup_2021-12-14-1617_Orbit_Travel_0e473472da07-themes.zip.list-temp.tmp)
+0006.234 (0) Successfully created zip file manifest (size: 28542)
+0006.354 (0) Created themes zip (0) - 4482 KB in 0.8 s (5959.3 KB/s) (sha1: bc39215f298a5c7fd6247fa63aa5719e587390df, sha256: 672d1f2e0b5cd09a243dd1e407e3f5016f8fabcdde80b0121ac66e0c21033696)
+0006.358 (0) Exclusion option setting (uploads): backup*,*backups,backwpup*,wp-clone,snapshots
+0006.359 (0) Looking for candidates to backup in: /Applications/MAMP/htdocs/orbit/wp-content/uploads
+0006.368 (0) finding files: bb-theme: adding to list (1)
+0006.370 (0) finding files: siteorigin-widgets: adding to list (2)
+0006.371 (0) finding files: 2021: adding to list (3)
+0006.372 (0) finding files: bb-plugin: adding to list (4)
+0006.373 (0) Beginning creation of dump of uploads (split every: 400 MB)
+0006.421 (0) Total entities for the zip file: 11 directories, 675 files (0 skipped as non-modified), 30.7 MB
+0006.426 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip.tmp: 100 files added (on-disk size: 0 KB)
+0006.431 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip.tmp: 200 files added (on-disk size: 0 KB)
+0006.437 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip.tmp: 300 files added (on-disk size: 0 KB)
+0006.443 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip.tmp: 400 files added (on-disk size: 0 KB)
+0006.449 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip.tmp: 500 files added (on-disk size: 0 KB)
+0006.452 (0) Adding batch to zip file (UpdraftPlus_BinZip): over 25 MB added on this batch (25 MB, 675 files batched, 551 (551) added so far); re-opening (prior size: 0 KB)
+0007.586 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip.tmp: size is now: 21.30 MB
+0007.592 (0) A useful amount of data was added after this amount of zip processing: 1.4 s (normalised: 1.4 s, rate: 18523.2 KB/s)
+0007.594 (0) Performance is good - will increase the amount of data we attempt to batch (time=1.3836998939514, normalised_time=1.3820497262409, max_time=7.5922651290894, data points known=1, old_max_bytes=26214400, new_max_bytes=113806614)
+0007.597 (0) Zip: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip.tmp: 600 files added (on-disk size: 21860.5 KB)
+0008.337 (0) Creating zip file manifest (/Applications/MAMP/htdocs/orbit/wp-content/updraft/backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip.list-temp.tmp)
+0008.343 (0) Successfully created zip file manifest (size: 42458)
+0008.917 (0) Created uploads zip (0) - 22927.9 KB in 2.5 s (9018.3 KB/s) (sha1: 0b950bca1518fb2ac315f2e0f29f963920db851d, sha256: bdde84697df38ca761c730346cfcf47cf430a5b3fcf83dad2fb33a31cb29209a)
+0008.921 (0) Beginning backup of other directories found in the content directory (index: 0)
+0008.923 (0) Exclusion option setting (others): upgrade,cache,updraft,backup*,*backups,mysql.sql,debug.log
+0008.924 (0) Looking for candidates to backup in: /Applications/MAMP/htdocs/orbit/wp-content
+0008.926 (0) finding files: upgrade: skipping: excluded by options
+0008.928 (0) finding files: index.php: adding to list (1)
+0008.929 (0) finding files: plugins: skipping: this is the plugins directory
+0008.931 (0) finding files: uploads: skipping: this is the uploads directory
+0008.932 (0) finding files: updraft: skipping: this is the updraft directory
+0008.933 (0) finding files: languages: adding to list (2)
+0008.935 (0) finding files: themes: skipping: this is the themes directory
+0008.943 (0) Total entities for the zip file: 3 directories, 71 files (0 skipped as non-modified), 2.8 MB
+0009.123 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-others.zip.tmp: size is now: 0.70 MB
+0009.128 (0) Creating zip file manifest (/Applications/MAMP/htdocs/orbit/wp-content/updraft/backup_2021-12-14-1617_Orbit_Travel_0e473472da07-others.zip.list-temp.tmp)
+0009.130 (0) Successfully created zip file manifest (size: 4183)
+0009.150 (0) Created others zip (0) - 692.6 KB in 0.2 s (3243 KB/s) (sha1: 2669d5435e302eda51906514aa17ae9ee2c668e2, sha256: eba75c34d78c0795f5ad3ae632a588a126d75c4720184971948873c56c398742)
+0009.157 (0) Saving backup status to database (elements: 8)
+0009.161 (0) Beginning creation of database dump (WordPress DB)
+0009.162 (0) SQL compatibility mode is: NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+0009.190 (0) Table wp_options: Total expected rows (via COUNT): 275
+0009.192 (0) Table is relatively small; fetch_rows will thus be: 500 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0009.333 (0) Table wp_options: Rows added in this batch (next record: 1634): 271 (uncompressed bytes in this segment=1733955) in 0.15 seconds
+0009.347 (0) Table wp_options: finishing file(s) (2, 408.9 KB)
+0009.350 (0) Table wp_users: Total expected rows (via COUNT): 1
+0009.351 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0009.354 (0) Table wp_users: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=1390) in 0.00 seconds
+0009.359 (0) Table wp_users: finishing file(s) (2, 0.6 KB)
+0009.364 (0) Table wp_usermeta: Total expected rows (via COUNT): 32
+0009.365 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0009.367 (0) Table wp_usermeta: Rows added in this batch (next record: 32): 32 (uncompressed bytes in this segment=2924) in 0.01 seconds
+0009.372 (0) Table wp_usermeta: finishing file(s) (2, 1.4 KB)
+0009.377 (0) Table wp_commentmeta: Total expected rows (via COUNT): 2
+0009.378 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0009.381 (0) Table wp_commentmeta: Rows added in this batch (next record: 2): 2 (uncompressed bytes in this segment=823) in 0.01 seconds
+0009.387 (0) Table wp_commentmeta: finishing file(s) (2, 0.5 KB)
+0009.390 (0) Table wp_comments: Total expected rows (via COUNT): 1
+0009.392 (0) Table is relatively small; fetch_rows will thus be: 20 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0009.394 (0) Table wp_comments: Rows added in this batch (next record: 1): 1 (uncompressed bytes in this segment=2148) in 0.00 seconds
+0009.398 (0) Table wp_comments: finishing file(s) (2, 0.8 KB)
+0009.401 (0) Table wp_links: Total expected rows (via COUNT): 0
+0009.403 (0) Table wp_links: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=1310) in 0.00 seconds
+0009.409 (0) Table wp_links: finishing file(s) (2, 0.5 KB)
+0009.424 (0) Table wp_postmeta: Total expected rows (approximate): 2034
+0010.642 (0) Table wp_postmeta: Rows added in this batch (next record: 17078): 2083 (uncompressed bytes in this segment=33525785) in 1.23 seconds
+0010.650 (0) Table wp_postmeta: finishing file(s) (2, 1535.1 KB)
+0010.657 (0) Table wp_posts: Total expected rows (via COUNT): 554
+0010.714 (0) Table wp_posts: Rows added in this batch (next record: 714): 554 (uncompressed bytes in this segment=625354) in 0.06 seconds
+0010.724 (0) Table wp_posts: finishing file(s) (2, 80.3 KB)
+0010.728 (0) Table wp_term_relationships: Total expected rows (approximate): 106
+0010.731 (0) Table wp_term_relationships: Rows added in this batch (next record: 100000): 106 (uncompressed bytes in this segment=2202) in 0.00 seconds
+0010.735 (0) Table wp_term_relationships: finishing file(s) (2, 0.7 KB)
+0010.740 (0) Table wp_term_taxonomy: Total expected rows (via COUNT): 27
+0010.741 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0010.744 (0) Table wp_term_taxonomy: Rows added in this batch (next record: 27): 27 (uncompressed bytes in this segment=1867) in 0.01 seconds
+0010.749 (0) Table wp_term_taxonomy: finishing file(s) (2, 0.7 KB)
+0010.755 (0) Table wp_termmeta: Total expected rows (via COUNT): 0
+0010.758 (0) Table wp_termmeta: Rows added in this batch (next record: -1): 0 (uncompressed bytes in this segment=658) in 0.00 seconds
+0010.763 (0) Table wp_termmeta: finishing file(s) (2, 0.4 KB)
+0010.767 (0) Table wp_terms: Total expected rows (via COUNT): 27
+0010.768 (0) Table is relatively small; fetch_rows will thus be: 50 (allow_further_reductions=1, is_first_fetch=1, known_bigger_than_table=1)
+0010.771 (0) Table wp_terms: Rows added in this batch (next record: 27): 27 (uncompressed bytes in this segment=1848) in 0.00 seconds
+0010.775 (0) Table wp_terms: finishing file(s) (2, 0.8 KB)
+0010.776 (0) PHP event: code E_WARNING: filemtime(): stat failed for /Applications/MAMP/htdocs/orbit/wp-content/updraft/backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db.gz (line 1836, wp-content/plugins/updraftplus/backup.php)
+0010.778 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_options.table.tmpr1635.gz (1/12/fopen): adding to final database dump
+0010.787 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_options.table.gz (2/12/fopen): adding to final database dump
+0010.789 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_users.table.tmpr2.gz (3/12/fopen): adding to final database dump
+0010.791 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_users.table.gz (4/12/fopen): adding to final database dump
+0010.792 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_usermeta.table.tmpr33.gz (5/12/fopen): adding to final database dump
+0010.793 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_usermeta.table.gz (6/12/fopen): adding to final database dump
+0010.794 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_commentmeta.table.tmpr3.gz (7/12/fopen): adding to final database dump
+0010.796 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_commentmeta.table.gz (8/12/fopen): adding to final database dump
+0010.797 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_comments.table.tmpr2.gz (9/12/fopen): adding to final database dump
+0010.798 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_comments.table.gz (10/12/fopen): adding to final database dump
+0010.800 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_links.table.tmpr0.gz (11/12/fopen): adding to final database dump
+0010.801 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_links.table.gz (12/12/fopen): adding to final database dump
+0010.805 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_postmeta.table.tmpr17079.gz (13/12/fopen): adding to final database dump
+0010.843 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_postmeta.table.gz (14/12/fopen): adding to final database dump
+0010.844 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_posts.table.tmpr715.gz (15/12/fopen): adding to final database dump
+0010.848 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_posts.table.gz (16/12/fopen): adding to final database dump
+0010.850 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_term_relationships.table.tmpr100001.gz (17/12/fopen): adding to final database dump
+0010.852 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_term_relationships.table.gz (18/12/fopen): adding to final database dump
+0010.853 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_term_taxonomy.table.tmpr28.gz (19/12/fopen): adding to final database dump
+0010.855 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_term_taxonomy.table.gz (20/12/fopen): adding to final database dump
+0010.856 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_termmeta.table.tmpr0.gz (21/12/fopen): adding to final database dump
+0010.857 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_termmeta.table.gz (22/12/fopen): adding to final database dump
+0010.859 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_terms.table.tmpr28.gz (23/12/fopen): adding to final database dump
+0010.860 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db-table-wp_terms.table.gz (24/12/fopen): adding to final database dump
+0010.865 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db.gz: finished writing out complete database file (2031 KB)
+0010.922 (0) Total database tables backed up: 12 (backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db.gz, size: 2079856, sha1: 040ebc6184535401228d1be6b8bfa70b1d4f79ed, sha256: c2731c8f783fda27086c6796fd969296ec8b1fb54a5cec0bd38ce36229168df5)
+0010.930 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip: plugins: This file has not yet been successfully uploaded: will queue
+0010.931 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-themes.zip: themes: This file has not yet been successfully uploaded: will queue
+0010.932 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip: uploads: This file has not yet been successfully uploaded: will queue
+0010.933 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-others.zip: others: This file has not yet been successfully uploaded: will queue
+0010.934 (0) backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db.gz: db: This file has not yet been successfully uploaded: will queue
+0010.934 (0) Saving backup history. Total backup size: 47.5 MB
+0010.938 (0) Requesting upload of the files that have not yet been successfully uploaded (5)
+0010.941 (0) Cloud backup selection (1/1): none with instance (1/1) (last)
+0010.942 (0) No remote despatch: user chose no remote backup service
+0010.943 (0) Recording as successfully uploaded: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip
+0010.946 (0) Deleting zip manifest (backup_2021-12-14-1617_Orbit_Travel_0e473472da07-plugins.zip.list.tmp)
+0010.947 (0) Recording as successfully uploaded: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-themes.zip
+0010.949 (0) Deleting zip manifest (backup_2021-12-14-1617_Orbit_Travel_0e473472da07-themes.zip.list.tmp)
+0010.950 (0) Recording as successfully uploaded: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip
+0010.952 (0) Deleting zip manifest (backup_2021-12-14-1617_Orbit_Travel_0e473472da07-uploads.zip.list.tmp)
+0010.953 (0) Recording as successfully uploaded: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-others.zip
+0010.955 (0) Deleting zip manifest (backup_2021-12-14-1617_Orbit_Travel_0e473472da07-others.zip.list.tmp)
+0010.956 (0) Recording as successfully uploaded: backup_2021-12-14-1617_Orbit_Travel_0e473472da07-db.gz
+0010.959 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=3, retain_db=3
+0010.961 (0) Number of backup sets in history: 4; groups (db): 1
+0010.962 (0) Examining (for databases) backup set with group_id=0, nonce=0e473472da07, datestamp=1639451864 (Dec 14 2021 03:17:44)
+0010.964 (0) This backup set is the backup set just made, so will not be deleted.
+0010.964 (0) Examining (for databases) backup set with group_id=0, nonce=af0e407e2bcc, datestamp=1639447311 (Dec 14 2021 02:01:51)
+0010.965 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0010.966 (0) Examining (for databases) backup set with group_id=0, nonce=9d5b745f071d, datestamp=1639437149 (Dec 13 2021 23:12:29)
+0010.966 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0010.966 (0) Examining (for databases) backup set with group_id=0, nonce=8b831f8ac3ef, datestamp=1639362994 (Dec 13 2021 02:36:34)
+0010.966 (0) 1639362994: db: this set includes a database (backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-db.gz); db count is now 3
+0010.966 (0) 1639362994: db: over retain limit (3); will delete this database
+0010.966 (0) Delete file: backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-db.gz, service=none
+0010.967 (0) Deleting local copy (backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-db.gz)
+0010.971 (0) This backup set remains non-empty (f=1/d=0); will retain in history
+0010.973 (0) Number of backup sets in history: 4; groups (files): 1
+0010.974 (0) Examining (for files) backup set with nonce=0e473472da07, datestamp=1639451864 (Dec 14 2021 03:17:44)
+0010.974 (0) This backup set is the backup set just made, so will not be deleted.
+0010.975 (0) This backup set is the backup set just made, so will not be deleted.
+0010.975 (0) This backup set is the backup set just made, so will not be deleted.
+0010.975 (0) This backup set is the backup set just made, so will not be deleted.
+0010.975 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0010.976 (0) Examining (for files) backup set with nonce=af0e407e2bcc, datestamp=1639447311 (Dec 14 2021 02:01:51)
+0010.976 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0010.976 (0) Examining (for files) backup set with nonce=9d5b745f071d, datestamp=1639437149 (Dec 13 2021 23:12:29)
+0010.976 (0) This backup set remains non-empty (f=1/d=1); will retain in history
+0010.977 (0) Examining (for files) backup set with nonce=8b831f8ac3ef, datestamp=1639362994 (Dec 13 2021 02:36:34)
+0010.977 (0) plugins: over retain limit (3); will delete this file entity
+0010.977 (0) themes: over retain limit (3); will delete this file entity
+0010.977 (0) uploads: over retain limit (3); will delete this file entity
+0010.977 (0) others: over retain limit (3); will delete this file entity
+0010.977 (0) Delete file: backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-plugins.zip, service=none
+0010.978 (0) Deleting local copy (backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-plugins.zip)
+0010.979 (0) Delete file: backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-themes.zip, service=none
+0010.980 (0) Deleting local copy (backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-themes.zip)
+0010.981 (0) Delete file: backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-uploads.zip, service=none
+0010.982 (0) Deleting local copy (backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-uploads.zip)
+0010.983 (0) Delete file: backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-others.zip, service=none
+0010.984 (0) Deleting local copy (backup_2021-12-13-1536_Orbit_Travel_8b831f8ac3ef-others.zip)
+0010.986 (0) This backup set is now empty; will remove from history
+0010.987 (0) Deleting log file (log.8b831f8ac3ef.txt)
+0010.988 (0) Retain: saving new backup history (sets now: 3) and finishing retain operation
+0010.992 (0) Resume backup (0e473472da07, 0): finish run
+0010.996 (0) Decremented the semaphore (fd) by 1
+0010.997 (0) Semaphore (fd) unlocked
+0010.998 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0011.001 (0) The backup apparently succeeded and is now complete
+0011.002 (0) Fetching RSS news feed
+0011.035 (0) Fetched RSS news feed; result is a: SimplePie
+0011.044 (0) Sending email ('Files and database (Full backup)') report (attachments: 0, size: 0 KB) to: annie...
+0011.056 (0) An error occurred when sending a backup report email and/or backup file(s) via email (wp_mail_failed): Invalid address:  (From): wordpress@localhost
+0011.057 (0) The backup apparently succeeded and is now complete.
