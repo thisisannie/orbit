@@ -130,6 +130,9 @@ blockquote, .blockquote h2, .blockquote h3 {
   padding-top: 100px;
   padding-bottom: 100px; }
 
+#random-staff-images.extend-left:after, #random-staff-images.extend-right:after {
+  padding-top: 0; }
+
 #random-staff-images .uabb-blog-posts {
   overflow: initial; }
 

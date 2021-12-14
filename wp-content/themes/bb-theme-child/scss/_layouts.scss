@@ -66,6 +66,9 @@
 }
 
 #random-staff-images {
+  &.extend-left:after, &.extend-right:after {
+    padding-top: 0;
+  }
   .uabb-blog-posts {
     overflow: initial;
   }
