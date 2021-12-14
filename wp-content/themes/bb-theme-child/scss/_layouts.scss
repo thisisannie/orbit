@@ -66,5 +66,26 @@
 }
 
 #random-staff-images {
-
+  .uabb-blog-posts {
+    overflow: initial;
+  }
+  .uabb-post-wrapper {
+    width: 50%;
+    padding: 0 3px;
+    &:nth-child(1) {
+      width: 45%;
+      margin-top: 12.4%;
+      margin-left: -6%;
+    }
+    &:nth-child(2) {
+      width: 61%;
+    }
+    &:nth-child(3) {
+      width: 61%;
+    }
+    &:nth-child(4) {
+      width: 45%;
+      margin-right: -6%;
+    }
+  }
 }
