@@ -18,6 +18,323 @@ add_action( 'wp_enqueue_scripts', 'custom_scripts' );
 
 
 
+//MODULE HOMEPAGE CARDS
+
+/*
+ * Register Custom Post Types - Homepage Cards
+ */
+function homepage_cards_custom_post_types() {
+
+    /*
+     * Register the new "Homepage Cards" post type
+     */
+    $homepage_cards_labels = array(
+        'name' => __('Homepage cards', 'homepagecards'),
+        'singular_name' => __('Homepage cards', 'homepagecards'),
+    );
+    $homepage_cards_args = array(
+        'labels' => $homepage_cards_labels,
+        'public' => true,
+        'hierarchical' => false,
+        'description' => __('Homepage cards'),
+        'menu_icon' => 'dashicons-nametag',
+        'rewrite' => array( 'slug' => 'homepagecards' ),
+        'capability_type' => 'post',
+        'supports' => array('title', 'editor', 'revisions', 'thumbnail'),
+        'has_archive' => true,
+        'show_in_rest' => true,
+        'taxonomies' => array( 'homepagecards-category' ),
+        'menu_position' => 6,
+    );
+    register_post_type('homepagecards', $homepage_cards_args );
+
+
+}
+add_action( 'init', 'homepage_cards_custom_post_types' );
+
+/*
+ * Register Custom Taxonomies for Homepage Cards
+ */
+function homepage_cards_custom_taxonomies() {
+
+    /*
+     * Register the "Homepage Cards Categories" taxonomy
+     */
+    $homepagecards_cat_labels = array(
+        'name' => _x('Homepage Cards Categories', 'taxonomy general name'),
+        'singular-name' => _x('Homepage Cards Category', 'taxonomy singular name'),
+    );
+    $homepagecards_cat_args = array(
+        'labels' => $homepagecards_cat_labels,
+        'hierarchical' => true,
+        'show_in_rest' => true,
+        'rewrite' => array(
+            'slug' => 'homepagecards-category',
+            'with_front' => false,
+            'hierarchical' => true,
+        ),
+    );
+    register_taxonomy('homepagecards-category', 'homepagecards', $homepagecards_cat_args );
+
+}
+add_action( 'init', 'homepage_cards_custom_taxonomies' );
+
+
+
+
+//Orbit custom meta box for Events
+$prefix = 'orb_';
+
+$meta_box_homepage_cards = array(
+    'id' => 'orbit_custom_fields',
+    'title' => 'Orbit Homepage Cards Custom Fields',
+    'page' => 'homepagecards',
+    'context' => 'normal',
+    'priority' => 'high',
+    'fields' => array(
+        array(
+            'name' => 'Excerpt',
+            'desc' => 'Enter Excerpt.',
+            'id' => $prefix . 'excerpt',
+            'type' => 'text',
+            'std' => ''
+        ),
+        array(
+            'name' => 'Button link',
+            'desc' => 'Enter page slug.',
+            'id' => $prefix . 'button_link',
+            'type' => 'text',
+            'std' => ''
+        ),       
+    )
+);
+
+
+add_action('admin_menu', 'orbit_add_homepage_cards_box');
+
+// Add meta box
+function orbit_add_homepage_cards_box() {
+    global $meta_box_homepage_cards;
+
+    add_meta_box($meta_box_homepage_cards['id'], $meta_box_homepage_cards['title'], 'orbit_show_homepage_cards_box', $meta_box_homepage_cards['page'], $meta_box_homepage_cards['context'], $meta_box_homepage_cards['priority']);
+}
+
+
+// Callback function to show fields in meta box
+function orbit_show_homepage_cards_box() {
+    global $meta_box_homepage_cards, $post;
+
+
+
+     // Use nonce for verification
+    echo '<input type="hidden" name="orbit_meta_box_homepage_cards_event_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
+
+    echo '<table class="form-table">';
+
+    foreach ($meta_box_homepage_cards['fields'] as $field) {
+        // get current post meta data
+        $meta_hc = get_post_meta($post->ID, $field['id'], true);
+
+        echo '<tr>',
+                '<th style="width:20%"><label for="', $field['id'], '">', $field['name'], '</label></th>',
+                '<td>';
+        switch ($field['type']) {
+            case 'text':
+                echo '<input type="text" name="', $field['id'], '" id="', $field['id'], '" value="', $meta_hc ? $meta_hc : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
+                break;
+            case 'date':
+                echo '<input type="date" name="', $field['id'], '" id="', $field['id'], '" value="', $meta_hc ? $meta_hc : $field['std'], '" size="30" style="width:97%" />', '<br />', $field['desc'];
+                break;
+            case 'textarea':
+                echo '<textarea name="', $field['id'], '" id="', $field['id'], '" cols="60" rows="4" style="width:97%">', $meta_hc ? $meta_hc : $field['std'], '</textarea>', '<br />', $field['desc'];
+                break;
+            case 'select':
+                echo '<select name="', $field['id'], '" id="', $field['id'], '">';
+                foreach ($field['options'] as $option) {
+                    echo '<option ', $meta_hc == $option ? ' selected="selected"' : '', '>', $option, '</option>';
+                }
+                echo '</select>';
+                break;
+            case 'radio':
+                foreach ($field['options'] as $option) {
+                    echo '<input type="radio" name="', $field['id'], '" value="', $option['value'], '"', $meta_hc == $option['value'] ? ' checked="checked"' : '', ' />', $option['name'];
+                }
+                break;
+            case 'checkbox':
+                echo '<input type="checkbox" name="', $field['id'], '" id="', $field['id'], '"', $meta_hc ? ' checked="checked"' : '', ' />';
+                break;
+        }
+        echo     '</td><td>',
+            '</td></tr>';
+    }
+
+    echo '</table>';
+}
+
+add_action('save_post', 'orbit_save_homepage_cards_data');
+
+// Save data from meta box
+function orbit_save_homepage_cards_data($post_id) {
+    global $meta_box_homepage_cards;
+
+    // verify nonce
+    if (!wp_verify_nonce($_POST['orbit_meta_box_homepage_cards_event_nonce'], basename(__FILE__))) {
+        return $post_id;
+    }
+
+    // check autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return $post_id;
+    }
+
+    // check permissions
+    if ('page' == $_POST['post_type']) {
+        if (!current_user_can('edit_page', $post_id)) {
+            return $post_id;
+        }
+    } elseif (!current_user_can('edit_post', $post_id)) {
+        return $post_id;
+    }
+
+    foreach ($meta_box_homepage_cards['fields'] as $field) {
+        $old = get_post_meta($post_id, $field['id'], true);
+        $new = $_POST[$field['id']];
+
+        if ($new && $new != $old) {
+            update_post_meta($post_id, $field['id'], $new);
+        } elseif ('' == $new && $old) {
+            delete_post_meta($post_id, $field['id'], $old);
+        }
+    }
+}
+
+
+//Module 12 - Homepage cards category filters
+
+//Shortcode to show dropdown filters [homepage_posts]
+function homepage_cards_category(){
+   $cards_filter_content .= '<form action="'.site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter-cards">';
+
+        if( $terms_ev = get_terms( array( 'taxonomy' => 'homepagecards-category', 'orderby' => 'name' ) ) ) : 
+    
+            $cards_filter_content .=  '<select id="homepagecards-category-select" name="homepagecardsfilter">';
+            foreach ( $terms_ev as $term_ev ) :
+                $cards_filter_content .=  '<option value="' . $term_ev->term_id . '">' . $term_ev->name . '</option>'; // ID of the category as the value of an option
+            endforeach;
+            $cards_filter_content .=  '</select>';
+        endif;
+   $cards_filter_content .= '<input type="hidden" name="action" value="myfilter_homepagecards">';
+   $cards_filter_content .= '</form>';
+   //$cards_filter_content .= '<div id="homepagecards-response"></div>';
+    
+    return $cards_filter_content;
+
+}
+add_shortcode('homepagecards_filters','homepage_cards_category');
+
+//show cards
+function show_homepage_cards(){
+    $cards_content .= '<h3 id="homepagecards-title"></h3>';
+    $cards_content .= '<div id="homepagecards-response" style="height:400px"></div>';
+    return $cards_content;
+}
+add_shortcode('homepagecards_cards','show_homepage_cards');
+
+
+//Show posts from selected category - with ajax call
+add_action('wp_ajax_myfilter_homepagecards', 'orbit_homepagecards_filter_function');
+add_action('wp_ajax_nopriv_myfilter_homepagecards', 'orbit_homepagecards_filter_function');
+
+function orbit_homepagecards_filter_function(){
+    $args_cards = array(
+        'order' => 'ASC',
+        'orderby' => 'title',
+        'posts_per_page' => '3',
+    );
+ 
+    // for taxonomies / categories
+    if( isset( $_POST['homepagecardsfilter'] ) )
+        $args_cards['tax_query'] = array(
+            array(
+                'taxonomy' => 'homepagecards-category',
+                'field' => 'id',
+                'terms' => $_POST['homepagecardsfilter']
+            )
+        );
+
+    $query_cards = new WP_Query( $args_cards );
+    echo '<div class="flex-container">';
+    if( $query_cards->have_posts() ) :
+        while( $query_cards->have_posts() ): $query_cards->the_post();
+            echo '<div>';
+            if(has_post_thumbnail()){
+                $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+                echo '<div class="rounded" style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
+                
+             }
+            
+            echo '<h5>' . $query_cards->post->post_title . '</h5>';
+            echo '<span>'.get_post_meta(get_the_ID(), 'orb_excerpt', TRUE) .'</span><br>';
+            ?>
+            <button onclick='window.location.href="<?php echo get_post_meta(get_the_ID(), 'orb_button_link', TRUE) ?>";'>Click Here</button>
+            <?php 
+            
+            echo '</div>';
+        endwhile;
+        wp_reset_postdata();
+    else :
+        echo do_shortcode("[default_cards]");
+    endif;
+    echo '</div>';
+    die();
+}
+
+
+//Shortcode for default Homepage cards posts from all categories
+function default_homepagecards_posts(){
+
+    $terms_homepagecards_def = get_terms('homepagecards-category');
+    $term_homepagecards_ids = wp_list_pluck( $terms_homepagecards_def, 'term_id' );
+    $args_homepagecards_def = array(
+        'order' => 'ASC',
+        'orderby' => 'title',
+        'posts_per_page' => '-1',
+    );
+    $args_homepagecards_def['tax_query'] = array(
+            array(
+                'taxonomy' => 'homepagecards-category',
+                'field' => 'term_id',
+                'terms' => $term_homepagecards_ids
+            )
+        );
+
+    $query_homepagecards_def = new WP_Query( $args_homepagecards_def );
+    
+    if( $query_homepagecards_def->have_posts() ) :
+        while( $query_homepagecards_def->have_posts() ): $query_homepagecards_def->the_post();
+            echo '<div>';
+            if(has_post_thumbnail()){
+                $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+                echo '<div class="rounded" style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
+                               
+             }
+            $date = get_post_meta(get_the_ID(), 'orb_event_date', TRUE);
+            echo '<h4>' . $query_homepagecards_def->post->post_title . '</h4>';
+            echo '<span>'.get_post_meta(get_the_ID(), 'orb_excerpt', TRUE) .'</span><br>';
+            ?>
+            <button onclick='window.location.href="<?php echo get_post_meta(get_the_ID(), 'orb_button_link', TRUE) ?>";'>Click Here</button>
+            <?php 
+            
+            echo '</div>';
+        endwhile;
+        wp_reset_postdata();
+    endif;
+    die();
+
+}
+add_shortcode('default_cards', 'default_homepagecards_posts');
+
+
 /*
  * Register Custom Post Types - Staff Members
  */
@@ -254,7 +571,7 @@ function orbit_filter_function(){
     $args = array(
         'order' => 'ASC',
         'orderby' => 'title',
-        'posts_per_page' => '4',
+        'posts_per_page' => '-1',
     );
  
     // for taxonomies / categories
@@ -276,7 +593,7 @@ function orbit_filter_function(){
                 //the_post_thumbnail('thumbnail');
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
                 //echo $thumb[0]; // thumbnail url
-                echo '<div style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
+                echo '<div class="rounded" class="rounded" style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
 
                 
              }
@@ -321,7 +638,7 @@ function default_staff_posts(){
                 //the_post_thumbnail('thumbnail');
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
                 //echo $thumb[0]; // thumbnail url
-                echo '<div style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
+                echo '<div class="rounded" style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
 
                 
              }
@@ -585,7 +902,7 @@ function orbit_filter_event_function(){
             echo '<div>';
             if(has_post_thumbnail()){
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
-                echo '<div style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;">';
+                echo '<div class="rounded" style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;">';
                 echo '<a href="'.get_permalink( $query_ev->post->ID).'">';
                 the_post_thumbnail('thumbnail');
                 echo '</a></div>';                
@@ -631,7 +948,7 @@ function default_event_posts(){
             echo '<div>';
             if(has_post_thumbnail()){
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
-                echo '<div style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;">';
+                echo '<div class="rounded" style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;">';
                 echo '<a href="'.get_permalink( $query_ev->post->ID).'">';
                 the_post_thumbnail('thumbnail');
                 echo '</a></div>';                

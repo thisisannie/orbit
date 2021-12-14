@@ -3,15 +3,16 @@ jQuery(window).load(function() {
     jQuery('select#category-select').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#dropdown-selector').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#event-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
+    jQuery('select#homepagecards-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
 })
 
 //show/hide selected posts from home page header
-jQuery(function() {
+/*jQuery(function() {
         jQuery('#dropdown-selector').change(function(){
             jQuery('.dropdown-selector').hide();
             jQuery('#' + jQuery(this).val()).show();
         });
-});
+});*/
 
 
 //ajax call for staff category/city filter
@@ -48,6 +49,29 @@ jQuery(function($){
             success:function(data){
                 
                 $('#event-response').html(data); // insert data
+            }
+        });
+        return false;
+    });
+});
+
+
+//ajax call for homepage cards filter
+jQuery(function($){
+    $('select').change(function(){
+        var cardsfilter = $('#filter-cards');
+        var optionSelected = $("option:selected", this);
+        $.ajax({
+            url:cardsfilter.attr('action'),
+            data:cardsfilter.serialize(), // form data
+            type:cardsfilter.attr('method'), // POST
+            beforeSend:function(xhr){
+            
+            },
+            success:function(data){
+                $('#homepagecards-title').text(optionSelected.text());
+                $('#homepagecards-response').html(data); // insert data
+                
             }
         });
         return false;
