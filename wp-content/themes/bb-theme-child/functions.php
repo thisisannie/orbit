@@ -235,7 +235,7 @@ add_shortcode('homepagecards_filters','homepage_cards_category');
 //show cards
 function show_homepage_cards(){
     $cards_content .= '<h3 id="homepagecards-title"></h3>';
-    $cards_content .= '<div id="homepagecards-response" style="height:400px"></div>';
+    $cards_content .= '<div id="homepagecards-response"></div>';
     return $cards_content;
 }
 add_shortcode('homepagecards_cards','show_homepage_cards');
@@ -273,7 +273,7 @@ function orbit_homepagecards_filter_function(){
                 
              }
             
-            echo '<h5>' . $query_cards->post->post_title . '</h5>';
+            echo '<h4>' . $query_cards->post->post_title . '</h4>';
             echo '<span>'.get_post_meta(get_the_ID(), 'orb_excerpt', TRUE) .'</span><br>';
             ?>
             <button onclick='window.location.href="<?php echo get_post_meta(get_the_ID(), 'orb_button_link', TRUE) ?>";'>Click Here</button>
@@ -315,7 +315,7 @@ function default_homepagecards_posts(){
             echo '<div>';
             if(has_post_thumbnail()){
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
-                echo '<div class="rounded" style="width: 200px; height: 200px; background-image: url('.$thumb[0].');background-repeat: no-repeat;background-size: cover;"></div>';
+                echo '<div class="rounded" style="background-image: url('.$thumb[0].');"></div>';
                                
              }
             $date = get_post_meta(get_the_ID(), 'orb_event_date', TRUE);
