@@ -5,7 +5,7 @@ jQuery(window).load(function() {
         var responseDiv = jQuery('#response-row').offset().top;
         jQuery('html, body').animate({
             scrollTop: responseDiv
-        }, 2000);
+        }, 1000);
      });
     },500);
 
@@ -13,7 +13,6 @@ jQuery(window).load(function() {
     jQuery('select#dropdown-selector').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#event-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#homepagecards-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
-    jQuery('select#homepagecards-category-select').trigger('change').scrollTo('#homepagecards-title');
 })
 
 
