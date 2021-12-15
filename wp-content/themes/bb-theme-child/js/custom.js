@@ -1,11 +1,22 @@
 //trigger change - select staff default posts on page load
 jQuery(window).load(function() {
+    setTimeout(function(){ 
+        jQuery('select#homepagecards-category-select').on('change',function(){
+        var responseDiv = jQuery('#response-row').offset().top;
+        jQuery('html, body').animate({
+            scrollTop: responseDiv
+        }, 2000);
+     });
+    },500);
+
     jQuery('select#category-select').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#dropdown-selector').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#event-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#homepagecards-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#homepagecards-category-select').trigger('change').scrollTo('#homepagecards-title');
 })
+
+
 
 //show/hide selected posts from home page header
 /*jQuery(function() {
@@ -33,6 +44,7 @@ jQuery(function($){
             }
         });
         return false;
+        
     });
 });
 
