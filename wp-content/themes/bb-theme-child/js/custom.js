@@ -4,6 +4,7 @@ jQuery(window).load(function() {
     jQuery('select#dropdown-selector').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#event-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#homepagecards-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
+    jQuery('select#homepagecards-category-select').trigger('change').scrollTo('#homepagecards-title');
 })
 
 //show/hide selected posts from home page header
