@@ -354,7 +354,11 @@ img.rounded, .rounded img, .rounded {
   font-weight: bold; }
 
 #homepagecards-title {
-  margin: 0 0 30px 10px; }
+  margin-bottom: 30px; }
+
+.cards {
+  margin-right: -10px;
+  margin-left: -10px; }
 
 .card .background-image {
   padding-top: 66.7%;

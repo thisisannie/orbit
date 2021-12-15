@@ -263,8 +263,8 @@ function orbit_homepagecards_filter_function(){
         );
 
     $query_cards = new WP_Query( $args_cards );
-    echo '<div class="flex-container">';
     if( $query_cards->have_posts() ) :
+        echo '<div class="flex-container cards">';
         while( $query_cards->have_posts() ): $query_cards->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -282,10 +282,10 @@ function orbit_homepagecards_filter_function(){
             echo '</div>';
         endwhile;
         wp_reset_postdata();
+        echo '</div>';
     else :
         echo do_shortcode("[default_cards]");
     endif;
-    echo '</div>';
     die();
 }
 
@@ -311,6 +311,7 @@ function default_homepagecards_posts(){
     $query_homepagecards_def = new WP_Query( $args_homepagecards_def );
     
     if( $query_homepagecards_def->have_posts() ) :
+        echo '<div class="cards">';
         while( $query_homepagecards_def->have_posts() ): $query_homepagecards_def->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -328,6 +329,7 @@ function default_homepagecards_posts(){
             echo '</div>';
         endwhile;
         wp_reset_postdata();
+        echo '</div>';
     endif;
     die();
 
@@ -585,8 +587,9 @@ function orbit_filter_function(){
         );
 
     $query = new WP_Query( $args );
-    echo '<div class="flex-container">';
+    echo '<div class="flex-container cards">';
     if( $query->have_posts() ) :
+        echo '<div class="cards">';
         while( $query->have_posts() ): $query->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -605,6 +608,7 @@ function orbit_filter_function(){
             echo '</div>';
         endwhile;
         wp_reset_postdata();
+        echo '</div>';
     else :
         echo do_shortcode("[default_staff]");
     endif;
@@ -632,6 +636,7 @@ function default_staff_posts(){
     $query_def = new WP_Query( $args_def );
     
     if( $query_def->have_posts() ) :
+        echo '<div class="cards">';
         while( $query_def->have_posts() ): $query_def->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -650,6 +655,7 @@ function default_staff_posts(){
             echo '</div>';
         endwhile;
         wp_reset_postdata();
+        echo '</div>';
     endif;
     die();
 
@@ -896,8 +902,8 @@ function orbit_filter_event_function(){
         );
 
     $query_ev = new WP_Query( $args_ev );
-    echo '<div class="flex-container">';
     if( $query_ev->have_posts() ) :
+        echo '<div class="flex-container cards">';
         while( $query_ev->have_posts() ): $query_ev->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -915,10 +921,10 @@ function orbit_filter_event_function(){
             echo '</div>';
         endwhile;
         wp_reset_postdata();
+        echo '</div>';
     else :
         echo do_shortcode("[default_events]");
     endif;
-    echo '</div>';
     die();
 }
 
@@ -944,6 +950,7 @@ function default_event_posts(){
     $query_event_def = new WP_Query( $args_event_def );
     
     if( $query_event_def->have_posts() ) :
+        echo '<div class="cards">';
         while( $query_event_def->have_posts() ): $query_event_def->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -960,6 +967,7 @@ function default_event_posts(){
             echo '</div>';
         endwhile;
         wp_reset_postdata();
+        echo '</div>';
     endif;
     die();
 
