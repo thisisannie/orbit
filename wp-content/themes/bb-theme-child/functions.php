@@ -268,7 +268,7 @@ function orbit_homepagecards_filter_function(){
         while( $query_cards->have_posts() ): $query_cards->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
-                $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'thumbnail');
+                $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
                 echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';
                 
              }
@@ -276,7 +276,7 @@ function orbit_homepagecards_filter_function(){
             echo '<h4>' . $query_cards->post->post_title . '</h4>';
             echo '<p>'.get_post_meta(get_the_ID(), 'orb_excerpt', TRUE) .'</p>';
             ?>
-            <button onclick='window.location.href="<?php echo get_post_meta(get_the_ID(), 'orb_button_link', TRUE) ?>";'>Click Here</button>
+            <button onclick='window.location.href="<?php echo get_post_meta(get_the_ID(), 'orb_button_link', TRUE) ?>";'>Find out more</button>
             <?php 
             
             echo '</div>';
@@ -315,7 +315,7 @@ function default_homepagecards_posts(){
             echo '<div class="card">';
             if(has_post_thumbnail()){
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-                echo '<div class="rounded" style="background-image: url('.$thumb[0].');"></div>';
+                echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';
                                
              }
             $date = get_post_meta(get_the_ID(), 'orb_event_date', TRUE);
@@ -593,7 +593,7 @@ function orbit_filter_function(){
                 //the_post_thumbnail('thumbnail');
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
                 //echo $thumb[0]; // thumbnail url
-                echo '<div class="rounded" style="background-image: url('.$thumb[0].');"></div>';
+                echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';
 
                 
              }
@@ -638,7 +638,7 @@ function default_staff_posts(){
                 //the_post_thumbnail('thumbnail');
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
                 //echo $thumb[0]; // thumbnail url
-                echo '<div class="rounded" style="background-image: url('.$thumb[0].');"></div>';
+                echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';
 
                 
              }
@@ -902,7 +902,7 @@ function orbit_filter_event_function(){
             echo '<div class="card">';
             if(has_post_thumbnail()){
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-                echo '<div class="rounded" style="background-image: url('.$thumb[0].');">';
+                echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');">';
                 echo '<a href="'.get_permalink( $query_ev->post->ID).'">';
                 the_post_thumbnail('thumbnail');
                 echo '</a></div>';                
@@ -948,7 +948,7 @@ function default_event_posts(){
             echo '<div class="card">';
             if(has_post_thumbnail()){
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-                echo '<div class="rounded" style="background-image: url('.$thumb[0].');">';
+                echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');">';
                 echo '<a href="'.get_permalink( $query_ev->post->ID).'">';
                 the_post_thumbnail('thumbnail');
                 echo '</a></div>';                
