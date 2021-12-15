@@ -311,7 +311,7 @@ function default_homepagecards_posts(){
     $query_homepagecards_def = new WP_Query( $args_homepagecards_def );
     
     if( $query_homepagecards_def->have_posts() ) :
-        echo '<div class="cards">';
+        echo '<div id="cards-homepage" class="cards">';
         while( $query_homepagecards_def->have_posts() ): $query_homepagecards_def->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -326,10 +326,10 @@ function default_homepagecards_posts(){
             <button onclick='window.location.href="<?php echo get_post_meta(get_the_ID(), 'orb_button_link', TRUE) ?>";'>Click Here</button>
             <?php 
             
-            echo '</div>';
+            echo '</div>'; // end .card
         endwhile;
         wp_reset_postdata();
-        echo '</div>';
+        echo '</div>'; // end .cards
     endif;
     die();
 
@@ -589,7 +589,7 @@ function orbit_filter_function(){
     $query = new WP_Query( $args );
     echo '<div class="flex-container cards">';
     if( $query->have_posts() ) :
-        echo '<div class="cards">';
+        echo '<div id="cards-staff" class="cards">';
         while( $query->have_posts() ): $query->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -600,15 +600,14 @@ function orbit_filter_function(){
 
                 
              }
-            echo '<h4>' . $query->post->post_title . '</h4>';
-            echo '<span>'.get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
-            /*echo get_post_meta(get_the_ID(), 'orb_phone', TRUE) .'<br>';*/
+            echo '<p><strong>' . $query->post->post_title . '</strong><br>';
+            echo get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
             echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch > </a><br>';
-            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin-in"></i> Connect ></a></span>';
-            echo '</div>';
+            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin"></i> Connect ></a></p>';
+            echo '</div>'; // end .card
         endwhile;
         wp_reset_postdata();
-        echo '</div>';
+        echo '</div>'; // end .cards
     else :
         echo do_shortcode("[default_staff]");
     endif;
@@ -636,7 +635,7 @@ function default_staff_posts(){
     $query_def = new WP_Query( $args_def );
     
     if( $query_def->have_posts() ) :
-        echo '<div class="cards">';
+        echo '<div id="cards-staff" class="cards">';
         while( $query_def->have_posts() ): $query_def->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -646,16 +645,15 @@ function default_staff_posts(){
                 echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';
 
                 
-             }
-            echo '<h4>' . $query_def->post->post_title . '</h4>';
-            echo '<span>'.get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
-            /*echo get_post_meta(get_the_ID(), 'orb_phone', TRUE) .'<br>';*/
-           echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch > </a><br>';
-            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin-in"></i> Connect ></a></span>';
-            echo '</div>';
+            }
+            echo '<p><strong>' . $query_def->post->post_title . '</strong><br>';
+            echo get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
+            echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch ></a><br>';
+            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin"></i> Connect ></a></p>';
+            echo '</div>'; // end .card
         endwhile;
         wp_reset_postdata();
-        echo '</div>';
+        echo '</div>'; // end .cards
     endif;
     die();
 
@@ -950,7 +948,7 @@ function default_event_posts(){
     $query_event_def = new WP_Query( $args_event_def );
     
     if( $query_event_def->have_posts() ) :
-        echo '<div class="cards">';
+        echo '<div id="cards-event" class="cards">';
         while( $query_event_def->have_posts() ): $query_event_def->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -964,10 +962,10 @@ function default_event_posts(){
             echo '<h4><a href="'.get_permalink( $query_event_def->post->ID).'">' . $query_event_def->post->post_title . '</a></h4>';
             echo '<span>'.get_post_meta(get_the_ID(), 'orb_event_place', TRUE) .'<br>';
             echo date('d/m/Y', strtotime($date)) .'</span>';
-            echo '</div>';
+            echo '</div>'; // end .card
         endwhile;
         wp_reset_postdata();
-        echo '</div>';
+        echo '</div>'; // end .cards
     endif;
     die();
 
