@@ -378,6 +378,8 @@ img.rounded, .rounded img, .rounded {
 #cards-staff .card {
   width: 25%;
   display: inline-block; }
+  #cards-staff .card .background-image {
+    padding-top: 75%; }
 
 footer.fl-builder-content {
   background-color: #0b212c;
