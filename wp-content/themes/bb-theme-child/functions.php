@@ -543,7 +543,7 @@ function orbit_save_data($post_id) {
 //Shortcode to show dropdown filters [staff_posts]
 function staff_category(){
     $content = '';
-    $content .= '<form action="'. site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter">';
+    $content .= '<span>Filter by location: <form action="'. site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter">';
    
         if( $terms = get_terms( array( 'taxonomy' => 'staff-category', 'orderby' => 'name' ) ) ) : 
     
@@ -587,9 +587,8 @@ function orbit_filter_function(){
         );
 
     $query = new WP_Query( $args );
-    echo '<div class="flex-container cards">';
     if( $query->have_posts() ) :
-        echo '<div id="cards-staff" class="cards">';
+        echo '<div id="cards-staff" class="flex-container cards">';
         while( $query->have_posts() ): $query->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
@@ -611,7 +610,6 @@ function orbit_filter_function(){
     else :
         echo do_shortcode("[default_staff]");
     endif;
-    echo '</div>';
     die();
 }
 

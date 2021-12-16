@@ -41,6 +41,7 @@
 .flex-container {
   display: flex;
   flex-wrap: nowrap;
+  justify-content: space-around;
 }
 
 .row-fat .fl-row-content-wrap{

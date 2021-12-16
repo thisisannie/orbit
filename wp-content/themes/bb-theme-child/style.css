@@ -118,7 +118,8 @@ blockquote, .blockquote h2, .blockquote h3 {
 
 .flex-container {
   display: flex;
-  flex-wrap: nowrap; }
+  flex-wrap: nowrap;
+  justify-content: space-around; }
 
 .row-fat .fl-row-content-wrap {
   padding-top: 100px;
@@ -220,8 +221,9 @@ header.fl-builder-content {
   .hero .p-container .fl-node-content {
     margin-top: 0; }
 
-form#filter-cards {
-  display: inline; }
+form#filter-cards, form#filter {
+  display: inline-block;
+  margin-bottom: 30px; }
 
 .fl-page label {
   padding: 0 25px 0;
@@ -362,7 +364,7 @@ img.rounded, .rounded img, .rounded {
 
 .card {
   width: 33%;
-  padding: 10px;
+  padding: 0 10px;
   text-align: left; }
   .card .background-image {
     padding-top: 66.7%;
@@ -372,6 +374,10 @@ img.rounded, .rounded img, .rounded {
   @media (max-width: 750px) {
     .card {
       width: 100%; } }
+
+#cards-staff .card {
+  width: 25%;
+  display: inline-block; }
 
 footer.fl-builder-content {
   background-color: #0b212c;

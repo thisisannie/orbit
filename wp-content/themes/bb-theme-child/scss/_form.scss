@@ -1,6 +1,7 @@
 // home page dropdown
-form#filter-cards { 
-  display: inline;
+form#filter-cards, form#filter { 
+  display: inline-block;
+  margin-bottom: 30px;
 }
 .fl-page {
   label {
