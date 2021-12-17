@@ -281,7 +281,7 @@ form#filter-cards, form#filter {
 .fl-page button.button-alt,
 .fl-page .button.button-alt,
 .fl-page .button.button-alt {
-  background-color: white;
+  background-color: transparent;
   color: #d86227; }
   .fl-page button.button-alt *,
   .fl-page .button.button-alt *,
