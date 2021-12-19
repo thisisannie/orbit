@@ -10,13 +10,13 @@ template: bb-theme
 @import url("https://fonts.googleapis.com/css2?family=Vollkorn:wght@600&display=swap");
 @font-face {
   font-family: "Karbon";
-  src: url("./fonts/karbon/Karbon-Regular.otf");
+  src: url("./fonts/karbon/Karbon-regular.woff2") format("woff2"), url("./fonts/karbon/Karbon-regular.woff") format("woff"), url("./fonts/karbon/Karbon-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal; }
 
 @font-face {
   font-family: "Karbon";
-  src: url("./fonts/karbon/Karbon-Semibold.otf");
+  src: url("./fonts/karbon/Karbon-Semibold.woff2") format("woff2"), url("./fonts/karbon/Karbon-Semibold.woff") format("woff"), url("./fonts/karbon/Karbon-Semibold.otf") format("opentype");
   font-weight: bold;
   font-style: normal; }
 
