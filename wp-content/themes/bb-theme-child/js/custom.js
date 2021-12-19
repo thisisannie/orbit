@@ -89,3 +89,16 @@ jQuery(function($){
         return false;
     });
 });
+
+
+jQuery('#accordion-maps .fl-accordion-item .fl-accordion-button').each(function(){
+    jQuery(this).on('click',function(e){
+        e.preventDefault();
+        var city = jQuery(this).children('.fl-accordion-button-label').text().toLowerCase();
+        jQuery('#maps .fl-html div').each(function(){
+            jQuery(this).addClass('hidden');
+        })
+        jQuery('#'+city+'-map').removeClass('hidden')  
+
+    })
+})
