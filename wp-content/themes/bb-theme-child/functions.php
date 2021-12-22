@@ -17,6 +17,14 @@ function custom_scripts() {
 add_action( 'wp_enqueue_scripts', 'custom_scripts' );
 
 
+// Head
+add_action ('wp_head','head_fonts');
+function head_fonts () {
+  echo '<link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600&display=swap" rel="stylesheet">';
+}
+
 
 //MODULE HOMEPAGE CARDS
 
