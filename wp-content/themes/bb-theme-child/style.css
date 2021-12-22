@@ -256,6 +256,9 @@ header.fl-builder-content {
   .hero .p-container .fl-node-content {
     margin-top: 0; }
 
+form {
+  max-width: 100%; }
+
 form#filter-cards, form#filter {
   display: inline-block;
   margin-bottom: 30px; }
@@ -408,7 +411,10 @@ img.rounded, .rounded img, .rounded {
     margin-bottom: 20px; }
   @media (max-width: 750px) {
     .card {
-      width: 100%; } }
+      width: 100%;
+      margin-bottom: 40px; }
+      .card:last-child {
+        margin-bottom: 0; } }
 
 #cards-staff .card {
   width: 25%;
