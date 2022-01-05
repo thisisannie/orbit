@@ -42,3 +42,12 @@
     margin-top: 0;
   }
 }
+
+.hero + .hero {
+  .fl-row-content-wrap {
+     margin-top: -20px;
+  }
+  .fl-module-content {
+    margin-top: 0;
+  }
+}

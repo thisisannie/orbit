@@ -103,9 +103,9 @@ blockquote, .blockquote h2, .blockquote h3 {
   h1 {
     font-size: 28px; }
   h2 {
-    font-size: 52px; }
+    font-size: 50px; }
   h3 {
-    font-size: 48px; }
+    font-size: 46px; }
   h4 {
     font-size: 28px; }
   h5 {
@@ -246,6 +246,12 @@ header.fl-builder-content {
   .hero .h2-container .fl-node-content,
   .hero .p-container .fl-node-content {
     margin-top: 0; }
+
+.hero + .hero .fl-row-content-wrap {
+  margin-top: -20px; }
+
+.hero + .hero .fl-module-content {
+  margin-top: 0; }
 
 form {
   max-width: 100%; }
