@@ -248,7 +248,8 @@ header.fl-builder-content {
     margin-top: 0; }
 
 .hero + .hero .fl-row-content-wrap {
-  margin-top: -20px; }
+  margin-top: -20px;
+  padding-top: 0; }
 
 .hero + .hero .fl-module-content {
   margin-top: 0; }
