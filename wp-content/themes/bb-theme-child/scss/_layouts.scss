@@ -11,6 +11,10 @@
   max-width: 1300px;
 }
 
+.fl-row-content-wrap {
+  padding: 40px 20px;
+}
+
 @media (min-width: 1450px) {
   .extend-left, .extend-right {
     &:after {

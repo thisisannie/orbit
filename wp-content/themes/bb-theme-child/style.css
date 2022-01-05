@@ -136,6 +136,9 @@ blockquote, .blockquote h2, .blockquote h3 {
 .fl-row-fixed-width {
   max-width: 1300px; }
 
+.fl-row-content-wrap {
+  padding: 40px 20px; }
+
 @media (min-width: 1450px) {
   .extend-left:after, .extend-right:after {
     content: "";
