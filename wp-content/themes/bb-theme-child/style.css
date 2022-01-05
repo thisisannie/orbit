@@ -37,7 +37,10 @@ h4, h5, h6, p, body, li {
   font-family: "karbon", tahoma; }
 
 body, h4, h5, p, li {
-  color: #0b212c; }
+  color: #003c4b; }
+  @media (max-width: 767px) {
+    body, h4, h5, p, li {
+      color: #0b212c; } }
 
 body, p, li {
   font-size: 22px;
@@ -259,7 +262,7 @@ header.fl-builder-content {
 form {
   max-width: 100%; }
 
-form#filter-cards, form#filter {
+form#filter-cards, form#filter, form#filter-event {
   display: inline-block;
   margin-bottom: 30px; }
 
@@ -284,7 +287,7 @@ form#filter-cards, form#filter {
 .fl-page input[type=text], .fl-page input[type=password], .fl-page input[type=email], .fl-page input[type=tel], .fl-page input[type=date], .fl-page input[type=month], .fl-page input[type=week], .fl-page input[type=time], .fl-page input[type=number], .fl-page input[type=search], .fl-page input[type=url] {
   border-radius: 50px; }
 
-.fl-page select, .fl-page .button, .fl-page button, .fl-page input[type=select] {
+.fl-page select, .fl-page .button, .fl-page .fl-button, .fl-page button, .fl-page input[type=select] {
   max-width: 100%;
   -webkit-appearance: none;
   border: 2px transparent solid;
@@ -295,7 +298,7 @@ form#filter-cards, form#filter {
   font-weight: bold;
   font-family: "karbon", tahoma;
   transition: all 0.6s ease; }
-  .fl-page select:hover, .fl-page select:active, .fl-page select:focus, .fl-page select:focus-visible, .fl-page select:focus-within, .fl-page .button:hover, .fl-page .button:active, .fl-page .button:focus, .fl-page .button:focus-visible, .fl-page .button:focus-within, .fl-page button:hover, .fl-page button:active, .fl-page button:focus, .fl-page button:focus-visible, .fl-page button:focus-within, .fl-page input[type=select]:hover, .fl-page input[type=select]:active, .fl-page input[type=select]:focus, .fl-page input[type=select]:focus-visible, .fl-page input[type=select]:focus-within {
+  .fl-page select:hover, .fl-page select:active, .fl-page select:focus, .fl-page select:focus-visible, .fl-page select:focus-within, .fl-page .button:hover, .fl-page .button:active, .fl-page .button:focus, .fl-page .button:focus-visible, .fl-page .button:focus-within, .fl-page .fl-button:hover, .fl-page .fl-button:active, .fl-page .fl-button:focus, .fl-page .fl-button:focus-visible, .fl-page .fl-button:focus-within, .fl-page button:hover, .fl-page button:active, .fl-page button:focus, .fl-page button:focus-visible, .fl-page button:focus-within, .fl-page input[type=select]:hover, .fl-page input[type=select]:active, .fl-page input[type=select]:focus, .fl-page input[type=select]:focus-visible, .fl-page input[type=select]:focus-within {
     border: 2px #d86227 solid;
     background-color: white;
     color: #d86227; }
@@ -418,9 +421,50 @@ img.rounded, .rounded img, .rounded {
 
 #cards-staff .card {
   width: 25%;
-  display: inline-block; }
+  display: inline-block;
+  vertical-align: top; }
   #cards-staff .card .background-image {
     padding-top: 75%; }
+  @media (max-width: 950px) {
+    #cards-staff .card {
+      width: 50%;
+      margin-bottom: 40px; }
+      #cards-staff .card:last-child {
+        margin-bottom: 0; } }
+  @media (max-width: 500px) {
+    #cards-staff .card {
+      width: 100%; } }
+
+#cards-event .card {
+  width: 25%;
+  display: inline-block;
+  vertical-align: top; }
+  #cards-event .card .background-image {
+    padding-top: 75%; }
+  @media (max-width: 950px) {
+    #cards-event .card {
+      width: 50%; } }
+  @media (max-width: 500px) {
+    #cards-event .card {
+      width: 100%; } }
+
+.fl-module-content a, .fl-module-content a:hover, .fl-module-content a:focus {
+  color: #003c4b; }
+
+body .fl-post-grid-title {
+  color: #003c4b; }
+  body .fl-post-grid-title a {
+    color: #003c4b; }
+
+body .fl-post-grid-text, body .fl-post-grid-content p {
+  font-size: 18px;
+  line-height: inherit; }
+
+.fl-post-grid-post {
+  border: none; }
+
+.fl-post-grid-more {
+  font-weight: bold; }
 
 footer.fl-builder-content {
   background-color: #0b212c;

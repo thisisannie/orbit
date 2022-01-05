@@ -2,7 +2,7 @@ form {
   max-width: 100%;
 }
 // home page dropdown
-form#filter-cards, form#filter { 
+form#filter-cards, form#filter, form#filter-event { 
   display: inline-block;
   margin-bottom: 30px;
 }
@@ -30,7 +30,7 @@ form#filter-cards, form#filter {
     border-radius: 50px;
   }
 
-  select, .button, button, input[type=select] {
+  select, .button, .fl-button, button, input[type=select] {
     max-width: 100%;
     -webkit-appearance: none;
     border: 2px transparent solid;

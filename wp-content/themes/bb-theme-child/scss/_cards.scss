@@ -33,8 +33,57 @@
   .card {
     width: 25%;
     display: inline-block;
+    vertical-align: top;
     .background-image {
       padding-top: 75%;
     }
+    @media (max-width: 950px) {
+      width: 50%;
+      margin-bottom: 40px;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+    @media (max-width: 500px) {
+      width: 100%;
+    }
   }
+}
+#cards-event {
+  .card {
+    width: 25%;
+    display: inline-block;
+    vertical-align: top;
+    .background-image {
+      padding-top: 75%;
+    }
+    @media (max-width: 950px) {
+      width: 50%;
+    }
+    @media (max-width: 500px) {
+      width: 100%;
+    }
+  }  
+}
+
+.fl-module-content a, .fl-module-content a:hover, .fl-module-content a:focus {
+  color: $blue-dark;
+}
+body {
+  .fl-post-grid-title {
+    color: $blue-dark;
+    a {
+      color: $blue-dark;
+    }
+  }
+  .fl-post-grid-text, .fl-post-grid-content p {
+    font-size: 18px;
+    line-height: inherit;
+  }
+}
+.fl-post-grid-post {
+  border: none;
+}
+.fl-post-grid-more {
+  font-weight: bold;
 }
