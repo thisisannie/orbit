@@ -31,7 +31,8 @@ h2, h3 {
   color: #003c4b; }
 
 h4, h5 {
-  font-weight: bold; }
+  font-weight: bold;
+  line-height: 1.3; }
 
 h4, h5, h6, p, body, li {
   font-family: "karbon", tahoma; }
@@ -337,7 +338,9 @@ form#filter-cards, form#filter, form#filter-event {
 .fl-page .button-inline {
   align-self: flex-start; }
   .fl-page .button-inline div {
-    align-self: flex-start; }
+    align-self: flex-start;
+    margin-top: 0;
+    margin-right: 0; }
 
 .fl-page button.button-alt,
 .fl-page .button.button-alt,

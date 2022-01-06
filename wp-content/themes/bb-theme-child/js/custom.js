@@ -102,3 +102,8 @@ jQuery('#accordion-maps .fl-accordion-item .fl-accordion-button').each(function(
 
     })
 })
+
+// Allow .button-inline to be inline
+// jQuery(window).load(function() {
+//     jQuery('.button-inline').parent().css('flex-direction', 'inherit')
+// });
