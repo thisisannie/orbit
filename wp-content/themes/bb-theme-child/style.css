@@ -168,6 +168,10 @@ blockquote, .blockquote h2, .blockquote h3 {
 .row-fat .fl-row-content-wrap {
   padding-top: 100px;
   padding-bottom: 100px; }
+  @media (max-width: 767px) {
+    .row-fat .fl-row-content-wrap {
+      padding-top: 60px;
+      padding-bottom: 60px; } }
 
 #random-staff-images.extend-left:after, #random-staff-images.extend-right:after {
   padding-top: 0; }
@@ -463,9 +467,6 @@ img.rounded, .rounded img, .rounded {
   @media (max-width: 500px) {
     #cards-event .card {
       width: 100%; } }
-
-.fl-module-content a, .fl-module-content a:hover, .fl-module-content a:focus {
-  color: #003c4b; }
 
 body .fl-post-grid-title {
   color: #003c4b; }
