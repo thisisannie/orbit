@@ -402,9 +402,9 @@ img.rounded, .rounded img, .rounded {
 .fl-accordion .fl-accordion-item {
   margin-bottom: 0;
   border: none;
-  border-bottom: 1px #003c4b solid; }
+  border-bottom: 1px #a3afb3 solid; }
   .fl-accordion .fl-accordion-item:first-child {
-    border-top: 1px #003c4b solid; }
+    border-top: 1px #a3afb3 solid; }
   .fl-accordion .fl-accordion-item .fl-accordion-button {
     padding-top: 15px;
     padding-right: 0;
@@ -414,6 +414,13 @@ img.rounded, .rounded img, .rounded {
   text-transform: uppercase;
   color: #003c4b;
   font-weight: bold; }
+
+.fl-accordion .fl-accordion-content {
+  padding-right: 0;
+  padding-left: 0; }
+
+.fl-accordion-button-icon-left, .fl-accordion-button-icon-right {
+  opacity: 1; }
 
 #homepagecards-title {
   margin-bottom: 30px; }
