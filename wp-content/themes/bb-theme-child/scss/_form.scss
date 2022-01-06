@@ -62,10 +62,9 @@ form#filter-cards, form#filter, form#filter-event {
   }
 
   .button-inline {
-    display: inline-block;
-    // margin-right: 20px;
+    align-self: flex-start;
     div {
-      display: inline-block;
+      align-self: flex-start;
     }
   }
   button.button-alt,

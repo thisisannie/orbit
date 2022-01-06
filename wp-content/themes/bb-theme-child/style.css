@@ -99,6 +99,24 @@ blockquote, .blockquote h2, .blockquote h3 {
 
 @media (max-width: 991px) {
   body, p, li {
+    font-size: 21px; }
+  h1 {
+    font-size: 29px; }
+  h2 {
+    font-size: 56px; }
+  h3 {
+    font-size: 49px; }
+  h4 {
+    font-size: 29px; }
+  h5 {
+    font-size: 21px; }
+  h6 {
+    font-size: 16px; }
+  small {
+    font-size: 14px; } }
+
+@media (max-width: 767px) {
+  body, p, li {
     font-size: 20px; }
   h1 {
     font-size: 28px; }
@@ -171,6 +189,9 @@ blockquote, .blockquote h2, .blockquote h3 {
   #random-staff-images .uabb-post-wrapper:nth-child(4) {
     width: 45%;
     margin-right: -6%; }
+
+.fl-col-group-equal-height {
+  align-items: center; }
 
 header.fl-builder-content {
   background-color: #cbebea;
@@ -310,9 +331,9 @@ form#filter-cards, form#filter, form#filter-event {
     outline: none; }
 
 .fl-page .button-inline {
-  display: inline-block; }
+  align-self: flex-start; }
   .fl-page .button-inline div {
-    display: inline-block; }
+    align-self: flex-start; }
 
 .fl-page button.button-alt,
 .fl-page .button.button-alt,
