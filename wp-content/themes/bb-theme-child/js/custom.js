@@ -115,3 +115,13 @@ jQuery(window).load(function() {
         jQuery('#accordion-image-pairs').find('.accordion-images .fl-module-photo').eq(jQuery(this).index()).addClass('selected');
     })
 })
+
+// Contact form label show
+
+jQuery(window).load(function() {
+    console.log('yup')
+    jQuery('.orbit-contact-form input').on('click', function(){
+        console.log('missing out')
+        jQuery(this).find('label').addClass('show')
+    })
+})

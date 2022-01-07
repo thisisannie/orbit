@@ -289,17 +289,17 @@ form#filter-cards, form#filter, form#filter-event {
 
 .fl-page label {
   padding: 0 25px 0;
-  color: #42777e;
+  color: #a3afb3;
   font-size: 16px; }
 
 .fl-page input[type=text], .fl-page input[type=password], .fl-page input[type=email], .fl-page input[type=tel], .fl-page input[type=date], .fl-page input[type=month], .fl-page input[type=week], .fl-page input[type=time], .fl-page input[type=number], .fl-page input[type=search], .fl-page input[type=url], .fl-page textarea {
   max-width: 100%;
   margin-bottom: 20px;
   border-radius: 21px;
-  border: 1px #42777e solid;
+  border: 1px #a3afb3 solid;
   padding: 12px 25px 8px;
   background-color: transparent;
-  color: #42777e;
+  color: #a3afb3;
   font-weight: bold;
   font-family: "karbon", tahoma; }
   .fl-page input[type=text]:last-child, .fl-page input[type=password]:last-child, .fl-page input[type=email]:last-child, .fl-page input[type=tel]:last-child, .fl-page input[type=date]:last-child, .fl-page input[type=month]:last-child, .fl-page input[type=week]:last-child, .fl-page input[type=time]:last-child, .fl-page input[type=number]:last-child, .fl-page input[type=search]:last-child, .fl-page input[type=url]:last-child, .fl-page textarea:last-child {
@@ -390,6 +390,50 @@ form#filter-cards, form#filter, form#filter-event {
     .fl-page .button-alt a:hover *, .fl-page .button-alt a:active *, .fl-page .button-alt a:focus *, .fl-page .button-alt a:focus-visible *, .fl-page .button-alt a:focus-within *, .fl-page .button-alt a.fl-button:hover *, .fl-page .button-alt a.fl-button:active *, .fl-page .button-alt a.fl-button:focus *, .fl-page .button-alt a.fl-button:focus-visible *, .fl-page .button-alt a.fl-button:focus-within * {
       color: inherit; }
 
+.orbit-contact-form label {
+  max-height: 0;
+  margin-bottom: 0; }
+
+.orbit-contact-form label.show {
+  max-height: 40px;
+  margin-bottom: 5px; }
+
+.orbit-contact-form .wpforms-field {
+  margin-bottom: 10px; }
+
+.orbit-contact-form input[type=text], .orbit-contact-form input[type=password], .orbit-contact-form input[type=email], .orbit-contact-form input[type=tel], .orbit-contact-form input[type=date], .orbit-contact-form input[type=month], .orbit-contact-form input[type=week], .orbit-contact-form input[type=time], .orbit-contact-form input[type=number], .orbit-contact-form input[type=search], .orbit-contact-form input[type=url] {
+  font-weight: bold;
+  color: #003c4b; }
+  @media (max-width: 991px) {
+    .orbit-contact-form input[type=text], .orbit-contact-form input[type=password], .orbit-contact-form input[type=email], .orbit-contact-form input[type=tel], .orbit-contact-form input[type=date], .orbit-contact-form input[type=month], .orbit-contact-form input[type=week], .orbit-contact-form input[type=time], .orbit-contact-form input[type=number], .orbit-contact-form input[type=search], .orbit-contact-form input[type=url] {
+      color: #0b212c; } }
+
+.orbit-contact-form textarea {
+  min-height: 150px;
+  margin-bottom: 20px;
+  font-weight: normal; }
+  @media (max-width: 991px) {
+    .orbit-contact-form textarea {
+      color: #0b212c; } }
+
+.orbit-contact-form select {
+  width: 100%;
+  display: block;
+  border: 1px #a3afb3 solid;
+  background: white url("./images/arrow-down-orange.svg") calc(100% - 20px) center no-repeat;
+  background-size: 14px;
+  font-size: 14px;
+  color: #003c4b; }
+  @media (max-width: 991px) {
+    .orbit-contact-form select {
+      color: #0b212c; } }
+  .orbit-contact-form select:hover, .orbit-contact-form select:active, .orbit-contact-form select:focus, .orbit-contact-form select:focus-visible, .orbit-contact-form select:focus-within {
+    border: 1px #a3afb3 solid;
+    color: #003c4b; }
+    @media (max-width: 991px) {
+      .orbit-contact-form select:hover, .orbit-contact-form select:active, .orbit-contact-form select:focus, .orbit-contact-form select:focus-visible, .orbit-contact-form select:focus-within {
+        color: #0b212c; } }
+
 .uabb-blog-posts img {
   border-radius: 10px !important; }
 
@@ -406,14 +450,13 @@ img.rounded, .rounded img, .rounded {
   .fl-accordion .fl-accordion-item:first-child {
     border-top: 1px #a3afb3 solid; }
   .fl-accordion .fl-accordion-item .fl-accordion-button {
-    padding-top: 15px;
-    padding-right: 0;
-    padding-left: 0; }
+    padding: 20px 0 15px 0; }
 
 .fl-accordion .fl-accordion-button-label {
+  font-size: 30px;
   text-transform: uppercase;
-  color: #003c4b;
-  font-weight: bold; }
+  font-weight: bold;
+  color: #003c4b; }
 
 .fl-accordion .fl-accordion-content {
   padding-right: 0;

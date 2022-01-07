@@ -16,15 +16,14 @@ img.rounded, .rounded img, .rounded {
       border-top:  1px $grey-light solid;
     }
     .fl-accordion-button {
-      padding-top: 15px;
-      padding-right: 0;
-      padding-left: 0;
+      padding: 20px 0 15px 0;
     }
   }
   .fl-accordion-button-label {
+    font-size: 30px;
     text-transform: uppercase;
-    color: $blue-dark;
     font-weight: bold;
+    color: $blue-dark;
   }
   .fl-accordion-content {
     padding-right: 0;
