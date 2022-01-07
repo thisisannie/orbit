@@ -9,7 +9,7 @@ template: bb-theme
 */
 @font-face {
   font-family: "Karbon";
-  src: url("./fonts/karbon/Karbon-regular.woff2") format("woff2"), url("./fonts/karbon/Karbon-regular.woff") format("woff"), url("./fonts/karbon/Karbon-Regular.otf") format("opentype");
+  src: url("./fonts/karbon/Karbon-Regular.woff2") format("woff2"), url("./fonts/karbon/Karbon-Regular.woff") format("woff"), url("./fonts/karbon/Karbon-Regular.otf") format("opentype");
   font-weight: normal;
   font-style: normal; }
 
@@ -421,6 +421,19 @@ img.rounded, .rounded img, .rounded {
 
 .fl-accordion-button-icon-left, .fl-accordion-button-icon-right {
   opacity: 1; }
+
+.accordion-images {
+  position: relative; }
+  .accordion-images .fl-module-photo {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: all 0.3s ease; }
+    .accordion-images .fl-module-photo:first-child {
+      position: static;
+      opacity: 1; }
+    .accordion-images .fl-module-photo.selected {
+      opacity: 1; }
 
 #homepagecards-title {
   margin-bottom: 30px; }

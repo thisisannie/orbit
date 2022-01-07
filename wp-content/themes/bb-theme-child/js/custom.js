@@ -107,3 +107,11 @@ jQuery('#accordion-maps .fl-accordion-item .fl-accordion-button').each(function(
 // jQuery(window).load(function() {
 //     jQuery('.button-inline').parent().css('flex-direction', 'inherit')
 // });
+
+// Accordion - Change picture on item click
+jQuery(window).load(function() { 
+    jQuery('#accordion-image-pairs').find('.accordion-items .fl-accordion-item').on('click', function () {
+        jQuery('#accordion-image-pairs').find('.accordion-images .fl-module-photo').removeClass('selected')
+        jQuery('#accordion-image-pairs').find('.accordion-images .fl-module-photo').eq(jQuery(this).index()).addClass('selected');
+    })
+})

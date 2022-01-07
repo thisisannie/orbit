@@ -6,6 +6,7 @@ img.rounded, .rounded img, .rounded {
   background-color: $blue-lightest;
 }
 
+// Accordion
 .fl-accordion {
   .fl-accordion-item {
     margin-bottom: 0;
@@ -32,4 +33,22 @@ img.rounded, .rounded img, .rounded {
 }
 .fl-accordion-button-icon-left, .fl-accordion-button-icon-right {
   opacity: 1;
+}
+
+// Accordion swapping images
+.accordion-images {
+  position: relative;
+  .fl-module-photo {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: $transition;
+    &:first-child {
+      position: static;
+      opacity: 1;
+    }
+    &.selected {
+      opacity: 1;
+    }
+  }
 }
