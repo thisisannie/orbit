@@ -51,3 +51,9 @@ img.rounded, .rounded img, .rounded {
     }
   }
 }
+
+#maps {
+  iframe {
+    border-radius: $img-radius-small;
+  }
+}

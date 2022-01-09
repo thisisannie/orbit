@@ -479,6 +479,9 @@ img.rounded, .rounded img, .rounded {
     .accordion-images .fl-module-photo.selected {
       opacity: 1; }
 
+#maps iframe {
+  border-radius: 10px; }
+
 #homepagecards-title {
   margin-bottom: 30px; }
 
