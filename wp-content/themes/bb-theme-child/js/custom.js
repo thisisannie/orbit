@@ -119,9 +119,7 @@ jQuery(window).load(function() {
 // Contact form label show
 
 jQuery(window).load(function() {
-    console.log('yup')
-    jQuery('.orbit-contact-form input').on('click', function(){
-        console.log('missing out')
-        jQuery(this).find('label').addClass('show')
+    jQuery('.orbit-contact-form').on('focus click', 'input', function(){
+        jQuery('.orbit-contact-form').find('label').addClass('show')
     })
 })
