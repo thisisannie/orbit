@@ -1,17 +1,17 @@
 footer.fl-builder-content {
   background-color: $blue-darkest;
-  color: $blue-lightest;
+  color: $grey-light;
 
   h2, h3 {
-    color: $blue-light;
+    color: $grey-light;
   }
 
   h4, h5, h6, p, li, a {
-    color: $blue-light;
+    color: $grey-light;
   }
 
   small {
-    color: $blue-lightest;
+    color: $grey-light;
   }
 
   h6 {
@@ -20,7 +20,7 @@ footer.fl-builder-content {
   }
 
   .copy p {
-    color: $blue-light;
+    color: $grey-light;
     font-size: 14px;
   }
   .menu a {
