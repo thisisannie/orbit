@@ -549,7 +549,8 @@ img.rounded, .rounded img, .rounded {
 #cards-event .card {
   width: 25%;
   display: inline-block;
-  vertical-align: top; }
+  vertical-align: top;
+  color: inherit; }
   #cards-event .card .background-image {
     padding-top: 75%; }
   @media (max-width: 950px) {
@@ -558,6 +559,8 @@ img.rounded, .rounded img, .rounded {
   @media (max-width: 500px) {
     #cards-event .card {
       width: 100%; } }
+  #cards-event .card img {
+    display: none; }
 
 #cards-covid .fl-post-grid-more {
   max-width: 100%;
@@ -598,18 +601,18 @@ body .fl-post-grid-text, body .fl-post-grid-content p {
 
 footer.fl-builder-content {
   background-color: #0b212c;
-  color: #cbebea; }
+  color: #a3afb3; }
   footer.fl-builder-content h2, footer.fl-builder-content h3 {
-    color: #7f9da5; }
+    color: #a3afb3; }
   footer.fl-builder-content h4, footer.fl-builder-content h5, footer.fl-builder-content h6, footer.fl-builder-content p, footer.fl-builder-content li, footer.fl-builder-content a {
-    color: #7f9da5; }
+    color: #a3afb3; }
   footer.fl-builder-content small {
-    color: #cbebea; }
+    color: #a3afb3; }
   footer.fl-builder-content h6 {
     margin-bottom: 0;
     font-weight: bold; }
   footer.fl-builder-content .copy p {
-    color: #7f9da5;
+    color: #a3afb3;
     font-size: 14px; }
   footer.fl-builder-content .menu a {
     padding: 5px 0 5px 0; }
