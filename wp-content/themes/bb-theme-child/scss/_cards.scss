@@ -21,6 +21,9 @@
     background-size: cover;
     margin-bottom: 20px;
   }
+  h4 a {
+    color: $blue-dark;
+  }
   @media (max-width: 750px) {
     width: 100%;
     margin-bottom: 40px;
@@ -65,16 +68,41 @@
     }
   }  
 }
+#cards-covid {
+  .fl-post-grid-more {
+    max-width: 100%;
+    -webkit-appearance: none;
+    border: 2px transparent solid;
+    border-radius: 50px;
+    padding: 12px 25px 8px;
+    background-color: $orange;
+    color: white;
+    font-weight: bold;
+    font-family: $ff-main;
+    transition: $transitionslow;
+    &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
+      border: 2px $orange solid;
+      background-color: white;
+      color: $orange;
+    }
+  }
+}
 
 // .fl-module-content a, .fl-module-content a:hover, .fl-module-content a:focus {
 //   color: $blue-dark;
 // }
 body {
   .fl-post-grid-title {
+    font-size: 30px;
+    line-height: 1.2;
     color: $blue-dark;
     a {
       color: $blue-dark;
     }
+  }
+  .fl-post-grid-post .fl-post-grid-text{
+    padding-left: 0;
+    padding-right: 0;
   }
   .fl-post-grid-text, .fl-post-grid-content p {
     font-size: 18px;
