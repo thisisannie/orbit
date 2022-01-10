@@ -596,7 +596,7 @@ function orbit_filter_function(){
 
     $query = new WP_Query( $args );
     if( $query->have_posts() ) :
-        echo '<div id="cards-staff" class="flex-container cards">';
+        echo '<div id="cards-staff" class="cards">';
         while( $query->have_posts() ): $query->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
