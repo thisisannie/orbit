@@ -41,7 +41,7 @@ form#filter-cards, form#filter, form#filter-event {
     color: white;
     font-weight: bold;
     font-family: $ff-main;
-    transition: $transitionslow;
+    transition: $transition;
     &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
       border: 2px $orange solid;
       background-color: white;
@@ -72,38 +72,44 @@ form#filter-cards, form#filter, form#filter-event {
   }
   button.button-alt,
   .button.button-alt,
-  .button.button-alt {
+  .button.button-alt,
+  .button-alt a, 
+  .button-alt a.fl-button  {
     background-color: transparent;
     color: $orange;
     * {
       color: inherit;
+      transition: inherit;
+    }
+    .dashicons-before:before {
+      transition: none;
     }
     &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
-      border: 2px $orange-dark solid;
-      background-color: white;
-      color: $orange-dark;
+      border: 2px $orange solid;
+      background-color: $orange;
+      color: white;
       * {
         color: inherit;
       }
     }
   }
-  .button-alt {
-    a, a.fl-button {
-      background-color: white;
-      color: $orange;
-      * {
-        color: inherit;
-      }
-      &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
-        border: 2px $orange-dark solid;
-        background-color: white;
-        color: $orange-dark;
-        * {
-          color: inherit;
-        }
-      }
-    }
-  }
+  // .button-alt {
+  //   a, a.fl-button {
+  //     background-color: transparent;
+  //     color: $orange;
+  //     * {
+  //       color: inherit;
+  //     }
+  //     &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
+  //       border: 2px $orange solid;
+  //       background-color: $orange;
+  //       color: white;
+  //       * {
+  //         color: inherit;
+  //       }
+  //     }
+  //   }
+  // }
 }
 
 .orbit-contact-form {
