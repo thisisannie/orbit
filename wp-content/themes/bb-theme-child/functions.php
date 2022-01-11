@@ -221,7 +221,8 @@ function orbit_save_homepage_cards_data($post_id) {
 
 //Shortcode to show dropdown filters [homepage_posts]
 function homepage_cards_category(){
-   $cards_filter_content .= '<form action="'.site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter-cards">';
+    $cards_filter_content = '';
+    $cards_filter_content .= '<form action="'.site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter-cards">';
 
         if( $terms_ev = get_terms( array( 'taxonomy' => 'homepagecards-category', 'orderby' => 'name' ) ) ) : 
     
@@ -242,6 +243,7 @@ add_shortcode('homepagecards_filters','homepage_cards_category');
 
 //show cards
 function show_homepage_cards(){
+    $cards_content = '';
     $cards_content .= '<h3 id="homepagecards-title"></h3>';
     $cards_content .= '<div id="homepagecards-response"></div>';
     return $cards_content;
