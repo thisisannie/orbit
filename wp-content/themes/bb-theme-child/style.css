@@ -202,7 +202,8 @@ blockquote, .blockquote h2, .blockquote h3 {
   #menu-main-menu {
     width: 100%;
     display: flex;
-    justify-content: space-around; } }
+    justify-content: space-around;
+    align-items: center; } }
 
 header.fl-builder-content {
   background-color: #cbebea;
@@ -221,8 +222,9 @@ header.fl-builder-content {
     @media (min-width: 768px) {
       header.fl-builder-content .fl-has-submenu .fl-menu-toggle {
         margin: -17px 0 0 !important; } }
-  header.fl-builder-content .fl-has-submenu.fl-active .fl-menu-toggle {
-    transform: rotate(0deg); }
+  header.fl-builder-content .fl-has-submenu:hover .fl-menu-toggle {
+    transform: rotate(0deg);
+    background-image: url("./images/arrow-orange.svg"); }
   header.fl-builder-content a {
     text-transform: uppercase;
     font-size: 16px; }

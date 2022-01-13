@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
   }
 }
 header.fl-builder-content {
@@ -29,9 +30,10 @@ header.fl-builder-content {
         margin: -17px 0 0!important;
       }
     }
-    &.fl-active {
+    &:hover {
       .fl-menu-toggle {
         transform: rotate(0deg);
+        background-image: url('./images/arrow-orange.svg');
       }
     }
   }
