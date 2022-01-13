@@ -198,6 +198,12 @@ blockquote, .blockquote h2, .blockquote h3 {
 .fl-col-group-equal-height {
   align-items: center; }
 
+@media (min-width: 1040px) {
+  #menu-main-menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-around; } }
+
 header.fl-builder-content {
   background-color: #cbebea;
   color: #7f9da5; }
@@ -230,8 +236,21 @@ header.fl-builder-content {
         height: 51.7px; }
     header.fl-builder-content .fl-row-content-wrap {
       padding: 0; }
-    header.fl-builder-content .menu > li {
-      border-top: 1px #7f9da5 solid !important; } }
+    header.fl-builder-content #menu-main-menu > .menu-item {
+      border-top: 1px #7f9da5 solid !important;
+      font-size: 20px; }
+      header.fl-builder-content #menu-main-menu > .menu-item > div a,
+      header.fl-builder-content #menu-main-menu > .menu-item > a {
+        font-size: 24px; }
+      header.fl-builder-content #menu-main-menu > .menu-item a {
+        padding-top: 18px;
+        color: #42777e; }
+      header.fl-builder-content #menu-main-menu > .menu-item .menu-item a {
+        padding-top: 5px; } }
+
+.fl-menu-mobile-toggle.hamburger.fl-active, .fl-menu-mobile-toggle.hamburger:hover, .fl-menu-mobile-toggle.hamburger:active, .fl-menu-mobile-toggle.hamburger:focus, .fl-menu-mobile-toggle.hamburger:focus-visible, .fl-menu-mobile-toggle.hamburger:focus-within {
+  border: none;
+  background-color: initial; }
 
 .fl-node-61a4549b59394 .menu .fl-has-submenu.fl-menu-submenu-right .sub-menu {
   left: 0; }

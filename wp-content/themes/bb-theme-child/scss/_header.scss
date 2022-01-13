@@ -1,3 +1,10 @@
+@media (min-width:1040px) {
+  #menu-main-menu {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+}
 header.fl-builder-content {
   background-color: $blue-lightest;
   color: $blue-light;
@@ -13,6 +20,7 @@ header.fl-builder-content {
       background-size: 15px;
       transform: rotate(180deg);
       transition: $transition;
+      
       @media (max-width:767px) {
         background-image: url('./images/arrow-orange.svg');
 
@@ -48,12 +56,34 @@ header.fl-builder-content {
     .fl-row-content-wrap {
       padding: 0;
     }
-    .menu > li {
+
+    #menu-main-menu > .menu-item {
       border-top: 1px $blue-light solid !important;
+      font-size: 20px;
+      > div a,
+      > a {
+        font-size: 24px;
+      }
+      a {
+        padding-top: 18px;
+        color: $blue;
+      }
+      .menu-item a {
+        padding-top: 5px;
+      }
     }
     // .fl-menu-search-item {
     //   display: block;
     // }
+  }
+}
+
+
+.fl-menu-mobile-toggle.hamburger {
+  &.fl-active,
+  &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
+    border: none;
+    background-color: initial;
   }
 }
 
