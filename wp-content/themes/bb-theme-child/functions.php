@@ -611,8 +611,8 @@ function orbit_filter_function(){
              }
             echo '<p><strong>' . $query->post->post_title . '</strong><br>';
             echo get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
-            echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch > </a><br>';
-            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin"></i> Connect ></a></p>';
+            echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch <i class="fa fa-angle-right"></i></a><br>';
+            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin"></i> Connect <i class="fa fa-angle-right"></i></a></p>';
             echo '</div>'; // end .card
         endwhile;
         wp_reset_postdata();
@@ -656,8 +656,8 @@ function default_staff_posts(){
             }
             echo '<p><strong>' . $query_def->post->post_title . '</strong><br>';
             echo get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
-            echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch ></a><br>';
-            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin"></i> Connect ></a></p>';
+            echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch <i class="fa fa-angle-right"></i></a><br>';
+            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin"></i> Connect <i class="fa fa-angle-right"></i></a></p>';
             echo '</div>'; // end .card
         endwhile;
         wp_reset_postdata();

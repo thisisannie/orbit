@@ -155,3 +155,19 @@ img.rounded, .rounded img, .rounded {
     
   }
 }
+.fa {
+  font-size: 0.7em;
+}
+a {
+  .fa-angle-right {
+    position: relative;
+    left: 0;
+    padding-left: 2px;
+    transition: $transition;
+  }
+  &:hover {
+    .fa-angle-right {
+      left: 4px;
+    }
+  }
+}

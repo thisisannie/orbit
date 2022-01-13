@@ -570,6 +570,18 @@ img.rounded, .rounded img, .rounded {
   .collage .fl-module-photo:nth-child(5) {
     top: -59px; } }
 
+.fa {
+  font-size: 0.7em; }
+
+a .fa-angle-right {
+  position: relative;
+  left: 0;
+  padding-left: 2px;
+  transition: all 0.3s ease; }
+
+a:hover .fa-angle-right {
+  left: 4px; }
+
 #homepagecards-title {
   margin-bottom: 30px; }
 
