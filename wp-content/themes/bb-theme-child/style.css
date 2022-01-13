@@ -645,6 +645,8 @@ a:hover .fa-angle-right {
     background-position: center center;
     background-size: cover;
     margin-bottom: 20px; }
+  .card p {
+    font-size: 20px; }
   .card h4 a {
     color: #003c4b; }
   @media (max-width: 750px) {
