@@ -80,10 +80,33 @@ header.fl-builder-content {
 
 
 .fl-menu-mobile-toggle.hamburger {
+  transition: $transition;
+  &::before {
+    content: "\f0c9";
+    display: inline-block;
+    width: 38px;
+    height: 38px;
+    border-radius: 100px;
+    font-family: "Font Awesome 5 Free";
+    font-size: 25px;
+    line-height: 38px;
+    font-weight: 600;
+    -webkit-font-smoothing: antialiased;
+    color: white;
+    background-color: $orange;
+    transition: $transition;
+  }
   &.fl-active,
   &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
     border: none;
     background-color: initial;
+  }
+  &.fl-active::before {
+    color: $orange;
+    background-color: initial;
+  }
+  .svg-container {
+    display: none !important;
   }
 }
 
