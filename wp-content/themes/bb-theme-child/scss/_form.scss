@@ -114,8 +114,9 @@ form#filter-cards, form#filter, form#filter-event {
 
 .orbit-contact-form {
   label {
+    display: block;
     max-height: 0;
-    margin-bottom: -10px;
+    margin-bottom: 0;
     overflow: hidden;
     transition: $transition;
   }
