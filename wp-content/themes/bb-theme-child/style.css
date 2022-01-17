@@ -626,6 +626,9 @@ a .fa-angle-right {
 a:hover .fa-angle-right {
   left: 4px; }
 
+#homepagecards-title::first-letter {
+  text-transform: uppercase; }
+
 #homepagecards-title {
   margin-bottom: 30px; }
 
