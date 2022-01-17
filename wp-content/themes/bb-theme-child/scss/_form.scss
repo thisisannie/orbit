@@ -78,6 +78,7 @@ form#filter-cards, form#filter, form#filter-event {
   .button-alt a.fl-button  {
     background-color: transparent;
     color: $orange;
+    border: 2px $orange solid;
     * {
       color: inherit;
       transition: inherit;

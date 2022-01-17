@@ -392,7 +392,8 @@ form#filter-cards, form#filter, form#filter-event {
 .fl-page .button-alt a,
 .fl-page .button-alt a.fl-button {
   background-color: transparent;
-  color: #d86227; }
+  color: #d86227;
+  border: 2px #d86227 solid; }
   .fl-page button.button-alt *,
   .fl-page .button.button-alt *,
   .fl-page .button.button-alt *,
