@@ -130,3 +130,11 @@ jQuery(window).load(function() {
         link.attr('href', link.attr('href') + document.title)
     }
 })
+
+// Add slug subject to hidden field in Contact Form
+jQuery(window).load(function() {
+    if(jQuery('#wpforms-1233-field_7').length) {
+        let searchParams = new URLSearchParams(window.location.search)
+        jQuery('#wpforms-1233-field_7').val(searchParams.get('subject'))
+    }
+})
