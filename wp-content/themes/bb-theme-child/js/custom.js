@@ -117,9 +117,16 @@ jQuery(window).load(function() {
 })
 
 // Contact form label show
-
 jQuery(window).load(function() {
     jQuery('.orbit-contact-form').on('focus click', 'input', function(){
         jQuery('.orbit-contact-form').find('label').addClass('show')
     })
+})
+
+// Contact referral button - add page title to query string
+jQuery(window).load(function() {
+    if(jQuery('#contact-referral-button').length) {
+        let link = jQuery('#contact-referral-button').find('a')
+        link.attr('href', link.attr('href') + document.title)
+    }
 })
