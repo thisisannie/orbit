@@ -34,9 +34,15 @@ header.fl-builder-content {
       .fl-menu-toggle {
         transform: rotate(0deg);
         background-image: url('./images/arrow-orange.svg');
+      }      
+    }
+    &.current_page_ancestor {
+      .fl-menu-toggle {
+        background-image: url('./images/arrow-orange.svg');
       }
     }
   }
+  
 
   // font
   a {
