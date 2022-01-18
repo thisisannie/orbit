@@ -49,6 +49,9 @@ img.rounded, .rounded img, .rounded {
     &.selected {
       opacity: 1;
     }
+    img .extend-right {
+      max-width: 625px!important;
+    }
   }
 }
 
