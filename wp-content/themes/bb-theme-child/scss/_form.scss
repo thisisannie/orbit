@@ -14,7 +14,7 @@ form#filter-cards, form#filter, form#filter-event {
     color: $grey-light;
     font-size: 16px;
   }
-  input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url], textarea {
+  input[type=text], input[type=password], input[type=email], input[type=tel], input[type=date], input[type=month], input[type=week], input[type=time], input[type=number], input[type=search], input[type=url], select, textarea {
     max-width: 100%;
     margin-bottom: 20px;
     border-radius: 21px;
@@ -22,7 +22,8 @@ form#filter-cards, form#filter, form#filter-event {
     padding: 12px 25px 8px;
     background-color: transparent;
     color: $grey-light;
-    font-weight: bold;
+    font-size: 22px;
+    // font-weight: bold;
     font-family: $ff-main;
     &:last-child {
       margin-bottom: 0;
@@ -40,6 +41,7 @@ form#filter-cards, form#filter, form#filter-event {
     padding: 12px 25px 8px;
     background-color: $orange;
     color: white;
+    font-size: 22px;
     font-weight: bold;
     font-family: $ff-main;
     transition: $transition;
@@ -139,6 +141,7 @@ form#filter-cards, form#filter, form#filter-event {
     min-height: 150px;
     margin-bottom: 20px;
     font-weight: normal;
+    color: $blue-dark;
     @media (max-width: 991px) {
       color: $blue-darkest;
     }
@@ -149,7 +152,6 @@ form#filter-cards, form#filter, form#filter-event {
     border: 1px $grey-light solid;
     background: white url('./images/arrow-down-orange.svg') calc(100% - 20px) center no-repeat;
     background-size: 14px;
-    font-size: 14px;
     color: $blue-dark;
     @media (max-width: 991px) {
       color: $blue-darkest;

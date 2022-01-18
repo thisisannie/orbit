@@ -223,7 +223,7 @@ header.fl-builder-content {
     @media (min-width: 768px) {
       header.fl-builder-content .fl-has-submenu .fl-menu-toggle {
         margin: -17px 0 0 !important; } }
-  header.fl-builder-content .fl-has-submenu:hover .fl-menu-toggle {
+  header.fl-builder-content .fl-has-submenu:hover .fl-menu-toggle, header.fl-builder-content .fl-has-submenu.focus .fl-menu-toggle {
     transform: rotate(0deg);
     background-image: url("./images/arrow-orange.svg"); }
   header.fl-builder-content a {
@@ -336,7 +336,7 @@ form#filter-cards, form#filter, form#filter-event {
   color: #a3afb3;
   font-size: 16px; }
 
-.fl-page input[type=text], .fl-page input[type=password], .fl-page input[type=email], .fl-page input[type=tel], .fl-page input[type=date], .fl-page input[type=month], .fl-page input[type=week], .fl-page input[type=time], .fl-page input[type=number], .fl-page input[type=search], .fl-page input[type=url], .fl-page textarea {
+.fl-page input[type=text], .fl-page input[type=password], .fl-page input[type=email], .fl-page input[type=tel], .fl-page input[type=date], .fl-page input[type=month], .fl-page input[type=week], .fl-page input[type=time], .fl-page input[type=number], .fl-page input[type=search], .fl-page input[type=url], .fl-page select, .fl-page textarea {
   max-width: 100%;
   margin-bottom: 20px;
   border-radius: 21px;
@@ -344,9 +344,9 @@ form#filter-cards, form#filter, form#filter-event {
   padding: 12px 25px 8px;
   background-color: transparent;
   color: #a3afb3;
-  font-weight: bold;
+  font-size: 22px;
   font-family: "karbon", tahoma; }
-  .fl-page input[type=text]:last-child, .fl-page input[type=password]:last-child, .fl-page input[type=email]:last-child, .fl-page input[type=tel]:last-child, .fl-page input[type=date]:last-child, .fl-page input[type=month]:last-child, .fl-page input[type=week]:last-child, .fl-page input[type=time]:last-child, .fl-page input[type=number]:last-child, .fl-page input[type=search]:last-child, .fl-page input[type=url]:last-child, .fl-page textarea:last-child {
+  .fl-page input[type=text]:last-child, .fl-page input[type=password]:last-child, .fl-page input[type=email]:last-child, .fl-page input[type=tel]:last-child, .fl-page input[type=date]:last-child, .fl-page input[type=month]:last-child, .fl-page input[type=week]:last-child, .fl-page input[type=time]:last-child, .fl-page input[type=number]:last-child, .fl-page input[type=search]:last-child, .fl-page input[type=url]:last-child, .fl-page select:last-child, .fl-page textarea:last-child {
     margin-bottom: 0; }
 
 .fl-page input[type=text], .fl-page input[type=password], .fl-page input[type=email], .fl-page input[type=tel], .fl-page input[type=date], .fl-page input[type=month], .fl-page input[type=week], .fl-page input[type=time], .fl-page input[type=number], .fl-page input[type=search], .fl-page input[type=url] {
@@ -360,6 +360,7 @@ form#filter-cards, form#filter, form#filter-event {
   padding: 12px 25px 8px;
   background-color: #d86227;
   color: white;
+  font-size: 22px;
   font-weight: bold;
   font-family: "karbon", tahoma;
   transition: all 0.3s ease; }
@@ -477,7 +478,8 @@ form#filter-cards, form#filter, form#filter-event {
 .orbit-contact-form textarea {
   min-height: 150px;
   margin-bottom: 20px;
-  font-weight: normal; }
+  font-weight: normal;
+  color: #003c4b; }
   @media (max-width: 991px) {
     .orbit-contact-form textarea {
       color: #0b212c; } }
@@ -488,7 +490,6 @@ form#filter-cards, form#filter, form#filter-event {
   border: 1px #a3afb3 solid;
   background: white url("./images/arrow-down-orange.svg") calc(100% - 20px) center no-repeat;
   background-size: 14px;
-  font-size: 14px;
   color: #003c4b; }
   @media (max-width: 991px) {
     .orbit-contact-form select {
