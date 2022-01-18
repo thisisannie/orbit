@@ -136,5 +136,9 @@ jQuery(window).load(function() {
     if(jQuery('#wpforms-1233-field_7').length) {
         let searchParams = new URLSearchParams(window.location.search)
         jQuery('#wpforms-1233-field_7').val(searchParams.get('subject'))
+
+        // if subject matches select dropdown option, select it
+        var desiredOption = searchParams.get('subject');
+        jQuery('#wpforms-1233-field_6 option[value="' +desiredOption+ '"]').prop("selected", true)
     }
 })
