@@ -76,6 +76,20 @@
   }  
 }
 #cards-covid {
+  @media (min-width: 769px) {
+    .fl-post-grid-image img {
+      width: 100%!important;
+      height: 300px!important;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: 1356px) {
+    .fl-post-grid-image img {
+      width: 100%!important;
+      height: 400px!important;
+      object-fit: cover;
+    }
+  }
   .fl-post-grid-more {
     max-width: 100%;
     -webkit-appearance: none;
@@ -93,6 +107,46 @@
       color: $orange;
     }
   }
+}
+#posts-blog {
+  @media (min-width: 769px) {
+    .fl-post-grid-image img {
+      width: 100%!important;
+      height: 280px!important;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: 1356px) {
+    .fl-post-grid-image img {
+      width: 100%!important;
+      height: 290px!important;
+      object-fit: cover;
+    }
+  }
+}
+#posts-newsletter {
+  @media (min-width: 769px) {
+    .fl-post-grid-image img {
+      width: 100%!important;
+      height: 240px!important;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: 993px) {
+    .fl-post-grid-image img {
+      width: 100%!important;
+      height: 140px!important;
+      object-fit: cover;
+    }
+  }
+  @media (min-width: 1356px) {
+    .fl-post-grid-image img {
+      width: 100%!important;
+      height: 172px!important;
+      object-fit: cover;
+    }
+  }
+  
 }
 
 // .fl-module-content a, .fl-module-content a:hover, .fl-module-content a:focus {
