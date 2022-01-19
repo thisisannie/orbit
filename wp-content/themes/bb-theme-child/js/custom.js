@@ -142,3 +142,27 @@ jQuery(window).load(function() {
         jQuery('#wpforms-1233-field_6 option[value="' +desiredOption+ '"]').prop("selected", true)
     }
 })
+
+// Shuffle collage photos to give random selection
+jQuery(function($){ 
+    $.fn.shuffle = function() { 
+        var allElems = this.get(),
+            getRandom = function(max) {
+                return Math.floor(Math.random() * max);
+            },
+            shuffled = $.map(allElems, function(){
+                var random = getRandom(allElems.length),
+                    randEl = $(allElems[random]).clone(true)[0];
+                allElems.splice(random, 1);
+                return randEl;
+           }); 
+        this.each(function(i){
+            $(this).replaceWith($(shuffled[i]));
+        }); 
+        return $(shuffled); 
+    }; 
+});
+
+jQuery(window).load(function() {
+    jQuery('.collage .fl-module-photo').shuffle();
+})
