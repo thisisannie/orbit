@@ -125,6 +125,17 @@
   }
 }
 #posts-newsletter {
+  @media (max-width: 992px) {
+    .fl-post-column {
+      width: 50%;
+      &:nth-child(1n+1) {
+        clear: none;
+      }
+      &:nth-child(2n+1) {
+        clear: both;
+      }
+    }
+  }
   @media (min-width: 769px) {
     .fl-post-grid-image img {
       width: 100%!important;
