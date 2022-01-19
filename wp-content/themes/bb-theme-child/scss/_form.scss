@@ -75,7 +75,6 @@ form#filter-cards, form#filter, form#filter-event {
   }
   button.button-alt,
   .button.button-alt,
-  .button.button-alt,
   .button-alt a, 
   .button-alt a.fl-button  {
     background-color: transparent;
@@ -88,7 +87,7 @@ form#filter-cards, form#filter, form#filter-event {
     .dashicons-before:before {
       transition: none;
     }
-    &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
+    &:hover, &:active, &:focus, &:focus-visible, &:focus-within &:visited {
       border: 2px $orange solid;
       background-color: $orange;
       color: white;
@@ -97,23 +96,9 @@ form#filter-cards, form#filter, form#filter-event {
       }
     }
   }
-  // .button-alt {
-  //   a, a.fl-button {
-  //     background-color: transparent;
-  //     color: $orange;
-  //     * {
-  //       color: inherit;
-  //     }
-  //     &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
-  //       border: 2px $orange solid;
-  //       background-color: $orange;
-  //       color: white;
-  //       * {
-  //         color: inherit;
-  //       }
-  //     }
-  //   }
-  // }
+}
+.fl-button-text {
+  color: inherit!important;
 }
 
 .orbit-contact-form {
