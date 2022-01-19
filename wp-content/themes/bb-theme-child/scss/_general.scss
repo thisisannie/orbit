@@ -5,6 +5,13 @@ img {
 img.rounded, .rounded img, .rounded, .rounded iframe {
   border-radius: $img-radius-small;
 }
+.list-icon img.fl-photo-img {
+  width: auto;
+  max-width: 60px;
+  height: auto;
+  max-height: 60px;
+  object-fit: contain;
+}
 
 .bg-blue-lightest {
   background-color: $blue-lightest;
