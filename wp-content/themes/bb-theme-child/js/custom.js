@@ -163,6 +163,10 @@ jQuery(function($){
     }; 
 });
 
-jQuery(window).load(function() {
-    jQuery('.collage .fl-module-photo').shuffle();
+jQuery(function($) {
+    console.log('call shuffle')
+    $('.collage .fl-module-photo').shuffle().css('visibility', 'visible')
+
+    // delay a moment to allow opacity to animate
+    setTimeout(function(){$('.collage .fl-module-photo').find('img').addClass('show')}, 5)
 })
