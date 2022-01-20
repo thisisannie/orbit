@@ -15,7 +15,7 @@
   font-style: normal;
 }
 
-$ff-main: 'karbon', tahoma;
+$ff-main: 'Karbon', tahoma;
 $ff-feature: 'Vollkorn', georgia;
 
 
@@ -55,6 +55,7 @@ body, p, li {
   font-size: 22px;
   line-height: 1.3;
   -webkit-font-smoothing: antialiased;
+  font-weight: normal;
 }
 p:last-child {
   margin-bottom: 0;
