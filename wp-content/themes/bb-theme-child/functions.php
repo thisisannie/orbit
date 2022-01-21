@@ -109,7 +109,7 @@ $meta_box_homepage_cards = array(
         ),
         array(
             'name' => 'Button link',
-            'desc' => 'Enter page slug.',
+            'desc' => 'Enter page slug, eg.<br><i>/mobile-app/',
             'id' => $prefix . 'button_link',
             'type' => 'text',
             'std' => ''
@@ -259,7 +259,7 @@ function orbit_homepagecards_filter_function(){
     $args_cards = array(
         'order' => 'ASC',
         'orderby' => 'title',
-        'posts_per_page' => '3',
+        'posts_per_page' => '8',
     );
  
     // for taxonomies / categories
@@ -281,14 +281,14 @@ function orbit_homepagecards_filter_function(){
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
                 echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';
                 
-             }
+            }
             
             echo '<h4>' . $query_cards->post->post_title . '</h4>';
             echo '<p>'.get_post_meta(get_the_ID(), 'orb_excerpt', TRUE) .'</p>';
             ?>
-            <button onclick='window.location.href="<?php echo get_post_meta(get_the_ID(), 'orb_button_link', TRUE) ?>";'>Find out more</button>
+            <a class="button fl-button" href=".<?php echo get_post_meta(get_the_ID(), 'orb_button_link', TRUE) ?>">Find out more</a>
             <?php 
-            
+            /* <button onclick='window.location.href="<?php echo get_post_meta(get_the_ID(), 'orb_button_link', TRUE) ?>";'>Find out more</button> */
             echo '</div>';
         endwhile;
         wp_reset_postdata();
