@@ -16,7 +16,7 @@ footer.fl-builder-content {
 
   h6 {
     margin-bottom: 0;
-    font-weight: bold;
+    font-family: $ff-main-b;
   }
 
   .copy p {
@@ -27,7 +27,7 @@ footer.fl-builder-content {
     padding: 5px 0 5px 0;
   }
   .menu > :first-child {
-    font-weight: bold;
+    font-family: $ff-main-b;
     margin-bottom: 5px;
   }
 }

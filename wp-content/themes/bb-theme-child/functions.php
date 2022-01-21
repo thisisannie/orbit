@@ -986,4 +986,22 @@ add_shortcode('default_events', 'default_event_posts');
 //add excerpt for the post
 add_post_type_support( 'page', 'excerpt' );
 
+/*
+ * Register Custom Fonts
+ */
+function orbit_bb_custom_fonts ( $system_fonts ) {
+    $system_fonts[ 'Karbon' ] = array(
+      'fallback' => 'tahoma',
+      'weights' => array(
+        '400',
+        '600',
+      ),
+    );  
+  return $system_fonts;
+}
 
+//Add to Beaver Builder Theme Customizer
+add_filter( 'fl_theme_system_fonts', 'orbit_bb_custom_fonts' );
+
+//Add to Beaver Builder modules
+add_filter( 'fl_builder_font_families_system', 'orbit_bb_custom_fonts' );

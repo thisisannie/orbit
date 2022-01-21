@@ -98,8 +98,7 @@
     padding: 12px 25px 8px;
     background-color: $orange;
     color: white;
-    font-weight: bold;
-    font-family: $ff-main;
+    font-family: $ff-main-b;
     transition: $transitionslow;
     &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
       border: 2px $orange solid;
@@ -185,5 +184,5 @@ body {
   border: none;
 }
 .fl-post-grid-more {
-  font-weight: bold;
+  font-family: $ff-main-b;
 }
