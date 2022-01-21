@@ -8,23 +8,11 @@ jQuery(window).load(function() {
         }, 1000);
      });
     },500);
-
     jQuery('select#category-select').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#dropdown-selector').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#event-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
     jQuery('select#homepagecards-category-select').trigger('change').find('option:eq(0)').prop('selected', true);
 })
-
-
-
-//show/hide selected posts from home page header
-/*jQuery(function() {
-        jQuery('#dropdown-selector').change(function(){
-            jQuery('.dropdown-selector').hide();
-            jQuery('#' + jQuery(this).val()).show();
-        });
-});*/
-
 
 //ajax call for staff category/city filter
 jQuery(function($){
@@ -35,15 +23,12 @@ jQuery(function($){
             data:filter.serialize(), // form data
             type:filter.attr('method'), // POST
             beforeSend:function(xhr){
-            
             },
             success:function(data){
-                
                 $('#response').html(data); // insert data
             }
         });
         return false;
-        
     });
 });
 
@@ -59,14 +44,12 @@ jQuery(function($){
             
             },
             success:function(data){
-                
                 $('#event-response').html(data); // insert data
             }
         });
         return false;
     });
 });
-
 
 //ajax call for homepage cards filter
 jQuery(function($){
@@ -77,20 +60,18 @@ jQuery(function($){
             url:cardsfilter.attr('action'),
             data:cardsfilter.serialize(), // form data
             type:cardsfilter.attr('method'), // POST
-            beforeSend:function(xhr){
-            
+            beforeSend:function(xhr){            
             },
             success:function(data){
                 $('#homepagecards-title').text(optionSelected.text());
-                $('#homepagecards-response').html(data); // insert data
-                
+                $('#homepagecards-response').html(data); // insert data                
             }
         });
         return false;
     });
 });
 
-
+// Accordion maps on contact page
 jQuery('#accordion-maps .fl-accordion-item .fl-accordion-button').each(function(){
     jQuery(this).on('click',function(e){
         e.preventDefault();
@@ -98,15 +79,9 @@ jQuery('#accordion-maps .fl-accordion-item .fl-accordion-button').each(function(
         jQuery('#maps .fl-html div').each(function(){
             jQuery(this).addClass('hidden');
         })
-        jQuery('#'+city+'-map').removeClass('hidden')  
-
+        jQuery('#'+city+'-map').removeClass('hidden')
     })
 })
-
-// Allow .button-inline to be inline
-// jQuery(window).load(function() {
-//     jQuery('.button-inline').parent().css('flex-direction', 'inherit')
-// });
 
 // Accordion - Change picture on item click
 jQuery(window).load(function() { 
@@ -164,7 +139,6 @@ jQuery(function($){
 });
 
 jQuery(function($) {
-    console.log('call shuffle')
     $('.collage .fl-module-photo').shuffle().css('visibility', 'visible')
 
     // delay a moment to allow opacity to animate
