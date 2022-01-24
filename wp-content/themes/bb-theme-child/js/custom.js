@@ -144,3 +144,19 @@ jQuery(function($) {
     // delay a moment to allow opacity to animate
     setTimeout(function(){$('.collage .fl-module-photo').find('img').addClass('show')}, 5)
 })
+
+
+jQuery(document).ajaxComplete(function(){
+
+    jQuery('.cards-slider').not('.slick-initialized').slick({
+          dots: true,
+          dotsClass:'slick-dots',
+          arrows: true,
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 3000,
+        });
+
+
+})

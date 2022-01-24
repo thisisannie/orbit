@@ -13,6 +13,7 @@ add_action( 'wp_enqueue_scripts', 'FLChildTheme::enqueue_scripts', 1000 );
 
 function custom_scripts() {
     wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/js/custom.js',  '', '', true);
+    wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri() . '/js/slick/slick.js',  '', '', true);
  }
 add_action( 'wp_enqueue_scripts', 'custom_scripts' );
 
@@ -274,7 +275,7 @@ function orbit_homepagecards_filter_function(){
 
     $query_cards = new WP_Query( $args_cards );
     if( $query_cards->have_posts() ) :
-        echo '<div class="flex-container cards">';
+        echo '<div class="flex-container cards cards-slider">';
         while( $query_cards->have_posts() ): $query_cards->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
