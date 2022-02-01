@@ -149,14 +149,10 @@ jQuery(function($) {
 jQuery(document).ajaxComplete(function(){
 
     jQuery('.cards-slider').not('.slick-initialized').slick({
-          dots: true,
-          dotsClass:'slick-dots',
-          arrows: true,
-          slidesToShow: 3,
-          slidesToScroll: 1,
-          autoplay: true,
-          autoplaySpeed: 3000,
-        });
-
-
+        dots: true,
+        dotsClass:'slick-dots',
+        arrows: true,
+        slidesToShow: 2,
+        autoplay: false,
+    });
 })
