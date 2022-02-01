@@ -2,7 +2,10 @@
 // (max-width: 767px)
 // (min-width: 768px)
 
-// Bojana's suggestion
+.container {
+  overflow: hidden;
+}
+
 .fl-full-width .container {
   max-width: 100%!important;
 }

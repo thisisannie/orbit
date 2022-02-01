@@ -142,6 +142,9 @@ blockquote, .blockquote h2, .blockquote h3 {
   small {
     font-size: 14px; } }
 
+.container {
+  overflow: hidden; }
+
 .fl-full-width .container {
   max-width: 100% !important; }
 

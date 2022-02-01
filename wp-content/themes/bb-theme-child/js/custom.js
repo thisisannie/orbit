@@ -154,5 +154,16 @@ jQuery(document).ajaxComplete(function(){
         arrows: true,
         slidesToShow: 2,
         autoplay: false,
+        loop: false,
+        infinite: false,
+        responsive: [
+            {
+              breakpoint: 768,
+              settings: {
+                slidesToShow: 1,
+                slidesToScroll: 1,
+              },
+            }
+          ],
     });
 })

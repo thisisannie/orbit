@@ -16,7 +16,7 @@
 .slick-list {
     position: relative;
     display: block;
-    overflow: hidden;
+    overflow: visible;
     margin: 0;
     padding: 0;
 }
