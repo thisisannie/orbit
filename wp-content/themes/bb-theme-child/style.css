@@ -279,15 +279,14 @@ header.fl-builder-content {
     line-height: 38px;
     font-weight: 600;
     -webkit-font-smoothing: antialiased;
-    color: white;
-    background-color: #d86227;
+    color: #d86227;
+    background-color: transparent;
     transition: all 0.3s ease; }
   .fl-menu-mobile-toggle.hamburger.fl-active, .fl-menu-mobile-toggle.hamburger:hover, .fl-menu-mobile-toggle.hamburger:active, .fl-menu-mobile-toggle.hamburger:focus, .fl-menu-mobile-toggle.hamburger:focus-visible, .fl-menu-mobile-toggle.hamburger:focus-within {
     border: none;
     background-color: initial; }
   .fl-menu-mobile-toggle.hamburger.fl-active::before {
-    color: #d86227;
-    background-color: initial; }
+    content: "\f00d"; }
   .fl-menu-mobile-toggle.hamburger .svg-container {
     display: none !important; }
 
