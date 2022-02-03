@@ -1,4 +1,4 @@
-//trigger change - select staff default posts on page load
+// trigger change - select staff default posts on page load
 jQuery(window).load(function() {
     setTimeout(function(){ 
         jQuery('select#homepagecards-category-select').on('change',function(){
@@ -137,7 +137,6 @@ jQuery(function($){
         return $(shuffled); 
     }; 
 });
-
 jQuery(function($) {
     $('.collage .fl-module-photo').shuffle().css('visibility', 'visible')
 
@@ -145,9 +144,8 @@ jQuery(function($) {
     setTimeout(function(){$('.collage .fl-module-photo').find('img').addClass('show')}, 5)
 })
 
-
+// Cards slider
 jQuery(document).ajaxComplete(function(){
-
     jQuery('.cards-slider').not('.slick-initialized').slick({
         dots: true,
         dotsClass:'slick-dots',
@@ -164,6 +162,6 @@ jQuery(document).ajaxComplete(function(){
                 slidesToScroll: 1,
               },
             }
-          ],
+        ],
     });
 })
