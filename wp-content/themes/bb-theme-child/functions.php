@@ -867,7 +867,8 @@ function orbit_save_event_data($post_id) {
 
 //Shortcode to show dropdown filters [event_posts]
 function event_category(){
-   $content .= '<form action="'.site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter-event">';
+    $content = '';
+    $content .= '<form action="'.site_url().'/wp-admin/admin-ajax.php" method="POST" id="filter-event">';
 
         if( $terms_ev = get_terms( array( 'taxonomy' => 'event-category', 'orderby' => 'name' ) ) ) : 
     
@@ -877,9 +878,9 @@ function event_category(){
             endforeach;
             $content .=  '</select>';
         endif;
-   $content .= '<input type="hidden" name="action" value="myfilter_event">';
-   $content .= '</form>';
-   $content .= '<div id="event-response"></div>';
+    $content .= '<input type="hidden" name="action" value="myfilter_event">';
+    $content .= '</form>';
+    $content .= '<div id="event-response"></div>';
     
     return $content;
 
