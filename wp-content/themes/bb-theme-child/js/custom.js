@@ -165,3 +165,18 @@ jQuery(document).ajaxComplete(function(){
         ],
     });
 })
+
+// Footer menu expand accordion
+jQuery(function($){ 
+    $('#row-footer-menu').find('.menu-item:first-child').append('<span class="arrow"></span>')
+    $('#row-footer-menu').find('.arrow').on('click', function(){
+        if(! $(this).parent().hasClass('show')) {
+            $(this).parent().addClass('showing')
+        }
+        $('#row-footer-menu').find('.menu-item').removeClass('show')
+        if($(this).parent().hasClass('showing')) {
+            $(this).parent().parent().children().addClass('show')
+            $(this).parent().removeClass('showing')
+        }
+    })
+})
