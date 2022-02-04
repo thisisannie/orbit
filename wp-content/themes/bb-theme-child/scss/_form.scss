@@ -43,7 +43,7 @@ form#filter-cards, form#filter, form#filter-event {
     font-size: 22px;
     font-family: $ff-main-b;
     transition: $transition;
-    &:hover, &:active, &:focus, &:focus-visible, &:focus-within {
+    &:hover, &:active, &:focus {
       border: 2px $orange solid;
       background-color: white;
       color: $orange;
@@ -63,18 +63,8 @@ form#filter-cards, form#filter, form#filter-event {
     }
   }
 
-  .button-inline {
-    align-self: flex-start;
-    div {
-      align-self: flex-start;
-      margin-top: 0;
-      margin-right: 0;
-    }
-  }
-  button.button-alt,
-  .button.button-alt,
-  .button-alt a, 
-  .button-alt a.fl-button  {
+  .button-alt a.fl-button,
+  .fl-button-group-button:nth-child(2n) a {
     background-color: transparent;
     color: $orange;
     border: 2px $orange solid;
@@ -85,7 +75,7 @@ form#filter-cards, form#filter, form#filter-event {
     .dashicons-before:before {
       transition: none;
     }
-    &:hover, &:active, &:focus, &:focus-visible, &:focus-within &:visited {
+    &:hover, &:active, &:focus {
       border: 2px $orange solid;
       background-color: $orange;
       color: white;

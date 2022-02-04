@@ -377,7 +377,7 @@ form#filter-cards, form#filter, form#filter-event {
   font-size: 22px;
   font-family: "Karbon Semibold", tahoma;
   transition: all 0.3s ease; }
-  .fl-page select:hover, .fl-page select:active, .fl-page select:focus, .fl-page select:focus-visible, .fl-page select:focus-within, .fl-page .button:hover, .fl-page .button:active, .fl-page .button:focus, .fl-page .button:focus-visible, .fl-page .button:focus-within, .fl-page .fl-button:hover, .fl-page .fl-button:active, .fl-page .fl-button:focus, .fl-page .fl-button:focus-visible, .fl-page .fl-button:focus-within, .fl-page a.fl-button:hover, .fl-page a.fl-button:active, .fl-page a.fl-button:focus, .fl-page a.fl-button:focus-visible, .fl-page a.fl-button:focus-within, .fl-page button:hover, .fl-page button:active, .fl-page button:focus, .fl-page button:focus-visible, .fl-page button:focus-within, .fl-page input[type=select]:hover, .fl-page input[type=select]:active, .fl-page input[type=select]:focus, .fl-page input[type=select]:focus-visible, .fl-page input[type=select]:focus-within {
+  .fl-page select:hover, .fl-page select:active, .fl-page select:focus, .fl-page .button:hover, .fl-page .button:active, .fl-page .button:focus, .fl-page .fl-button:hover, .fl-page .fl-button:active, .fl-page .fl-button:focus, .fl-page a.fl-button:hover, .fl-page a.fl-button:active, .fl-page a.fl-button:focus, .fl-page button:hover, .fl-page button:active, .fl-page button:focus, .fl-page input[type=select]:hover, .fl-page input[type=select]:active, .fl-page input[type=select]:focus {
     border: 2px #d86227 solid;
     background-color: white;
     color: #d86227; }
@@ -393,108 +393,29 @@ form#filter-cards, form#filter, form#filter-event {
   .fl-page select:focus-visible {
     outline: none; }
 
-.fl-page .button-inline {
-  align-self: flex-start; }
-  .fl-page .button-inline div {
-    align-self: flex-start;
-    margin-top: 0;
-    margin-right: 0; }
-
-.fl-page button.button-alt,
-.fl-page .button.button-alt,
-.fl-page .button-alt a,
-.fl-page .button-alt a.fl-button {
+.fl-page .button-alt a.fl-button,
+.fl-page .fl-button-group-button:nth-child(2n) a {
   background-color: transparent;
   color: #d86227;
   border: 2px #d86227 solid; }
-  .fl-page button.button-alt *,
-  .fl-page .button.button-alt *,
-  .fl-page .button-alt a *,
-  .fl-page .button-alt a.fl-button * {
+  .fl-page .button-alt a.fl-button *,
+  .fl-page .fl-button-group-button:nth-child(2n) a * {
     color: inherit;
     transition: inherit; }
-  .fl-page button.button-alt .dashicons-before:before,
-  .fl-page .button.button-alt .dashicons-before:before,
-  .fl-page .button-alt a .dashicons-before:before,
-  .fl-page .button-alt a.fl-button .dashicons-before:before {
+  .fl-page .button-alt a.fl-button .dashicons-before:before,
+  .fl-page .fl-button-group-button:nth-child(2n) a .dashicons-before:before {
     transition: none; }
-  .fl-page button.button-alt:hover, .fl-page button.button-alt:active, .fl-page button.button-alt:focus, .fl-page button.button-alt:focus-visible, .fl-page button.button-alt:focus-within .fl-page button.button-alt:visited,
-  .fl-page .button.button-alt:hover,
-  .fl-page .button.button-alt:active,
-  .fl-page .button.button-alt:focus,
-  .fl-page .button.button-alt:focus-visible,
-  .fl-page .button.button-alt:focus-within .fl-page button.button-alt:visited,
-  .fl-page .button-alt a:hover,
-  .fl-page .button-alt a:active,
-  .fl-page .button-alt a:focus,
-  .fl-page .button-alt a:focus-visible,
-  .fl-page .button-alt a:focus-within .fl-page button.button-alt:visited,
-  .fl-page .button-alt a.fl-button:hover,
-  .fl-page .button-alt a.fl-button:active,
-  .fl-page .button-alt a.fl-button:focus,
-  .fl-page .button-alt a.fl-button:focus-visible,
-  .fl-page .button-alt a.fl-button:focus-within .fl-page button.button-alt:visited, .fl-page button.button-alt:focus-within
-  .fl-page .button.button-alt:visited,
-  .fl-page .button.button-alt:focus-within
-  .fl-page .button.button-alt:visited,
-  .fl-page .button-alt a:focus-within
-  .fl-page .button.button-alt:visited,
-  .fl-page .button-alt a.fl-button:focus-within
-  .fl-page .button.button-alt:visited, .fl-page button.button-alt:focus-within
-  .fl-page .button-alt a:visited,
-  .fl-page .button.button-alt:focus-within
-  .fl-page .button-alt a:visited,
-  .fl-page .button-alt a:focus-within
-  .fl-page .button-alt a:visited,
-  .fl-page .button-alt a.fl-button:focus-within
-  .fl-page .button-alt a:visited, .fl-page button.button-alt:focus-within
-  .fl-page .button-alt a.fl-button:visited,
-  .fl-page .button.button-alt:focus-within
-  .fl-page .button-alt a.fl-button:visited,
-  .fl-page .button-alt a:focus-within
-  .fl-page .button-alt a.fl-button:visited,
-  .fl-page .button-alt a.fl-button:focus-within
-  .fl-page .button-alt a.fl-button:visited {
+  .fl-page .button-alt a.fl-button:hover, .fl-page .button-alt a.fl-button:active, .fl-page .button-alt a.fl-button:focus,
+  .fl-page .fl-button-group-button:nth-child(2n) a:hover,
+  .fl-page .fl-button-group-button:nth-child(2n) a:active,
+  .fl-page .fl-button-group-button:nth-child(2n) a:focus {
     border: 2px #d86227 solid;
     background-color: #d86227;
     color: white; }
-    .fl-page button.button-alt:hover *, .fl-page button.button-alt:active *, .fl-page button.button-alt:focus *, .fl-page button.button-alt:focus-visible *, .fl-page button.button-alt:focus-within .fl-page button.button-alt:visited *,
-    .fl-page .button.button-alt:hover *,
-    .fl-page .button.button-alt:active *,
-    .fl-page .button.button-alt:focus *,
-    .fl-page .button.button-alt:focus-visible *,
-    .fl-page .button.button-alt:focus-within .fl-page button.button-alt:visited *,
-    .fl-page .button-alt a:hover *,
-    .fl-page .button-alt a:active *,
-    .fl-page .button-alt a:focus *,
-    .fl-page .button-alt a:focus-visible *,
-    .fl-page .button-alt a:focus-within .fl-page button.button-alt:visited *,
-    .fl-page .button-alt a.fl-button:hover *,
-    .fl-page .button-alt a.fl-button:active *,
-    .fl-page .button-alt a.fl-button:focus *,
-    .fl-page .button-alt a.fl-button:focus-visible *,
-    .fl-page .button-alt a.fl-button:focus-within .fl-page button.button-alt:visited *, .fl-page button.button-alt:focus-within
-    .fl-page .button.button-alt:visited *,
-    .fl-page .button.button-alt:focus-within
-    .fl-page .button.button-alt:visited *,
-    .fl-page .button-alt a:focus-within
-    .fl-page .button.button-alt:visited *,
-    .fl-page .button-alt a.fl-button:focus-within
-    .fl-page .button.button-alt:visited *, .fl-page button.button-alt:focus-within
-    .fl-page .button-alt a:visited *,
-    .fl-page .button.button-alt:focus-within
-    .fl-page .button-alt a:visited *,
-    .fl-page .button-alt a:focus-within
-    .fl-page .button-alt a:visited *,
-    .fl-page .button-alt a.fl-button:focus-within
-    .fl-page .button-alt a:visited *, .fl-page button.button-alt:focus-within
-    .fl-page .button-alt a.fl-button:visited *,
-    .fl-page .button.button-alt:focus-within
-    .fl-page .button-alt a.fl-button:visited *,
-    .fl-page .button-alt a:focus-within
-    .fl-page .button-alt a.fl-button:visited *,
-    .fl-page .button-alt a.fl-button:focus-within
-    .fl-page .button-alt a.fl-button:visited * {
+    .fl-page .button-alt a.fl-button:hover *, .fl-page .button-alt a.fl-button:active *, .fl-page .button-alt a.fl-button:focus *,
+    .fl-page .fl-button-group-button:nth-child(2n) a:hover *,
+    .fl-page .fl-button-group-button:nth-child(2n) a:active *,
+    .fl-page .fl-button-group-button:nth-child(2n) a:focus * {
       color: inherit; }
 
 .fl-button-text {
