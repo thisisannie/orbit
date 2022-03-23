@@ -1,0 +1,11 @@
+{
+  "name": "bb-theme-child",
+  "version": "1.0.0",
+  "description": "Orbit Travel Beaver Builder Child Theme",
+  "main": "index.js",
+  "scripts": {
+    "css": "node-sass -w ./scss/ -o ./"
+  },
+  "author": "Annie Kyles",
+  "license": "MIT"
+}

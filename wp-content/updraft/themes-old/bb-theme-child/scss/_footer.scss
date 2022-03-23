@@ -1,0 +1,83 @@
+footer.fl-builder-content {
+  background-color: $blue-darkest;
+  color: $grey-light;
+
+  h2, h3 {
+    color: $grey-light;
+  }
+
+  h4, h5, h6, p, li, a {
+    color: $grey-light;
+  }
+
+  small {
+    color: $grey-light;
+  }
+
+  h6 {
+    margin-bottom: 0;
+    font-family: $ff-main-b;
+  }
+
+  .copy p {
+    color: $grey-light;
+    font-size: 14px;
+  }
+  .menu a {
+    padding: 5px 0 5px 0;
+  }
+  .menu > :first-child {
+    font-family: $ff-main-b;
+    margin-bottom: 5px;
+  }
+
+  #row-footer-menu {
+    @media (max-width: 768px) {
+      .fl-col {
+        nav {
+          border-bottom: 1px $grey-light solid;
+        }
+        &:first-child {
+          nav {
+            border-top: 1px $grey-light solid;
+          }
+        }
+      }
+      .fl-module-content {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .menu .menu-item {
+        margin: 0;
+        border: 0;
+        padding: 0;
+        height: 0;
+        overflow: hidden;
+        transition: $transition;
+        &:first-child {
+          position: relative;
+          padding: 10px 0;
+          height: auto;
+          .arrow {
+            position: absolute;
+            top: calc(50% - 9px);
+            right: 0;
+            display: block;
+            height: 16px;
+            width: 16px;
+            padding: 10px;
+            background: url('./images/arrow-orange.svg') center center no-repeat;
+            transform: rotate(180deg);
+            background-size: 14px;
+            cursor: pointer;
+          }
+        }
+        &.show {
+          height: 46px; // 26px text + padding
+          padding: 10px 0;
+          overflow: initial;
+        }
+      }
+    }
+  }
+}

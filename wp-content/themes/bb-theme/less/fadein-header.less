@@ -11,7 +11,7 @@ Appearance > Theme Settings > Code or create a child theme.
 .fl-page-nav-right.fl-page-header-fixed,
 .fl-page-header-fixed {
 	display: none;
-	left: 0;
+	left: auto;
 	position: fixed!important;
 	top: 0;
 	width: 100%;
@@ -67,6 +67,26 @@ Appearance > Theme Settings > Code or create a child theme.
 	.fl-page-header-fixed {
 		.fl-page-fixed-nav-wrap {
 			padding-right: 0;
+		}
+	}
+}
+
+@media (min-width: @medium-breakpoint) {
+	.fl-page-nav-right.fl-page-header-fixed,
+	.fl-page-header-fixed {
+		.fl-fixed-width & {
+			width: 980px;
+		}
+	}
+}
+
+/* Media Query - 1100px or greater
+----------------------------------------------------------- */
+@media (min-width: 1100px) {
+	.fl-page-nav-right.fl-page-header-fixed,
+	.fl-page-header-fixed {
+		.fl-fixed-width & {
+			width: (@content-width+80);
 		}
 	}
 }

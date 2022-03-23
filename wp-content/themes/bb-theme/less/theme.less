@@ -25,6 +25,7 @@ body {
 	font-size: @text-size;
 	font-weight: @text-weight;
 	line-height: @line-height;
+	font-style: @text-style;
 	padding: 0;
 	word-wrap: break-word;
 	&.modal-open {
@@ -559,6 +560,10 @@ body.rtl .fl-screen-reader-text {
 
 	.fa-stack.icon-wordpress i.fa-circle.branded, .fa-wordpress.branded { color: #15aabf; }
 
+	.fa-stack.icon-spotify i.fa-circle.branded, .fa-spotify.branded { color: #1cd760; }
+
+	.fa-stack.icon-tiktok i.fa-circle.branded, .fa-tiktok.branded { color: #000000; }
+
 	.fa-stack i.branded {
 		color: #fff;
 	}
@@ -682,6 +687,9 @@ body.rtl .fl-screen-reader-text {
 		&.alignright {
 			height: auto;
 			max-width: 100%;
+		}
+		&[class*="wp-block-cover"] {
+			height: 100%;
 		}
 	}
 	.fl-post-image-beside {
@@ -1134,7 +1142,7 @@ input[type=submit] {
 	}
 	&:active,
 	&:focus {
-		background-color: @accent-hover-color; 
+		background-color: @accent-hover-color;
 		color: @accent-fg-hover-color;
 		border: 1px solid darken(@accent-hover-color, 12%);
 		outline: none;
@@ -1304,6 +1312,30 @@ img.mfp-img {
 		img[data-mobile] {
 			display: none;
 		}
+	}
+}
+
+/* Media Query - 992px or less
+----------------------------------------------------------- */
+@media (max-width: @medium-breakpoint) {
+	body.woocommerce-page.fl-framework-bootstrap .row,
+	body.woocommerce-page.fl-framework-base .row {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column;
+	}
+
+	body.woocommerce-page.fl-framework-bootstrap .fl-woo-content-right,
+	body.woocommerce-page.fl-framework-base .fl-woo-content-right {
+		order: 1;
+		width: 100%;
+	}
+	
+	body.woocommerce-page.fl-framework-bootstrap .fl-woo-sidebar-left,
+	body.woocommerce-page.fl-framework-base .fl-woo-sidebar-left,
+	body.woocommerce-page.fl-framework-bootstrap .fl-sidebar,
+	body.woocommerce-page.fl-framework-base .fl-sidebar {
+		width: 100%;
 	}
 }
 
@@ -1680,7 +1712,6 @@ img.mfp-img {
 
 	.fl-fixed-width .fl-page {
 		width: (@content-width+80);
-		max-width: 90%;
 	}
 
 	/* Bootstrap Overrides

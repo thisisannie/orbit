@@ -1392,6 +1392,18 @@ FLCustomizer::add_panel('fl-general', array(
 						'label' => __( 'WordPress', 'fl-automator' ),
 					),
 				),
+				'fl-social-tiktok'            => array(
+					'control' => array(
+						'class' => 'WP_Customize_Control',
+						'label' => __( 'Tik Tok', 'fl-automator' ),
+					),
+				),
+				'fl-social-spotify'           => array(
+					'control' => array(
+						'class' => 'WP_Customize_Control',
+						'label' => __( 'Spotify', 'fl-automator' ),
+					),
+				),
 			),
 		),
 	),

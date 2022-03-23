@@ -1,0 +1,237 @@
+img {
+  object-fit: cover;
+}
+
+img.rounded, .rounded img, .rounded, .rounded iframe {
+  border-radius: $img-radius-small;
+}
+.list-icon img.fl-photo-img {
+  width: auto;
+  max-width: 60px;
+  height: auto;
+  max-height: 60px;
+  object-fit: contain;
+  @media (max-width: 767px) {
+    max-width: 50px;
+    max-height: 50px;
+  }
+}
+
+.bg-blue-lightest {
+  background-color: $blue-lightest;
+}
+
+// Accordion
+.fl-accordion {
+  .fl-accordion-item {
+    margin-bottom: 0;
+    border: none;
+    border-bottom: 1px $grey-light solid;
+    &:first-child {
+      border-top:  1px $grey-light solid;
+    }
+    .fl-accordion-button {
+      padding: 20px 0 15px 0;
+    }
+  }
+  .fl-accordion-button-label {
+    font-size: 30px;
+    text-transform: uppercase;
+    font-family: $ff-main-b;
+    color: $blue-dark;
+  }
+  .fl-accordion-content {
+    padding-right: 0;
+    padding-left: 0;
+  }
+}
+.fl-accordion-button-icon-left, .fl-accordion-button-icon-right {
+  opacity: 1;
+}
+
+// Accordion swapping images
+.accordion-images {
+  position: relative;
+  .fl-module-photo {
+    position: absolute;
+    width: 100%;
+    opacity: 0;
+    transition: $transition;
+    &:first-child {
+      position: static;
+      opacity: 1;
+    }
+    &.selected {
+      opacity: 1;
+    }
+    img .extend-right {
+      max-width: 625px!important;
+    }
+  }
+}
+
+#maps, .map {
+  iframe {
+    border-radius: $img-radius-small;
+  }
+}
+
+.collage {
+  img {
+    border-radius: $img-radius-small;
+  }
+  .fl-col-content {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .fl-photo-content {
+    position: relative;
+    width: 100%;
+    background-color: rgba($blue-light, 0.2);
+    border-radius: $img-radius-small;
+    &:after {
+      content: "";
+      display: block;
+      padding-bottom: 66.67%;
+    }    
+    img {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      width: 100%; 
+      height: 100%;
+      opacity: 0;
+      // visibility: hidden;
+      object-fit: cover;
+      object-position: center;
+      transition: $transitionslow;
+      &.show {
+        // visibility: visible;
+        opacity: 1;
+      }
+    }
+  }
+  .fl-module-photo {
+    display: none;
+    $top-shift: -51px;
+    &:nth-child(1), &:nth-child(2), &:nth-child(3), &:nth-child(4), &:nth-child(5) {
+      display: block;
+    }
+    &:nth-child(1) {
+      flex-basis: 34%;
+      margin-left: 56%;
+    }
+    &:nth-child(2) {
+      width: calc(56%);
+      position: relative;
+      top: $top-shift;
+    }
+    &:nth-child(3) {
+      width: calc(44%);
+      align-self: flex-start;
+    }
+    &:nth-child(4) {
+      width: calc(44%);
+      position: relative;
+      top: $top-shift;
+      margin-left: auto;
+    }
+    &:nth-child(5) {
+      width: calc(34%);
+      position: relative;
+      top: $top-shift;
+    }
+    .fl-module-content {
+      margin: 10px;
+    }
+  }
+  @media (max-width: 1340px){
+    .fl-col-content {
+      height: auto;
+    }
+    
+    .fl-module-photo{
+      &:nth-child(1) {
+        display: none;
+      }
+      &:nth-child(2) {
+        top: initial;
+      }
+      &:nth-child(3) {
+        align-self: flex-end;
+      }
+      &:nth-child(4) {
+        top: initial;
+      }
+      &:nth-child(5) {
+        top: initial;
+      }
+      .fl-module-content {
+        margin: 5px;
+      }
+    }
+  }
+  @media (min-width: 1450px) {
+    .fl-col-content {
+      width: 115%;
+      height: 650px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .fl-module-photo {
+      &:nth-child(2) {
+        top: -59px;
+      }
+      &:nth-child(3) {
+        top: -59px;
+      }
+      &:nth-child(4) {
+        top: -59px;
+      }
+      &:nth-child(5) {
+        top: -59px;
+      }
+    }
+    
+  }
+}
+.fl-builder-content-editing .collage {
+  .fl-col-content {
+    height: initial;
+  }
+  .fl-module-photo {
+    display: block;
+    top: initial;
+    flex-basis: 20%;
+    margin: 0;
+  }
+}
+
+.fa {
+  font-size: 0.7em;
+}
+a {
+  .fa-angle-right {
+    position: relative;
+    left: 0;
+    padding-left: 2px;
+    transition: $transition;
+  }
+  &:hover {
+    .fa-angle-right {
+      left: 4px;
+    }
+  }
+}
+
+#homepagecards-title::first-letter {
+  text-transform: uppercase;
+}
+
+hr {
+  border-top-color: $blue-dark;
+}

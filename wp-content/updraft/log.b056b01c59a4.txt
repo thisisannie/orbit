@@ -1,0 +1,178 @@
+0000.006 () Opened log file at time: Wed, 23 Mar 2022 02:48:14 +0000 on http://localhost:8888/orbit
+0000.008 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.22.11 WP: 5.9.2 PHP: 8.0.8 (apache2handler, Darwin Annies-27-iMac.local 19.6.0 Darwin Kernel Version 19.6.0: Thu Jan 13 01:26:33 PST 2022; root:xnu-6153.141.51~3/RELEASE_X86_64 x86_64) MySQL: 5.7.34 (max packet size=33554432) WPLANG: en_NZ Server: Apache/2.4.48 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.13 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 60.6M | 4.5M) multisite: N openssl: OpenSSL 1.0.2u  20 Dec 2019 mcrypt: N LANG:  ZipArchive::addFile: Y
+0000.008 () Free space on disk containing Updraft's temporary directory: 839057 MB
+0000.044 () Restore setup, now closing connection and starting restore over AJAX.
+0000.002 () Opened log file at time: Wed, 23 Mar 2022 02:48:16 +0000 on http://localhost:8888/orbit
+0000.002 () UpdraftPlus WordPress backup plugin (https://updraftplus.com): 1.22.11 WP: 5.9.2 PHP: 8.0.8 (apache2handler, Darwin Annies-27-iMac.local 19.6.0 Darwin Kernel Version 19.6.0: Thu Jan 13 01:26:33 PST 2022; root:xnu-6153.141.51~3/RELEASE_X86_64 x86_64) MySQL: 5.7.34 (max packet size=33554432) WPLANG: en_NZ Server: Apache/2.4.48 (Unix) OpenSSL/1.0.2u PHP/8.0.8 mod_wsgi/3.5 Python/2.7.13 mod_fastcgi/mod_fastcgi-SNAP-0910052141 mod_perl/2.0.11 Perl/v5.30.1 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 58.9M | 4.5M) multisite: N openssl: OpenSSL 1.0.2u  20 Dec 2019 mcrypt: N LANG:  ZipArchive::addFile: Y
+0000.002 () Free space on disk containing Updraft's temporary directory: 839056.5 MB
+0000.027 () Ensuring WP_Filesystem is setup for a restore
+0000.028 () WP_Filesystem is setup and ready for a restore
+0000.032 () Restore job started. Entities to restore: plugins, themes, uploads, others, db. Restore options: {"include_unspecified_tables":false,"tables_to_restore":["wp_options","wp_users","wp_usermeta","wp_actionscheduler_actions","wp_actionscheduler_claims","wp_actionscheduler_groups","wp_actionscheduler_logs","wp_commentmeta","wp_comments","wp_links","wp_postmeta","wp_posts","wp_term_relationships","wp_term_taxonomy","wp_termmeta","wp_terms","wp_wpforms_logs","wp_wpforms_tasks_meta"],"tables_to_skip":[],"updraft_encryptionphrase":"","updraft_restorer_wpcore_includewpconfig":false,"updraft_incremental_restore_point":-1}
+0000.034 () PHP event: code E_WARNING: mkdir(): File exists (line 545, wp-admin/includes/class-wp-filesystem-direct.php)
+0000.039 () Will not delete any archives after unpacking them, because there was no cloud storage for this backup
+0000.041 () Entity: db
+0000.041 () restore_backup(backup_file=backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-db.gz, type=db, info=a:0:{}, last_one=)
+0000.041 () Unpacking backup... (backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-db.gz, 1.6 Mb)
+0000.041 () PHP event: code E_WARNING: mkdir(): File exists (line 545, wp-admin/includes/class-wp-filesystem-direct.php)
+0000.043 () Database successfully unpacked
+0000.044 () Restoring the database (on a large site this can take a long time - if it times out (which can happen if your web hosting company has configured your hosting to limit resources) then you should use a different method, such as phpMyAdmin)...
+0000.044 () Using direct MySQL access; value of use_mysqli is: 1
+0000.044 () SQL compatibility mode is: NO_AUTO_VALUE_ON_ZERO,NO_ZERO_IN_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+0000.253 () Max packet size: 32 MB
+0000.253 () Entering maintenance mode
+0000.253 () Enabling Maintenance mode&#8230;
+0000.268 () Backup of: https://brucem37.sg-host.com
+0000.269 () Content URL: https://brucem37.sg-host.com/wp-content
+0000.269 () Uploads URL: http://brucem37.sg-host.com/wp-content/uploads
+0000.270 () Old table prefix: wp_
+0000.270 () Old ABSPATH: /home/customer/www/brucem37.sg-host.com/public_html/
+0000.270 () Site information: multisite=0
+0000.270 () Site information: sql_mode=NO_ENGINE_SUBSTITUTION
+0000.270 () Skipped tables: fct_commentmeta, fct_comments, fct_links, fct_options, fct_postmeta, fct_posts, fct_revisr, fct_sgs_log_events, fct_sgs_log_visitors, fct_term_relationships, fct_term_taxonomy, fct_termmeta, fct_terms, fct_usermeta, fct_users
+0000.272 () New table prefix: yl_
+0000.274 () Processing table (InnoDB): wp_options - will restore as: yl_options
+0000.397 () Atomic restore: dropping original table (wp_options)
+0000.410 () Atomic restore: renaming new table (yl_options) to final table name (wp_options)
+0000.412 () Restoring prior UD configuration (table: wp_options; keys: 98)
+0000.602 () Search and replacing table: wp_options: rows: 375
+0000.662 () Processing table (InnoDB): wp_users - will restore as: yl_users
+0000.696 () Atomic restore: dropping original table (wp_users)
+0000.705 () Atomic restore: renaming new table (yl_users) to final table name (wp_users)
+0000.709 () Search and replacing table: wp_users: rows: 2
+0000.710 () Processing table (InnoDB): wp_usermeta - will restore as: yl_usermeta
+0000.733 () Atomic restore: dropping original table (wp_usermeta)
+0000.753 () Atomic restore: renaming new table (yl_usermeta) to final table name (wp_usermeta)
+0000.757 () Search and replacing table: wp_usermeta: rows: 63
+0000.761 () Processing table (InnoDB): wp_actionscheduler_actions - will restore as: yl_actionscheduler_actions
+0000.834 () Atomic restore: dropping original table (wp_actionscheduler_actions)
+0000.848 () Atomic restore: renaming new table (yl_actionscheduler_actions) to final table name (wp_actionscheduler_actions)
+0000.852 () Search and replacing table: wp_actionscheduler_actions: rows: 60
+0000.853 () Incomplete object detected in database: ActionScheduler_IntervalSchedule; Search and replace will be skipped for these entries
+0000.854 () Incomplete object detected in database: ActionScheduler_NullSchedule; Search and replace will be skipped for these entries
+0000.857 () Incomplete object detected in database: ActionScheduler_SimpleSchedule; Search and replace will be skipped for these entries
+0000.857 () Processing table (InnoDB): wp_actionscheduler_claims - will restore as: yl_actionscheduler_claims
+0000.878 () Atomic restore: dropping original table (wp_actionscheduler_claims)
+0000.912 () Atomic restore: renaming new table (yl_actionscheduler_claims) to final table name (wp_actionscheduler_claims)
+0000.915 () Search and replacing table: wp_actionscheduler_claims: rows: 0
+0000.916 () Processing table (InnoDB): wp_actionscheduler_groups - will restore as: yl_actionscheduler_groups
+0001.013 () Atomic restore: dropping original table (wp_actionscheduler_groups)
+0001.018 () Atomic restore: renaming new table (yl_actionscheduler_groups) to final table name (wp_actionscheduler_groups)
+0001.022 () Search and replacing table: wp_actionscheduler_groups: rows: 2
+0001.022 () Processing table (InnoDB): wp_actionscheduler_logs - will restore as: yl_actionscheduler_logs
+0001.047 () Atomic restore: dropping original table (wp_actionscheduler_logs)
+0001.054 () Atomic restore: renaming new table (yl_actionscheduler_logs) to final table name (wp_actionscheduler_logs)
+0001.057 () Search and replacing table: wp_actionscheduler_logs: rows: 172
+0001.063 () Processing table (InnoDB): wp_commentmeta - will restore as: yl_commentmeta
+0001.094 () Atomic restore: dropping original table (wp_commentmeta)
+0001.100 () Atomic restore: renaming new table (yl_commentmeta) to final table name (wp_commentmeta)
+0001.104 () Search and replacing table: wp_commentmeta: rows: 0
+0001.104 () Processing table (InnoDB): wp_comments - will restore as: yl_comments
+0001.169 () Atomic restore: dropping original table (wp_comments)
+0001.174 () Atomic restore: renaming new table (yl_comments) to final table name (wp_comments)
+0001.178 () Search and replacing table: wp_comments: rows: 0
+0001.178 () Processing table (InnoDB): wp_links - will restore as: yl_links
+0001.198 () Atomic restore: dropping original table (wp_links)
+0001.214 () Atomic restore: renaming new table (yl_links) to final table name (wp_links)
+0001.218 () Search and replacing table: wp_links: rows: 0
+0001.218 () Processing table (InnoDB): wp_postmeta - will restore as: yl_postmeta
+0001.587 () Database queries processed: 50 in 1.54 seconds
+0002.200 () Atomic restore: dropping original table (wp_postmeta)
+0002.218 () Atomic restore: renaming new table (yl_postmeta) to final table name (wp_postmeta)
+0002.222 () Search and replacing table: wp_postmeta: rows: 2164
+0004.486 () Processing table (InnoDB): wp_posts - will restore as: yl_posts
+0004.638 () Atomic restore: dropping original table (wp_posts)
+0004.655 () Atomic restore: renaming new table (yl_posts) to final table name (wp_posts)
+0004.658 () Skipping search/replace on GUID column in posts table
+0004.659 () Search and replacing table: wp_posts: rows: 342
+0004.695 () Processing table (InnoDB): wp_term_relationships - will restore as: yl_term_relationships
+0004.721 () Atomic restore: dropping original table (wp_term_relationships)
+0004.734 () Atomic restore: renaming new table (yl_term_relationships) to final table name (wp_term_relationships)
+0004.738 () Search and replacing table: wp_term_relationships: rows: 127
+0004.743 () Processing table (InnoDB): wp_term_taxonomy - will restore as: yl_term_taxonomy
+0004.771 () Atomic restore: dropping original table (wp_term_taxonomy)
+0004.776 () Atomic restore: renaming new table (yl_term_taxonomy) to final table name (wp_term_taxonomy)
+0004.780 () Search and replacing table: wp_term_taxonomy: rows: 35
+0004.782 () Processing table (InnoDB): wp_termmeta - will restore as: yl_termmeta
+0004.798 () Atomic restore: dropping original table (wp_termmeta)
+0004.806 () Atomic restore: renaming new table (yl_termmeta) to final table name (wp_termmeta)
+0004.810 () Search and replacing table: wp_termmeta: rows: 0
+0004.810 () Processing table (InnoDB): wp_terms - will restore as: yl_terms
+0004.856 () Atomic restore: dropping original table (wp_terms)
+0004.866 () Atomic restore: renaming new table (yl_terms) to final table name (wp_terms)
+0004.870 () Search and replacing table: wp_terms: rows: 35
+0004.872 () Processing table (InnoDB): wp_wpforms_logs - will restore as: yl_wpforms_logs
+0004.893 () Atomic restore: dropping original table (wp_wpforms_logs)
+0004.894 () Atomic restore: renaming new table (yl_wpforms_logs) to final table name (wp_wpforms_logs)
+0004.899 () Search and replacing table: wp_wpforms_logs: rows: 0
+0004.899 () Processing table (InnoDB): wp_wpforms_tasks_meta - will restore as: yl_wpforms_tasks_meta
+0004.920 () Unlocking database and leaving maintenance mode
+0004.920 () Disabling Maintenance mode&#8230;
+0004.921 () Atomic restore: dropping original table (wp_wpforms_tasks_meta)
+0004.928 () Atomic restore: renaming new table (yl_wpforms_tasks_meta) to final table name (wp_wpforms_tasks_meta)
+0004.936 () Search and replacing table: wp_wpforms_tasks_meta: rows: 37
+0004.937 () Finished: lines processed: 96 in 4.89 seconds
+0004.938 () Cleaning up rubbish...
+0004.949 () Entity: plugins
+0004.949 () restore_backup(backup_file=backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-plugins.zip, type=plugins, info=a:2:{s:4:"path";s:50:"/Applications/MAMP/htdocs/orbit/wp-content/plugins";s:11:"description";s:7:"Plugins";}, last_one=)
+0004.949 () Unpacking backup... (backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-plugins.zip, 25.1 MB)
+0004.951 () Unzipping backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-plugins.zip to /Applications/MAMP/htdocs/orbit/wp-content/upgrade/ff78f310/ using UpdraftPlus_ZipArchive, starting index 0
+0007.443 () Unzip progress: 1581 out of 6637 files (2.5 KB, plugins/bb-plugin/js/jquery.easing.min.js)
+0008.002 () Unzip progress: 2582 out of 6637 files (13.7 MB, plugins/bb-plugin/modules/menu/js/settings.js)
+0008.518 () Unzip progress: 3583 out of 6637 files (32.8 MB, plugins/updraftplus/vendor/rackspace/php-opencloud/lib/OpenCloud/Common/Constants/State.php)
+0008.991 () Unzip progress: 4584 out of 6637 files (45.5 MB, plugins/wpforms-lite/vendor/woocommerce/action-scheduler/classes/data-stores/ActionScheduler_HybridStore.php)
+0009.590 () Unzip progress: 5585 out of 6637 files (66.8 MB, plugins/bb-theme-builder/extensions/bb-logic/rules/woocommerce/src/cart.js)
+0010.061 () Unzip progress: 6586 out of 6637 files (81.9 MB, plugins/bb-theme-builder/extensions/bb-logic/core/build/index.js)
+0010.081 () Unzip progress: 6637 out of 6637 files (82 MB, plugins/bb-theme-builder/extensions/bb-logic/rules/woocommerce/classes/class-bb-logic-rules-woocommerce.php)
+0010.095 () Moving old data: filesystem method / updraft_dir is potentially possible
+0010.095 () Moving old data: can potentially use wp_filesystem method / -old
+0010.095 () Moving old data out of the way...
+0013.410 () Top-level entities being moved: wordpress-importer, index.php, bb-theme-builder, sg-cachepress, wpforms-lite, bb-ultimate-addon, sg-cachepress-disabled, updraftplus, health-check, bb-plugin
+0013.416 () Moving unpacked backup into place...
+0015.699 () Top-level entities being moved: wordpress-importer, index.php, bb-theme-builder, sg-cachepress, wpforms-lite, bb-ultimate-addon, updraftplus, health-check, bb-plugin
+0015.705 () Cleaning up rubbish...
+0015.706 () restore_backup(backup_file=backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-plugins2.zip, type=plugins, info=a:2:{s:4:"path";s:50:"/Applications/MAMP/htdocs/orbit/wp-content/plugins";s:11:"description";s:7:"Plugins";}, last_one=)
+0015.707 () Unpacking backup... (backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-plugins2.zip, 4.3 MB)
+0015.707 () Unzipping backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-plugins2.zip to /Applications/MAMP/htdocs/orbit/wp-content/upgrade/efd2041e/ using UpdraftPlus_ZipArchive, starting index 0
+0016.867 () Unzip progress: 1002 out of 1550 files (13.7 MB, plugins/bb-ultimate-addon/languages/uabb.pot)
+0017.122 () Unzip progress: 1550 out of 1550 files (22.3 MB, plugins/bb-ultimate-addon/modules/image-separator/js/frontend.js)
+0017.125 () Moving unpacked backup into place...
+0017.894 () Top-level entities being moved: bb-theme-builder, bb-ultimate-addon
+0018.188 () Cleaning up rubbish...
+0018.192 () Entity: themes
+0018.193 () restore_backup(backup_file=backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-themes.zip, type=themes, info=a:2:{s:4:"path";s:49:"/Applications/MAMP/htdocs/orbit/wp-content/themes";s:11:"description";s:6:"Themes";}, last_one=)
+0018.193 () Unpacking backup... (backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-themes.zip, 1.4 MB)
+0018.194 () Unzipping backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-themes.zip to /Applications/MAMP/htdocs/orbit/wp-content/upgrade/12c6c3bf/ using UpdraftPlus_ZipArchive, starting index 0
+0018.482 () Unzip progress: 345 out of 345 files (4.3 MB, themes/index.php)
+0018.484 () Moving old data: filesystem method / updraft_dir is potentially possible
+0018.484 () Moving old data: can potentially use wp_filesystem method / -old
+0018.484 () Moving old data out of the way...
+0018.686 () Top-level entities being moved: .DS_Store, index.php, bb-theme, twentytwentytwo, bb-theme-child
+0018.688 () Moving unpacked backup into place...
+0018.827 () Top-level entities being moved: index.php, bb-theme, bb-theme-child
+0018.828 () Cleaning up rubbish...
+0018.831 () Entity: uploads
+0018.831 () restore_backup(backup_file=backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-uploads.zip, type=uploads, info=a:2:{s:4:"path";s:50:"/Applications/MAMP/htdocs/orbit/wp-content/uploads";s:11:"description";s:7:"Uploads";}, last_one=)
+0018.831 () Unpacking backup... (backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-uploads.zip, 25.1 MB)
+0018.832 () Unzipping backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-uploads.zip to /Applications/MAMP/htdocs/orbit/wp-content/upgrade/b41bb99c/ using UpdraftPlus_ZipArchive, starting index 0
+0019.501 () Unzip progress: 582 out of 582 files (26.7 MB, uploads/2021/12/Taanz-2019.png)
+0019.503 () Moving old data: filesystem method / updraft_dir is potentially possible
+0019.504 () Moving old data: can potentially use wp_filesystem method / -old
+0019.504 () Moving old data out of the way...
+0019.768 () Moving unpacked backup into place...
+0020.018 () Cleaning up rubbish...
+0020.020 () restore_backup(backup_file=backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-uploads2.zip, type=uploads, info=a:2:{s:4:"path";s:50:"/Applications/MAMP/htdocs/orbit/wp-content/uploads";s:11:"description";s:7:"Uploads";}, last_one=)
+0020.020 () Unpacking backup... (backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-uploads2.zip, 2 MB)
+0020.021 () Unzipping backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-uploads2.zip to /Applications/MAMP/htdocs/orbit/wp-content/upgrade/bd803a9f/ using UpdraftPlus_ZipArchive, starting index 0
+0020.079 () Unzip progress: 49 out of 49 files (2.4 MB, uploads/2021/11/placeholder-828x500-alt1-272x182.png)
+0020.081 () Moving unpacked backup into place...
+0020.105 () Cleaning up rubbish...
+0020.109 () Entity: others
+0020.109 () restore_backup(backup_file=backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-others.zip, type=others, info=a:2:{s:4:"path";s:42:"/Applications/MAMP/htdocs/orbit/wp-content";s:11:"description";s:6:"Others";}, last_one=1)
+0020.109 () Unpacking backup... (backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-others.zip, 0.8 MB)
+0020.110 () Unzipping backup_2022-03-23-1428_Orbit_Travel_a3a6775dbf7d-others.zip to /Applications/MAMP/htdocs/orbit/wp-content/upgrade/2730a585/ using UpdraftPlus_ZipArchive, starting index 0
+0020.203 () Unzip progress: 87 out of 87 files (3.3 MB, .htaccess)
+0020.207 () Cleaning up rubbish...
+0020.208 () PHP event: code E_WARNING: rmdir(/Applications/MAMP/htdocs/orbit/wp-content/upgrade/2730a585): Directory not empty (line 373, wp-admin/includes/class-wp-filesystem-direct.php)
+0020.208 () Error: Failed to delete working directory after restoring. (/Applications/MAMP/htdocs/orbit/wp-content/upgrade/2730a585)
+0020.231 () Restore successful!
+0020.231 () Restore successful

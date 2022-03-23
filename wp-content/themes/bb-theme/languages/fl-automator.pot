@@ -1,14 +1,14 @@
-# Copyright (C) 2021 The Beaver Builder Team
+# Copyright (C) 2022 The Beaver Builder Team
 # This file is distributed under the GNU General Public License v2.0.
 msgid ""
 msgstr ""
 "Project-Id-Version: bb-theme\n"
 "Report-Msgid-Bugs-To: hello@wpbeaverbuilder.com\n"
-"POT-Creation-Date: 2021-05-11 17:49:28+00:00\n"
+"POT-Creation-Date: 2022-01-19 15:58:59+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2021-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2022-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "X-Generator: grunt-wp-i18n 0.5.4\n"
@@ -141,63 +141,63 @@ msgstr ""
 msgid "After Post Widget"
 msgstr ""
 
-#: classes/class-fl-theme.php:910
+#: classes/class-fl-theme.php:922
 msgid "Choose Menu"
 msgstr ""
 
-#: classes/class-fl-theme.php:910
+#: classes/class-fl-theme.php:922
 msgid "Home"
 msgstr ""
 
-#: classes/class-fl-theme.php:947 includes/customizer-panel-footer.php:249
+#: classes/class-fl-theme.php:959 includes/customizer-panel-footer.php:249
 #: includes/customizer-panel-footer.php:290
 #: includes/customizer-panel-header.php:51
 #: includes/customizer-panel-header.php:93
 msgid "Menu"
 msgstr ""
 
-#: classes/class-fl-theme.php:1284
+#: classes/class-fl-theme.php:1298
 msgid "&laquo; Newer Posts"
 msgstr ""
 
-#: classes/class-fl-theme.php:1285
+#: classes/class-fl-theme.php:1299
 msgid "Older Posts &raquo;"
 msgstr ""
 
-#: classes/class-fl-theme.php:1524
+#: classes/class-fl-theme.php:1538
 msgid "Scroll To Top"
 msgstr ""
 
-#: classes/class-fl-theme.php:1589 classes/class-fl-theme.php:1592
+#: classes/class-fl-theme.php:1603 classes/class-fl-theme.php:1606
 msgid " (required)"
 msgstr ""
 
-#: classes/class-fl-theme.php:1684
+#: classes/class-fl-theme.php:1698
 msgid "Skip to content"
 msgstr ""
 
-#: classes/class-fl-theme.php:1696
+#: classes/class-fl-theme.php:1710
 msgid "Submit Comment"
 msgstr ""
 
-#: classes/class-fl-theme.php:1698
+#: classes/class-fl-theme.php:1712
 msgid "Leave a Reply"
 msgstr ""
 
-#: classes/class-fl-theme.php:1699
+#: classes/class-fl-theme.php:1713
 msgid "Cancel Reply"
 msgstr ""
 
-#: classes/class-fl-theme.php:1708
+#: classes/class-fl-theme.php:1722
 #. translators: %s: user name
 msgid "Logged in as %s."
 msgstr ""
 
-#: classes/class-fl-theme.php:1708
+#: classes/class-fl-theme.php:1722
 msgid "Log out of this account"
 msgstr ""
 
-#: classes/class-fl-theme.php:1708
+#: classes/class-fl-theme.php:1722
 msgid "Log out &raquo;"
 msgstr ""
 
@@ -1210,6 +1210,14 @@ msgstr ""
 msgid "WordPress"
 msgstr ""
 
+#: includes/customizer-panel-general.php:1398
+msgid "Tik Tok"
+msgstr ""
+
+#: includes/customizer-panel-general.php:1404
+msgid "Spotify"
+msgstr ""
+
 #: includes/customizer-panel-header.php:52
 #: includes/customizer-panel-header.php:94
 msgid "Menu &amp; Social Icons"
@@ -1688,79 +1696,79 @@ msgctxt ""
 msgid "Footer Column %d"
 msgstr ""
 
-#: classes/class-fl-theme.php:949 includes/customizer-panel-header.php:1004
+#: classes/class-fl-theme.php:961 includes/customizer-panel-header.php:1004
 #: includes/customizer-panel-header.php:1011
 msgctxt "Mobile navigation toggle button text."
 msgid "Menu"
 msgstr ""
 
-#: classes/class-fl-theme.php:1244
+#: classes/class-fl-theme.php:1258
 #. translators: %s: Archive title tag
 msgctxt "Archive title: tag."
 msgid "Posts Tagged &#8216;%s&#8217;"
 msgstr ""
 
-#: classes/class-fl-theme.php:1247
+#: classes/class-fl-theme.php:1261
 #. translators: %s: Archive title day
 msgctxt "Archive title: day."
 msgid "Archive for %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1250
+#: classes/class-fl-theme.php:1264
 #. translators: %s: Archive title month
 msgctxt "Archive title: month."
 msgid "Archive for %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1253
+#: classes/class-fl-theme.php:1267
 #. translators: %s: Archive title year
 msgctxt "Archive title: year."
 msgid "Archive for %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1256
+#: classes/class-fl-theme.php:1270
 #. translators: %s: Archive title author
 msgctxt "Archive title: author."
 msgid "Posts by %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1259
+#: classes/class-fl-theme.php:1273
 #. translators: %s: Search results title
 msgctxt "Search results title."
 msgid "Search results for: %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1261
+#: classes/class-fl-theme.php:1275
 msgctxt "Archive title: paged archive."
 msgid "Archives"
 msgstr ""
 
-#: classes/class-fl-theme.php:1589
+#: classes/class-fl-theme.php:1603
 msgctxt "Comment form label: comment author name."
 msgid "Name"
 msgstr ""
 
-#: classes/class-fl-theme.php:1592
+#: classes/class-fl-theme.php:1606
 msgctxt "Comment form label: comment author email."
 msgid "Email (will not be published)"
 msgstr ""
 
-#: classes/class-fl-theme.php:1595
+#: classes/class-fl-theme.php:1609
 msgctxt "Comment form label: comment author website."
 msgid "Website"
 msgstr ""
 
-#: classes/class-fl-theme.php:1697
+#: classes/class-fl-theme.php:1711
 msgctxt "Respond form title."
 msgid "Leave a Comment"
 msgstr ""
 
-#: classes/class-fl-theme.php:1704
+#: classes/class-fl-theme.php:1718
 msgctxt "Comment form label: comment content."
 msgid "Comment"
 msgstr ""
 
-#: classes/class-fl-theme.php:1706
+#: classes/class-fl-theme.php:1720
 #. translators: %s: Please, keep the HTML tags
 msgctxt "Please, keep the HTML tags."
 msgid "You must be <a%s>logged in</a> to post a comment."

@@ -190,13 +190,7 @@ Appearance > Theme Settings > Code or create a child theme.
 	/* Shrink Header */
 	&.fl-shrink-header-enabled {
 
-		.fl-page {
-			padding-top: 0!important;
-		}
-
 		.fl-page-header {
-			position: relative;
-
 			&.fl-shrink-header {
 				.fl-page-header-wrap {
 					background: inherit;
@@ -211,8 +205,12 @@ Appearance > Theme Settings > Code or create a child theme.
 			}
 		}
 
-		.fl-shrink-header .navbar-toggle {
+		.fl-shrink-header.fl-page-nav-toggle-icon .navbar-toggle {
 			position: fixed;
+		}
+
+		.fl-shrink-header.fl-page-nav-toggle-button .navbar-toggle {
+			position: inherit;
 		}
 
 		.fl-page-bar ~ .fl-shrink-header .navbar-toggle {
@@ -324,19 +322,33 @@ Appearance > Theme Settings > Code or create a child theme.
 	}
 }
 
-@media (min-width: @medium-breakpoint) {
-	.fl-responsive-nav-enabled {
-		&.fl-shrink-header-enabled {
-			&.admin-bar {
-				.fl-page-bar ~ .fl-page-header {
-					top: 35px!important;
-				}
-
-				.fl-page-header {
-					top: 0;
-				}
+/* Fix broken header alignment when using offcanvas menu and shrink header. */
+.fl-fixed-width.fl-nav-mobile-offcanvas.fl-responsive-nav-enabled.fl-shrink-header-enabled {
+	.fl-page-header.fl-shrink-header {
+		.fl-page-header-wrap {
+			background: inherit;
+			width: (@content-width + 80);
+			max-width: 100%;
+			min-width: 0%;
+			position: fixed;
+			
+			.navbar-toggle {
+				position: absolute;
+				top: 24px;
 			}
 		}
+	}
+	.fl-page-header.fl-page-nav-toggle-button.fl-shrink-header {
+		.fl-page-header-wrap {
+			.navbar-toggle {
+				position: static;
+			}
+		}
+	}
+}
+
+@media (min-width: @medium-breakpoint) {
+	.fl-responsive-nav-enabled {
 
 		/* Hide Header Until Scroll */
 		&.fl-scroll-header {
@@ -430,6 +442,16 @@ Appearance > Theme Settings > Code or create a child theme.
 	.fl-responsive-nav-enabled.admin-bar {
 		.fl-nav-offcanvas-collapse.navbar-collapse {
 			top: 0;
+		}
+	}
+}
+
+@media (max-width: 1100px) {
+	.fl-fixed-width.fl-nav-mobile-offcanvas.fl-responsive-nav-enabled.fl-shrink-header-enabled {
+		.fl-page-header.fl-shrink-header {
+			.fl-page-header-wrap {
+				width: 980px;
+			}
 		}
 	}
 }

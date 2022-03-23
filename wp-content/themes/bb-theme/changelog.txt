@@ -1,3 +1,22 @@
+<h4>1.7.10 - 01/19/2022</h4>
+<p><strong>Enhancements</strong></p>
+<ul>
+	<li>Update calls to FontAwesome to use the latest release</li>
+	<li>Add TikTok and Spotify to Social Icons</li>
+</ul>
+
+<p><strong>Bug Fixes</strong></p>
+<ul>
+	<li>Fix WooCommerce Sidebar on Left not displaying before content on mobile</li>
+	<li>Fix italic not working for body text</li>
+	<li>Fix tagline displaying even when logo used and the option to disable it is missing</li>
+	<li>Fix block editor's Cover block CSS getting overridden by ours</li>
+	<li>Fix header set to Fade In on boxed layout being full width instead of fixed width</li>
+	<li>Fix shrink Header being narrower if responsive breakpoint is set to always</li>
+	<li>Fix alignwide & alignfull not working for Gallery block or any block that uses ul/ol in block editor</li>
+	<li>Add explicit height and width to Header logo to help with CLS</li>
+</ul>
+
 <h4>1.7.9 - 05/12/2021</h4>
 <p><strong>Enhancements</strong></p>
 <ul>

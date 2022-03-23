@@ -1,0 +1,54 @@
+.hero {
+  font-size: 24px;
+  background: $blue-lightest;
+  color: $blue;
+  &.hero-arch {
+    background: url('./images/arch-246.png') $blue-lightest no-repeat bottom;
+    background-size: 100% 240px;
+    @media (max-width: 768px) {
+      background-size: 100% 120px;
+    }
+  }
+  &#home-hero {
+    background: url('./images/arch-96.png') $blue-lightest no-repeat bottom;
+    background-size: 100% 96px;
+    padding-bottom: 96px;
+    @media (max-width: 768px) {
+      background-size: 100% 40px;
+    }
+    h1 {
+      font-size: 40px;
+      text-transform: initial;
+    }
+  }
+  h1 {
+    text-transform: uppercase;
+  }
+  img {
+    border-radius: $img-radius;
+    @media (max-width: 768px) {
+      border-radius: $img-radius-small;
+    }
+  }
+  p {
+    font-size: 24px;
+    color: $blue;
+    @media (max-width: 768px) {
+      font-size: 22px;
+    }
+  }
+  .h2-container .fl-node-content, 
+  .p-container .fl-node-content {
+    margin-top: 0;
+  }
+}
+
+.hero + .hero {
+  .fl-row-content-wrap {
+     margin-top: 0;
+     padding-top: 0;
+  }
+  .fl-module-content {
+    margin-top: 0;
+  }
+}

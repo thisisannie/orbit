@@ -22,7 +22,7 @@ final class FLTheme {
 	 * @since 1.7
 	 * @var string $fa5_url
 	 */
-	static public $fa5_url = 'https://use.fontawesome.com/releases/v5.9.0/css/all.css';
+	static public $fa5_url = 'https://use.fontawesome.com/releases/v5.15.4/css/all.css';
 
 	/**
 	 * Font Awesome 4 CDN URL.
@@ -456,7 +456,14 @@ final class FLTheme {
 	static public function fonts() {
 		$settings = self::get_settings();
 
-		self::add_font( $settings['fl-body-font-family'], apply_filters( 'fl_body_font_family', array( 300, 400, 700 ) ) );
+		$defaults = array(
+			300,
+			400,
+			700,
+			$settings['fl-body-font-weight'],
+		);
+
+		self::add_font( $settings['fl-body-font-family'], apply_filters( 'fl_body_font_family', $defaults ) );
 		self::add_font( $settings['fl-heading-font-family'], $settings['fl-heading-font-weight'] );
 		self::add_font( $settings['fl-nav-font-family'], $settings['fl-nav-font-weight'] );
 		self::add_font( $settings['fl-button-font-family'], $settings['fl-button-font-weight'] );
@@ -869,6 +876,9 @@ final class FLTheme {
 		}
 
 		if ( 'image' === $logo_type ) {
+
+			$id         = attachment_url_to_postid( $logo_image );
+			$image_data = wp_get_attachment_metadata( $id );
 			$logo_text  = apply_filters( 'fl_logo_text', get_bloginfo( 'name' ) );
 			$logo_title = apply_filters( 'fl_logo_title', '' );
 
@@ -878,6 +888,8 @@ final class FLTheme {
 				echo ' data-mobile="' . $mobile_logo . '"';
 			}
 			echo ' title="' . esc_attr( $logo_title ) . '"';
+			echo ( isset( $image_data['width'] ) ) ? sprintf( ' width="%s"', $image_data['width'] ) : '';
+			echo ( isset( $image_data['height'] ) ) ? sprintf( ' height="%s"', $image_data['height'] ) : '';
 			echo ' alt="' . esc_attr( $logo_text ) . '" />';
 			echo '<meta itemprop="name" content="' . esc_attr( $logo_text ) . '" />';
 		} else {
@@ -891,7 +903,7 @@ final class FLTheme {
 	 * @since 1.7
 	 */
 	static public function get_tagline() {
-		if ( self::get_setting( 'fl-theme-tagline' ) ) {
+		if ( 'text' === self::get_setting( 'fl-logo-type' ) && self::get_setting( 'fl-theme-tagline' ) ) {
 			return '<div class="fl-theme-tagline">' . get_bloginfo( 'description' ) . '</div>';
 		}
 	}
@@ -985,6 +997,8 @@ final class FLTheme {
 			'rss',
 			'email',
 			'wordpress',
+			'tiktok',
+			'spotify',
 		) );
 
 		FLTheme::enqueue_fontawesome();

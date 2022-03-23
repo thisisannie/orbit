@@ -4,7 +4,8 @@
   "description": "Orbit Travel Beaver Builder Child Theme",
   "main": "index.js",
   "scripts": {
-    "css": "node-sass -w ./scss/ -o ./"
+    "css": "node-sass -w ./scss/ -o ./",
+    "mincss": "node-sass -w ./scss/ -o ./ --output-style compressed"
   },
   "author": "Annie Kyles",
   "license": "MIT"

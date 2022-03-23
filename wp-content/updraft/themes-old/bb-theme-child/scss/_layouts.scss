@@ -1,0 +1,94 @@
+// Breakpoints:
+// (max-width: 767px)
+// (min-width: 768px)
+
+.container {
+  overflow: hidden;
+}
+
+.fl-full-width .container {
+  max-width: 100%!important;
+}
+
+.fl-row-fixed-width {
+  max-width: 1300px;
+}
+
+.fl-row-content-wrap {
+  padding: 40px 20px;
+}
+
+@media (min-width: 1450px) {
+  .extend-left, .extend-right {
+    position: relative;
+    &:after {
+      content: "";
+      display: block;
+      padding-top: 87%; // image aspect ratio for 620x500, at 115%
+    }
+    .fl-photo-content {
+      position: absolute;
+      max-width: 115%;
+      width: 115%;
+
+    }
+    img {
+      width: 100%!important;
+      max-width: 100%!important;
+      height: auto!important;
+    }
+  }
+  .extend-left .fl-photo-content {
+    right: 0;
+  }
+  .extend-right .fl-photo-content {
+    left: 0;
+  }
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.row-fat .fl-row-content-wrap{
+  padding-top: 100px;
+  padding-bottom: 100px;
+  @media (max-width: 767px) {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+#random-staff-images {
+  &.extend-left:after, &.extend-right:after {
+    padding-top: 0;
+  }
+  .uabb-blog-posts {
+    overflow: initial;
+  }
+  .uabb-post-wrapper {
+    width: 50%;
+    padding: 0 3px;
+    &:nth-child(1) {
+      width: 45%;
+      margin-top: 12.4%;
+      margin-left: -6%;
+    }
+    &:nth-child(2) {
+      width: 61%;
+    }
+    &:nth-child(3) {
+      width: 61%;
+    }
+    &:nth-child(4) {
+      width: 45%;
+      margin-right: -6%;
+    }
+  }
+}
+
+.fl-col-group-equal-height {
+  align-items: center;
+}

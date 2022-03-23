@@ -1069,6 +1069,7 @@ final class FLCustomizer {
 		// Fonts
 		$vars['text-font']   = self::_get_font_family_string( $mods['fl-body-font-family'] );
 		$vars['text-weight'] = self::_sanitize_weight( $mods['fl-body-font-weight'] );
+		$vars['text-style']  = self::_get_style( $mods['fl-body-font-weight'] );
 
 		$vars['heading-font']      = self::_get_font_family_string( $mods['fl-heading-font-family'] );
 		$vars['heading-weight']    = self::_sanitize_weight( $mods['fl-heading-font-weight'] );
