@@ -44,8 +44,9 @@
 				return;
 			}
 
-			if ( $( this.wrapperClass ).find( '.fl-menu-mobile-toggle' ).hasClass( 'fl-active' ) && ( 'expanded' !== this.mobileToggle ) ){
-				$( this.wrapperClass ).find( '.fl-menu-mobile-toggle' ).trigger( 'click' );
+			var activeMobileMenu = $(this.wrapperClass + ' .fl-menu-mobile-toggle.fl-active' );
+			if ( activeMobileMenu.length && ( 'expanded' !== this.mobileToggle ) ){
+				$( activeMobileMenu ).trigger('click');
 			}
 
 			$( this.wrapperClass ).find( '.fl-has-submenu' ).removeClass( 'focus' );
@@ -408,12 +409,25 @@
 				}
 
 				$wrapper.on( 'click', '.fl-menu-mobile-toggle', function( e ){
+
 					$( this ).toggleClass( 'fl-active' );
 
 					if ( self.mobileFlyout ) {
 						self._toggleFlyoutMenu();
 					}
 					else {
+						var targetMenu = null;
+						
+						if ( self.mobileBelowRow ) {
+							targetMenu = $( this ).closest( '.fl-col' ).next( '.fl-menu-mobile-clone' );
+						} else {
+							targetMenu = $( this ).closest( '.fl-menu' ).find( 'ul.menu' );
+						}
+						
+						if ( targetMenu.length ) {
+							$menu = $( targetMenu );
+						}
+
 						$menu.slideToggle();
 					}
 
@@ -423,14 +437,14 @@
 				// Hide active menu when click on anchor link ID that exists on a page.
 				$menu.on( 'click', '.menu-item > a[href*="#"]:not([href="#"])', function(e){
 					var $href = $(this).attr('href'),
-						$targetID = $href.split('#')[1];
-
-					if ( $('body').find('#'+  $targetID).length > 0 ) {
+						$targetID = $href.split('#')[1],
+						element = $('#' + $targetID);
+					if ( $('body').find(element).length > 0 ) {
 						$( this ).toggleClass( 'fl-active' );
-						
+						FLBuilderLayout._scrollToElement( element );
 						if ( ! self._isMenuToggle() ) {
-							$menu.slideToggle();	
-						} 
+							$menu.slideToggle();
+						}
 					}
 				});
 			}
@@ -506,9 +520,14 @@
 			}
 
 			var module = $( this.nodeClass ),
-				clone  = module.clone(),
+				clone  = null,
 				col    = module.closest( '.fl-col' );
 
+			if ( module.length < 1 ) {
+				return;
+			}
+
+			clone = ( module.length > 1 ) ? $( module[0] ).clone() : module.clone();
 			module.find( 'ul.menu' ).remove();
 			clone.addClass( ( this.nodeClass + '-clone' ).replace( '.', '' ) );
 			clone.addClass( 'fl-menu-mobile-clone' );

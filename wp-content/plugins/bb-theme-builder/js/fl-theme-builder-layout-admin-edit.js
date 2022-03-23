@@ -96,6 +96,7 @@
 		{
 			var type      = $( 'input[name=fl-theme-layout-type]' ).val(),
 				sticky    = $( '.fl-theme-layout-header-sticky' ),
+				stickyOn  = $( '.fl-theme-layout-header-sticky-on' ),
 				shrink    = $( '.fl-theme-layout-header-shrink' ),
 				overlay   = $( '.fl-theme-layout-header-overlay' ),
 				overlayBg = $( '.fl-theme-layout-header-overlay-bg' ),
@@ -109,6 +110,7 @@
 				overlay.show().find( 'select' ).trigger( 'change' );
 			} else {
 				sticky.hide();
+				stickyOn.hide();
 				shrink.hide();
 				overlay.hide();
 				overlayBg.hide();
@@ -197,7 +199,7 @@
 					locationSelect = locationWrap.find( '.fl-theme-builder-location' );
 					objectSelect   = locationWrap.find( '.fl-theme-builder-location-objects' );
 
-					if ( 'post' == parts[0] || 'taxonomy' == parts[0]  ) {
+					if ( 'post' == parts[0] || 'taxonomy' == parts[0] || 'tax_parent' == parts[0] ) {
 						if ( parts.length <= 3 ) {
 							location = parts[0] + ':' + parts[1];
 							data     = config[ parts[0] ][ parts[1] ];
@@ -205,17 +207,18 @@
 						} else {
 							location 	 = parts[0] + ':' + parts[1] + ':' + parts[2] + ':' + parts[3];
 							locationType = 'post' === parts[0] && 'ancestor' === parts[2] ? 'post' : parts[2];
-							data     	 = config[ locationType ][ parts[3] ];
-							id       	 = 5 === parts.length ? parts[4] : undefined;
+							locationType = 'tax_parent' === parts[2] ? 'taxonomy' : locationType;
+							data 	= config[ locationType ][ parts[3] ];
+							id 		= 5 === parts.length ? parts[4] : undefined;
 						}
 					}
 					else {
 						location = parts[0] + ':' + parts[1];
 					}
 
-					locationWrap.find( '[data-location="' + location + '"]' ).attr( 'selected', 'selected' );
+					locationWrap.find( '[data-location="' + location + '"]' ).prop( 'selected', true );
+					if ( 'post' == parts[0] || 'taxonomy' == parts[0] || 'tax_parent' == parts[0]  ) {
 
-					if ( 'post' == parts[0] || 'taxonomy' == parts[0]  ) {
 						FLThemeBuilderLayoutAdminEdit._showLocationObjectSelect( objectSelect.parent(), data, id );
 					}
 				}
@@ -286,7 +289,7 @@
 					option   = null,
 					location = select.attr( 'data-location' );
 
-				if ( /post:[a-zA-Z0-9_-]+:(post|ancestor):[a-zA-Z0-9_-]+$/.test( location ) ) {
+				if ( /post:[a-zA-Z0-9_-]+:(post|ancestor|tax_parent):[a-zA-Z0-9_-]+$/.test( location ) ) {
 					option = select.find( 'option' ).eq( 0 );
 
 					if ( '' === option.attr( 'value' ) ) {
@@ -344,6 +347,11 @@
 							else {
 								actionType  = 'posts';
 							}
+
+							if ( location.id.indexOf( ':tax_parent' ) > -1 ) {
+								actionType  = 'parent_terms';
+								location.id = location.id.split( ':tax_parent:' )[1];
+							}
 						}
 
 						$.post( ajaxurl, {
@@ -384,13 +392,17 @@
 				allLabel       = FLThemeBuilderConfig.strings.allObjects.replace( '%s', data.label ),
 				options        = '<option value="" data-location="' + locationString + '">' + allLabel + '</option>',
 				selected       = null,
+				termLabel      = '',
 				i              = 0;
-			for ( ; i < data.objects.length; i++ ) {
-				objectLocation = ' data-location="' + locationString + ':' + data.objects[ i ].id + '"';
-				selected = 'undefined' != typeof id && id == data.objects[ i ].id ? ' selected' : '';
-				options += '<option value=\'' + JSON.stringify( data.objects[ i ] ).replace(/&quot;/g, '\\&quot;') + '\'' + selected + objectLocation + '>' + data.objects[ i ].name + '</option>';
-			}
 
+			if ( null != data.objects ) {
+				for ( ; i < data.objects.length; i++ ) {
+					termLabel = data.objects[i].label ? data.objects[i].label : data.objects[i].name;
+					objectLocation = ' data-location="' + locationString + ':' + data.objects[ i ].id + '"';
+					selected = 'undefined' != typeof id && id == data.objects[ i ].id ? ' selected' : '';
+					options += '<option value=\'' + JSON.stringify( data.objects[ i ] ).replace(/&quot;/g, '\\&quot;') + '\'' + selected + objectLocation + '>' + termLabel + '</option>';
+				}
+			}
 			objectSelect.html( options );
 			objectSelect.attr( 'data-location', locationString );
 			objectSelect.attr( 'data-type', data.type );
@@ -401,7 +413,7 @@
 			FLThemeBuilderLayoutAdminEdit._hideRowLoading( locationSelect );
 
 			if ( 'disabled' == objectSelect.find( 'option' ).eq( 0 ).attr( 'disabled' ) ) {
-				objectSelect.find( 'option' ).eq( 1 ).attr( 'selected', 'selected' );
+				objectSelect.find( 'option' ).eq( 1 ).prop( 'selected', true );
 			}
 
 			FLThemeBuilderLayoutAdminEdit._removeLocationObjectOptions();
@@ -508,7 +520,7 @@
 
 			if ( 0 === saved.length ) {
 				savedWrap.append( template() );
-				savedWrap.find( '[data-rule="general:all"]' ).attr( 'selected', 'selected' );
+				savedWrap.find( '[data-rule="general:all"]' ).prop( 'selected', true );
 				return;
 			}
 
@@ -521,7 +533,7 @@
 				ruleSelect = ruleWrap.find( '.fl-theme-builder-user-rule' );
 				selected   = ruleWrap.find( '[data-rule="' + parts[0] + ':' + parts[1] + '"]' );
 
-				selected.attr( 'selected', 'selected' );
+				selected.prop( 'selected', true );
 			}
 
 			savedWrap.find( '.fl-theme-builder-remove-rule-button' ).show();
@@ -652,6 +664,7 @@
 		 */
 		_stickyChanged: function()
 		{
+			$( '.fl-theme-layout-header-sticky-on' ).toggle( '1' == $(this).val());
 			$( '.fl-theme-layout-header-shrink' ).toggle( '1' == $( this ).val() );
 		},
 

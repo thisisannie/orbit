@@ -565,7 +565,7 @@ final class FLBuilderModel {
 		$post_id  = ( isset( $post->ID ) ) ? $post->ID : false;
 
 		if ( null !== self::$active ) {
-			return self::$active;
+			return apply_filters( 'fl_builder_model_is_builder_active', self::$active );
 		} elseif ( ! is_admin() && is_singular() && $query_id != $post_id ) {
 			self::$active = false;
 		} elseif ( is_customize_preview() ) {
@@ -574,8 +574,7 @@ final class FLBuilderModel {
 			$post_data    = self::get_post_data();
 			self::$active = isset( $_GET['fl_builder'] ) || isset( $post_data['fl_builder'] );
 		}
-
-		return self::$active;
+		return apply_filters( 'fl_builder_model_is_builder_active', self::$active );
 	}
 
 	/**
@@ -796,7 +795,7 @@ final class FLBuilderModel {
 		$preview = self::is_builder_draft_preview();
 
 		if ( $active || $preview ) {
-			return md5( uniqid() );
+			return md5( FLBuilderModel::uniqid() );
 		} else {
 			return $path ? md5( file_get_contents( $path ) ) : md5( get_post_modified_time( 'U', false, $post_id ) );
 		}
@@ -972,7 +971,7 @@ final class FLBuilderModel {
 	 * @return string
 	 */
 	static public function generate_node_id() {
-		$node_id = uniqid();
+		$node_id = FLBuilderModel::uniqid();
 
 		if ( $node_id == self::$last_generated_node_id ) {
 			return self::generate_node_id();
@@ -3249,7 +3248,7 @@ final class FLBuilderModel {
 				$data->id          = $widget->id;
 				$data->name        = $widget->name;
 				$data->class       = $widget->class;
-				$data->category    = $widget->category;
+				$data->category    = $widget->fl_category;
 				$data->kind        = 'module';
 				$data->isWidget = true; // @codingStandardsIgnoreLine
 				$data->isAlias = false; // @codingStandardsIgnoreLine
@@ -3498,7 +3497,7 @@ final class FLBuilderModel {
 	 * @return array $defaults Default settings for the module.
 	 */
 	static public function add_default_module( $parent_id = null, $type = null, $position = null, $defaults = null ) {
-		$parent         = ( 0 == $parent_id ) ? null : self::get_node( $parent_id );
+		$parent         = ( 0 === $parent_id ) ? null : self::get_node( $parent_id );
 		$settings       = self::get_module_defaults( $type );
 		$module_node_id = self::generate_node_id();
 
@@ -3682,7 +3681,7 @@ final class FLBuilderModel {
 			}
 			$widget->class            = $class;
 			$widget->isWidget         = true; // @codingStandardsIgnoreLine
-			$widget->category         = __( 'WordPress Widgets', 'fl-builder' );
+			$widget->fl_category      = __( 'WordPress Widgets', 'fl-builder' );
 			$widgets[ $widget->name ] = $widget;
 		}
 
@@ -5141,7 +5140,11 @@ final class FLBuilderModel {
 		// Loop through templates and build the categorized array.
 		foreach ( $templates as $i => $template ) {
 
-			$cats = wp_get_post_terms( $template['postId'], 'fl-builder-template-category' );
+			$cats = get_the_terms( $template['postId'], 'fl-builder-template-category' );
+
+			if ( ! $cats ) {
+				$cats = array();
+			}
 
 			if ( 0 === count( $cats ) || is_wp_error( $cats ) ) {
 				$template['category']                        = array(
@@ -5200,7 +5203,11 @@ final class FLBuilderModel {
 			return '';
 		} else {
 
-			$terms = wp_get_post_terms( $post->ID, 'fl-builder-template-type' );
+			$terms = get_the_terms( $post->ID, 'fl-builder-template-type' );
+
+			if ( ! $terms ) {
+				$terms = array();
+			}
 
 			$type = ( is_wp_error( $terms ) || 0 === count( $terms ) ) ? 'layout' : $terms[0]->slug;
 
@@ -5219,7 +5226,7 @@ final class FLBuilderModel {
 	 */
 	static public function delete_user_template( $template_id = null ) {
 		if ( isset( $template_id ) ) {
-			wp_delete_post( $template_id, true );
+			wp_trash_post( $template_id, true );
 		}
 	}
 
@@ -5676,13 +5683,14 @@ final class FLBuilderModel {
 
 			foreach ( $nodes as $node_id => $node ) {
 
-				$nodes[ $node_id ]->template_id      = $template_id;
-				$nodes[ $node_id ]->template_node_id = $node_id;
-
-				if ( $node_id == $root_node->node ) {
-					$nodes[ $node_id ]->template_root_node = true;
-				} elseif ( isset( $nodes[ $node_id ]->template_root_node ) ) {
-					unset( $nodes[ $node_id ]->template_root_node );
+				if ( false == $nodes[ $node_id ]->global ) {
+					$nodes[ $node_id ]->template_id      = $template_id;
+					$nodes[ $node_id ]->template_node_id = $node_id;
+					if ( $node_id == $root_node->node ) {
+						$nodes[ $node_id ]->template_root_node = true;
+					} elseif ( isset( $nodes[ $node_id ]->template_root_node ) ) {
+						unset( $nodes[ $node_id ]->template_root_node );
+					}
 				}
 			}
 		} else {
@@ -5806,7 +5814,7 @@ final class FLBuilderModel {
 		self::unlink_global_node_template_from_all_posts( $template_post_id );
 
 		// Delete the template post.
-		wp_delete_post( $template_post_id, true );
+		wp_trash_post( $template_post_id, true );
 	}
 
 	/**
@@ -5983,7 +5991,7 @@ final class FLBuilderModel {
 	 * @return void
 	 */
 	static public function apply_node_template( $template_id = null, $parent_id = null, $position = 0, $template = null ) {
-		$parent           = ( 0 == $parent_id ) ? null : self::get_node( $parent_id );
+		$parent           = ( 0 === $parent_id ) ? null : self::get_node( $parent_id );
 		$template_post_id = self::get_node_template_post_id( $template_id );
 		$is_col_template  = false;
 
@@ -6985,6 +6993,18 @@ final class FLBuilderModel {
 
 			exit;
 		}
+	}
+
+	/**
+	 * Be sure to return a unique string
+	 * @since 2.5
+	 */
+	static public function uniqid( $prefix = '', $length = 12 ) {
+		$id = substr( str_shuffle( '0123456789abcdefghijklmnopqrstuvwxyz' ), 0, $length );
+		if ( preg_match( '/^[0-9]+$/', $id ) ) {
+			$id = self::uniqid( $prefix, $length );
+		}
+		return ( $prefix ) ? $prefix . '-' . $id : $id;
 	}
 
 	/**

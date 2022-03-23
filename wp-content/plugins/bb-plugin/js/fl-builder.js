@@ -314,6 +314,19 @@
 		_codeDisabled: false,
 
 		/**
+		 * Misc data container
+		 * @since 2.6
+		 * @access private
+		 */
+		_sandbox: {},
+
+		/**
+		 * Flag whether to clear preview or not
+		 * @access private
+		 */
+		_publishAndRemain: false,
+
+		/**
 		 * Initializes the builder interface.
 		 *
 		 * @since 1.0
@@ -333,6 +346,7 @@
 			FLBuilder._initDropTargets();
 			FLBuilder._initSortables();
 			FLBuilder._initStrings();
+			FLBuilder._initSanityChecks();
 			FLBuilder._initTipTips();
 			FLBuilder._initTinyMCE();
 			FLBuilder._bindEvents();
@@ -375,6 +389,14 @@
 					}
 				});
 			};
+		},
+
+		_initSanityChecks: function() {
+			if ( FLBuilderConfig.uploadPath && typeof FLBuilderLayout === 'undefined' ) {
+				url = '<a href="' + FLBuilderConfig.uploadUrl + '">wp-admin -> Settings -> Media</a>';
+				FLBuilder.alert( '<strong>Critcal Error</strong><p style="font-size:15px;">Please go to ' + url + ' and make sure uploads folder settings is blank</p>');
+				$('.fl-builder-alert-close').hide()
+			}
 		},
 
 		/**
@@ -6881,9 +6903,10 @@
 				moduleType	= data.layout.moduleType,
 				hook	 	= 'didSave' + type.charAt(0).toUpperCase() + type.slice(1) + 'SettingsComplete',
 				callback 	= function() {
-					if( preview && data.layout.partial && data.layout.nodeId === preview.nodeId ) {
+					if (preview && data.layout.partial && data.layout.nodeId === preview.nodeId && !FLBuilder._publishAndRemain ) {
 						preview.clear();
 						preview = null;
+						FLBuilder._publishAndRemain = false;
 					}
 				};
 
@@ -6931,7 +6954,12 @@
 
 			disableClose = _.isUndefined( disableClose ) ? false : disableClose;
 			showAlert 	 = _.isUndefined( showAlert ) ? false : showAlert;
-			destroy 	 = _.isUndefined( destroy ) ? true : destroy;
+			destroy 	 = _.isUndefined( destroy ) ? ! disableClose : destroy;
+
+			// prevent clearing preview.
+			if (!destroy) {
+				FLBuilder._publishAndRemain = true;
+			}
 
 			if ( form.length ) {
 
@@ -6948,7 +6976,7 @@
 				}
 
 				// Do a validation check of the main form to see if we should save.
-				if ( valid && ! form.validate().form() ) {
+				if ( valid && ! form.validate({ignore: '.fl-ignore-validation'}).form() ) {
 					valid = false;
 				}
 
@@ -6979,7 +7007,6 @@
 
 				// Destroy the settings form?
 				if ( destroy ) {
-
 					FLBuilder._destroySettingsForms();
 
 					// Destroy the preview if settings don't have changes.
@@ -6987,6 +7014,9 @@
 						FLBuilder.preview.clear();
 						FLBuilder.preview = null;
 					}
+				} else {
+					// cache current settings
+					FLBuilderSettingsForms.cacheCurrentSettings();
 				}
 
 				// Close the main lightbox if it doesn't have changes and closing isn't disabled.
@@ -7528,45 +7558,48 @@
 		_initMultipleFields: function()
 
 		{
-			var multiples = $('.fl-builder-settings:visible .fl-builder-field-multiples'),
+
+			$('.fl-builder-settings:visible .fl-builder-field-multiples').each(function(){
+				var multiples = $(this),
 				multiple  = null,
 				fields    = null,
 				i         = 0,
 				cursorAt  = FLBuilderConfig.isRtl ? { left: 10 } : { right: 10 },
 				limit     = multiples.attr( 'data-limit' ) || 0,
-				count     = $('tbody.fl-builder-field-multiples').find('tr').length || 0
+				count     = multiples.find('tr').length || 0
 
-			if( parseInt(limit) > 0 && count -1 >= parseInt( limit ) ) {
-				$('.fl-builder-field-copy').hide()
-				$('.fl-builder-field-add').fadeOut()
-			} else {
-				$('.fl-builder-field-copy, .fl-builder-field-add').show()
-			}
-
-			for( ; i < multiples.length; i++) {
-
-				multiple = multiples.eq(i);
-				fields = multiple.find('.fl-builder-field-multiple');
-
-				if(fields.length === 1) {
-					fields.eq(0).find('.fl-builder-field-actions').addClass('fl-builder-field-actions-single');
+				if( parseInt(limit) > 0 && count -1 >= parseInt( limit ) ) {
+					multiples.find('.fl-builder-field-copy').hide()
+					multiples.find('.fl-builder-field-add').fadeOut()
+				} else {
+					multiples.find('.fl-builder-field-copy, .fl-builder-field-add').show()
 				}
-				else {
-					fields.find('.fl-builder-field-actions').removeClass('fl-builder-field-actions-single');
-				}
-			}
 
-			$('.fl-builder-field-multiples').sortable({
-				items: '.fl-builder-field-multiple',
-				cursor: 'move',
-				cursorAt: cursorAt,
-				distance: 5,
-				opacity: 0.5,
-				placeholder: 'fl-builder-field-dd-zone',
-				stop: FLBuilder._fieldDragStop,
-				tolerance: 'pointer',
-				axis: "y"
-			});
+				for( ; i < multiples.length; i++) {
+
+					multiple = multiples.eq(i);
+					fields = multiple.find('.fl-builder-field-multiple');
+
+					if(fields.length === 1) {
+						fields.eq(0).find('.fl-builder-field-actions').addClass('fl-builder-field-actions-single');
+					}
+					else {
+						fields.find('.fl-builder-field-actions').removeClass('fl-builder-field-actions-single');
+					}
+				}
+
+				$('.fl-builder-field-multiples').sortable({
+					items: '.fl-builder-field-multiple',
+					cursor: 'move',
+					cursorAt: cursorAt,
+					distance: 5,
+					opacity: 0.5,
+					placeholder: 'fl-builder-field-dd-zone',
+					stop: FLBuilder._fieldDragStop,
+					tolerance: 'pointer',
+					axis: "y"
+				});
+			}); // end loop
 		},
 
 		/**
@@ -8331,16 +8364,23 @@
 		_initSingleVideoSelector: function()
 		{
 			if(FLBuilder._singleVideoSelector === null) {
+				var defaultFileExtensions = _wpPluploadSettings.defaults.filters.mime_types[0].extensions; 
+					
+				_wpPluploadSettings['defaults']['multipart_params']['fl_upload_type'] = 'video';
+				_wpPluploadSettings.defaults.filters.mime_types[0].extensions         = FLBuilderConfig.uploadTypes.videoTypes;
 
 				FLBuilder._singleVideoSelector = wp.media({
 					title: FLBuilderStrings.selectVideo,
 					button: { text: FLBuilderStrings.selectVideo },
-					library : { type : FLBuilderConfig.uploadTypes.video },
+					library: { type: [ 'video/mp4', 'video/webm' ] },
 					multiple: false
 				});
 
 				FLBuilder._singleVideoSelector.on( 'open', FLBuilder._wpmedia_reset_errors );
-				_wpPluploadSettings['defaults']['multipart_params']['fl_upload_type']= 'video';
+			
+				FLBuilder._singleVideoSelector.on( 'close', function () {
+					_wpPluploadSettings.defaults.filters.mime_types[0].extensions = defaultFileExtensions;
+				});
 			}
 		},
 
@@ -10105,11 +10145,12 @@
 				else {
 
 					for ( prop in settings ) {
+						type = typeof settings[ prop ]
 
-						if ( 'string' == typeof settings[ prop ] ) {
+						if ( 'string' == type || 'number' == type ) {
 							settings[ prop ] = FLBuilder._btoa( settings[ prop ] );
 						}
-						else if( 'object' == typeof settings[ prop ] ) {
+						else if( 'object' == type ) {
 							settings[ prop ] = FLBuilder._ajaxModSecFix( settings[ prop ] );
 						}
 					}
@@ -10529,7 +10570,41 @@
 		 */
 		isBoolean: function(value) {
 			return value === true || value === false
-		}
+		},
+
+		/**
+		 * Get sandbox data.
+		 * @since 2.6
+		 * @param {string} data the JSON containing error(s)
+		 */
+		getSandbox: function (key) {
+			if (key in this._sandbox) {
+				return this._sandbox[key];
+			}
+			return false;
+		},
+
+		/**
+		 * Set sandbox data.
+		 * @since 2.6
+		 * @param {string} key
+		 * @param {any} data
+		 * @return {void}
+		 */
+		setSandbox: function (key, data) {
+			this._sandbox[key] = data;
+		},
+
+		/**
+		 * Delete sandbox data.
+		 * @since 2.6
+		 * @param {string} key
+		 * @param {any} data
+		 * @return {void}
+		 */
+		deleteSandbox: function (key) {
+			delete this._sandbox[key];
+		},
 	};
 
 	/* Start the party!!! */

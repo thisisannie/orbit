@@ -1,3 +1,147 @@
+<h4>2.5.2.3 - 03/21/2022</h4>
+<p><strong>Hotfix</strong></p>
+<ul>
+		<li>Fix issue where published changes were not reflected until using the cache clearing tool in BB Settings</li>
+</ul>
+
+<h4>2.5.2.2 - 03/17/2022</h4>
+<p><strong>Hotfix</strong></p>
+<ul>
+		<li>Fix partial layout stylesheet not getting updated after making changes to the actual template</li>
+		<li>Remove extra slash in FontAwesome URL</li>
+		<li>Contact Form Module: Fix accessibility issues with form labels for Name and the Success URL</li>
+		<li>Subscribe Module: Fix PHP 8 issue with Drip integration</li>
+</ul>
+
+<h4>2.5.2.1 - 02/11/2022</h4>
+<p><strong>Hotfix</strong></p>
+<ul>
+		<li>Improve compatibility with FontAwesome 6 and our icon picker when using the official FontAwesome plugin</li>
+		<li>Revert Button module: Fix border Style not working if width not specified as it was causing border settings to not be respected in some situations</li>
+</ul>
+
+<h4>2.5.2 - 02/10/2022</h4>
+<p><strong>Enhancements</strong></p>
+<ul>
+		<li>Menu module: add submenu indicators on mobile</li>
+		<li>Content Slider: Focus on slide when editing</li>
+		<li>Login Module: Add new option for redirect</li>
+		<li>WPCLI: Add duplicate function</li>
+		<li>Prevent WP Post Page Clone plugin from adding duplicate links to posts/pages where BB is used to prevent it breaking our data</li>
+		<li>Add pop-up when upload_path is set to alert user of the issue as it will prevent the UI from working</li>
+		<li>Add database collation info to our debug mode output</li>
+		<li>If user templates are deleted in the UI, they now go to the trash first to ensure consistency with WP functions</li>
+</ul>
+
+<p><strong>Bug Fixes</strong></p>
+<ul>
+		<li>Menu module: fix padding on menu items with a sub-menu</li>
+		<li>Button module: Fix border Style not working if width not specified</li>
+		<li>Photo module: Caption causes the image to go out of their container</li>
+		<li>Number Counter: fix animation not starting when number is not shown</li>
+		<li>Menu module: Fix both menus opening upon clicking on the menu button</li>
+		<li>Fix background video's Audio Control Not Shown in Firefox</li>
+		<li>Video Module: fix other video types showing as selectable when they are not supported</li>
+		<li>Fix PHP Notice WP_Scripts::localize was called incorrectly</li>
+		<li>Photo Module: Ensure the same sizes are shown in Photo module and Gallery Module lightbox option</li>
+		<li>Fix Global column disappearing from UI after saving row as global</li>
+		<li>Button Group module: Fix responsive alignment not working on vertical layout</li>
+		<li>Posts Module: Hide TEC options when post type selected is not the TEC post type</li>
+		<li>Pricing table: fix features preview not working properly</li>
+		<li>Pricing table:  fix features display in Safari</li>
+		<li>Sanitize Site URLs for our use to prevent it from breaking the UI</li>
+		<li>Fix notice: Warning: Undefined variable $widget_class</li>
+		<li>Fix glitch with select2 where it won't stay open when clicking in some cases</li>
+		<li>Remove a PHP comment that was triggering some hosts' security protection to delete the file which resulted in the Outline Panel not working</li>
+</ul>
+
+<h4>2.5.1.3 - 02/1/2022</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+		<li>Post Module: Fix fatal errors when using PHP 8 when saving certain settings with blank values</li>
+		<li>TEC Pro: Fix fatal errors when using the Events Manager Date Filters</li>
+		<li>Fix compatibility with Google Site Kit plugin and others that use Rest API</li>
+		<li>Tweak our Mod Security filter to prevent it from interfering with column resize</li>
+		<li>Remove code no longer needed for the excerpt fix we implemented in 2.5.1</li>
+		<li>On publish, ensure assets are generated properly</li>
+</ul>
+
+<h4>2.5.1.2 - 01/24/2022</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+		<li>Fix issue with modules moving positions after publishing in some situations</li>
+</ul>
+
+<h4>2.5.1.1 - 12/22/2021</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+		<li>Accordion Module: Fix items not being able to be closed manually and fix smooth opening and closing not working</li>
+		<li>Button Module: Fix hover color issue</li>
+		<li>Menu Module: Fix sub-menu items using inherit for backwards compatibility</li>
+		<li>Post Grid Module: Fix FontAwesome icons being enqueued when it is not needed</li>
+		<li>Search module: fix missing an echo statement in the value attribute</li>
+		<li>Outline Panel: Fix not being able to delete unavailable modules</li>
+		<li>Fix ACF cache not being cleared for option pages properly</li>
+		<li>Fix JS error when changing a module setting and using the Publish keyboard shortcut</li>
+		<li>Fix limit on repeater field not working inside a form field</li>
+		<li>Fix FontAwesome icons preload issue</li>
+		<li>Optimize visibility fix to prevent an infinite loop</li>
+		<li>SEO Plugin integrations: don't delete assets while fetching data to prevent 404 errors with assets</li>
+</ul>
+
+<h4>2.5.1 - 12/9/2021</h4>
+<p><strong>Enhancements</strong></p>
+
+<ul>
+		<li>Add new shortcode <code>[fl-safe]</code> to wrap code in that is known to break the UI</li>
+		<li>Tweak the way we generate our unique node IDs to ensure that they always will be a string</li>
+		<li>Add offset option to Row Parallax background image</li>
+		<li>Allow user to choose images for different breakpoints when row is set to parallax background</li>
+		<li>Add support for Query Monitor to be used while inside the UI</li>
+		<li>Contact Form & Subscribe Form Modules: Show any WP_Error detected so it's easier to debug issues</li>
+		<li>Update Ace Editor to latest version</li>
+		<li>Update FontAwesome to latest version</li>
+		<li>Icon Group Module: Make spacing option responsive</li>
+		<li>Reduce number of queries for Saved nodes by switching from using <code>get_terms</code> function to <code>get_the_terms</code> since it's cached</li>
+		<li>Pricing Table Module: Make Advanced Spacing, Tooltip Icon Size, Feature Icon Size, Box Top Margin and Typography responsive</li>
+		<li>Fix conflict with Signify theme when adding media in UI</li>
+</ul>
+
+<p><strong>Bug Fixes</strong></p>
+<ul>
+		<li>Fix issue with Slide Right animation</li>
+		<li>Fixed Saved nodes not retaining categories when published in BB UI</li>
+		<li>Button Group Module: Fix background animation not working</li>
+		<li>Video Module: Fixed flash on loading when set to loop</li>
+		<li>Accordion Module: Fix "Expand first item" option issue with anchor links</li>
+		<li>Content Slider Module: Fix module autoplaying when clicking on the arrows</li>
+		<li>Menu Module: Fix no smooth scrolling on mobile and not closing properly after clicking an anchor link</li>
+		<li>Button Module: Fix column text color overriding module color</li>
+		<li>Subscribe Module: Fix Mailjet integration only showing 10 lists</li>
+		<li>Callout Module: Fix issues with rel attribute</li>
+		<li>Fix UI being broken when removing some keyboard shortcuts with <code>fl_builder_keyboard_shortcuts</code> hook</li>
+		<li>Add select2 text color for UI Dark Mode</li>
+		<li>Fix issue with get_excerpt function showing wrong data when using visibility options</li>
+		<li>Pricing Table Module: Fix custom icons not working in feature list</li>
+		<li>WPML: Fix cache clear issue when switching domains</li>
+		<li>Menu Module: Fix missing closing li tags</li>
+		<li>Fix fatal error in UI in certain circumstances when plugins add widgets</li>
+		<li>Menu Module: Logo option now correctly outputs alt attribute</li>
+		<li>Fix fatal error if search enabled in Menu Module but Search module is disabled in settings and <code>is_module_disable_enabled</code>
+		is set to true</li>
+</ul>
+
+<p><strong>Development</strong></p>
+<ul>
+<li>Add new filters <code>fl_builder_render_css_row</code> <code>fl_builder_render_css_col</code> <code>fl_builder_render_css_module</code> <code>fl_builder_render_css_module_{$module->slug}</code></li>
+</ul>
+
+<h4>2.5.0.3 - 10/19/2021</h4>
+<p><strong>Bug Fixes</strong></p>
+<ul>
+		<li>BB Lite: Fix icon picker not working in some setups when jquery-throttle is not enqueued</li>
+</ul>
+
 <h4>2.5.0.2 - 10/7/2021</h4>
 <p><strong>Enhancements</strong></p>
 <ul>

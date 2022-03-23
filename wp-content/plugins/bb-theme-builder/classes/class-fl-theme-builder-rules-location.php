@@ -1,4 +1,72 @@
 <?php
+if ( ! class_exists( 'FLTaxonomyTermsWalker' ) ) {
+	/**
+	 * Walks through each taxonomy term to build JSON data.
+	 * Used in FLThemeBuilderRulesLocation::get_taxonomy_terms() below.
+	 *
+	 * @since 1.4
+	 */
+	class FLTaxonomyTermsWalker extends Walker_Category {
+		/**
+		 * Starts the element output.
+		 *
+		 * @since 1.4
+		 *
+		 * @param string  $output (passed by reference) Used to create a JSON element out of the $item (WP Term) object.
+		 * @param WP_Term $item  WP Term data object.
+		 * @param int     $depth  Depth of category in reference to parents.
+		 * @param array   $args   An array of arguments. Unused here. See wp_list_categories().
+		 * @param int     $id    ID of the current category. Unused here.
+		 */
+		function start_el( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
+			$mdash   = str_repeat( '&mdash; ', $depth );
+			$output .= '{'
+				. '"id": ' . $item->term_id . ','
+				. '"name": "' . wp_slash( esc_attr( $item->name ) ) . '",'
+				. '"label": "' . $mdash . wp_slash( esc_attr( $item->name ) ) . '",'
+				. '"depth": ' . $depth
+				. '},';
+		}
+	}
+}
+
+if ( ! class_exists( 'FLPageWalker' ) ) {
+	/**
+	 * Walks through each page (or hierarchical post type) to build JSON data.
+	 * Used in FLThemeBuilderRulesLocation::get_post_type_posts() below.
+	 *
+	 * @since 1.4
+	 */
+	class FLPageWalker extends Walker_Page {
+		/**
+		 * Starts the element output.
+		 *
+		 * @param string  $output       (passed by reference) Used to create a JSON element out of the $page (WP_Post) object.
+		 * @param WP_Post $page         Page data object.
+		 * @param int     $depth        Optional. Depth of page. Used for padding. Default 0.
+		 * @param array   $args         Optional. Array of arguments. Default empty array.
+		 * @param int     $current_page Optional. Page ID. Default 0.
+		 */
+		function start_el( &$output, $page, $depth = 0, $args = array(), $current_page = 0 ) {
+			$mdash   = str_repeat( '&mdash; ', $depth );
+			$output .= '{'
+				. '"id": ' . $page->ID . ','
+				. '"name": "' . wp_slash( esc_attr( $page->post_title ) ) . '",'
+				. '"label": "' . $mdash . wp_slash( esc_attr( $page->post_title ) ) . '",'
+				. '"depth": ' . $depth
+				. '},';
+		}
+		public function end_el( &$output, $page, $depth = 0, $args = array() ) {
+			$output .= '';
+		}
+		function start_lvl( &$output, $depth = 0, $args = array() ) {
+			$output .= '';
+		}
+		function end_lvl( &$output, $depth = 0, $args = array() ) {
+			$output .= '';
+		}
+	}
+}
 
 /**
  * Handles location rule logic for the theme builder.
@@ -72,6 +140,7 @@ final class FLThemeBuilderRulesLocation {
 	static public function init() {
 		add_action( 'save_post', __CLASS__ . '::admin_edit_save' );
 		add_action( 'wp_ajax_fl_theme_builder_get_location_terms', __CLASS__ . '::ajax_get_terms' );
+		add_action( 'wp_ajax_fl_theme_builder_get_location_parent_terms', __CLASS__ . '::ajax_get_terms' );
 		add_action( 'wp_ajax_fl_theme_builder_get_location_posts', __CLASS__ . '::ajax_get_posts' );
 		add_action( 'wp', __CLASS__ . '::init_preview_query', 1 );
 		add_action( 'fl_builder_after_ui_bar_title', __CLASS__ . '::render_ui_preview_selector' );
@@ -91,7 +160,7 @@ final class FLThemeBuilderRulesLocation {
 		global $wp_query;
 		global $post;
 
-		if ( ! did_action( 'wp' ) ) {
+		if ( ! did_action( 'wp' ) && strpos( $_SERVER['REQUEST_URI'], 'legacy-widget-preview' ) === false ) {
 			_doing_it_wrong( __CLASS__ . '::get_current_page_location', __( 'Must be called on or after the wp action.', 'bb-theme-builder' ), '1.0' );
 		}
 
@@ -192,6 +261,7 @@ final class FLThemeBuilderRulesLocation {
 			$meta_query .= " OR pm.meta_value RLIKE '\"{$location}:post:.*\"'";
 			$meta_query .= " OR pm.meta_value RLIKE '\"{$location}:ancestor:.*\"'";
 			$meta_query .= " OR pm.meta_value RLIKE '\"{$location}:taxonomy:.*\"'";
+			$meta_query .= " OR pm.meta_value RLIKE '\"{$location}:tax_parent:.*\"'";
 			$meta_query .= " OR pm.meta_value LIKE '%\"general:single\"%'";
 		}
 
@@ -212,7 +282,6 @@ final class FLThemeBuilderRulesLocation {
 		}
 
 		self::exclude_current_page_posts();
-
 		return self::$current_page_posts;
 	}
 
@@ -337,6 +406,28 @@ final class FLThemeBuilderRulesLocation {
 								$posts[] = $post;
 							} elseif ( 5 === count( $parts ) && has_term( $parts[4], $parts[3] ) ) {
 								$posts[] = $post;
+							}
+						}
+					}
+				}
+			}
+
+			// Check for a singular layout by parent taxonomy.
+			if ( ( empty( $posts ) || $is_part ) && is_singular() ) {
+
+				foreach ( $array as $post ) {
+					foreach ( $post['locations'] as $post_location ) {
+						if ( stristr( $post_location, ':tax_parent:' ) ) {
+							$parts = explode( ':', $post_location );
+							$terms = get_the_terms( $post_id, $parts[3] );
+							if ( $terms ) {
+								$parent_terms = array();
+								foreach ( $terms as $term ) {
+									$parent_terms[] = $term->parent;
+								}
+								if ( 5 === count( $parts ) && in_array( $parts[4], $parent_terms ) ) {
+									$posts[] = $post;
+								}
 							}
 						}
 					}
@@ -644,14 +735,17 @@ final class FLThemeBuilderRulesLocation {
 				$location[2] = (int) $location[4];
 			}
 
-			if ( 'taxonomy' == $location[0] ) {
+			if ( 'taxonomy' == $location[0] || 'tax_parent' == $location[0] ) {
 				$id          = is_numeric( $location[2] ) ? intval( $location[2] ) : $location[2];
 				$term_exists = term_exists( $id, $location[1] );
 				if ( 0 === $term_exists || null === $term_exists ) {
 					continue;
 				}
-			} elseif ( isset( $location[2] ) && 'trash' == get_post_status( $location[2] ) ) {
-				continue;
+			} elseif ( isset( $location[2] ) ) {
+				$post_status = get_post_status( $location[2] );
+				if ( false === $post_status || 'trash' === $post_status ) {
+					continue;
+				}
 			}
 
 			$cleaned_locations[] = $data;
@@ -841,6 +935,17 @@ final class FLThemeBuilderRulesLocation {
 					'type'  => 'post',
 					'count' => wp_count_terms( $taxonomy_slug ),
 				);
+
+				if ( is_taxonomy_hierarchical( $taxonomy_slug ) ) {
+					$by_template_type['post'][ $post_type_slug . ':tax_parent:' . $taxonomy_slug ]                     =
+					$by_post_type[ $post_type_slug ]['locations'][ $post_type_slug . ':tax_parent:' . $taxonomy_slug ] = array( // @codingStandardsIgnoreLine
+						'id'    => $post_type_slug . ':tax_parent:' . $taxonomy_slug,
+						/* translators: 1: post type label, 2: taxonomy label */
+						'label' => sprintf( esc_html_x( '%1$s %2$s Parent', '%1$s is post type label. %2$s is taxonomy label.', 'bb-theme-builder' ), $post_type->labels->singular_name, $label ),
+						'type'  => 'post',
+						'count' => wp_count_terms( $taxonomy_slug ),
+					);
+				}
 			}
 		}
 
@@ -893,7 +998,7 @@ final class FLThemeBuilderRulesLocation {
 				$location[1] = $location[3];
 			}
 
-			if ( 'taxonomy' == $location[0] ) {
+			if ( 'taxonomy' == $location[0] || 'tax_parent' == $location[0] ) {
 				$config['taxonomy'][ $location[1] ] = self::get_taxonomy_terms( $location[1] );
 			} elseif ( ( 'post' == $location[0] || 'ancestor' == $location[0] ) && ! isset( $config['posts'][ $location[1] ] ) ) {
 				$config['post'][ $location[1] ] = self::get_post_type_posts( $location[1] );
@@ -1015,27 +1120,31 @@ final class FLThemeBuilderRulesLocation {
 	 * @param int $tax_id
 	 * @return array
 	 */
-	static public function get_taxonomy_terms( $tax_id ) {
-		$tax = get_taxonomy( $tax_id );
-
-		$terms = get_terms( array(
-			'taxonomy'   => $tax_id,
-			'hide_empty' => false,
-		) );
+	static public function get_taxonomy_terms( $taxonomy_name ) {
+		$tax = get_taxonomy( $taxonomy_name );
 
 		$data = array(
 			'type'     => 'terms',
-			'taxonomy' => $tax_id,
+			'taxonomy' => $taxonomy_name,
 			'label'    => $tax->label,
 			'objects'  => array(),
 		);
 
-		foreach ( $terms as $term ) {
-			$data['objects'][] = array(
-				'id'   => $term->term_id,
-				'name' => esc_attr( $term->name ),
-			);
-		}
+		$taxonomy_terms_walker = new FLTaxonomyTermsWalker();
+		$terms_data            = wp_list_categories( array(
+			'taxonomy'           => $taxonomy_name,
+			'walker'             => $taxonomy_terms_walker,
+			'style'              => '',
+			'echo'               => false,
+			'title_li'           => '',
+			'use_desc_for_title' => '',
+			'hide_empty'         => false,
+			'hierarchical'       => true,
+		));
+
+		$terms_json      = '[' . rtrim( $terms_data, ',' ) . ']';
+		$terms           = json_decode( $terms_json, true );
+		$data['objects'] = $terms;
 
 		return $data;
 	}
@@ -1085,6 +1194,30 @@ final class FLThemeBuilderRulesLocation {
 			'label'    => $object->label,
 			'objects'  => array(),
 		);
+
+		// If Post Type is hierarchical, add padding to the label to indicate
+		// its level/depth of nesting from the top-most parent.
+		if ( is_post_type_hierarchical( $post_type ) ) {
+			$page_walker = new FLPageWalker();
+			$pages_data  = wp_list_pages( array(
+				'post_type'   => $post_type,
+				'exclude'     => '',
+				'title_li'    => '',
+				'echo'        => false,
+				'sort_column' => 'menu_order, post_title',
+				'link_before' => '',
+				'link_after'  => '',
+				'post_status' => $post_status,
+				'walker'      => $page_walker,
+			) );
+
+			$pages_json      = '[' . rtrim( $pages_data, ',' ) . ']';
+			$pages           = json_decode( $pages_json, true );
+			$data['objects'] = $pages;
+
+			// Bailout early. Process non-hierachical Post Types below.
+			return $data;
+		}
 
 		if ( 'attachment' === $post_type ) {
 			$posts = $wpdb->get_results( $wpdb->prepare( "SELECT ID, post_title from $wpdb->posts where post_type = %s ORDER BY post_title", $post_type ) );

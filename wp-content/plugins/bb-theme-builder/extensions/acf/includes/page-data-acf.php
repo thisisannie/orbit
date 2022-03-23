@@ -57,15 +57,20 @@ $form = array(
 			'select'           => __( 'Select', 'bb-theme-builder' ),
 			'checkbox'         => __( 'Checkbox', 'bb-theme-builder' ),
 			'radio'            => __( 'Radio', 'bb-theme-builder' ),
+			'button_group'     => __( 'Button Group', 'bb-theme-builder' ),
 			'page_link'        => __( 'Page Link', 'bb-theme-builder' ),
 			'google_map'       => __( 'Google Map', 'bb-theme-builder' ),
 			'date_picker'      => __( 'Date Picker', 'bb-theme-builder' ),
 			'date_time_picker' => __( 'Date Time Picker', 'bb-theme-builder' ),
 			'time_picker'      => __( 'Time Picker', 'bb-theme-builder' ),
+			'true_false'       => __( 'True/False', 'bb-theme-builder' ),
 		),
 		'toggle'  => array(
 			'image'    => array(
-				'fields' => array( 'image_size' ),
+				'fields' => array( 'image_size', 'display' ),
+			),
+			'file'     => array(
+				'fields' => array( 'file_display' ),
 			),
 			'checkbox' => array(
 				'fields' => array( 'checkbox_format' ),
@@ -83,6 +88,48 @@ $form = array(
 		'type'    => 'photo-sizes',
 		'label'   => __( 'Image Size', 'bb-theme-builder' ),
 		'default' => 'thumbnail',
+	),
+	'display'         => array(
+		'type'    => 'select',
+		'label'   => __( 'Display', 'bb-theme-builder' ),
+		'default' => 'url',
+		'options' => array(
+			'url'         => __( 'URL', 'bb-theme-builder' ),
+			'tag'         => __( 'Image Tag', 'bb-theme-builder' ),
+			'title'       => __( 'Title', 'bb-theme-builder' ),
+			'caption'     => __( 'Caption', 'bb-theme-builder' ),
+			'description' => __( 'Description', 'bb-theme-builder' ),
+			'alt'         => __( 'Alt Text', 'bb-theme-builder' ),
+		),
+		'toggle'  => array(
+			'tag' => array(
+				'fields' => array( 'linked', 'image_size' ),
+			),
+			'url' => array(
+				'fields' => array( 'image_size' ),
+			),
+		),
+	),
+	'file_display'    => array(
+		'type'    => 'select',
+		'label'   => __( 'Display', 'bb-theme-builder' ),
+		'default' => 'url',
+		'options' => array(
+			'url'      => __( 'URL', 'bb-theme-builder' ),
+			'name'     => __( 'Name', 'bb-theme-builder' ),
+			'basename' => __( 'Base Name', 'bb-theme-builder' ),
+			'ext'      => __( 'Extension', 'bb-theme-builder' ),
+		),
+	),
+	'linked'          => array(
+		'type'    => 'select',
+		'label'   => __( 'Linked', 'bb-theme-builder' ),
+		'default' => 'yes',
+		'options' => array(
+			'yes' => __( 'Yes', 'bb-theme-builder' ),
+			'no'  => __( 'No', 'bb-theme-builder' ),
+		),
+		'help'    => __( 'Link the image to the post.', 'bb-theme-builder' ),
 	),
 	'checkbox_format' => array(
 		'type'    => 'select',
@@ -105,6 +152,15 @@ $form = array(
 		),
 	),
 );
+
+if ( class_exists( 'SmartSlider3' ) ) {
+	$form['type']['options']['acf_smartslider3'] = __( 'Smart Slider 3', 'bb-theme-builder' );
+}
+
+$name_custom = FLPageDataACF::get_custom_fields_select( FLBuilderModel::get_post_id() );
+if ( ! empty( $name_custom ) ) {
+	$form['name_custom'] = $name_custom;
+}
 
 FLPageData::add_archive_property_settings_fields( 'acf', $form );
 FLPageData::add_post_property_settings_fields( 'acf', $form );
@@ -180,6 +236,10 @@ $form = array(
 		'default' => 'thumbnail',
 	),
 );
+
+if ( ! empty( $name_custom ) ) {
+	$form['name_custom'] = $name_custom;
+}
 
 FLPageData::add_archive_property_settings_fields( 'acf_url', $form );
 FLPageData::add_post_property_settings_fields( 'acf_url', $form );
@@ -259,6 +319,10 @@ $form = array(
 	),
 );
 
+if ( ! empty( $name_custom ) ) {
+	$form['name_custom'] = $name_custom;
+}
+
 FLPageData::add_archive_property_settings_fields( 'acf_photo', $form );
 FLPageData::add_post_property_settings_fields( 'acf_photo', $form );
 FLPageData::add_post_property_settings_fields( 'acf_author_photo', $form );
@@ -309,6 +373,10 @@ $form = array(
 		'label' => __( 'Gallery Field Name', 'bb-theme-builder' ),
 	),
 );
+
+if ( ! empty( $name_custom ) ) {
+	$form['name_custom'] = $name_custom;
+}
 
 FLPageData::add_archive_property_settings_fields( 'acf_gallery', $form );
 FLPageData::add_post_property_settings_fields( 'acf_gallery', $form );
@@ -361,6 +429,10 @@ $form = array(
 	),
 );
 
+if ( ! empty( $name_custom ) ) {
+	$form['name_custom'] = $name_custom;
+}
+
 FLPageData::add_archive_property_settings_fields( 'acf_color', $form );
 FLPageData::add_post_property_settings_fields( 'acf_color', $form );
 FLPageData::add_post_property_settings_fields( 'acf_author_color', $form );
@@ -377,8 +449,8 @@ FLPageData::add_post_property( 'acf_relational', array(
 	'getter' => 'FLPageDataACF::relational_field',
 ) );
 
-$form = array(
-	'type'            => array(
+$form        = array(
+	'type'              => array(
 		'type'    => 'select',
 		'label'   => __( 'Field Type', 'bb-theme-builder' ),
 		'default' => 'user',
@@ -386,6 +458,7 @@ $form = array(
 			'user'        => __( 'User', 'bb-theme-builder' ),
 			'post_object' => __( 'Post Object', 'bb-theme-builder' ),
 			'page_link'   => __( 'Page Link', 'bb-theme-builder' ),
+			'taxonomy'    => __( 'Taxonomy', 'bb-theme-builder' ),
 		),
 		'toggle'  => array(
 			'user'        => array(
@@ -394,13 +467,16 @@ $form = array(
 			'post_object' => array(
 				'fields' => array( 'list_type', 'post_title_link' ),
 			),
+			'taxonomy'    => array(
+				'fields' => array( 'list_type', 'term_archive_link', 'term_post_count', 'hide_empty' ),
+			),
 		),
 	),
-	'name'            => array(
+	'name'              => array(
 		'type'  => 'text',
 		'label' => __( 'Field Name', 'bb-theme-builder' ),
 	),
-	'display_type'    => array(
+	'display_type'      => array(
 		'type'    => 'select',
 		'label'   => __( 'Display Type', 'bb-theme-builder' ),
 		'default' => 'display',
@@ -414,7 +490,7 @@ $form = array(
 			'username'  => __( 'Username', 'bb-theme-builder' ),
 		),
 	),
-	'link'            => array(
+	'link'              => array(
 		'type'    => 'select',
 		'label'   => __( 'Link', 'bb-theme-builder' ),
 		'default' => 'no',
@@ -429,7 +505,7 @@ $form = array(
 		),
 		'help'    => __( 'Link to the archive or website for this author.', 'bb-theme-builder' ),
 	),
-	'link_type'       => array(
+	'link_type'         => array(
 		'type'    => 'select',
 		'label'   => __( 'Link Type', 'bb-theme-builder' ),
 		'default' => 'archive',
@@ -438,7 +514,7 @@ $form = array(
 			'website' => __( 'Website', 'bb-theme-builder' ),
 		),
 	),
-	'list_type'       => array(
+	'list_type'         => array(
 		'type'    => 'select',
 		'label'   => __( 'List Type', 'bb-theme-builder' ),
 		'default' => 'ul',
@@ -448,7 +524,7 @@ $form = array(
 			'div' => __( 'Regular (No bullets/numbering.)', 'bb-theme-builder' ),
 		),
 	),
-	'post_title_link' => array(
+	'post_title_link'   => array(
 		'type'    => 'select',
 		'label'   => __( 'Add Post Title Link', 'bb-theme-builder' ),
 		'default' => 'yes',
@@ -457,6 +533,36 @@ $form = array(
 			'no'  => __( 'No', 'bb-theme-builder' ),
 		),
 	),
+	'term_archive_link' => array(
+		'type'    => 'select',
+		'label'   => __( 'Add Term Archive Link', 'bb-theme-builder' ),
+		'default' => 'yes',
+		'options' => array(
+			'yes' => __( 'Yes', 'bb-theme-builder' ),
+			'no'  => __( 'No', 'bb-theme-builder' ),
+		),
+	),
+	'term_post_count'   => array(
+		'type'    => 'select',
+		'label'   => __( 'Show Post Counts', 'bb-theme-builder' ),
+		'default' => 'no',
+		'options' => array(
+			'yes' => __( 'Yes', 'bb-theme-builder' ),
+			'no'  => __( 'No', 'bb-theme-builder' ),
+		),
+	),
+	'hide_empty'        => array(
+		'type'    => 'select',
+		'label'   => __( 'Hide Term if No Posts', 'bb-theme-builder' ),
+		'default' => 'no',
+		'options' => array(
+			'yes' => __( 'Yes', 'bb-theme-builder' ),
+			'no'  => __( 'No', 'bb-theme-builder' ),
+		),
+	),
 );
-
+$name_custom = FLPageDataACF::get_custom_fields_select( FLBuilderModel::get_post_id(), true );
+if ( ! empty( $name_custom ) ) {
+	$form['name_custom'] = $name_custom;
+}
 FLPageData::add_post_property_settings_fields( 'acf_relational', $form );

@@ -390,7 +390,7 @@ function populate_options( array $options = array() ) {
 	 * or a valid timezone string (America/New_York). See https://www.php.net/manual/en/timezones.php
 	 * for all timezone strings supported by PHP.
 	 */
-	$offset_or_tz = _x( '0', 'default GMT offset or timezone string' ); // phpcs:ignore WordPress.WP.I18n.NoEmptyStrings
+	$offset_or_tz = _x( '0', 'default GMT offset or timezone string' );
 	if ( is_numeric( $offset_or_tz ) ) {
 		$gmt_offset = $offset_or_tz;
 	} elseif ( $offset_or_tz && in_array( $offset_or_tz, timezone_identifiers_list(), true ) ) {
@@ -400,11 +400,11 @@ function populate_options( array $options = array() ) {
 	$defaults = array(
 		'siteurl'                         => $guessurl,
 		'home'                            => $guessurl,
-		'blogname'                        => __( 'Orbit Travel' ),
+		'blogname'                        => __( 'My Site' ),
 		/* translators: Site tagline. */
-		'blogdescription'                 => __( 'Welcome to Orbit, a 100% owned and operated travel management company.' ),
+		'blogdescription'                 => __( 'Just another WordPress site' ),
 		'users_can_register'              => 0,
-		'admin_email'                     => 'anniek@federation.net.nz',
+		'admin_email'                     => 'you@example.com',
 		/* translators: Default start of the week. 0 = Sunday, 1 = Monday. */
 		'start_of_week'                   => _x( '1', 'start of week' ),
 		'use_balanceTags'                 => 0,
@@ -964,7 +964,7 @@ endif;
  * @global WP_Rewrite $wp_rewrite   WordPress rewrite component.
  *
  * @param int    $network_id        ID of network to populate.
- * @param string $domain            The domain name for the network (eg. "example.com").
+ * @param string $domain            The domain name for the network. Example: "example.com".
  * @param string $email             Email address for the network administrator.
  * @param string $site_name         The name of the network.
  * @param string $path              Optional. The path to append to the network's domain name. Default '/'.

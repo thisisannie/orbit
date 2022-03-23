@@ -105,23 +105,52 @@ final class FLPageDataPost {
 	 * @return string
 	 */
 	static public function get_content() {
-		remove_filter( 'the_content', 'FLBuilder::render_content' );
+		$is_content_building_enabled = FLThemeBuilderFrontendEdit::is_content_building_enabled();
 
-		if ( has_filter( 'the_content', '_restore_wpautop_hook' ) && ! has_filter( 'the_content', 'wpautop' ) ) {
-			add_filter( 'the_content', 'wpautop' );
+		if ( $is_content_building_enabled ) {
+			remove_filter( 'fl_builder_do_render_content', '__return_false' );
+			ob_start();
+			FLBuilder::render_content_by_id( FLBuilderModel::get_post_id( true ) );
+			$content = ob_get_clean();
+			return $content;
+
+		} else {
+
+			$filter = false;
+			if ( has_filter( 'the_content', 'FLBuilder::render_content' ) ) {
+				remove_filter( 'the_content', 'FLBuilder::render_content' );
+				$filter = true;
+			}
+
+			if ( is_single() && FLBuilderModel::is_builder_active() && 'product' !== get_post_type() ) {
+				global $post;
+
+				$real_post = $post;
+				setup_postdata( $post );
+				$content = apply_filters( 'the_content', get_the_content() );
+				wp_reset_postdata();
+				$post = $real_post;
+
+			} else {
+
+				if ( has_filter( 'the_content', '_restore_wpautop_hook' ) && ! has_filter( 'the_content', 'wpautop' ) ) {
+					add_filter( 'the_content', 'wpautop' );
+				}
+				$content = apply_filters( 'the_content', get_the_content() );
+			}
+
+			$content .= wp_link_pages( array(
+				'before'      => '<div class="page-links">' . __( 'Pages:', 'bb-theme-builder' ),
+				'after'       => '</div>',
+				'link_before' => '<span class="page-number">',
+				'link_after'  => '</span>',
+				'echo'        => false,
+			) );
+
+			if ( $filter ) {
+				add_filter( 'the_content', 'FLBuilder::render_content' );
+			}
 		}
-
-		$content = apply_filters( 'the_content', get_the_content() );
-
-		$content .= wp_link_pages( array(
-			'before'      => '<div class="page-links">' . __( 'Pages:', 'bb-theme-builder' ),
-			'after'       => '</div>',
-			'link_before' => '<span class="page-number">',
-			'link_after'  => '</span>',
-			'echo'        => false,
-		) );
-
-		add_filter( 'the_content', 'FLBuilder::render_content' );
 
 		return $content;
 	}
@@ -522,7 +551,7 @@ final class FLPageDataPost {
 		}
 		// We get the url like this because not all custom avatar plugins filter get_avatar_url.
 		$size   = ! is_numeric( $settings->size ) ? 512 : $settings->size;
-		$avatar = get_avatar( $author, $size );
+		$avatar = get_avatar( $author, $size, $settings->default_img_src );
 
 		preg_match_all( '/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $avatar, $matches, PREG_SET_ORDER );
 		$url = ! empty( $matches ) && isset( $matches[0][1] ) ? $matches[0][1] : '';
@@ -610,6 +639,40 @@ final class FLPageDataPost {
 	static public function get_id() {
 		global $post;
 		return (string) $post->ID;
+	}
+
+	/**
+	* @return string
+	*/
+	static public function get_parent( $settings ) {
+		global $post;
+		$parent_id = $post->post_parent;
+
+		if ( 0 === $parent_id ) {
+			return;
+		}
+		$parent = get_post( $parent_id );
+
+		if ( ! $parent ) {
+			return;
+		}
+
+		if ( 'url' == $settings->display ) {
+			return get_the_permalink( $parent );
+		} elseif ( 'featured_image' == $settings->display ) {
+
+			if ( isset( $settings->size ) ) {
+				return get_the_post_thumbnail_url( $parent_id, $settings->size );
+			} else {
+				return get_the_post_thumbnail_url( $parent_id );
+			}
+		} elseif ( 'content' == $settings->display ) {
+			return apply_filters( 'fl_theme_builder_parent_post_content', $parent->post_content );
+		} elseif ( 'title' == $settings->display ) {
+			return get_the_title( $parent );
+		} else {
+			return (string) $parent_id;
+		}
 	}
 
 	/**

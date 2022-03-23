@@ -454,6 +454,7 @@
             FLBuilder.addHook('didEnterRevisionPreview', this.hide.bind(this));
             FLBuilder.addHook('didExitRevisionPreview', this.show.bind(this));
             FLBuilder.addHook('didPublishLayout', this.onPublish.bind(this));
+			FLBuilder.addHook('didPublishLayout', this.onPublishCacheClear.bind(this));
         },
 
         /**
@@ -514,6 +515,20 @@
             var $dot = this.$wpAdminBar.find('#wp-admin-bar-fl-builder-frontend-edit-link > a span');
             $dot.css('color', '#6bc373');
         },
+
+		/**
+		 * Reload url via ajax, this rebuilds the cache files.
+		 */
+		onPublishCacheClear: function() {
+
+			FLBuilder.ajax({
+				action: 'clear_cache_for_layout',
+			}, function(response) {
+				console.log(response);
+			});
+		},
+
+
 
         /**
         * Hides the entire UI.
