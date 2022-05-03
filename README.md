@@ -7,10 +7,6 @@ Local environment setup notes
     Password: root
     Database Host: localhost
     Table Prefix: wp_
-  Admin login
-    Username: admin
-    Password: qaMpwsOfspRtdmHba
-    Email: anniek@federation.net.nz
 
 Staging environment setup notes
 
