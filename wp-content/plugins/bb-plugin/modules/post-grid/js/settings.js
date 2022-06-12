@@ -40,9 +40,10 @@
 			var form = $( '.fl-builder-settings' ),
 				tecEventsSection = form.find('#fl-builder-settings-section-events'),
 				tecEventsButtonSection = form.find('#fl-builder-settings-section-events_button'),
+				dataSource = form.find('#fl-field-data_source select').val(),
 				selectedPostType = form.find( 'select[name=post_type]' ).val();
 			
-			if ( tecEventsSection.length <= 0 || tecEventsButtonSection.length <= 0 ) {
+			if ( tecEventsSection.length <= 0 || tecEventsButtonSection.length <= 0 || 'custom_query' !== dataSource ) {
 				return;
 			}
 			

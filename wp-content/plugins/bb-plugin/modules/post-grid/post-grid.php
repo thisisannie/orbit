@@ -34,7 +34,7 @@ class FLPostGridModule extends FLBuilderModule {
 		$helper->handle_opacity_inputs( $settings, 'text_bg_opacity', 'text_bg_color' );
 
 		// Handle old border inputs.
-		if ( isset( $settings->border_type ) ) {
+		if ( isset( $settings->border_type ) && isset( $settings->border_color ) && isset( $settings->border_size ) ) {
 			$settings->border = array(
 				'style' => $settings->border_type,
 				'color' => $settings->border_color,
@@ -312,6 +312,20 @@ class FLPostGridModule extends FLBuilderModule {
 		if ( ! empty( $this->settings->content_length ) ) {
 			remove_filter( 'excerpt_length', array( $this, 'set_custom_excerpt_length' ), 9999 );
 		}
+	}
+
+	/**
+	 * Renders 404 Message
+	 */
+	public function render_404() {
+		echo '<div class="fl-post-grid-empty">';
+		echo '<p>' . $this->settings->no_results_message . '</p>';
+
+		if ( $this->settings->show_search ) {
+			get_search_form();
+		}
+
+		echo '</div>';
 	}
 
 	/**

@@ -25,9 +25,7 @@ final class FLThemeBuilderWooCommerceArchive {
 		add_action( 'fl_builder_post_gallery_after_meta', __CLASS__ . '::post_gallery_after_meta' );
 		add_action( 'fl_theme_builder_before_render_content', __CLASS__ . '::before_render_content' );
 		add_action( 'fl_theme_builder_after_render_content', __CLASS__ . '::after_render_content' );
-
-		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
-		remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+		add_action( 'wp', __CLASS__ . '::remove_woo_hooks_callbacks' );
 
 		// Filters
 		add_filter( 'fl_builder_register_settings_form', __CLASS__ . '::post_grid_settings', 10, 2 );
@@ -362,7 +360,7 @@ final class FLThemeBuilderWooCommerceArchive {
 			),
 		);
 
-		$form['style']['sections']['woo'] = array(
+		$form['style']['sections']['woo_style'] = array(
 			'title'  => __( 'WooCommerce', 'bb-theme-builder' ),
 			'fields' => array(
 				'woo_sale_flash_bg'    => array(
@@ -418,7 +416,7 @@ final class FLThemeBuilderWooCommerceArchive {
 		$form['style']['sections']['woo_button'] = array(
 			'title'  => __( 'WooCommerce Cart Button', 'bb-theme-builder' ),
 			'fields' => array(
-				'woo_button_bg_color'   => array(
+				'woo_button_bg_color'         => array(
 					'type'       => 'color',
 					'label'      => __( 'Background Color', 'bb-theme-builder' ),
 					'default'    => '',
@@ -427,9 +425,27 @@ final class FLThemeBuilderWooCommerceArchive {
 						'type' => 'refresh',
 					),
 				),
-				'woo_button_text_color' => array(
+				'woo_button_text_color'       => array(
 					'type'       => 'color',
 					'label'      => __( 'Text Color', 'bb-theme-builder' ),
+					'default'    => '',
+					'show_reset' => true,
+					'preview'    => array(
+						'type' => 'refresh',
+					),
+				),
+				'woo_button_hover_bg_color'   => array(
+					'type'       => 'color',
+					'label'      => __( 'Hover Background Color', 'bb-theme-builder' ),
+					'default'    => '',
+					'show_reset' => true,
+					'preview'    => array(
+						'type' => 'refresh',
+					),
+				),
+				'woo_button_hover_text_color' => array(
+					'type'       => 'color',
+					'label'      => __( 'Hover Text Color', 'bb-theme-builder' ),
 					'default'    => '',
 					'show_reset' => true,
 					'preview'    => array(
@@ -505,6 +521,24 @@ final class FLThemeBuilderWooCommerceArchive {
 			if ( is_shop() || is_product_category() || is_product_tag() ) {
 				do_action( 'woocommerce_after_shop_loop' );
 			}
+		}
+	}
+
+	/**
+	 * Remove default WooCommerce hooks + callbacks that cause issues on the Themer Product Archive layout.
+	 *
+	 * @since 1.4.2
+	 * @method remove_woo_hooks_callbacks
+	 * @return void
+	 */
+	static public function remove_woo_hooks_callbacks() {
+		if ( FLThemeBuilder::has_layout( 'archive' ) ) {
+			// Remove default WooCommerce Product Sorting.
+			remove_action( 'woocommerce_before_shop_loop', 'woocommerce_result_count', 20 );
+			remove_action( 'woocommerce_before_shop_loop', 'woocommerce_catalog_ordering', 30 );
+
+			// Remove default WooCommerce product pagination.
+			remove_action( 'woocommerce_after_shop_loop', 'woocommerce_pagination' );
 		}
 	}
 }

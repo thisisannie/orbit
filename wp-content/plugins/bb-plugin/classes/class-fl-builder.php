@@ -89,6 +89,9 @@ final class FLBuilder {
 		add_action( 'admin_bar_menu', __CLASS__ . '::admin_bar_menu', 999 );
 		add_action( 'wp_footer', __CLASS__ . '::render_ui' );
 
+		// TODO this needs fixing.
+		//add_action( 'wp_footer', __CLASS__ . '::check_content_filters', 1000 );
+
 		/* Filters */
 		add_filter( 'fl_builder_render_css', __CLASS__ . '::rewrite_css_cache_urls', 9999 );
 		add_filter( 'body_class', __CLASS__ . '::body_class' );
@@ -1941,6 +1944,8 @@ final class FLBuilder {
 
 			// Clear the post rendering ID.
 			self::$post_rendering = null;
+
+			do_action( 'fl_did_render_content_filter' );
 		}
 
 		return $content;
@@ -2392,6 +2397,9 @@ final class FLBuilder {
 				$attrs['data-parallax-image-responsive'] = $row->settings->bg_parallax_image_responsive_src;
 			}
 		}
+		// filter node attrs first to make sure specific node has highest priority
+		$attrs = apply_filters( 'fl_builder_node_attributes', $attrs, $row );
+
 		self::render_node_attributes( apply_filters( 'fl_builder_row_attributes', $attrs, $row ) );
 	}
 
@@ -2526,6 +2534,9 @@ final class FLBuilder {
 			}
 		}
 
+		// filter node attrs first to make sure specific node has highest priority
+		$attrs = apply_filters( 'fl_builder_node_attributes', $attrs, $group );
+
 		self::render_node_attributes( apply_filters( 'fl_builder_column_group_attributes', $attrs, $group ) );
 	}
 
@@ -2630,6 +2641,9 @@ final class FLBuilder {
 		if ( $active ) {
 			$attrs['style'][] = 'width: ' . $col->settings->size . '%;';
 		}
+
+		// filter node attrs first to make sure specific node has highest priority
+		$attrs = apply_filters( 'fl_builder_node_attributes', $attrs, $col );
 
 		/**
 		 * Column attributes.
@@ -2825,6 +2839,9 @@ final class FLBuilder {
 			$attrs['data-type']   = $module->settings->type;
 			$attrs['data-name']   = $module->name;
 		}
+
+		// filter node attrs first to make sure specific node has highest priority
+		$attrs = apply_filters( 'fl_builder_node_attributes', $attrs, $module );
 
 		/**
 		 * Module attributes.
@@ -3814,7 +3831,7 @@ final class FLBuilder {
 	 * @return void
 	 */
 	static public function should_refresh_on_publish() {
-		$refresh = ! is_admin_bar_showing();
+		$refresh = ! is_admin_bar_showing() || isset( $_GET['safemode'] );
 		return apply_filters( 'fl_builder_should_refresh_on_publish', $refresh );
 	}
 
@@ -4015,6 +4032,21 @@ final class FLBuilder {
 			} else {
 				return $schema;
 			}
+		}
+	}
+
+	static public function check_content_filters() {
+
+		if ( ! did_action( 'fl_did_render_content_filter' ) ) {
+			// we need to do a popup
+			$content = __( 'You must call the_content in the current theme template in order for Beaver Builder to work on this layout.', 'fl-builder' );
+			?>
+			<script>
+				if ( FLBuilder ) {
+					FLBuilder.alert('<?php echo esc_attr( $content ); ?>');
+				}
+			</script>
+			<?php
 		}
 	}
 

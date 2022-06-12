@@ -89,6 +89,10 @@ final class FLThemeBuilderTheEventsCalendarArchive {
 
 		if ( isset( $settings->data_source ) && 'main_query' == $settings->data_source ) {
 
+			if ( is_tag() ) {
+				return $query;
+			}
+
 			if ( isset( $settings->event_orderby ) && '' !== $settings->event_orderby ) {
 				$orderby = $settings->event_orderby;
 			} else {

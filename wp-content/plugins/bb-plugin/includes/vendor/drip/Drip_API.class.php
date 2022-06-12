@@ -4,7 +4,7 @@
  * Drip API
  * @author Svetoslav Marinov (SLAVI)
  */
-Class Drip_Api {
+Class FL_Drip_Api {
 	private $version = "2";
     private $api_token = '';
     private $error_code = '';

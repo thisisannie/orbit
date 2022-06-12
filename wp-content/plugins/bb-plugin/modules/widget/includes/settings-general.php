@@ -4,6 +4,7 @@
 $post_data = FLBuilderModel::get_post_data();
 
 // Widget slug
+$widget_class = '';
 if ( isset( $settings->widget ) ) {
 	$widget_class = urldecode( $settings->widget );
 } elseif ( isset( $post_data['widget'] ) ) {

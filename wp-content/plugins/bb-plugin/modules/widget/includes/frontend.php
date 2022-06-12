@@ -5,6 +5,7 @@
 $post_data = FLBuilderModel::get_post_data();
 
 // Widget class
+$widget_class = '';
 if ( isset( $settings->widget ) ) {
 	$widget_class = urldecode( $settings->widget );
 } elseif ( isset( $post_data['widget'] ) && FLBuilderModel::is_builder_active() ) {

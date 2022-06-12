@@ -167,6 +167,8 @@ final class FLBuilderModel {
 	 */
 	static private $node_template_types = array();
 
+	static private $get_user_templates_cache = false;
+
 	/**
 	 * Initialize hooks.
 	 *
@@ -3673,6 +3675,7 @@ final class FLBuilderModel {
 			'WP_Widget_Media_Gallery',
 			'WP_Widget_Text',
 			'WP_Widget_Custom_HTML',
+			'WP_Widget_Block',
 		) );
 
 		foreach ( $wp_widget_factory->widgets as $class => $widget ) {
@@ -5085,6 +5088,10 @@ final class FLBuilderModel {
 	 * @return array
 	 */
 	static public function get_user_templates( $type = 'layout' ) {
+
+		if ( isset( self::$get_user_templates_cache[ $type ] ) && ! is_multisite() ) {
+			return self::$get_user_templates_cache[ $type ];
+		}
 		$categorized = array(
 			'uncategorized' => array(
 				'name'      => _x( 'Uncategorized', 'Default user template category.', 'fl-builder' ),
@@ -5178,11 +5185,11 @@ final class FLBuilderModel {
 
 		// sort the categories.
 		asort( $categorized );
-
-		return array(
+		self::$get_user_templates_cache[ $type ] = array(
 			'templates'   => $templates,
 			'categorized' => $categorized,
 		);
+		return self::$get_user_templates_cache[ $type ];
 	}
 
 	/**

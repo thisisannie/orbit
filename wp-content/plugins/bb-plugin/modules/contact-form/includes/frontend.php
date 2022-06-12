@@ -4,17 +4,17 @@ $label_hidden_class = isset( $settings->placeholder_labels ) && 'placeholder' ==
 $show_placeholder   = isset( $settings->placeholder_labels ) && ( 'placeholder' === $settings->placeholder_labels || 'both' === $settings->placeholder_labels ) ? true : false;
 
 $contact_form_fields = apply_filters( 'fl_builder_contact_form_fields', array(
-	'form_name'     => 'fl-name',
-	'form_subject'  => 'fl-subject',
-	'form_email'    => 'fl-email',
-	'form_phone'    => 'fl-phone',
-	'form_message'  => 'fl-message',
+	'form_name'        => 'fl-name',
+	'form_subject'     => 'fl-subject',
+	'form_email'       => 'fl-email',
+	'form_phone'       => 'fl-phone',
+	'form_message'     => 'fl-message',
 	'form_success_url' => 'fl-success-url',
-	'name_error'    => 'name-error',
-	'subject_error' => 'subject-error',
-	'email_error'   => 'email-error',
-	'phone_error'   => 'phone-error',
-	'message_error' => 'message-error',
+	'name_error'       => 'name-error',
+	'subject_error'    => 'subject-error',
+	'email_error'      => 'email-error',
+	'phone_error'      => 'phone-error',
+	'message_error'    => 'message-error',
 ), $settings );
 
 ?>
