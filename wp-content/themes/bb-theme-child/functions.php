@@ -631,7 +631,7 @@ function default_staff_posts(){
     $term_ids = wp_list_pluck( $terms_def, 'term_id' );
     $args_def = array(
         'orderby'        => 'rand',
-        'posts_per_page' => '4',
+        'posts_per_page' => '',
     );
     $args_def['tax_query'] = array(
             array(
@@ -651,14 +651,16 @@ function default_staff_posts(){
                 //the_post_thumbnail('thumbnail');
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
                 //echo $thumb[0]; // thumbnail url
-                echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';
-
-                
+                echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';                
             }
             echo '<p><strong>' . $query_def->post->post_title . '</strong><br>';
             echo get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
-            echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch <i class="fa fa-angle-right"></i></a><br>';
-            echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin"></i> Connect <i class="fa fa-angle-right"></i></a></p>';
+            if(get_post_meta(get_the_ID(), 'orb_email', TRUE)) {
+                echo '<a href=mailto:"'.get_post_meta(get_the_ID(), 'orb_email', TRUE).'">Get in touch <i class="fa fa-angle-right"></i></a><br>';
+            }
+            if(get_post_meta(get_the_ID(), 'orb_linkedin', TRUE)) {
+                echo '<a href = "'.get_post_meta(get_the_ID(), 'orb_linkedin', TRUE).'"><i class="fab fa-linkedin"></i> Connect <i class="fa fa-angle-right"></i></a></p>';
+            }
             echo '</div>'; // end .card
         endwhile;
         wp_reset_postdata();
