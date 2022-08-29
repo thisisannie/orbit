@@ -41,20 +41,27 @@
   .card {
     width: 25%;
     display: inline-block;
+    margin-bottom: 40px;
     vertical-align: top;
+    &:nth-last-child(-n+4) {
+      margin-bottom: 0;
+    }
     .background-image {
       padding-top: 75%;
     }
     @media (max-width: 950px) {
       width: 50%;
       margin-bottom: 40px;
-      &:last-child {
+      &:nth-last-child(-n+4) {
+        margin-bottom: 40px;
+      }
+      &:nth-last-child(-n+2) {
         margin-bottom: 0;
       }
     }
-    @media (max-width: 500px) {
-      width: 100%;
-    }
+    // @media (max-width: 500px) {
+    //   width: 100%;
+    // }
   }
 }
 #cards-event {

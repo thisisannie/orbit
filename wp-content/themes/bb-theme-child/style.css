@@ -683,18 +683,20 @@ hr {
 #cards-staff .card {
   width: 25%;
   display: inline-block;
+  margin-bottom: 40px;
   vertical-align: top; }
+  #cards-staff .card:nth-last-child(-n+4) {
+    margin-bottom: 0; }
   #cards-staff .card .background-image {
     padding-top: 75%; }
   @media (max-width: 950px) {
     #cards-staff .card {
       width: 50%;
       margin-bottom: 40px; }
-      #cards-staff .card:last-child {
+      #cards-staff .card:nth-last-child(-n+4) {
+        margin-bottom: 40px; }
+      #cards-staff .card:nth-last-child(-n+2) {
         margin-bottom: 0; } }
-  @media (max-width: 500px) {
-    #cards-staff .card {
-      width: 100%; } }
 
 #cards-event .card {
   width: 25%;
