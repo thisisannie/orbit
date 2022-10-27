@@ -1,3 +1,41 @@
+<h4>1.7.12.1 - 10/25/2022</h4>
+<p><strong>Hotfix</strong></p>
+<ul>
+	<li>Revert some changes that were mistakenly included in this release</li>
+</ul>
+
+<h4>1.7.12 - 10/25/2022</h4>
+<p><strong>Enhancements</strong></p>
+<ul>
+	<li>Add webp to allowed image types for lightbox</li>
+</ul>
+
+<p><strong>Bug Fixes</strong></p>
+<ul>
+	<li>Fix menu sub-menus being inaccessible on some touch enabled laptops</li>
+	<li>Increase width of slider control's input box width so 4 digit numbers can be fully visible</li>
+	<li>WooCommerce: Fix product images overflowing causing horizontal scrolling</li>
+	<li>WooCommerce: Fix issue with Add to Cart Button Color</li>
+</ul>
+
+<h4>1.7.11 - 04/25/2022</h4>
+<p><strong>Enhancements</strong></p>
+<ul>
+	<li>Update Bootstrap CSS version</li>
+	<li>Social Icons: Add option to have them open in a new window</li>
+	<li>Add two new hooks for logo image to allow users to add custom classes and attributes <code>fl_logo_image_attr</code> and <code>fl_logo_image_class</code></li>
+	<li>Add option to hide author data when returning search results</li>
+</ul>
+
+<p><strong>Bug Fixes</strong></p>
+<ul>
+	<li>Fix Logo disappearing when using SVG logos in some cases</li>
+	<li>Fix not being able to hover over the sub-menu when using the WordPress navigation block</li>
+	<li>Fix List Block indent being larger than expected on a site with a large width</li>
+	<li>Accessibility: Fix search icon link not being crawable</li>
+	<li>Fix responsive issue with fixed width layout going off the screen when resized</li>
+</ul>
+
 <h4>1.7.10 - 01/19/2022</h4>
 <p><strong>Enhancements</strong></p>
 <ul>

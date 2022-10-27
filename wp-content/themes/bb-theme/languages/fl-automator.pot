@@ -4,7 +4,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: bb-theme\n"
 "Report-Msgid-Bugs-To: hello@wpbeaverbuilder.com\n"
-"POT-Creation-Date: 2022-01-19 15:58:59+00:00\n"
+"POT-Creation-Date: 2022-10-25 17:37:41+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,7 +20,7 @@ msgstr ""
 msgid "Sorry! That page doesn't seem to exist."
 msgstr ""
 
-#: classes/class-fl-customizer-control.php:249
+#: classes/class-fl-customizer-control.php:253
 msgid ""
 "Please install and activate the \"Customizer Export/Import\" plugin to "
 "proceed."
@@ -141,63 +141,63 @@ msgstr ""
 msgid "After Post Widget"
 msgstr ""
 
-#: classes/class-fl-theme.php:922
+#: classes/class-fl-theme.php:934
 msgid "Choose Menu"
 msgstr ""
 
-#: classes/class-fl-theme.php:922
+#: classes/class-fl-theme.php:934
 msgid "Home"
 msgstr ""
 
-#: classes/class-fl-theme.php:959 includes/customizer-panel-footer.php:249
+#: classes/class-fl-theme.php:971 includes/customizer-panel-footer.php:249
 #: includes/customizer-panel-footer.php:290
 #: includes/customizer-panel-header.php:51
 #: includes/customizer-panel-header.php:93
 msgid "Menu"
 msgstr ""
 
-#: classes/class-fl-theme.php:1298
+#: classes/class-fl-theme.php:1310
 msgid "&laquo; Newer Posts"
 msgstr ""
 
-#: classes/class-fl-theme.php:1299
+#: classes/class-fl-theme.php:1311
 msgid "Older Posts &raquo;"
 msgstr ""
 
-#: classes/class-fl-theme.php:1538
+#: classes/class-fl-theme.php:1556
 msgid "Scroll To Top"
 msgstr ""
 
-#: classes/class-fl-theme.php:1603 classes/class-fl-theme.php:1606
+#: classes/class-fl-theme.php:1621 classes/class-fl-theme.php:1624
 msgid " (required)"
 msgstr ""
 
-#: classes/class-fl-theme.php:1698
+#: classes/class-fl-theme.php:1716
 msgid "Skip to content"
 msgstr ""
 
-#: classes/class-fl-theme.php:1710
+#: classes/class-fl-theme.php:1728
 msgid "Submit Comment"
 msgstr ""
 
-#: classes/class-fl-theme.php:1712
+#: classes/class-fl-theme.php:1730
 msgid "Leave a Reply"
 msgstr ""
 
-#: classes/class-fl-theme.php:1713
+#: classes/class-fl-theme.php:1731
 msgid "Cancel Reply"
 msgstr ""
 
-#: classes/class-fl-theme.php:1722
+#: classes/class-fl-theme.php:1740
 #. translators: %s: user name
 msgid "Logged in as %s."
 msgstr ""
 
-#: classes/class-fl-theme.php:1722
+#: classes/class-fl-theme.php:1740
 msgid "Log out of this account"
 msgstr ""
 
-#: classes/class-fl-theme.php:1722
+#: classes/class-fl-theme.php:1740
 msgid "Log out &raquo;"
 msgstr ""
 
@@ -527,53 +527,53 @@ msgid "Fill"
 msgstr ""
 
 #: includes/customizer-panel-content.php:144
-#: includes/customizer-panel-content.php:482
+#: includes/customizer-panel-content.php:536
 msgid "Sidebar Position"
 msgstr ""
 
 #: includes/customizer-panel-content.php:147
-#: includes/customizer-panel-content.php:486
+#: includes/customizer-panel-content.php:540
 msgid "Sidebar Right"
 msgstr ""
 
 #: includes/customizer-panel-content.php:148
-#: includes/customizer-panel-content.php:487
+#: includes/customizer-panel-content.php:541
 msgid "Sidebar Left"
 msgstr ""
 
 #: includes/customizer-panel-content.php:149
-#: includes/customizer-panel-content.php:488
+#: includes/customizer-panel-content.php:542
 msgid "No Sidebar"
 msgstr ""
 
 #: includes/customizer-panel-content.php:161
-#: includes/customizer-panel-content.php:500
+#: includes/customizer-panel-content.php:554
 msgid "Sidebar Size"
 msgstr ""
 
 #: includes/customizer-panel-content.php:180
-#: includes/customizer-panel-content.php:519
+#: includes/customizer-panel-content.php:573
 msgid "Custom Sidebar Width"
 msgstr ""
 
 #: includes/customizer-panel-content.php:197
-#: includes/customizer-panel-content.php:536
+#: includes/customizer-panel-content.php:590
 msgid "Sidebar Display"
 msgstr ""
 
 #: includes/customizer-panel-content.php:200
-#: includes/customizer-panel-content.php:539
+#: includes/customizer-panel-content.php:593
 msgid "Desktop Only"
 msgstr ""
 
 #: includes/customizer-panel-content.php:201
-#: includes/customizer-panel-content.php:540
+#: includes/customizer-panel-content.php:594
 #: includes/customizer-panel-header.php:1026
 msgid "Always"
 msgstr ""
 
 #: includes/customizer-panel-content.php:214
-#: includes/customizer-panel-content.php:553
+#: includes/customizer-panel-content.php:607
 msgid "Sidebar Location"
 msgstr ""
 
@@ -598,17 +598,21 @@ msgid "Apply Sidebar To Post Types"
 msgstr ""
 
 #: includes/customizer-panel-content.php:256
+#: includes/customizer-panel-content.php:378
 msgid "Post Author"
 msgstr ""
 
 #: includes/customizer-panel-content.php:259
 #: includes/customizer-panel-content.php:275
 #: includes/customizer-panel-content.php:291
+#: includes/customizer-panel-content.php:381
+#: includes/customizer-panel-content.php:397
 #: includes/customizer-panel-content.php:413
-#: includes/customizer-panel-content.php:429
-#: includes/customizer-panel-content.php:445
-#: includes/customizer-panel-content.php:461
-#: includes/customizer-panel-content.php:657
+#: includes/customizer-panel-content.php:467
+#: includes/customizer-panel-content.php:483
+#: includes/customizer-panel-content.php:499
+#: includes/customizer-panel-content.php:515
+#: includes/customizer-panel-content.php:711
 msgid "Visible"
 msgstr ""
 
@@ -617,19 +621,24 @@ msgstr ""
 #: includes/customizer-panel-content.php:292
 #: includes/customizer-panel-content.php:343
 #: includes/customizer-panel-content.php:382
+#: includes/customizer-panel-content.php:398
 #: includes/customizer-panel-content.php:414
-#: includes/customizer-panel-content.php:430
-#: includes/customizer-panel-content.php:446
-#: includes/customizer-panel-content.php:462
-#: includes/customizer-panel-content.php:658
+#: includes/customizer-panel-content.php:436
+#: includes/customizer-panel-content.php:468
+#: includes/customizer-panel-content.php:484
+#: includes/customizer-panel-content.php:500
+#: includes/customizer-panel-content.php:516
+#: includes/customizer-panel-content.php:712
 msgid "Hidden"
 msgstr ""
 
 #: includes/customizer-panel-content.php:272
+#: includes/customizer-panel-content.php:394
 msgid "Post Date"
 msgstr ""
 
 #: includes/customizer-panel-content.php:288
+#: includes/customizer-panel-content.php:410
 msgid "Comment Count"
 msgstr ""
 
@@ -660,7 +669,7 @@ msgid "\"Read More\" Text"
 msgstr ""
 
 #: includes/customizer-panel-content.php:340
-#: includes/customizer-panel-content.php:379
+#: includes/customizer-panel-content.php:433
 msgid "Featured Image"
 msgstr ""
 
@@ -677,117 +686,117 @@ msgid "Beside Posts"
 msgstr ""
 
 #: includes/customizer-panel-content.php:358
-#: includes/customizer-panel-content.php:397
+#: includes/customizer-panel-content.php:451
 msgid "Image Size"
 msgstr ""
 
-#: includes/customizer-panel-content.php:383
+#: includes/customizer-panel-content.php:437
 msgid "Above Title"
 msgstr ""
 
-#: includes/customizer-panel-content.php:384
+#: includes/customizer-panel-content.php:438
 msgid "Above Post"
 msgstr ""
 
-#: includes/customizer-panel-content.php:385
+#: includes/customizer-panel-content.php:439
 msgid "Beside Post"
 msgstr ""
 
-#: includes/customizer-panel-content.php:410
+#: includes/customizer-panel-content.php:464
 msgid "Post Categories"
 msgstr ""
 
-#: includes/customizer-panel-content.php:426
+#: includes/customizer-panel-content.php:480
 msgid "Post Tags"
 msgstr ""
 
-#: includes/customizer-panel-content.php:442
+#: includes/customizer-panel-content.php:496
 msgid "Prev/Next Post Links"
 msgstr ""
 
-#: includes/customizer-panel-content.php:458
+#: includes/customizer-panel-content.php:512
 msgid "Author Box"
 msgstr ""
 
-#: includes/customizer-panel-content.php:483
+#: includes/customizer-panel-content.php:537
 msgid "The location of the WooCommerce sidebar."
 msgstr ""
 
-#: includes/customizer-panel-content.php:554
+#: includes/customizer-panel-content.php:608
 msgid "WooCommerce pages that you want sidebar to appear."
 msgstr ""
 
-#: includes/customizer-panel-content.php:557
+#: includes/customizer-panel-content.php:611
 msgid "Single Product"
 msgstr ""
 
-#: includes/customizer-panel-content.php:558
+#: includes/customizer-panel-content.php:612
 msgid "Shop Page"
 msgstr ""
 
-#: includes/customizer-panel-content.php:559
+#: includes/customizer-panel-content.php:613
 msgid "Categories"
 msgstr ""
 
-#: includes/customizer-panel-content.php:579
+#: includes/customizer-panel-content.php:633
 msgid "Number of Columns/Products per row"
 msgstr ""
 
-#: includes/customizer-panel-content.php:580
+#: includes/customizer-panel-content.php:634
 msgid "How many columns/products per row to display on the page?"
 msgstr ""
 
-#: includes/customizer-panel-content.php:583
+#: includes/customizer-panel-content.php:637
 #: includes/customizer-panel-footer.php:221
 #: includes/customizer-panel-header.php:24
 msgid "1 Column"
 msgstr ""
 
-#: includes/customizer-panel-content.php:584
+#: includes/customizer-panel-content.php:638
 #: includes/customizer-panel-footer.php:222
 #: includes/customizer-panel-header.php:25
 msgid "2 Columns"
 msgstr ""
 
-#: includes/customizer-panel-content.php:585
+#: includes/customizer-panel-content.php:639
 msgid "3 Columns"
 msgstr ""
 
-#: includes/customizer-panel-content.php:586
+#: includes/customizer-panel-content.php:640
 msgid "4 Columns"
 msgstr ""
 
-#: includes/customizer-panel-content.php:587
+#: includes/customizer-panel-content.php:641
 msgid "5 Columns"
 msgstr ""
 
-#: includes/customizer-panel-content.php:588
+#: includes/customizer-panel-content.php:642
 msgid "6 Columns"
 msgstr ""
 
-#: includes/customizer-panel-content.php:602
+#: includes/customizer-panel-content.php:656
 msgid "Products Per Page"
 msgstr ""
 
-#: includes/customizer-panel-content.php:603
+#: includes/customizer-panel-content.php:657
 msgid "How many products to display per page?"
 msgstr ""
 
-#: includes/customizer-panel-content.php:628
+#: includes/customizer-panel-content.php:682
 msgid "Product Gallery"
 msgstr ""
 
-#: includes/customizer-panel-content.php:629
+#: includes/customizer-panel-content.php:683
 msgid "Select how product galleries are handled."
 msgstr ""
 
-#: includes/customizer-panel-content.php:632
+#: includes/customizer-panel-content.php:686
 msgid "Use WooCommerce 3.x Gallery (default)"
 msgstr ""
 
-#: includes/customizer-panel-content.php:633
-#: includes/customizer-panel-content.php:683
-#: includes/customizer-panel-content.php:706
+#: includes/customizer-panel-content.php:687
+#: includes/customizer-panel-content.php:737
+#: includes/customizer-panel-content.php:760
 #: includes/customizer-panel-footer.php:23
 #: includes/customizer-panel-footer.php:498
 #: includes/customizer-panel-general.php:103
@@ -797,24 +806,24 @@ msgstr ""
 msgid "Disabled"
 msgstr ""
 
-#: includes/customizer-panel-content.php:653
+#: includes/customizer-panel-content.php:707
 msgid "\"Add to Cart\" Button"
 msgstr ""
 
-#: includes/customizer-panel-content.php:654
+#: includes/customizer-panel-content.php:708
 msgid "Show the \"Add to Cart\" button on product category pages?"
 msgstr ""
 
-#: includes/customizer-panel-content.php:678
+#: includes/customizer-panel-content.php:732
 msgid "WooCommerce Styling"
 msgstr ""
 
-#: includes/customizer-panel-content.php:679
+#: includes/customizer-panel-content.php:733
 msgid "Enable or disable the theme’s custom WooCommerce styles."
 msgstr ""
 
-#: includes/customizer-panel-content.php:682
-#: includes/customizer-panel-content.php:705
+#: includes/customizer-panel-content.php:736
+#: includes/customizer-panel-content.php:759
 #: includes/customizer-panel-footer.php:499
 #: includes/customizer-panel-general.php:102
 #: includes/customizer-panel-header.php:451
@@ -823,7 +832,7 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: includes/customizer-panel-content.php:702
+#: includes/customizer-panel-content.php:756
 msgid "Lightbox"
 msgstr ""
 
@@ -1198,23 +1207,27 @@ msgstr ""
 msgid "Icon Size"
 msgstr ""
 
-#: includes/customizer-panel-general.php:1380
+#: includes/customizer-panel-general.php:1264
+msgid "Open Link In New Tab"
+msgstr ""
+
+#: includes/customizer-panel-general.php:1389
 msgid "RSS"
 msgstr ""
 
-#: includes/customizer-panel-general.php:1386
+#: includes/customizer-panel-general.php:1395
 msgid "Email"
 msgstr ""
 
-#: includes/customizer-panel-general.php:1392
+#: includes/customizer-panel-general.php:1401
 msgid "WordPress"
 msgstr ""
 
-#: includes/customizer-panel-general.php:1398
+#: includes/customizer-panel-general.php:1407
 msgid "Tik Tok"
 msgstr ""
 
-#: includes/customizer-panel-general.php:1404
+#: includes/customizer-panel-general.php:1413
 msgid "Spotify"
 msgstr ""
 
@@ -1518,7 +1531,7 @@ msgstr ""
 msgid "Sidebar"
 msgstr ""
 
-#: classes/class-fl-customizer-control.php:250
+#: classes/class-fl-customizer-control.php:254
 msgctxt "...a plugin."
 msgid "Install &amp; Activate"
 msgstr ""
@@ -1575,15 +1588,20 @@ msgstr ""
 
 #: includes/customizer-panel-content.php:369
 msgctxt "Customizer section title."
+msgid "Search Results Layout"
+msgstr ""
+
+#: includes/customizer-panel-content.php:423
+msgctxt "Customizer section title."
 msgid "Post Layout"
 msgstr ""
 
-#: includes/customizer-panel-content.php:472
+#: includes/customizer-panel-content.php:526
 msgctxt "Customizer section title."
 msgid "WooCommerce Layout"
 msgstr ""
 
-#: includes/customizer-panel-content.php:692
+#: includes/customizer-panel-content.php:746
 msgctxt "Customizer section title."
 msgid "Lightbox"
 msgstr ""
@@ -1696,79 +1714,79 @@ msgctxt ""
 msgid "Footer Column %d"
 msgstr ""
 
-#: classes/class-fl-theme.php:961 includes/customizer-panel-header.php:1004
+#: classes/class-fl-theme.php:973 includes/customizer-panel-header.php:1004
 #: includes/customizer-panel-header.php:1011
 msgctxt "Mobile navigation toggle button text."
 msgid "Menu"
 msgstr ""
 
-#: classes/class-fl-theme.php:1258
+#: classes/class-fl-theme.php:1270
 #. translators: %s: Archive title tag
 msgctxt "Archive title: tag."
 msgid "Posts Tagged &#8216;%s&#8217;"
 msgstr ""
 
-#: classes/class-fl-theme.php:1261
+#: classes/class-fl-theme.php:1273
 #. translators: %s: Archive title day
 msgctxt "Archive title: day."
 msgid "Archive for %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1264
+#: classes/class-fl-theme.php:1276
 #. translators: %s: Archive title month
 msgctxt "Archive title: month."
 msgid "Archive for %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1267
+#: classes/class-fl-theme.php:1279
 #. translators: %s: Archive title year
 msgctxt "Archive title: year."
 msgid "Archive for %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1270
+#: classes/class-fl-theme.php:1282
 #. translators: %s: Archive title author
 msgctxt "Archive title: author."
 msgid "Posts by %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1273
+#: classes/class-fl-theme.php:1285
 #. translators: %s: Search results title
 msgctxt "Search results title."
 msgid "Search results for: %s"
 msgstr ""
 
-#: classes/class-fl-theme.php:1275
+#: classes/class-fl-theme.php:1287
 msgctxt "Archive title: paged archive."
 msgid "Archives"
 msgstr ""
 
-#: classes/class-fl-theme.php:1603
+#: classes/class-fl-theme.php:1621
 msgctxt "Comment form label: comment author name."
 msgid "Name"
 msgstr ""
 
-#: classes/class-fl-theme.php:1606
+#: classes/class-fl-theme.php:1624
 msgctxt "Comment form label: comment author email."
 msgid "Email (will not be published)"
 msgstr ""
 
-#: classes/class-fl-theme.php:1609
+#: classes/class-fl-theme.php:1627
 msgctxt "Comment form label: comment author website."
 msgid "Website"
 msgstr ""
 
-#: classes/class-fl-theme.php:1711
+#: classes/class-fl-theme.php:1729
 msgctxt "Respond form title."
 msgid "Leave a Comment"
 msgstr ""
 
-#: classes/class-fl-theme.php:1718
+#: classes/class-fl-theme.php:1736
 msgctxt "Comment form label: comment content."
 msgid "Comment"
 msgstr ""
 
-#: classes/class-fl-theme.php:1720
+#: classes/class-fl-theme.php:1738
 #. translators: %s: Please, keep the HTML tags
 msgctxt "Please, keep the HTML tags."
 msgid "You must be <a%s>logged in</a> to post a comment."
@@ -1838,25 +1856,25 @@ msgid "Widgets"
 msgstr ""
 
 #: includes/customizer-panel-content.php:164
-#: includes/customizer-panel-content.php:503
+#: includes/customizer-panel-content.php:557
 msgctxt "Sidebar size."
 msgid "Large"
 msgstr ""
 
 #: includes/customizer-panel-content.php:165
-#: includes/customizer-panel-content.php:504
+#: includes/customizer-panel-content.php:558
 msgctxt "Sidebar size."
 msgid "Medium"
 msgstr ""
 
 #: includes/customizer-panel-content.php:166
-#: includes/customizer-panel-content.php:505
+#: includes/customizer-panel-content.php:559
 msgctxt "Sidebar size."
 msgid "Small"
 msgstr ""
 
 #: includes/customizer-panel-content.php:167
-#: includes/customizer-panel-content.php:506
+#: includes/customizer-panel-content.php:560
 msgctxt "Sidebar size."
 msgid "Custom"
 msgstr ""

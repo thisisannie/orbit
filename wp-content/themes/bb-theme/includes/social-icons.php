@@ -1,5 +1,5 @@
 <?php
-$link_target = ' target="_blank"';
+$link_target = ' target="' . esc_attr( true === $settings['fl-social-link-new-tab'] ? '_blank' : '_self' ) . '"';
 $link_rel    = ' rel="noopener noreferrer"';
 if ( 'custom' === $settings['fl-social-icons-color'] ) {
 	?>

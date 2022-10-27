@@ -1009,12 +1009,15 @@ input[type=text].fl-search-input {
 .fl-page {
 	.fl-module-woocommerce a.button,
 	.fl-module-woocommerce button.button.alt,
+	.fl-post-module-woo-button button[type=submit],
+	.fl-post-module-woo-button button[type=submit].alt.disabled,
 	.fl-post-module-woo-button a.button {
 		.fl-woo-button-inactive-styles();
 	}
 
 	.fl-module-woocommerce a.button:hover,
 	.fl-module-woocommerce button.button.alt:hover,
+	.fl-post-module-woo-button button[type=submit]:hover,
 	.fl-post-module-woo-button a.button:hover {
 		.fl-woo-button-hover-styles();
 	}
@@ -1323,6 +1326,14 @@ img.mfp-img {
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: column;
+	}
+
+	body.woocommerce-page.fl-framework-bootstrap,
+	body.woocommerce-page.fl-framework-base {
+		.fl-page-content .row .fl-woo-content {
+			box-sizing: border-box;
+			width: 100%;
+		}
 	}
 
 	body.woocommerce-page.fl-framework-bootstrap .fl-woo-content-right,
@@ -1712,6 +1723,7 @@ img.mfp-img {
 
 	.fl-fixed-width .fl-page {
 		width: (@content-width+80);
+		max-width: 90%;
 	}
 
 	/* Bootstrap Overrides

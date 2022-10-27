@@ -1255,7 +1255,16 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 				),
 
-
+				'fl-social-link-new-tab'      => array(
+					'setting' => array(
+						'default' => false,
+					),
+					'control' => array(
+						'class' => 'FLCustomizerControl',
+						'label' => __( 'Open Link In New Tab', 'fl-automator' ),
+						'type'  => 'switch',
+					),
+				),
 
 				/* Social Links (no need to translate brand names) */
 				'fl-social-facebook'          => array(

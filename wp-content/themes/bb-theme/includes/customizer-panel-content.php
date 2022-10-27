@@ -6,7 +6,7 @@ FLCustomizer::add_panel('fl-content', array(
 	'sections' => array(
 
 		/* Content Background Section */
-		'fl-content-bg'       => array(
+		'fl-content-bg'             => array(
 			'title'   => _x( 'Content Background', 'Customizer section title.', 'fl-automator' ),
 			'options' => array(
 
@@ -130,7 +130,7 @@ FLCustomizer::add_panel('fl-content', array(
 		),
 
 		/* Blog Section */
-		'fl-content-blog'     => array(
+		'fl-content-blog'           => array(
 			'title'   => _x( 'Blog Layout', 'Customizer section title.', 'fl-automator' ),
 			'options' => array(
 
@@ -297,7 +297,7 @@ FLCustomizer::add_panel('fl-content', array(
 		),
 
 		/* Archive Pages Section */
-		'fl-content-archives' => array(
+		'fl-content-archives'       => array(
 			'title'   => _x( 'Archive Layout', 'Customizer section title.', 'fl-automator' ),
 			'options' => array(
 
@@ -364,8 +364,62 @@ FLCustomizer::add_panel('fl-content', array(
 			),
 		),
 
+		/* Search Results Page Section */
+		'fl-content-search-results' => array(
+			'title'   => _x( 'Search Results Layout', 'Customizer section title.', 'fl-automator' ),
+			'options' => array(
+				/* Post Info: Author */
+				'fl-search-results-author'        => array(
+					'setting' => array(
+						'default' => 'visible',
+					),
+					'control' => array(
+						'class'   => 'WP_Customize_Control',
+						'label'   => __( 'Post Author', 'fl-automator' ),
+						'type'    => 'select',
+						'choices' => array(
+							'visible' => __( 'Visible', 'fl-automator' ),
+							'hidden'  => __( 'Hidden', 'fl-automator' ),
+						),
+					),
+				),
+
+				/* Post Info: Date */
+				'fl-search-results-date'          => array(
+					'setting' => array(
+						'default' => 'visible',
+					),
+					'control' => array(
+						'class'   => 'WP_Customize_Control',
+						'label'   => __( 'Post Date', 'fl-automator' ),
+						'type'    => 'select',
+						'choices' => array(
+							'visible' => __( 'Visible', 'fl-automator' ),
+							'hidden'  => __( 'Hidden', 'fl-automator' ),
+						),
+					),
+				),
+
+				/* Post Info: Comment Count */
+				'fl-search-results-comment-count' => array(
+					'setting' => array(
+						'default' => 'visible',
+					),
+					'control' => array(
+						'class'   => 'WP_Customize_Control',
+						'label'   => __( 'Comment Count', 'fl-automator' ),
+						'type'    => 'select',
+						'choices' => array(
+							'visible' => __( 'Visible', 'fl-automator' ),
+							'hidden'  => __( 'Hidden', 'fl-automator' ),
+						),
+					),
+				),
+			),
+		),
+
 		/* Post Pages Section */
-		'fl-content-posts'    => array(
+		'fl-content-posts'          => array(
 			'title'   => _x( 'Post Layout', 'Customizer section title.', 'fl-automator' ),
 			'options' => array(
 
@@ -468,7 +522,7 @@ FLCustomizer::add_panel('fl-content', array(
 		),
 
 		/* WooCommerce Section */
-		'fl-content-woo'      => array(
+		'fl-content-woo'            => array(
 			'title'   => _x( 'WooCommerce Layout', 'Customizer section title.', 'fl-automator' ),
 			'options' => array(
 
@@ -688,7 +742,7 @@ FLCustomizer::add_panel('fl-content', array(
 		),
 
 		/* Lightbox Section */
-		'fl-lightbox-layout'  => array(
+		'fl-lightbox-layout'        => array(
 			'title'   => _x( 'Lightbox', 'Customizer section title.', 'fl-automator' ),
 			'options' => array(
 

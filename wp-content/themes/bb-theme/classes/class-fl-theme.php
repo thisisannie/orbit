@@ -882,14 +882,26 @@ final class FLTheme {
 			$logo_text  = apply_filters( 'fl_logo_text', get_bloginfo( 'name' ) );
 			$logo_title = apply_filters( 'fl_logo_title', '' );
 
-			echo '<img loading="false" data-no-lazy="1" class="fl-logo-img"' . FLTheme::print_schema( ' itemscope itemtype="https://schema.org/ImageObject"', false ) . ' src="' . $logo_image . '"';
+			$logo_image_class = apply_filters( 'fl_logo_image_class', 'fl-logo-img' );
+			$logo_attr        = apply_filters( 'fl_logo_image_attr', array(
+				'loading'      => 'false',
+				'data-no-lazy' => '1',
+			) );
+
+			$safe_logo_attr = '';
+			foreach ( $logo_attr as $key => $value ) {
+				$safe_logo_attr .= sanitize_key( $key ) . '="' . esc_attr( strval( $value ) ) . '" ';
+			}
+
+			echo '<img class="' . esc_attr( $logo_image_class ) . '" ' . $safe_logo_attr . ' ' . FLTheme::print_schema( ' itemscope itemtype="https://schema.org/ImageObject"', false ) . ' src="' . $logo_image . '"';
 			echo ' data-retina="' . $logo_retina . '"';
+
 			if ( $mobile_logo ) {
 				echo ' data-mobile="' . $mobile_logo . '"';
 			}
 			echo ' title="' . esc_attr( $logo_title ) . '"';
-			echo ( isset( $image_data['width'] ) ) ? sprintf( ' width="%s"', $image_data['width'] ) : '';
-			echo ( isset( $image_data['height'] ) ) ? sprintf( ' height="%s"', $image_data['height'] ) : '';
+			echo ( isset( $image_data['width'] ) && ! empty( $image_data['width'] ) ) ? sprintf( ' width="%s"', $image_data['width'] ) : '';
+			echo ( isset( $image_data['height'] ) && ! empty( $image_data['width'] ) ) ? sprintf( ' height="%s"', $image_data['height'] ) : '';
 			echo ' alt="' . esc_attr( $logo_text ) . '" />';
 			echo '<meta itemprop="name" content="' . esc_attr( $logo_text ) . '" />';
 		} else {
@@ -1340,13 +1352,19 @@ final class FLTheme {
 	 */
 	static public function post_top_meta() {
 		global $post;
+		$settings = self::get_settings();
 
-		$settings      = self::get_settings();
-		$show_author   = 'visible' === $settings['fl-blog-post-author'] ? true : false;
-		$show_date     = 'visible' === $settings['fl-blog-post-date'] ? true : false;
-		$comments      = comments_open() || '0' !== get_comments_number();
-		$comment_count = 'visible' === $settings['fl-blog-comment-count'] ? true : false;
+		if ( is_search() ) {
+			$show_author   = 'visible' === $settings['fl-search-results-author'];
+			$show_date     = 'visible' === $settings['fl-search-results-date'];
+			$comment_count = 'visible' === $settings['fl-search-results-comment-count'];
+		} else {
+			$show_author   = 'visible' === $settings['fl-blog-post-author'];
+			$show_date     = 'visible' === $settings['fl-blog-post-date'];
+			$comment_count = 'visible' === $settings['fl-blog-comment-count'];
+		}
 
+		$comments = comments_open() || '0' !== get_comments_number();
 		include locate_template( 'includes/post-top-meta.php' );
 	}
 

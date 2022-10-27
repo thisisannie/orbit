@@ -106,6 +106,10 @@ final class FLCustomizerControl extends WP_Customize_Control {
 			case 'checkbox-multiple':
 				$this->render_checkbox_multiple();
 				break;
+
+			case 'switch':
+				$this->render_switch();
+				break;
 		}
 	}
 
@@ -325,6 +329,23 @@ final class FLCustomizerControl extends WP_Customize_Control {
 		if ( is_array( $multi_values ) ) {
 			echo '<input type="hidden" ' . $this->get_link() . ' value="' . esc_attr( implode( ',', $multi_values ) ) . '" />';
 		}
+	}
+
+	/**
+	 * Renders switch control markup
+	 *
+	 * @since 1.7.11
+	 * @access protected
+	 * @return void
+	 */
+	protected function render_switch() {
+		echo '<div class="fl-control-switch-wrap">';
+			echo $this->render_content_title();
+			echo '<label class="fl-control-switch">
+				<input type="checkbox" ' . $this->get_link() . ' ' . ( true === $this->value() ? 'checked' : '' ) . '>
+				<span></span>
+			</label>
+		</div>';
 	}
 
 	/**

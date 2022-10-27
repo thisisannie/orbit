@@ -318,6 +318,7 @@
 										'body.theme-bb-theme.woocommerce-page .fl-page .woocommerce button.button:visited,'+
 										'body.theme-bb-theme:not(.woocommerce-page) .fl-page .fl-module-woocommerce a.button,' +
 										'body.theme-bb-theme:not(.woocommerce-page) .fl-page .fl-module-woocommerce a.button:visited,' + 
+										'body.theme-bb-theme:not(.woocommerce-page) .fl-page .fl-post-module-woo-button button[type=submit],' +
 										'body.theme-bb-theme:not(.woocommerce-page) .fl-page .fl-post-module-woo-button a.button,' +
 										'body.theme-bb-theme:not(.woocommerce-page) .fl-page .fl-post-module-woo-button a.button:visited';
       
@@ -361,6 +362,7 @@
 										'body.theme-bb-theme.woocommerce-page .fl-page .product a.button:hover,'+
 										'body.theme-bb-theme.woocommerce-page .fl-page .woocommerce button.button:hover,'+
 										'body.theme-bb-theme:not(.woocommerce-page) .fl-page .fl-module-woocommerce a.button:hover,' + 
+										'body.theme-bb-theme:not(.woocommerce-page) .fl-page .fl-post-module-woo-button button[type=submit]:hover'
 										'body.theme-bb-theme:not(.woocommerce-page) .fl-page .fl-post-module-woo-button a.button:hover';
 
 			var hoverInsideSelector = 	'.fl-page input[type=button]:hover *,' +
