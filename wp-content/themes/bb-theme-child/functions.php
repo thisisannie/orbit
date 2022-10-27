@@ -10,13 +10,11 @@ require_once 'classes/class-fl-child-theme.php';
 // Actions
 add_action( 'wp_enqueue_scripts', 'FLChildTheme::enqueue_scripts', 1000 );
 
-
 function custom_scripts() {
     wp_enqueue_script( 'custom-js', get_stylesheet_directory_uri() . '/js/custom.js',  '', '', true);
     wp_enqueue_script( 'slick-js', get_stylesheet_directory_uri() . '/js/slick/slick.js',  '', '', true);
  }
 add_action( 'wp_enqueue_scripts', 'custom_scripts' );
-
 
 // Head
 add_action ('wp_head','head_fonts');
@@ -25,7 +23,6 @@ function head_fonts () {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600&display=swap" rel="stylesheet">';
 }
-
 
 //MODULE HOMEPAGE CARDS
 
@@ -57,7 +54,6 @@ function homepage_cards_custom_post_types() {
     );
     register_post_type('homepagecards', $homepage_cards_args );
 
-
 }
 add_action( 'init', 'homepage_cards_custom_post_types' );
 
@@ -88,9 +84,6 @@ function homepage_cards_custom_taxonomies() {
 }
 add_action( 'init', 'homepage_cards_custom_taxonomies' );
 
-
-
-
 //Orbit custom meta box for Events
 $prefix = 'orb_';
 
@@ -118,7 +111,6 @@ $meta_box_homepage_cards = array(
     )
 );
 
-
 add_action('admin_menu', 'orbit_add_homepage_cards_box');
 
 // Add meta box
@@ -128,12 +120,9 @@ function orbit_add_homepage_cards_box() {
     add_meta_box($meta_box_homepage_cards['id'], $meta_box_homepage_cards['title'], 'orbit_show_homepage_cards_box', $meta_box_homepage_cards['page'], $meta_box_homepage_cards['context'], $meta_box_homepage_cards['priority']);
 }
 
-
 // Callback function to show fields in meta box
 function orbit_show_homepage_cards_box() {
     global $meta_box_homepage_cards, $post;
-
-
 
      // Use nonce for verification
     echo '<input type="hidden" name="orbit_meta_box_homepage_cards_event_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
@@ -217,7 +206,6 @@ function orbit_save_homepage_cards_data($post_id) {
     }
 }
 
-
 //Module 12 - Homepage cards category filters
 
 //Shortcode to show dropdown filters [homepage_posts]
@@ -250,7 +238,6 @@ function show_homepage_cards(){
     return $cards_content;
 }
 add_shortcode('homepagecards_cards','show_homepage_cards');
-
 
 //Show posts from selected category - with ajax call
 add_action('wp_ajax_myfilter_homepagecards', 'orbit_homepagecards_filter_function');
@@ -300,7 +287,6 @@ function orbit_homepagecards_filter_function(){
     die();
 }
 
-
 //Shortcode for default Homepage cards posts from all categories
 function default_homepagecards_posts(){
 
@@ -347,7 +333,6 @@ function default_homepagecards_posts(){
 }
 add_shortcode('default_cards', 'default_homepagecards_posts');
 
-
 /*
  * Register Custom Post Types - Staff Members
  */
@@ -375,7 +360,6 @@ function orbit_register_custom_post_types() {
         'menu_position' => 6,
     );
     register_post_type('staff', $staff_args );
-
 
 }
 add_action( 'init', 'orbit_register_custom_post_types' );
@@ -406,9 +390,6 @@ function orbit_register_custom_taxonomies() {
 
 }
 add_action( 'init', 'orbit_register_custom_taxonomies' );
-
-
-
 
 //Orbit custom meta box for Staff
 $prefix = 'orb_';
@@ -452,7 +433,6 @@ $meta_box = array(
     )
 );
 
-
 add_action('admin_menu', 'orbit_add_box');
 
 // Add meta box
@@ -462,12 +442,9 @@ function orbit_add_box() {
     add_meta_box($meta_box['id'], $meta_box['title'], 'orbit_show_box', $meta_box['page'], $meta_box['context'], $meta_box['priority']);
 }
 
-
 // Callback function to show fields in meta box
 function orbit_show_box() {
     global $meta_box, $post;
-
-
 
      // Use nonce for verification
     echo '<input type="hidden" name="orbit_meta_box_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
@@ -548,7 +525,6 @@ function orbit_save_data($post_id) {
     }
 }
 
-
 //Module 11 - Staff members category/city filters
 
 //Shortcode to show dropdown filters [staff_posts]
@@ -573,7 +549,6 @@ function staff_category(){
     return $content;
 }
 add_shortcode('staff_posts','staff_category');
-
 
 //Show posts from selected category - with ajax call
 add_action('wp_ajax_myfilter', 'orbit_filter_function');
@@ -603,13 +578,9 @@ function orbit_filter_function(){
         while( $query->have_posts() ): $query->the_post();
             echo '<div class="card">';
             if(has_post_thumbnail()){
-                //the_post_thumbnail('thumbnail');
                 $thumb = wp_get_attachment_image_src(get_post_thumbnail_id(), 'full');
-                //echo $thumb[0]; // thumbnail url
                 echo '<div class="rounded background-image" style="background-image: url('.$thumb[0].');"></div>';
-
-                
-             }
+            }
             echo '<p><strong>' . $query->post->post_title . '</strong><br>';
             echo get_post_meta(get_the_ID(), 'orb_role', TRUE) .'<br>';
             if(get_post_meta(get_the_ID(), 'orb_email', TRUE)) {
@@ -638,12 +609,12 @@ function default_staff_posts(){
         'posts_per_page' => '4',
     );
     $args_def['tax_query'] = array(
-            array(
-                'taxonomy' => 'staff-category',
-                'field' => 'term_id',
-                'terms' => $term_ids
-            )
-        );
+        array(
+            'taxonomy' => 'staff-category',
+            'field' => 'term_id',
+            'terms' => $term_ids
+        )
+    );
 
     $query_def = new WP_Query( $args_def );
     
@@ -675,8 +646,6 @@ function default_staff_posts(){
 }
 add_shortcode('default_staff', 'default_staff_posts');
 
-
-
 //MODULE 12 - EVENT FILTERS
 
 /*
@@ -706,7 +675,6 @@ function orbit_events_custom_post_types() {
         'menu_position' => 6,
     );
     register_post_type('event', $event_args );
-
 
 }
 add_action( 'init', 'orbit_events_custom_post_types' );
@@ -738,9 +706,6 @@ function orbit_event_custom_taxonomies() {
 }
 add_action( 'init', 'orbit_event_custom_taxonomies' );
 
-
-
-
 //Orbit custom meta box for Events
 $prefix = 'orb_';
 
@@ -764,11 +729,9 @@ $meta_box_events = array(
             'id' => $prefix . 'event_date',
             'type' => 'date',
             'std' => ''
-        ),
-       
+        ),       
     )
 );
-
 
 add_action('admin_menu', 'orbit_add_event_box');
 
@@ -779,12 +742,9 @@ function orbit_add_event_box() {
     add_meta_box($meta_box_events['id'], $meta_box_events['title'], 'orbit_show_event_box', $meta_box_events['page'], $meta_box_events['context'], $meta_box_events['priority']);
 }
 
-
 // Callback function to show fields in meta box
 function orbit_show_event_box() {
     global $meta_box_events, $post;
-
-
 
      // Use nonce for verification
     echo '<input type="hidden" name="orbit_meta_box_events_event_nonce" value="', wp_create_nonce(basename(__FILE__)), '" />';
@@ -868,7 +828,6 @@ function orbit_save_event_data($post_id) {
     }
 }
 
-
 //Module 12 - Events category/city filters
 
 //Shortcode to show dropdown filters [event_posts]
@@ -892,7 +851,6 @@ function event_category(){
 
 }
 add_shortcode('event_posts','event_category');
-
 
 //Show posts from selected category - with ajax call
 add_action('wp_ajax_myfilter_event', 'orbit_filter_event_function');
@@ -944,7 +902,6 @@ function orbit_filter_event_function(){
     endif;
     die();
 }
-
 
 //Shortcode for first/default random posts from all categories
 function default_event_posts(){
