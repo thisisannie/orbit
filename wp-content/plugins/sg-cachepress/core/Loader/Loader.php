@@ -8,6 +8,7 @@ use SiteGround_Optimizer\Helper\Helper;
 use SiteGround_Optimizer\Helper\Factory_Trait;
 use SiteGround_Optimizer\Install_Service\Install_6_0_0;
 use SiteGround_Helper\Helper_Service;
+use SiteGround_Data\Settings;
 
 /**
  * Loader functions and main initialization class.
@@ -39,7 +40,6 @@ class Loader {
 			'images_optimizer_webp'  => 'images_optimizer',
 			'cli'                    => 'cli',
 			'heartbeat_control'      => 'heartbeat_control',
-			'cloudflare'             => 'DNS',
 			'database_optimizer'     => 'database_optimizer',
 			'supercacher'            => 'supercacher',
 			'supercacher_helper'     => 'supercacher',
@@ -55,10 +55,11 @@ class Loader {
 	 * @var array
 	 */
 	public $external_dependencies = array(
-		'Settings_Page'  => array(
+		'Settings_Page' => array(
 			'namespace' => 'Data',
+			'hook'      => 'settings_page',
 		),
-		'Settings'       => array(
+		'Settings'      => array(
 			'namespace' => 'Data',
 			'hook'      => 'settings',
 		),
@@ -82,11 +83,11 @@ class Loader {
 	}
 
 	/**
-	 * Add the data collector hooks.
+	 * Add the data collector page hooks.
 	 *
 	 * @since 7.0.6
 	 */
-	public function add_settings_hooks() {
+	public function add_settings_page_hooks() {
 
 		add_action( 'admin_menu', array( $this->settings_page, 'register_settings_page' ) );
 
@@ -96,10 +97,36 @@ class Loader {
 
 		// Register rest route.
 		add_action( 'rest_api_init', array( $this->settings_page, 'register_rest_routes' ) );
+	}
 
-		if ( 1 === intval( get_option( 'siteground_data_consenst', 0 ) ) ) {
-			$this->settings->schedule_cron_job();
+	/**
+	 * Add the data collector hooks.
+	 *
+	 * @since 7.1.6
+	 */
+	public function add_settings_hooks() {
+		if ( 0 === intval( get_option( 'siteground_data_consent', 0 ) ) ) {
+			return;
 		}
+
+		$settings = ! method_exists( 'Siteground_Data\\Settings', 'get_instance' ) ? new Settings() : Settings::get_instance();
+
+		// Schedule Cron Job for sending the data.
+		$settings->schedule_cron_job();
+
+		add_action( 'admin_init', array( $settings, 'handle_settings_update' ) );
+
+		// Hook on wp login to send data, when the cron is disabled.
+		if ( defined( 'DISABLE_WP_CRON' ) && 1 === intval( DISABLE_WP_CRON ) ) {
+			add_action( 'wp_login', array( $settings, 'send_data_on_login' ) );
+		}
+
+		// Check if there is old data to be sent over.
+		add_action( 'siteground_data_collector_cron', array( $settings, 'check_for_old_data' ), 9 );
+		// Sent the data.
+		add_action( 'siteground_data_collector_cron', array( $settings, 'send_data' ), 10 );
+		// Add the custom cron interval.
+		add_action( 'cron_schedules', array( $settings, 'add_siteground_data_interval' ) );
 	}
 
 	/**
@@ -211,6 +238,11 @@ class Loader {
 			$install_6_0_0->install();
 			update_option( 'siteground_optimizer_version', '6.0.0' );
 		}
+
+		// Force the installation process if it is not completed.
+		if ( false === get_option( 'sgo_install_service', false ) ) {
+			$this->install_service->install();
+		}
 	}
 
 	/**
@@ -254,7 +286,8 @@ class Loader {
 			add_action( 'admin_menu', array( $this->admin, 'add_plugin_pages' ) );
 			// add_action( 'admin_notices', array( $this->admin, 'memcache_notice' ) );
 			// Reorder the submenu.
-			add_filter( 'custom_menu_order', array( $this->admin, 'reorder_submenu_pages' ) );
+			add_filter( 'custom_menu_order', '__return_true' );
+			add_filter( 'menu_order', array( $this->admin, 'reorder_submenu_pages' ) );
 			// Hide the global memcache notice.
 			add_action( 'wp_ajax_dismiss_memcache_notice', array( $this->admin, 'hide_memcache_notice' ) );
 			// Hide the global blocking plugins notice.
@@ -277,7 +310,6 @@ class Loader {
 		add_action( 'network_admin_notices', array( $this->modules, 'cache_plugins_notice' ) );
 		// Display notice for blocking plugins.
 		add_action( 'network_admin_notices', array( $this->modules, 'blocking_plugins_notice' ) );
-		// Check if the current domain has cloudflare.
 
 		// Disable certain modules if there are conflicting plugins installed.
 		if ( 1 === (int) get_option( 'disable_conflicting_modules', 0 ) ) {
@@ -418,15 +450,15 @@ class Loader {
 		// Loop all children.
 		foreach ( $this->lazy_load->children as $child_name => $child ) {
 			// Loop trough all options.
-			foreach ( $child as $attriutes ) {
+			foreach ( $child as $attributes ) {
 
 				// Continue if option is in the exclude list.
-				if ( in_array( 'lazyload_'. $attriutes["option"], $excluded_types ) ) {
+				if ( in_array( 'lazyload_'. $attributes["option"], $excluded_types ) ) {
 					continue;
 				}
 
 				// Add the options hooks and child.
-				add_filter( $attriutes['hook'], array( $this->lazy_load->$child_name, 'filter_html' ), $priority );
+				add_filter( $attributes['hook'], array( $this->lazy_load->$child_name, 'filter_html' ), $priority );
 			}
 		}
 
@@ -487,9 +519,13 @@ class Loader {
 	 * @since 5.9.0
 	 */
 	public function add_images_optimizer_hooks() {
-		// Resize newly uploaded images.
-		if ( Options::is_enabled( 'siteground_optimizer_resize_images' ) ) {
-			add_action( 'wp_generate_attachment_metadata', array( $this->images_optimizer, 'resize' ) );
+
+		// Get the resize_images option and apply filters to check the set value.
+		$resize_images = apply_filters( 'sgo_set_max_image_width', intval( get_option( 'siteground_optimizer_resize_images', 2560 ) ) );
+
+		// Resize newly uploaded images, if different than default.
+		if ( 2560 !== $resize_images ) {
+			add_filter( 'big_image_size_threshold', array( $this->images_optimizer, 'resize' ) );
 		}
 
 		// Image optimizations are not available for non SG users.
@@ -561,20 +597,6 @@ class Loader {
 	}
 
 	/**
-	 * Add cloudflare hooks.
-	 *
-	 * @since 5.9.0
-	 */
-	public function add_cloudflare_hooks() {
-		if ( ! Options::is_enabled( 'siteground_optimizer_cloudflare_optimization_status' ) ) {
-			return;
-		}
-
-		add_action( 'send_headers', array( $this->cloudflare, 'add_headers' ), PHP_INT_MAX );
-		add_action( 'template_redirect', array( $this->cloudflare, 'add_headers' ) );
-	}
-
-	/**
 	 * Add database optimizer hooks.
 	 *
 	 * @since 5.9.0
@@ -605,6 +627,7 @@ class Loader {
 		$this->add_caching_hooks( $this->supercacher );
 
 		add_action( 'pll_save_post', array( $this->supercacher, 'flush_memcache' ) );
+		add_action( 'customize_save_after', array( $this->supercacher, 'flush_memcache' ) );
 	}
 
 	/**
@@ -664,11 +687,11 @@ class Loader {
 		// Loop all children.
 		foreach ( $class->children as $child_name => $child ) {
 			// Loop trough all options.
-			foreach ( $child as $attriutes ) {
+			foreach ( $child as $attributes ) {
 				add_action(
-					$attriutes['hook'], // The hook.
-					array( $class->$child_name, $attriutes['option'] ), // The callback.
-					! empty( $attriutes['priority'] ) ? $attriutes['priority'] : 10 // The priority.
+					$attributes['hook'], // The hook.
+					array( $class->$child_name, $attributes['option'] ), // The callback.
+					! empty( $attributes['priority'] ) ? $attributes['priority'] : 10 // The priority.
 				);
 			}
 		}

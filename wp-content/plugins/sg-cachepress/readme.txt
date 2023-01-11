@@ -3,7 +3,7 @@ Contributors: Hristo Sg, siteground, sstoqnov, stoyangeorgiev, elenachavdarova, 
 Tags: nginx, caching, speed, memcache, memcached, performance, siteground, nginx, supercacher
 Requires at least: 4.7
 Requires PHP: 7.0
-Tested up to: 6.0
+Tested up to: 6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -108,6 +108,17 @@ If you need to add a specific query parameter which will be ignored in the cache
 		$ignored_query_params[] = 'query_param2';
 
 		return $ignored_query_params;
+	}
+
+If you need to exclude certain URLs from your website being cached you can use the filter we have designed for that purpose. Make sure to surround the url part with forward slashes. Wildcards can be used as well. You can check the below example:
+
+	add_filter( 'sgo_exclude_urls_from_cache', 'sgo_add_excluded_urls_from_cache');
+	function sgo_add_excluded_urls_from_cache( $excluded_urls ) {
+		// The part of the URL which needs to be excluded from cache.
+		$excluded_urls[] = '/excluded_url/';
+		$excluded_urls[] = '/wildcard/exclude/*';
+
+		return $excluded_urls;
 	}
 
 = SiteGround Optimizer Environment Page =
@@ -250,6 +261,13 @@ You can exclude inline script from being combined using the filter we’ve desig
 		return $exclude_list;
 	}
 
+You can exclude all inline scripts from being combined using the filter we’ve designed for that purpose. Here’s an example of the code, you can add to your functions.php file:
+
+	add_filter( 'sgo_javascript_combine_exclude_all_inline', '__return_true' );
+
+You can exclude all inline scripts from being combined using the filter we’ve designed for that purpose. Here’s an example of the code, you can add to your functions.php file:
+
+	add_filter( 'sgo_javascript_combine_exclude_all_inline_modules', '__return_true' );
 
 You can exclude script from being loaded asynchronously  using the filter we’ve designed for that purpose. Here’s an example of the code, you can add to your functions.php file:
 
@@ -279,6 +297,14 @@ You can exclude url or url that contain specific query param using the following
 		return $exclude_urls;
 	}
 
+You can exclude static resources from the removal of their query strings using the filter we’ve designed for that purpose. Here’s an example of the code, you can add to your functions.php file:
+
+	add_filter( 'sgo_rqs_exclude', 'sgo_rqs_exclude_scripts' );
+	function sgo_rqs_exclude_scripts( $exclude_list ) {
+		$exclude_list[] = 'part-of-the-resource-path.js';
+		return $exclude_list;
+	}
+
 You can exclude images from Lazy Load using the following filter:
 
 	add_filter( 'sgo_lazy_load_exclude_classes', 'exclude_images_with_specific_class' );
@@ -287,6 +313,58 @@ You can exclude images from Lazy Load using the following filter:
 		$classes[] = 'test-class';
 
 		return $classes;
+	}
+
+You can exclude specific post type from Lazy Load using the following filter:
+
+	add_filter( 'sgo_lazy_load_exclude_post_types', 'exclude_lazy_load_from_post_type' );
+	function exclude_lazy_load_from_post_type( $post_types ) {
+		// Add the post type that you want to exclude from using lazy load.
+		$post_types[] = 'post-type';
+
+		return $post_types;
+	}
+
+You can exclude a specific url from Lazy Load using the following filter:
+
+	add_filter( 'sgo_lazy_load_exclude_urls', 'exclude_lazy_load_for_url' );
+	function exclude_lazy_load_for_url( $excluded_urls ) {
+		// Add the url that you want to exclude from using lazy load.
+		$excluded_urls[] = 'http://mydomain.com/page-slug';
+
+		return $excluded_urls;
+	}
+
+With these new filters you can exclude specific assets from being lazy loaded. Keep in mind that using those filters can reduce perfomance in some cases.
+
+You can use this filter for excluding specific images by adding their source url:
+
+	add_filter( 'sgo_lazy_load_exclude_images', 'exclude_images_from_lazy_load );
+	function exclude_images_from_lazy_load( $excluded_images ) {
+		// Add the src url of the image that you want to exclude from using lazy load.
+		$excluded_images[] = 'http://mydomain.com/wp-content/uploads/your-image.jpeg';
+
+		return $excluded_images;
+	}
+
+You can use this filter for excluding specific videos by adding their source url:
+
+	add_filter( 'sgo_lazy_load_exclude_videos', 'exclude_videos_from_lazy_load );
+	function exclude_videos_from_lazy_load( $excluded_videos ) {
+		// Add the src url of the video that you want to exclude from using lazy load.
+		$excluded_videos[] = 'http://mydomain.com/wp-content/uploads/your-video.mp4';
+
+		return $excluded_videos;
+	}
+
+You can use this filter for excluding specific iframe by adding their source url:
+
+	add_filter( 'sgo_lazy_load_exclude_iframe', 'exclude_iframe_from_lazy_load );
+	function exclude_iframe_from_lazy_load( $excluded_iframe ) {
+		// Add the src url of the iframe that you want to exclude from using lazy load.
+		$excluded_iframe[] = 'http://mydomain.com/wp-content/uploads/iframe-src.mp4';
+
+		return $excluded_iframe;
 	}
 
 = WP-CLI Support = 
@@ -307,7 +385,17 @@ Environment:
 * `wp sg optimize fix-insecure-content enable|disable` - enables or disables Insecure Content Fix
 * `wp sg heartbeat frontend|dashboard|post --frequency=<frequency>` - Adjust Heartbeat control frequency for a specific location
 * `wp sg dns-prefetch add|remove|urls <value>` - add, remove or list urls in the DNS Prefetch list.
-* `wp sg optimize database-optimization enable|disable` - enables or disables the DB Optimization
+* `wp sg database-optimization enable|disable|update|status --options=<database_optimization>` - enables or disables the DB Optimization, update for specific options only, show a full list of enabled options.
+
+= Available for the database-optimization options: =
+
+* delete_auto_drafts
+* delete_revisions
+* delete_trashed_posts
+* delete_spam_comments
+* delete_trash_comments
+* expired_transients
+* optimize_tables
 
 Frontend:
 * `wp sg optimize css enable|disable` - enables or disables CSS minification
@@ -375,6 +463,100 @@ Our plugin uses a cookie in order to function properly. It does not store person
 1. Go to Plugins -> Installed Plugins and click the 'Activate' link under the WordPress SiteGround Optimizer listing
 
 == Changelog ==
+
+= Version 7.2.9 =
+Release Date: Dec 2nd, 2022
+
+* Fix for missing apache_response_headers function.
+
+= Version 7.2.8 =
+Release Date: Dec 1st, 2022
+
+* Improved namespace performance on other hosts.
+* Improved WooCommerce Square plugin support.
+
+= Version 7.2.7 =
+Release Date: Nov 30rd, 2022
+
+* Improved Memcache Health status checks
+* Improved FileBased Cache cleanup
+* Improved FileBased Cache Headers checks
+* Improved LazyLoad for sidebar images
+* Improved Speed Test results
+* Improved Test URL cache status
+
+= Version 7.2.6 =
+Release Date: Nov 21st, 2022
+
+* Discontinue of Cloudflare support
+
+= Version 7.2.5 =
+Release Date: October 18th, 2022
+
+* Improved Database Optimization interface
+* Improved Multisite Memcached support
+
+= Version 7.2.4 =
+Release Date: October 11th, 2022
+
+* Memcached Service bug fix
+
+= Version 7.2.3 =
+Release Date: October 11th, 2022
+
+* Install Service fix
+
+= Version 7.2.2 =
+Release Date: October 10th, 2022
+
+* New filter - Exclude URL from cache
+* New filter - Exclude inline scripts from combination
+* Improved Database Optimization options
+* Improved Memcached service
+* Improved Toolset Types plugin support
+* Improved admin menu ordering
+* Legacy code removed
+
+= Version 7.2.1 =
+Release Date: August 10th, 2022
+
+* Improved Cloudflare detection
+
+= Version 7.2.0 =
+Release Date: July 14th, 2022
+
+* Brand New Design
+* Improved Dynamic cache purge
+* Improved data collection
+
+= Version 7.1.5 =
+Release Date: June 23rd, 2022
+
+* Improved Memcached service
+
+= Version 7.1.4 =
+Release Date: June 21st, 2022
+
+* Improved older PHP versions support
+
+= Version 7.1.3 =
+Release Date: June 20th, 2022
+
+* NEW Lazy Load exclude filters
+* Improved Max Image Width
+* Improved .htaccess modifications checks
+* Improved File-Based cache Elementor support
+* Improved Password Protected pages excluded from File-Based caching by default
+* Improved Single Image compression functionality
+* Improved Image Optimization for custom image sizes
+* Improved Divi theme support
+* Minor fixes
+
+= Version 7.1.2 =
+Release Date: June 16th, 2022
+
+* Adding Memcached UNIX socket support
+* Improved data collection
 
 = Version 7.1.1 =
 Release Date: May 20th, 2022

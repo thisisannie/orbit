@@ -41,6 +41,17 @@ class DashboardWidget extends Widget {
 			return;
 		}
 
+		global $pagenow;
+
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended
+		$is_admin_page   = $pagenow === 'index.php' && empty( $_GET['page'] );
+		$is_ajax_request = wp_doing_ajax() && isset( $_REQUEST['action'] ) && strpos( sanitize_key( $_REQUEST['action'] ), 'wpforms_dash_widget' ) !== false;
+		// phpcs:enable WordPress.Security.NonceVerification.Recommended
+
+		if ( ! $is_admin_page && ! $is_ajax_request ) {
+			return;
+		}
+
 		if ( ! apply_filters( 'wpforms_admin_dashboardwidget', true ) ) {
 			return;
 		}
@@ -120,7 +131,7 @@ class DashboardWidget extends Widget {
 
 		wp_enqueue_script(
 			'wpforms-moment',
-			WPFORMS_PLUGIN_URL . 'assets/js/moment.min.js',
+			WPFORMS_PLUGIN_URL . 'assets/lib/moment/moment.min.js',
 			[],
 			'2.22.2',
 			true
@@ -128,7 +139,7 @@ class DashboardWidget extends Widget {
 
 		wp_enqueue_script(
 			'wpforms-chart',
-			WPFORMS_PLUGIN_URL . 'assets/js/chart.min.js',
+			WPFORMS_PLUGIN_URL . 'assets/lib/chart.min.js',
 			[ 'wpforms-moment' ],
 			'2.7.2',
 			true
@@ -136,7 +147,7 @@ class DashboardWidget extends Widget {
 
 		wp_enqueue_script(
 			'wpforms-dashboard-widget',
-			WPFORMS_PLUGIN_URL . "lite/assets/js/admin/dashboard-widget{$min}.js",
+			WPFORMS_PLUGIN_URL . "assets/lite/js/admin/dashboard-widget{$min}.js",
 			[ 'jquery', 'wpforms-chart' ],
 			WPFORMS_VERSION,
 			true
@@ -396,13 +407,18 @@ class DashboardWidget extends Widget {
 
 		?>
 		<div class="wpforms-dash-widget-recommended-plugin-block">
-			<p><?php esc_html_e( 'Recommended Plugin:', 'wpforms-lite' ); ?>
-				<strong><?php echo esc_html( $plugin['name'] ); ?></strong> -
-				<?php if ( wpforms_can_install( 'plugin' ) ) { ?>
-					<a href="<?php echo esc_url( $install_url ); ?>"><?php esc_html_e( 'Install', 'wpforms-lite' ); ?></a> &vert;
-				<?php } ?>
-				<a href="<?php echo esc_url( $plugin['more'] ); ?>?utm_source=wpformsplugin&utm_medium=link&utm_campaign=wpformsdashboardwidget"><?php esc_html_e( 'Learn More', 'wpforms-lite' ); ?></a></p>
-
+			<span class="wpforms-dash-widget-recommended-plugin">
+				<span class="recommended"><?php esc_html_e( 'Recommended Plugin:', 'wpforms-lite' ); ?></span>
+				<strong><?php echo esc_html( $plugin['name'] ); ?></strong>
+				<span class="sep">-</span>
+				<span class="action-links">
+					<?php if ( wpforms_can_install( 'plugin' ) ) { ?>
+						<a href="<?php echo esc_url( $install_url ); ?>"><?php esc_html_e( 'Install', 'wpforms-lite' ); ?></a>
+						<span class="sep sep-vertical">&vert;</span>
+					<?php } ?>
+					<a href="<?php echo esc_url( $plugin['more'] ); ?>?utm_source=wpformsplugin&utm_medium=link&utm_campaign=wpformsdashboardwidget"><?php esc_html_e( 'Learn More', 'wpforms-lite' ); ?></a>
+				</span>
+			</span>
 			<button type="button" id="wpforms-dash-widget-dismiss-recommended-plugin-block" class="wpforms-dash-widget-dismiss-recommended-plugin-block" title="<?php esc_html_e( 'Dismiss recommended plugin', 'wpforms-lite' ); ?>">
 				<span class="dashicons dashicons-no-alt"></span>
 			</button>

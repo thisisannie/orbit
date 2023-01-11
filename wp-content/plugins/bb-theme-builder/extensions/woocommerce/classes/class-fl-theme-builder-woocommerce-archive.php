@@ -66,7 +66,19 @@ final class FLThemeBuilderWooCommerceArchive {
 	 * @return void
 	 */
 	static public function posts_module_before_posts( $settings ) {
-		if ( 'show' == $settings->woo_ordering ) {
+		$is_woo_product = false;
+
+		if ( empty( $settings->post_type ) ) {
+			return;
+		}
+
+		if ( is_array( $settings->post_type ) && method_exists( 'FLBuilderUtils', 'post_type_contains' ) ) {
+			$is_woo_product = FLBuilderUtils::post_type_contains( 'product', $settings->post_type );
+		} else {
+			$is_woo_product = 'product' === strval( $settings->post_type );
+		}
+
+		if ( $is_woo_product && 'show' === $settings->woo_ordering ) {
 			$force = false;
 			if ( ! isset( $GLOBALS['woocommerce_loop'] ) ) {
 				$GLOBALS['woocommerce_loop']                 = array();
@@ -339,6 +351,15 @@ final class FLThemeBuilderWooCommerceArchive {
 				'woo_button'     => array(
 					'type'    => 'select',
 					'label'   => __( 'Cart Button', 'bb-theme-builder' ),
+					'default' => 'hide',
+					'options' => array(
+						'show' => __( 'Show', 'bb-theme-builder' ),
+						'hide' => __( 'Hide', 'bb-theme-builder' ),
+					),
+				),
+				'woo_visible'    => array(
+					'type'    => 'select',
+					'label'   => __( 'Show Hidden Products', 'bb-theme-builder' ),
 					'default' => 'hide',
 					'options' => array(
 						'show' => __( 'Show', 'bb-theme-builder' ),

@@ -96,7 +96,7 @@ WPFormsEducation.core = window.WPFormsEducation.core || ( function( document, wi
 		 */
 		dismissEvents: function() {
 
-			$( '.wpforms-dismiss-container' ).on( 'click', '.wpforms-dismiss-button', function( e ) {
+			$( document ).on( 'click', '.wpforms-dismiss-container .wpforms-dismiss-button', function( e ) {
 
 				var $this = $( this ),
 					$cont = $this.closest( '.wpforms-dismiss-container' ),
@@ -225,7 +225,24 @@ WPFormsEducation.core = window.WPFormsEducation.core || ( function( document, wi
 			// Test if the base URL already contains `?`.
 			var appendChar = /(\?)/.test( baseURL ) ? '&' : '?';
 
+			// If the upgrade link is changed by partners, appendChar has to be encoded.
+			if ( baseURL.indexOf( 'https://wpforms.com' ) === -1 ) {
+				appendChar = encodeURIComponent( appendChar );
+			}
+
 			return baseURL + appendChar + 'utm_content=' + encodeURIComponent( utmContent.trim() );
+		},
+
+		/**
+		 * Get spinner markup.
+		 *
+		 * @since 1.7.6
+		 *
+		 * @returns {string} Spinner markup.
+		 */
+		getSpinner: function() {
+
+			return spinner;
 		},
 
 		/**
@@ -327,15 +344,17 @@ WPFormsEducation.core = window.WPFormsEducation.core || ( function( document, wi
 		 *
 		 * @since 1.7.0
 		 *
-		 * @param {string} title Modal title.
+		 * @param {string}      title   Modal title.
+		 * @param {string|bool} content Modal content.
 		 */
-		saveModal: function( title ) {
+		saveModal: function( title, content ) {
 
 			title = title || wpforms_education.addon_activated;
+			content = content || wpforms_education.save_prompt;
 
 			$.alert( {
 				title  : title.replace( /\.$/, '' ), // Remove a dot in the title end.
-				content: wpforms_education.save_prompt,
+				content: content,
 				icon   : 'fa fa-check-circle',
 				type   : 'green',
 				buttons: {
@@ -345,7 +364,7 @@ WPFormsEducation.core = window.WPFormsEducation.core || ( function( document, wi
 						keys    : [ 'enter' ],
 						action  : function() {
 
-							if ( 'undefined' === typeof WPFormsBuilder ) {
+							if ( typeof WPFormsBuilder === 'undefined' ) {
 								location.reload();
 
 								return;
@@ -360,9 +379,17 @@ WPFormsEducation.core = window.WPFormsEducation.core || ( function( document, wi
 
 							if ( WPFormsBuilder.formIsSaved() ) {
 								location.reload();
+
+								return;
 							}
 
-							WPFormsBuilder.formSave().done( function() {
+							const saveForm = WPFormsBuilder.formSave();
+
+							if ( ! saveForm ) {
+								return true;
+							}
+
+							saveForm.done( function() {
 								location.reload();
 							} );
 
@@ -431,7 +458,7 @@ WPFormsEducation.core = window.WPFormsEducation.core || ( function( document, wi
 		 *
 		 * @since 1.7.0
 		 *
-		 * @param {jQuery} $button       jQuery button element.
+		 * @param {jQuery} $button       Button object.
 		 * @param {object} previousModal Previous modal instance.
 		 */
 		installAddon: function( $button, previousModal ) {
@@ -458,7 +485,8 @@ WPFormsEducation.core = window.WPFormsEducation.core || ( function( document, wi
 							$button.hide();
 						}
 
-						app.saveModal( res.data.msg );
+						app.saveModal( res.data.msg, false );
+
 					} else {
 						var message = res.data;
 
@@ -497,11 +525,44 @@ WPFormsEducation.core = window.WPFormsEducation.core || ( function( document, wi
 
 			var windowWidth = $( window ).width();
 
+			if ( windowWidth <= 300 ) {
+				return '250px';
+			}
+
+			if ( windowWidth <= 750 ) {
+				return '350px';
+			}
+
 			if ( ! isVideoModal || windowWidth <= 1024 ) {
 				return '550px';
 			}
 
 			return windowWidth > 1070 ? '1040px' : '994px';
+		},
+
+		/**
+		 * Error modal.
+		 *
+		 * @since 1.7.6
+		 *
+		 * @param {string} title   Modal title.
+		 * @param {string} content Modal content.
+		 */
+		errorModal: function( title, content ) {
+
+			$.alert( {
+				title  : title || false,
+				content: content,
+				icon   : 'fa fa-exclamation-circle',
+				type   : 'orange',
+				buttons: {
+					confirm: {
+						text    : wpforms_education.close,
+						btnClass: 'btn-confirm',
+						keys    : [ 'enter' ],
+					},
+				},
+			} );
 		},
 	};
 

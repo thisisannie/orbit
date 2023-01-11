@@ -1,3 +1,77 @@
+<h4>1.4.4 - 11/07/2022</h4>
+<p><strong>Enhancements</strong></p>
+<ul>
+	<li>ACF: Add date/time format option for Date, DateTime and Time Picker fields</li>
+	<li>ACF: Add option for a separator when using a checkbox field</li>
+</ul>
+
+<p><strong>Bug Fixes</strong></p>
+<ul>
+	<li>TEC: Fix Add To Calendar Button Style in edit mode</li>
+	<li>ACF: Fix detected fields dropdown not using group field prefix when using a group field as a sub-field of a group field</li>
+	<li>TEC: Fix Event Navigation module database error when editing a Singular layout</li>
+	<li>WooCommerce: Fix Product odering showing even if Post Type is not a product</li>
+	<li>Fix preview button in Classic Editor plugin breaking the Themer layout when overriding the content area</li>
+</ul>
+
+<h4>1.4.3.3 - 10/27/2022</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+	<li>Header layouts: Add support for the new breakpoint in the Sticky header breakpoint options</li>
+	<li>Fixes to support the new iFrame responsive editing experience in BB 2.7</li>
+	<li>ACF: date picker field is now internationalized using <code>date_i18n</code></li>
+</ul>
+
+<h4>1.4.3.2 - 09/06/2022</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+	<li>TEC: Fix compatibility with TEC 6.</li>
+	<li>WooCommerce: Fix "Add to Cart" button being displayed twice when using Yith "Request A Quote" Addon</li>
+</ul>
+
+<h4>1.4.3.1 - 08/24/2022</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+	<li>WooCommerce: Fix taxonomy filters set in the Post Module not working correctly on the frontend</li>
+</ul>
+
+<h4>1.4.3 - 08/23/2022</h4>
+<p><strong>Enhancements</strong></p>
+<ul>
+	<li>Allow shortcodes in conditional logic value field</li>
+	<li>Performance: Remove get_custom_fields_select() call when BB is not active</li>
+	<li>TEC: Add option to display currency symbol with the cost</li>
+	<li>WooCommerce: Add option to use Catalog visibility setting in Posts Module</li>
+</ul>
+
+<p><strong>Bug Fixes</strong></p>
+<ul>
+	<li>Fix Shrink Header from applying to images in menus created by 3rd parties</li>
+	<li>Fix Header/Footer layouts not rendering on Archive layouts when the query pulls in a post using the No Header/Footer template from the BB Theme</li>
+	<li>ACF: Make sure color picker is available on Options page</li>
+	<li>ACF: Color picker shortcode now gives option to output the # symbol and the field is now output in the detected fields dropdown</li>
+	<li>ACF: Fix Page Link field not being detected automatically</li>
+	<li>EDD: Fix select options button needing to be clicked twice</li>
+	<li>EDD: Improvements for compatibility with EDD 3.0</li>
+	<li>WooCommerce: Fix compatibility with the Wishlist add-on</li>
+</ul>
+
+<h4>1.4.2.2 - 07/28/2022</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+	<li>Fix Mega Menu position issues and it not closing properly when hovering</li>
+</ul>
+
+<h4>1.4.2.1 - 6/30/2022</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+	<li>Fix issue with Mega Menu where sometimes the sub-menu items were not accessible</li>
+	<li>Fix flyout menu being inaccessible when scrolled</li>
+	<li>Fix flyout menu top position when overlay is enabled</li>
+	<li>Fix flyout menu when using a Sticky Header and Post Module set to scroll pagination</li>
+	<li>Fix flyout menu items disappearing if you open menu after scrolling</li>
+</ul>
+
 <h4>1.4.2 - 06/2/2022</h4>
 <p><strong>Enhancements</strong></p>
 <ul>

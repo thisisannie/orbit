@@ -58,6 +58,10 @@ final class FLPageDataACF {
 			case 'button_group':
 				$content = $value;
 				break;
+			case 'color_picker':
+				$prefix  = empty( $settings->prefix ) ? false : wp_validate_boolean( $settings->prefix );
+				$content = $prefix ? $object['value'] : str_replace( '#', '', $object['value'] );
+				break;
 			case 'page_link':
 				$content = '';
 
@@ -92,7 +96,12 @@ final class FLPageDataACF {
 			case 'oembed':
 			case 'date_time_picker':
 			case 'time_picker':
-				$content = $value;
+				$content      = isset( $value ) ? $value : '';
+				$is_date_time = 'date_time_picker' === $object['type'] || 'time_picker' === $object['type'];
+				if ( $is_date_time && ! empty( $settings->format ) && ! empty( $content ) ) {
+					$date    = str_replace( '/', '-', $content );
+					$content = date( $settings->format, strtotime( $date ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+				}
 				break;
 			case 'checkbox':
 				$values = array();
@@ -108,7 +117,8 @@ final class FLPageDataACF {
 				}
 
 				if ( 'text' === $settings->checkbox_format ) {
-					$content = implode( ', ', $values );
+					$text_separator = isset( $settings->checkbox_separator ) ? $settings->checkbox_separator : ', ';
+					$content        = implode( $text_separator, $values );
 				} else {
 					$content .= '<li>' . implode( '</li><li>', $values ) . '</li>';
 					$content .= '</' . $settings->checkbox_format . '>';
@@ -147,7 +157,7 @@ final class FLPageDataACF {
 				} else {
 					if ( isset( $settings->format ) && '' !== $settings->format && isset( $value ) ) {
 						$date    = str_replace( '/', '-', $value );
-						$content = date( $settings->format, strtotime( $date ) ); // phpcs:ignore WordPress.DateTime.RestrictedFunctions.date_date
+						$content = date_i18n( $settings->format, strtotime( $date ) );
 					} else {
 						$content = isset( $value ) ? $value : '';
 					}
@@ -226,6 +236,7 @@ final class FLPageDataACF {
 				}
 				break;
 			case 'true_false':
+			case 'color_picker':
 				$content = strval( $value );
 				break;
 			case 'acf_smartslider3':
@@ -383,7 +394,8 @@ final class FLPageDataACF {
 		if ( empty( $object ) || ! isset( $object['type'] ) || 'color_picker' != $object['type'] ) {
 			return $content;
 		} else {
-			$content = str_replace( '#', '', $object['value'] );
+			$prefix  = empty( $settings->prefix ) ? false : wp_validate_boolean( $settings->prefix );
+			$content = $prefix ? $object['value'] : str_replace( '#', '', $object['value'] );
 		}
 
 		return $content;
@@ -810,7 +822,11 @@ final class FLPageDataACF {
 		$form       = array();
 		$sub_fields = array();
 		$relation   = array( 'post_object', 'page_link', 'user', 'taxonomy', 'relationship' );
-		$results    = $wpdb->get_results( "SELECT ID as 'id', post_excerpt as 'field_key', post_title as 'field_name', post_content as 'field_opts' FROM {$wpdb->posts} where post_type = 'acf-field'", ARRAY_A );
+
+		if ( ! FLBuilderModel::is_builder_active() ) {
+			return array();
+		}
+		$results = $wpdb->get_results( "SELECT ID as 'id', post_excerpt as 'field_key', post_title as 'field_name', post_content as 'field_opts' FROM {$wpdb->posts} where post_type = 'acf-field'", ARRAY_A );
 
 		// maybe filter
 		foreach ( $results as $k => $field ) {
@@ -822,7 +838,7 @@ final class FLPageDataACF {
 						unset( $results[ $k ] );
 					}
 				} else {
-					if ( in_array( $type, $relation ) ) {
+					if ( in_array( $type, $relation ) && 'page_link' !== $type ) {
 						unset( $results[ $k ] );
 					}
 				}
@@ -835,7 +851,15 @@ final class FLPageDataACF {
 					if ( $field_data ) {
 						if ( isset( $field_data['sub_fields'] ) && count( $field_data['sub_fields'] ) > 0 ) {
 							foreach ( $field_data['sub_fields'] as $subfield ) {
-								$sub_fields[ $subfield['ID'] ] = $field_key . '_' . $subfield['name'];
+
+								if ( 'group' !== $subfield['type'] && ! isset( $sub_fields[ $subfield['ID'] ] ) ) {
+									$sub_fields[ $subfield['ID'] ] = $field_key . '_' . $subfield['name'];
+								}
+								if ( isset( $subfield['sub_fields'] ) && count( $subfield['sub_fields'] ) > 0 ) {
+									foreach ( $subfield['sub_fields'] as $sub_subfield ) {
+										$sub_fields[ $sub_subfield['ID'] ] = $field_key . '_' . $subfield['name'] . '_' . $sub_subfield['name'];
+									}
+								}
 							}
 						}
 					}

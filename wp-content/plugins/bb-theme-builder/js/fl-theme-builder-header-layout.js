@@ -72,9 +72,10 @@
 		 */
 		init: function()
 		{
-			var editing    = $( 'html.fl-builder-edit' ).length,
-				header     = $( '.fl-builder-content[data-type=header]' ),
-				breakpoint = null;
+			var editing          = $( 'html.fl-builder-edit' ).length,
+				header           = $( '.fl-builder-content[data-type=header]' ),
+				menuModule       = header.find( '.fl-module-menu' ),
+				breakpoint       = null;
 
 			if ( ! editing && header.length ) {
 
@@ -94,7 +95,7 @@
 						}
 						else {
 							this.breakpointWidth = FLBuilderLayoutConfig.breakpoints.medium;
-						}						
+						}
 					}
 
 					if ( Number( header.attr( 'data-sticky' ) ) ) {
@@ -105,68 +106,8 @@
 
 					}
 
-					this.win.on( 'resize', $.throttle( 500, $.proxy( this._initMegaMenu, this ) ) );					
-					this._initMegaMenu();
-
 				}, this ) );
 			}
-		},
-
-		/**
-		 * Initializes Mega Menu from the  BB Menu Module that's added to the Header Layout.
-		 *
-		 * @since 1.4.2
-		 * @access private
-		 * @method _initMegaMenu
-		 */
-		_initMegaMenu: function () {
-			var header   = this.header,
-			    megaMenu = header.find('.fl-module-menu ul li.mega-menu');
-
-			if ( megaMenu.length <= 0 ) {
-				return;
-			}
-			
-			megaMenu.on('mouseenter', function (e) {
-				var $item              = $(e.currentTarget),
-					subMenu            = $item.find('.sub-menu').first(),
-					isFlyoutMenuActive = $item.closest('.fl-menu-mobile-flyout').length,
-					toggleButtonActive = $item.closest('.fl-module-menu').find('.fl-menu-mobile-toggle').is(':visible');
-
-				if ( isFlyoutMenuActive || toggleButtonActive ) {
-					return;
-				}
-
-				if ( subMenu.length ) {
-					var subMenuTopMargin = $(header).offset().top + $(header).outerHeight() - $item.offset().top - $item.outerHeight();
-		
-					$(subMenu).addClass('active');
-					$(subMenu).css({
-						'display': 'flex',
-						'visibility': 'visible',
-						'opacity': '1',
-						'margin-top': subMenuTopMargin,
-					});
-				}
-			});
-
-			megaMenu.on('mouseleave', function (e) {
-				var $item              = $(e.currentTarget),
-					subMenu  = $item.find('.sub-menu').first(),
-					toggleButtonActive = $item.closest('.fl-module-menu').find('.fl-menu-mobile-toggle').is(':visible');
-				
-				if ( toggleButtonActive ) {
-					return;
-				}
-
-				if ( ! $(e.relatedTarget).hasClass('fl-module-menu') || e.offsetY < 0 ) {
-					$(subMenu).removeClass('active');
-					$(subMenu).css({
-						'display': 'none',
-						'margin-top': '0',
-					});
-				}
-			});
 		},
 
 		/**
@@ -186,14 +127,14 @@
 			if ( makeSticky || ( this.breakpointWidth > 0 && windowSize >= this.breakpointWidth ) ) {
 				this.win.on( 'scroll.fl-theme-builder-header-sticky', $.proxy( this._doSticky, this ) );
 				//
-				// Check if Event Type is 'resize' then invoke this._doSticky() 
+				// Check if Event Type is 'resize' then invoke this._doSticky()
 				// only if the 'fl-theme-builder-header-sticky' class is already present.
-				// 
+				//
 				if ( e && 'resize' === e.type ) {
 					if ( this.header.hasClass( 'fl-theme-builder-header-sticky' ) ) {
-						this._doSticky();
+						this._doSticky( e );
 					}
-					this._adjustStickyHeaderWidth(); 
+					this._adjustStickyHeaderWidth();
 				}
 
 				if ( Number( header.attr( 'data-shrink' ) ) ) {
@@ -206,7 +147,7 @@
 			} else {
 				this.win.off( 'scroll.fl-theme-builder-header-sticky' );
 				this.win.off( 'resize.fl-theme-builder-header-sticky' );
-				
+
 				this.header.removeClass( 'fl-theme-builder-header-sticky' );
 				this.header.removeAttr( 'style' );
 				this.header.parent().css( 'padding-top', '0' );
@@ -226,12 +167,21 @@
 			var makeSticky = false;
 
 			switch (this.stickyOn) {
-				case '':
+				case 'xl':
+					makeSticky = windowSize > FLBuilderLayoutConfig.breakpoints['large'];
+					break;
+				case '': // Default
 				case 'desktop':
 					makeSticky = windowSize >= FLBuilderLayoutConfig.breakpoints['medium'];
 					break;
 				case 'desktop-medium':
 					makeSticky = windowSize > FLBuilderLayoutConfig.breakpoints['small'];
+					break;
+				case 'large':
+					makeSticky = windowSize > FLBuilderLayoutConfig.breakpoints['medium'] && windowSize <= FLBuilderLayoutConfig.breakpoints['large'];
+					break;
+				case 'large-medium':
+					makeSticky = windowSize > FLBuilderLayoutConfig.breakpoints['small'] && windowSize <= FLBuilderLayoutConfig.breakpoints['large'];
 					break;
 				case 'medium':
 					makeSticky = ( windowSize <= FLBuilderLayoutConfig.breakpoints['medium'] && windowSize > FLBuilderLayoutConfig.breakpoints['small'] );
@@ -271,7 +221,7 @@
 			if ( isNaN( bodyTopPadding ) ) {
 				bodyTopPadding = 0;
 			}
-			
+
 			if ( this.hasAdminBar && this.win.width() > 600 ) {
 				winTop += Math.floor( winBarHeight );
 			}
@@ -295,7 +245,7 @@
 				this.header.removeAttr( 'style' );
 				this.header.parent().css( 'padding-top', '0' );
 			}
-			
+
 			this._adjustStickyHeaderWidth();
 
 			if ( winTop > headerTop ) {
@@ -323,36 +273,25 @@
 				isSticky     = header.hasClass( 'fl-theme-builder-header-sticky' ),
 				isOverlay    = menuModule.hasClass( 'fl-menu-responsive-flyout-overlay' ),
 				flyoutPos    = menuModule.hasClass( 'fl-flyout-right' ) ? 'right' : 'left',
-				headerPos    = Math.round( ( this.win.width() - header.width() ) / 2 ),
+				flyoutParent = header.parent().is( 'header' ) ? header.parent().parent() : header.parent();
 				isFullWidth  = this.win.width() === header.width(),
 				flyoutLayout = '',
-				activePos    = 0,
-				extraPixels  = 0;
+				activePos    = 250,
+				headerPos    = 0;
 
 			if ( ! flyoutMenu.length ) {
 				return;
+			}
+
+			if ( this.win.width() > header.parent().width() ) {
+				headerPos = ( this.win.width() - header.width() ) / 2;
 			}
 
 			if ( isOverlay ) {
 				activePos = headerPos;
 			}
 			else if ( isPushMenu ) {
-				if ( this.win.width() >= header.parent().width() ) {
-					extraPixels = Math.round( this.win.width() - header.parent().width() );
-
-					if ( extraPixels > 250 ) {
-						activePos = 250 + ((extraPixels - 250) / 2);
-					}
-					else if ( 0 === extraPixels ) {
-						activePos = 250;
-					}
-					else if ( 'right' === flyoutPos ) {
-						activePos = extraPixels;
-					}
-					else {
-						activePos = 250;
-					}
-				}
+				activePos = activePos + headerPos;
 			}
 			flyoutMenu.data( 'activePos', activePos );
 
@@ -363,8 +302,12 @@
 				flyoutLayout = 'overlay-' + flyoutPos;
 			}
 
-			if ( ! header.parent().hasClass( 'fl-theme-builder-flyout-menu-' + flyoutLayout ) ) {
-				header.parent().addClass( 'fl-theme-builder-flyout-menu-' + flyoutLayout );
+			if ( isPushMenu && ! $( 'html' ).hasClass( 'fl-theme-builder-has-flyout-menu' ) ) {
+				$( 'html' ).addClass( 'fl-theme-builder-has-flyout-menu' );
+			}
+
+			if ( ! flyoutParent.hasClass( 'fl-theme-builder-flyout-menu-' + flyoutLayout ) ) {
+				flyoutParent.addClass( 'fl-theme-builder-flyout-menu-' + flyoutLayout );
 			}
 
 			if ( ! header.hasClass( 'fl-theme-builder-flyout-menu-overlay' ) && isOverlay ) {
@@ -378,9 +321,16 @@
 				header.removeClass( 'fl-theme-builder-header-full-width' );
 			}
 
-			menuModule.on( 'click', '.fl-menu-mobile-toggle', $.proxy( function( e ){
-				header.parent().toggleClass( 'fl-theme-builder-flyout-menu-active' );
-				this._flyoutMenuFix( e );
+			menuModule.on( 'click', '.fl-menu-mobile-toggle', $.proxy( function( event ){
+				if ( menuModule.find( '.fl-menu-mobile-toggle.fl-active' ).length ) {
+					$( 'html' ).addClass( 'fl-theme-builder-flyout-menu-active' );
+					event.stopImmediatePropagation();
+				}
+				else {
+					$( 'html' ).removeClass( 'fl-theme-builder-flyout-menu-active' );
+				}
+
+				this._flyoutMenuFix( event );
 			}, this ) );
 		},
 
@@ -399,23 +349,24 @@
 				menuOpacity = menuModule.find( '.fl-menu-mobile-opacity' ),
 				isScroll    = 'undefined' !== typeof e && 'scroll' === e.handleObj.type,
 				activePos   = 'undefined' !== typeof flyoutMenu.data( 'activePos' ) ? flyoutMenu.data( 'activePos' ) : 0,
-				headerPos   = Math.round( ( this.win.width() - header.width() ) / 2 ),
-				inactivePos = Math.round( 254 + headerPos );
+				headerPos   = ( this.win.width() - header.width() ) / 2,
+				inactivePos = headerPos > 0 ? activePos + 4 : 254;
 
 			if ( ! flyoutMenu.length ) {
 				return;
 			}
 
-			if( header.parent().hasClass( 'fl-theme-builder-flyout-menu-active' ) ) {
+			if ( this.overlay ) {
+				return;
+			}
 
-				if ( isScroll ) {
-					if ( ! flyoutMenu.hasClass( 'fl-menu-disable-transition' ) ) {
-						flyoutMenu.addClass( 'fl-menu-disable-transition' );
-					}
+			if( $( '.fl-theme-builder-flyout-menu-active' ).length ) {
+
+				if ( isScroll && ! flyoutMenu.hasClass( 'fl-menu-disable-transition' ) ) {
+					flyoutMenu.addClass( 'fl-menu-disable-transition' );
 				}
 
 				if ( header.hasClass( 'fl-theme-builder-header-sticky' ) ) {
-
 					if ( ! isScroll ) {
 						setTimeout( $.proxy( function(){
 							flyoutMenu.css( flyoutPos, '-' + activePos + 'px' );
@@ -434,47 +385,35 @@
 					flyoutMenu.removeClass( 'fl-menu-disable-transition' );
 				}
 
-				flyoutMenu.css( flyoutPos, '-' + inactivePos + 'px' );
-
-				// Maybe reset header width for boxed layout.
-				if ( isPushMenu && header.hasClass( 'fl-theme-builder-header-full-width' ) ) {
-					setTimeout( $.proxy( function(){
-						this._adjustStickyHeaderWidth();
-					}, this ), 250 );
+				if ( header.hasClass( 'fl-theme-builder-flyout-menu-overlay' ) && headerPos > 0 && headerPos < 250 ) {
+					if ( header.hasClass( 'fl-theme-builder-header-sticky' ) ) {
+						inactivePos = headerPos + 254;
+					}
+					else {
+						inactivePos = 254;
+					}
 				}
+
+				if ( e && e.type === 'resize' ) {
+					inactivePos = headerPos + 254;
+				}
+
+				flyoutMenu.css( flyoutPos, '-' + inactivePos + 'px' );
+			}
+
+			if ( e && menuModule.is('.fl-menu-responsive-flyout-overlay') && $.infinitescroll ) {
+				e.stopImmediatePropagation();
 			}
 
 			if( menuOpacity.length ) {
 				if ( header.hasClass( 'fl-theme-builder-header-sticky' ) ) {
 					if ( '0px' === menuOpacity.css( 'left' ) ) {
-						menuOpacity.css( 'left', '-' + activePos + 'px' );
+						menuOpacity.css( 'left', '-' + headerPos + 'px' );
 					}
 				}
 				else {
 					menuOpacity.css( 'left', '' );
 				}
-			}
-		},
-
-		/**
-		 * Adjust mega menu top margin. This method is called to remove the gap 
-		 * from the mega menu if sticky + shrink header is scrolled.
-		 *
-		 * @since TBD
-		 * @access private
-		 * @method _adjustMegaMenuPosition
-		 * 
-		 */
-		_adjustMegaMenuPosition: function () {
-			var header          = this.header,
-			    megaMenu        = header.find( '.fl-module-menu .mega-menu' ),
-			    activeMenuPanel = megaMenu.find( 'ul.sub-menu.active' );
-			
-			if ( activeMenuPanel.length ) {
-				setTimeout(function () {
-					var subMenuTopMargin = $( header ).offset().top + $( header ).outerHeight() - $( megaMenu ).offset().top - $( megaMenu ).outerHeight();
-					$( activeMenuPanel ).css( 'margin-top', subMenuTopMargin );	
-				}, 500);
 			}
 		},
 
@@ -520,7 +459,7 @@
 				bodyTopPadding = parseInt( $( 'body' ).css( 'padding-top' ) ),
 				wpAdminBarHeight = 0,
 				totalHeaderHeight = 0;
-			
+
 			if ( isNaN( bodyTopPadding ) ) {
 				bodyTopPadding = 0;
 			}
@@ -551,7 +490,7 @@
 				}
 
 				$( headerParent ).css( 'padding-top',  ( headerParentTopPadding - beforeHeaderFix ) + 'px' );
-				
+
 				this.header.css({
 					'-webkit-transform': 'translate(0px, -' + totalHeaderHeight + 'px)',
 					'-ms-transform': 'translate(0px, -' + totalHeaderHeight + 'px)',
@@ -604,7 +543,7 @@
 				makeSticky   	  = this._makeWindowSticky( windowSize ),
 				hasClass     	  = this.header.hasClass( 'fl-theme-builder-header-shrink' );
 
-				
+
 			if ( this.hasAdminBar ) {
 				winTop += 32;
 			}
@@ -617,15 +556,16 @@
 					// Shrink images but don't include lightbox and menu images.
 					this.header.find('img').each( function( i ) {
 						var image           = $( this ),
+							maxMegaMenu     = image.closest( '.max-mega-menu' ).length,
 							imageInLightbox = image.closest( '.fl-button-lightbox-content' ).length,
-							imageInNavMenu  = image.closest( '.fl-menu' ).length;
+							imageInNavMenu  = image.closest( 'li.menu-item' ).length;
 
-						if ( ! ( imageInLightbox || imageInNavMenu ) ) {
+						if ( ! ( imageInLightbox || imageInNavMenu || maxMegaMenu ) ) {
 							image.css( 'max-height', shrinkImageHeight );
 						}
 
 					});
-										
+
 					this.header.find( '.fl-row-content-wrap' ).each( function() {
 
 						var row = $( this );
@@ -651,12 +591,10 @@
 							module.addClass( 'fl-theme-builder-header-shrink-module-top' );
 						}
 					} );
-					this._adjustMegaMenuPosition();
 				}
 			} else if (hasClass) {
 				this.header.find( 'img' ).css( 'max-height', '' );
 				this._removeShrink();
-				this._adjustMegaMenuPosition();
 			}
 
 			// Fixes Shrink header issue with BB Theme when window is scrolled then resized and back.
@@ -710,10 +648,11 @@
 					height          = image.height(),
 					node            = image.closest( '.fl-module' ).data( 'node' ),
 					className       = 'fl-node-' + node + '-img-' + i,
+					maxMegaMenu     = image.closest( '.max-mega-menu' ).length,
 					imageInLightbox = image.closest( '.fl-button-lightbox-content' ).length,
-					imageInNavMenu  = image.closest( '.fl-menu' ).length;
+					imageInNavMenu  = image.closest( 'li.menu-item' ).length;
 
-				if ( ! ( imageInLightbox || imageInNavMenu ) ) {
+				if ( ! ( imageInLightbox || imageInNavMenu || maxMegaMenu  ) ) {
 					image.addClass( className );
 					styles += '.' + className + ' { max-height: ' + ( height ? height : image[0].height )  + 'px }';
 				}
