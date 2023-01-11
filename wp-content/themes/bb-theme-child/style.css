@@ -195,7 +195,9 @@ blockquote, .blockquote h2, .blockquote h3 {
 
 #random-staff-images .uabb-post-wrapper {
   width: 50%;
-  padding: 0 3px; }
+  display: inline;
+  vertical-align: top;
+  float: left; }
   #random-staff-images .uabb-post-wrapper:nth-child(1) {
     width: 45%;
     margin-top: 12.4%;
@@ -207,6 +209,8 @@ blockquote, .blockquote h2, .blockquote h3 {
   #random-staff-images .uabb-post-wrapper:nth-child(4) {
     width: 45%;
     margin-right: -6%; }
+  #random-staff-images .uabb-post-wrapper > div {
+    padding: 8px; }
 
 .fl-col-group-equal-height {
   align-items: center; }
