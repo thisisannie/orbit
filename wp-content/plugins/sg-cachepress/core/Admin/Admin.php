@@ -41,6 +41,7 @@ class Admin {
 		'auxin-front-icon', // Phlox Theme.
 		'mks_shortcodes_simple_line_icons', // Meks Flexible Shortcodes.
 		'onthego-admin-styles', // Toolset Types
+		'foogra-icons', // Foogra Theme
 	);
 
 	/**

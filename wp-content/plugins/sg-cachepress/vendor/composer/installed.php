@@ -3,7 +3,7 @@
         'name' => 'siteground/sg-cachepress',
         'pretty_version' => 'dev-develop',
         'version' => 'dev-develop',
-        'reference' => '7e9d9c9b0046aecbd94d5a5b34f7548290f18c84',
+        'reference' => '19b9f5ea85c9b407f9c7fab6573a98817bf882b9',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -40,9 +40,9 @@
             'dev_requirement' => false,
         ),
         'matthiasmullie/minify' => array(
-            'pretty_version' => '1.3.69',
-            'version' => '1.3.69.0',
-            'reference' => 'a61c949cccd086808063611ef9698eabe42ef22f',
+            'pretty_version' => '1.3.70',
+            'version' => '1.3.70.0',
+            'reference' => '2807d9f9bece6877577ad44acb5c801bb3ae536b',
             'type' => 'library',
             'install_path' => __DIR__ . '/../matthiasmullie/minify',
             'aliases' => array(),
@@ -81,7 +81,7 @@
         'siteground/sg-cachepress' => array(
             'pretty_version' => 'dev-develop',
             'version' => 'dev-develop',
-            'reference' => '7e9d9c9b0046aecbd94d5a5b34f7548290f18c84',
+            'reference' => '19b9f5ea85c9b407f9c7fab6573a98817bf882b9',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -90,7 +90,7 @@
         'siteground/siteground-data' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'c264465ed26f2a8509b2a2b59ccc64c73971b343',
+            'reference' => 'fa35e01366de57ea9c597b73073af7c32ccbd0a0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../siteground/siteground-data',
             'aliases' => array(
@@ -112,7 +112,7 @@
         'siteground/siteground-helper' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => 'b735bf5df36006a0e8435a6ba79b5b5cfa0e66dc',
+            'reference' => '4296c1c29c5c1b27cd3e4050daa8d1e4d3a4c7a6',
             'type' => 'library',
             'install_path' => __DIR__ . '/../siteground/siteground-helper',
             'aliases' => array(

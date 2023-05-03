@@ -3193,8 +3193,9 @@ final class FLBuilder {
 		$css .= self::js_comment( 'Global Nodes CSS', self::maybe_do_shortcode( self::render_global_nodes_custom_code( 'css' ) ) );
 
 		// Custom Layout CSS
-		if ( 'published' == $node_status || $post_id !== $wp_the_query->post->ID ) {
-			$css .= self::js_comment( 'Layout CSS', self::maybe_do_shortcode( FLBuilderModel::get_layout_settings()->css ) );
+		if ( ( 'published' == $node_status || $post_id !== $wp_the_query->post->ID ) && ! in_array( 'global-layout-css-' . $post_id, self::$rendered_assets ) ) {
+			self::$rendered_assets[] = 'global-layout-css-' . $post_id;
+			$css                    .= self::js_comment( 'Layout CSS', self::maybe_do_shortcode( FLBuilderModel::get_layout_settings()->css ) );
 		}
 
 		/**
@@ -3762,9 +3763,25 @@ final class FLBuilder {
 		}
 
 		// Add the layout settings JS.
+		if ( ! isset( $_GET['safemode'] ) && ! in_array( 'global-layout-js', self::$rendered_assets ) ) {
+			self::$rendered_assets[] = 'global-layout-js';
+			$js                     .= self::js_comment( 'Global Node Custom JS', self::maybe_do_shortcode( self::render_global_nodes_custom_code( 'js' ) ) );
+		}
+
 		if ( ! isset( $_GET['safemode'] ) ) {
-			$js .= self::js_comment( 'Global Node Custom JS', self::maybe_do_shortcode( self::render_global_nodes_custom_code( 'js' ) ) );
-			$js .= ( is_array( $layout_settings->js ) || is_object( $layout_settings->js ) ) ? self::js_comment( 'Layout Custom JS', self::maybe_do_shortcode( json_encode( $layout_settings->js ) ) ) : self::js_comment( 'Layout Custom JS', self::maybe_do_shortcode( $layout_settings->js ) );
+
+			if ( is_array( $layout_settings->js ) || is_object( $layout_settings->js ) ) {
+				$layout_js = self::js_comment( 'Layout Custom JS', self::maybe_do_shortcode( json_encode( $layout_settings->js ) ) );
+			} else {
+				$layout_js = self::js_comment( 'Layout Custom JS', self::maybe_do_shortcode( $layout_settings->js ) );
+			}
+
+			$key = 'layout-custom-' . FLBuilderModel::get_post_id();
+
+			if ( ! isset( self::$rendered_assets[ $key ] ) ) {
+				$js                           .= $layout_js;
+				self::$rendered_assets[ $key ] = $layout_js;
+			}
 		}
 
 		// Call the FLBuilder._renderLayoutComplete method if we're currently editing.
@@ -3809,6 +3826,11 @@ final class FLBuilder {
 			 * @see fl_builder_after_render_js
 			 */
 			do_action( 'fl_builder_after_render_js' );
+		}
+
+		// if JS contains jQuery, make sure to enqueue it just in case inline mode is in use
+		if ( false !== strpos( $js, 'jQuery' ) ) {
+			wp_enqueue_script( 'jquery' );
 		}
 
 		return $js;

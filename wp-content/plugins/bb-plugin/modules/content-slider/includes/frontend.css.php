@@ -114,8 +114,13 @@ for ( $i = 0; $i < count( $settings->slides ); $i++ ) {
 	// Title, Text, Button
 	if ( 'none' != $slide->content_layout ) {
 		// Content wrap width
-		echo '.fl-node-' . $id . ' .fl-slide-' . $i . ' .fl-slide-content-wrap ';
-		echo '{ width: ' . $slide->text_width . '%; }';
+		FLBuilderCSS::rule( array(
+			'selector' => '.fl-node-' . $id . ' .fl-slide-' . $i . ' .fl-slide-content-wrap',
+			'media'    => 'min-width:' . $global_settings->responsive_breakpoint . 'px',
+			'props'    => array(
+				'width' => $slide->text_width . '%',
+			),
+		) );
 
 		// Margins
 		echo '.fl-node-' . $id . ' .fl-slide-' . $i . ' .fl-slide-content ';
@@ -187,27 +192,28 @@ for ( $i = 0; $i < count( $settings->slides ); $i++ ) {
 				echo '{ background-color: transparent; }';
 			}
 
+			echo ' }';
+
 			// Responsive Title Color
-			if ( ! empty( $slide->r_title_color ) ) {
-				echo '.fl-node-' . $id . ' .fl-slide-' . $i . ' .fl-slide-title ';
-				echo '{ color: ' . FLBuilderColor::hex_or_rgb( $slide->r_title_color ) . '; }';
-			} else {
-				echo '.fl-node-' . $id . ' .fl-slide-' . $i . ' .fl-slide-title ';
-				echo '{ color: inherit; }';
-			}
+			FLBuilderCSS::rule( array(
+				'selector' => ".fl-node-$id .fl-slide-$i .fl-slide-title",
+				'media'    => 'responsive',
+				'enabled'  => ! empty( $slide->r_title_color ),
+				'props'    => array(
+					'color' => $slide->r_title_color,
+				),
+			) );
 
 			// Responsive Text Color
-			if ( ! empty( $slide->r_text_color ) ) {
-				echo '.fl-node-' . $id . ' .fl-slide-' . $i . ' .fl-slide-text, ';
-				echo '.fl-node-' . $id . ' .fl-slide-' . $i . ' .fl-slide-text * ';
-				echo '{ color: ' . FLBuilderColor::hex_or_rgb( $slide->r_text_color ) . '; }';
-			} else {
-				echo '.fl-node-' . $id . ' .fl-slide-' . $i . ' .fl-slide-text, ';
-				echo '.fl-node-' . $id . ' .fl-slide-' . $i . ' .fl-slide-text * ';
-				echo '{ color: inherit; }';
-			}
+			FLBuilderCSS::rule( array(
+				'selector' => ".fl-node-$id .fl-slide-$i .fl-slide-text, .fl-node-$id .fl-slide-$i .fl-slide-text *",
+				'media'    => 'responsive',
+				'enabled'  => ! empty( $slide->r_text_color ),
+				'props'    => array(
+					'color' => $slide->r_text_color,
+				),
+			) );
 
-			echo ' }';
 		}
 
 		// Button Styles

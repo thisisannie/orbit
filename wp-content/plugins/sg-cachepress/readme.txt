@@ -4,6 +4,7 @@ Tags: nginx, caching, speed, memcache, memcached, performance, siteground, nginx
 Requires at least: 4.7
 Requires PHP: 7.0
 Tested up to: 6.1
+Stable tag: 7.3.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -339,7 +340,7 @@ With these new filters you can exclude specific assets from being lazy loaded. K
 
 You can use this filter for excluding specific images by adding their source url:
 
-	add_filter( 'sgo_lazy_load_exclude_images', 'exclude_images_from_lazy_load );
+	add_filter( 'sgo_lazy_load_exclude_images', 'exclude_images_from_lazy_load' );
 	function exclude_images_from_lazy_load( $excluded_images ) {
 		// Add the src url of the image that you want to exclude from using lazy load.
 		$excluded_images[] = 'http://mydomain.com/wp-content/uploads/your-image.jpeg';
@@ -463,6 +464,20 @@ Our plugin uses a cookie in order to function properly. It does not store person
 1. Go to Plugins -> Installed Plugins and click the 'Activate' link under the WordPress SiteGround Optimizer listing
 
 == Changelog ==
+
+= Version 7.3.1 =
+Release Date: Feb 23rd, 2023
+
+* Improved compatibility with WooCommerce related plugins.
+* Internal configuration improvements.
+
+= Version 7.3.0 =
+Release Date: Feb 1st, 2023
+
+* Improved Multisite File-Based cache support.
+* Improved compatibility with woo-variation-swatches and facebook-for-woocommerce plugins.
+* Improved compatibility with Foogra theme.
+* Internal configuration changes.
 
 = Version 7.2.9 =
 Release Date: Dec 2nd, 2022

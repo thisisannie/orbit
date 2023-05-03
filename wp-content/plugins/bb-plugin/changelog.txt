@@ -1,3 +1,62 @@
+<h4>2.6.2.3 - 02/9/2023</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+	<li>Fix saving process stalling when using node export/import</li>
+	<li>Tabs Module: Fix linking to tab not working on mobile</li>
+</ul>
+
+<h4>2.6.2.2 - 02/2/2023</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+	<li>Post Modules: Fix content filtering reverting back to default</li>
+	<li>Fix Themer CSS files not being loaded on the frontend</li>
+
+</ul>
+
+<h4>2.6.2.1 - 02/1/2023</h4>
+<p><strong>Hot Fix</strong></p>
+<ul>
+	<li>Tabs Module: Fix fatal error with PHP 8+ if Active Tab is empty/blank (#2463)</li>
+	<li>Fix Global/layout JS being rendered twice when inline assets is enabled (#2430)</li>
+	<li>Fix conflict with Ninja Forms where nodes would be out of order after publish (#2465)</li>
+	<li>Fix styles not saving when using auto save (#2453)</li>
+	<li>Number Counter: Fix count being broken with numbers over 10,000 (#2468)</li>
+	<li>Captions: Add umlaut to the allowed characters in captions when displayed in lightbox (#2455)</li>
+</ul>
+
+<h4>2.6.2 - 1/19/2022</h4>
+<p><strong>Enhancements</strong></p>
+<ul>
+	<li>Adjust styling for link field additional options (#2390)</li>
+	<li>Allow enabling of WP's medium_large image size that was previously disabled in BB (#2363)</li>
+	<li>Add hook <code>fl_builder_cropped_image_deleted</code> (#2285)</li>
+	<li>Decrease heartbeat tick rate from 30s to 120s (#2247)</li>
+	<li>Rename Debug Mode title from Debug Mode Disabled to just Debug Mode (#1884)</li>
+	<li>Add a URL parameter to not load revisions in debug mode and another to actually clear revisions and history(#2313)</li>
+	<li>Add optional dependency for icon fields so that modules that use icons can not load FontAwesome when FontAwesome is disabled (#1753)</li>
+
+</ul>
+
+<p><strong>Bug Fixes</strong></p>
+<ul>
+	<li>Fix deprecation notices with PHP 8.2 (#2400)</li>
+	<li>Button Module: Fix focus color issue after opening link in a new tab (#2323)</li>
+	<li>Content Slider Module: Fix mobile font size being overridden by default styling (#2378)</li>
+	<li>Content Slider Module: Fix mobile title and text color settings not working (#2289)</li>
+	<li>Icon Group Module: Fix background color when using DashIcons (#1876)</li>
+	<li>Icon Group Module: Fix sub-form fields with the same name as the module not previewing properly (#1711)</li>
+	<li>List Module: Fix sub-form fields with the same name as the module not previewing properly (#1712)</li>
+	<li>Number Counter Module: make sure number prefix and suffix fields toggle as expected (#2299)</li>
+	<li>Post Modules: Fix filters not working correctly when multiple post types are selected and individual posts are selected to be shown (#2396)</li>
+	<li>Post Module: Fix WooCommerce sections being missing when using main query (#2428)</li>
+	<li>Post Module: Prevent the Post Module from crashing the browser when there are a lot of taxonomy terms(#2424)</li>
+	<Li>Fix slashes being added to Post Module custom layout when Small Data Mode is enabled (#2387)</li>
+	<li>Compatibility: Fix row background connected to an ACF image field not loading when Yoast is active (#2334)</li>
+	<li>Fix parent column padding being applied to child columns as well when in the UI (#2029)</li>
+	<li>Adjust tooltip background style if the UI is in dark mode (#2290)</li>
+	<li>Debug Mode: Fix slashes being added in CSS and a fatal error with PHP 8.1 (#2412)</li>
+</ul>
+
 <h4>2.6.1.4 - 12/15/2022</h4>
 <p><strong>Hot Fix</strong></p>
 <ul>

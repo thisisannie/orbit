@@ -774,6 +774,11 @@ class File_Cacher extends Supercacher {
 		// Start the content buffering.
 		$content = "<?php\n";
 
+		// Define cookie-related WordPress constants after multisite is loaded.
+		if ( \is_multisite() ) {
+			\wp_cookie_constants();
+		}
+
 		// Prepare the config.
 		$config = array(
 			'ignored_query_params' => apply_filters( 'sgo_ignored_query_params', $this->ignored_query_params ),

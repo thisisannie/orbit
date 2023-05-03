@@ -126,6 +126,10 @@ __( "Manage JavaScript Frontend" ), // src/pages/frontend-optimization/frontend-
 __( "Manage General Frontend" ), // src/pages/frontend-optimization/frontend-optimization.jsx:100
 __( "Disable Emojis" ), // src/pages/frontend-optimization/general-components/disable-emojis.jsx:15
 __( "Enable to prevent WordPress from automatically detecting and generating emojis in your pages." ), // src/pages/frontend-optimization/general-components/disable-emojis.jsx:16
+__( "DNS Pre-fetch for External Domains" ), // src/pages/frontend-optimization/general-components/dns-prefetch.tsx:27
+__( "Enabling the DNS Pre-fetch for a domain will resolve it before resources from it get requested making those resources load faster." ), // src/pages/frontend-optimization/general-components/dns-prefetch.tsx:28
+__( "%(number)s URLs" ), // src/pages/frontend-optimization/general-components/dns-prefetch.tsx:35
+__( "Manage External Domains" ), // src/pages/frontend-optimization/general-components/dns-prefetch.tsx:46
 __( "Exclude from HTML Minification" ), // src/pages/frontend-optimization/general-components/exclude-html-minification.jsx:24
 __( "%(number)s scripts" ), // src/pages/frontend-optimization/general-components/exclude-html-minification.jsx:30
 __( "Exclude from HTML Minification" ), // src/pages/frontend-optimization/general-components/exclude-html-minification.jsx:41

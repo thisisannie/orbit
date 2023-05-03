@@ -257,17 +257,17 @@
         },
         {
             "name": "matthiasmullie/minify",
-            "version": "1.3.69",
-            "version_normalized": "1.3.69.0",
+            "version": "1.3.70",
+            "version_normalized": "1.3.70.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/matthiasmullie/minify.git",
-                "reference": "a61c949cccd086808063611ef9698eabe42ef22f"
+                "reference": "2807d9f9bece6877577ad44acb5c801bb3ae536b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/a61c949cccd086808063611ef9698eabe42ef22f",
-                "reference": "a61c949cccd086808063611ef9698eabe42ef22f",
+                "url": "https://api.github.com/repos/matthiasmullie/minify/zipball/2807d9f9bece6877577ad44acb5c801bb3ae536b",
+                "reference": "2807d9f9bece6877577ad44acb5c801bb3ae536b",
                 "shasum": ""
             },
             "require": {
@@ -276,14 +276,15 @@
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "friendsofphp/php-cs-fixer": "~2.0",
-                "matthiasmullie/scrapbook": "dev-master",
-                "phpunit/phpunit": ">=4.8"
+                "friendsofphp/php-cs-fixer": ">=2.0",
+                "matthiasmullie/scrapbook": ">=1.3",
+                "phpunit/phpunit": ">=4.8",
+                "squizlabs/php_codesniffer": ">=3.0"
             },
             "suggest": {
                 "psr/cache-implementation": "Cache implementation to use with Minify::cache"
             },
-            "time": "2022-08-01T09:00:18+00:00",
+            "time": "2022-12-09T12:56:44+00:00",
             "bin": [
                 "bin/minifycss",
                 "bin/minifyjs"
@@ -303,12 +304,12 @@
                 {
                     "name": "Matthias Mullie",
                     "email": "minify@mullie.eu",
-                    "homepage": "http://www.mullie.eu",
+                    "homepage": "https://www.mullie.eu",
                     "role": "Developer"
                 }
             ],
             "description": "CSS & JavaScript minifier, in PHP. Removes whitespace, strips comments, combines files (incl. @import statements and small assets in CSS files), and optimizes/shortens a few common programming patterns.",
-            "homepage": "http://www.minifier.org",
+            "homepage": "https://github.com/matthiasmullie/minify",
             "keywords": [
                 "JS",
                 "css",
@@ -318,7 +319,7 @@
             ],
             "support": {
                 "issues": "https://github.com/matthiasmullie/minify/issues",
-                "source": "https://github.com/matthiasmullie/minify/tree/1.3.69"
+                "source": "https://github.com/matthiasmullie/minify/tree/1.3.70"
             },
             "funding": [
                 {
@@ -446,12 +447,12 @@
             "source": {
                 "type": "git",
                 "url": "git@gitlab.siteground.com:wordpress/siteground-data.git",
-                "reference": "c264465ed26f2a8509b2a2b59ccc64c73971b343"
+                "reference": "fa35e01366de57ea9c597b73073af7c32ccbd0a0"
             },
             "require": {
                 "siteground/siteground-helper": "master@dev"
             },
-            "time": "2022-09-21T06:27:54+00:00",
+            "time": "2022-12-05T07:40:40+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "source",
@@ -495,9 +496,9 @@
             "source": {
                 "type": "git",
                 "url": "git@gitlab.siteground.com:wordpress/siteground-helper.git",
-                "reference": "b735bf5df36006a0e8435a6ba79b5b5cfa0e66dc"
+                "reference": "4296c1c29c5c1b27cd3e4050daa8d1e4d3a4c7a6"
             },
-            "time": "2022-02-10T07:23:42+00:00",
+            "time": "2023-02-22T12:42:54+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "source",

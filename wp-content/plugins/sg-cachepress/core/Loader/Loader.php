@@ -46,6 +46,7 @@ class Loader {
 			'file_cacher'            => 'file_cacher',
 			'ssl'                    => 'ssl',
 			'campaign_service'       => 'campaign_service',
+			'config'                 => 'config'
 		),
 	);
 
@@ -231,18 +232,6 @@ class Loader {
 	public function add_install_service_hooks() {
 		// Add the install action.
 		add_action( 'upgrader_process_complete', array( $this->install_service, 'install' ) );
-
-		$install_6_0_0 = new Install_6_0_0();
-
-		if ( version_compare( '6.0.0', get_option( 'siteground_optimizer_version', '0.0.0' ), '>' ) ) {
-			$install_6_0_0->install();
-			update_option( 'siteground_optimizer_version', '6.0.0' );
-		}
-
-		// Force the installation process if it is not completed.
-		if ( false === get_option( 'sgo_install_service', false ) ) {
-			$this->install_service->install();
-		}
 	}
 
 	/**
@@ -273,7 +262,7 @@ class Loader {
 		}
 
 		// Register the stylesheets for the admin area.
-		add_action( 'admin_enqueue_scripts', array( $this->admin, 'enqueue_styles' ), 11 );
+		add_action( 'admin_enqueue_scripts', array( $this->admin, 'enqueue_styles' ), 111 );
 		// Register the JavaScript for the admin area.
 		add_action( 'admin_enqueue_scripts', array( $this->admin, 'enqueue_scripts' ) );
 		// Add styles to WordPress admin head.
@@ -739,5 +728,21 @@ class Loader {
 
 		// Bump the campaign step counters after the mail is sent.
 		add_action( 'sgo_campaign_cron', array( $this->campaign_service, 'bump_campaign_count' ), PHP_INT_MAX );
+	}
+
+	/**
+	 * Add config hooks.
+	 *
+	 * @since 7.3.0
+	 */
+	public function add_config_hooks() {
+		// Only for SiteGround servers.
+		if ( ! Helper_Service::is_siteground() ) {
+			return;
+		}
+
+		add_action( 'init', array( $this->config, 'check_current_version' ) );
+		add_action( 'updated_option', array( $this->config, 'update_config_check' ), 10, 1 );
+		add_action( 'added_option', array( $this->config, 'update_config_check' ), 10, 1 );
 	}
 }

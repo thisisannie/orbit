@@ -4793,8 +4793,6 @@ final class FLBuilderModel {
 		 */
 		if ( apply_filters( 'fl_builder_enable_small_data_mode', false ) ) {
 
-			$data = self::clean_layout_data( $data );
-
 			if ( 'published' === $status ) {
 				foreach ( $data as $node_id => $node ) {
 					if ( isset( $node->settings ) ) {
@@ -4802,7 +4800,6 @@ final class FLBuilderModel {
 					}
 				}
 			}
-			$data = self::slash_settings( $data );
 		} else {
 			$data = self::slash_settings( self::clean_layout_data( $data ) );
 		}

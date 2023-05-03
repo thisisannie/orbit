@@ -21,6 +21,7 @@ final class FLBuilderHistoryManager {
 
 		// Actions
 		add_action( 'fl_builder_init_ui', __CLASS__ . '::init_states' );
+		add_action( 'template_redirect', __CLASS__ . '::clean_history_for_post' );
 	}
 
 	/**
@@ -325,6 +326,13 @@ final class FLBuilderHistoryManager {
 
 	static private function get_states_max() {
 		return apply_filters( 'fl_history_states_max', FL_BUILDER_HISTORY_STATES );
+	}
+
+	static public function clean_history_for_post() {
+		if ( FLBuilderModel::is_builder_active() && isset( $_GET['nohistory'] ) && isset( $_GET['delete'] ) ) {
+			global $post;
+			self::delete_states( $post->ID );
+		}
 	}
 }
 

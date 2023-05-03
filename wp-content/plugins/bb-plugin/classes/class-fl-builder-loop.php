@@ -384,7 +384,10 @@ final class FLBuilderLoop {
 
 				// Add the args if we have IDs.
 				if ( ! empty( $ids ) ) {
-					$args[ $arg ] = explode( ',', $settings->{'posts_' . $type} );
+					$ids = explode( ',', $settings->{'posts_' . $type} );
+					foreach ( $ids as $id ) {
+						$args[ $arg ][] = $id;
+					}
 				}
 			}
 		}

@@ -98,7 +98,10 @@ if ( ! class_exists( 'SiteGround_Data/Settings_Page' ) ) {
 				),
 			);
 
-			if ( ! ( @file_exists( '/etc/yum.repos.d/baseos.repo' ) && @file_exists( '/Z' ) ) ) {
+			if (
+				! empty( ini_get( 'open_basedir' ) ) ||
+				! ( @file_exists( '/etc/yum.repos.d/baseos.repo' ) && @file_exists( '/Z' ) )
+			) {
 				$settings['siteground_email_consent'] = array(
 					'field'       => 'siteground_email_consent',
 					'title'       => '',

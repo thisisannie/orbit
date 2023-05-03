@@ -790,7 +790,7 @@ final class FLBuilderCompatibility {
 	 * @since 2.1
 	 */
 	public static function render_ninja_forms_js( $response ) {
-		if ( class_exists( 'NF_Display_Render' ) ) {
+		if ( class_exists( 'NF_Display_Render' ) && strstr( $response['html'], 'nf-form-cont' ) ) {
 			ob_start();
 			NF_Display_Render::output_templates();
 			$response['html'] .= ob_get_clean();

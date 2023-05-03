@@ -434,7 +434,7 @@
 		{
 			if(typeof wp.heartbeat != 'undefined') {
 
-				wp.heartbeat.interval(30);
+				wp.heartbeat.interval(120);
 
 				wp.heartbeat.enqueue('fl_builder_post_lock', {
 					post_id: FLBuilderConfig.postId
@@ -7046,7 +7046,7 @@
 
 				// Dispatch to store
 				const actions = FL.Builder.data.getLayoutActions()
-				const callback = FLBuilder._saveSettingsComplete.bind( this, render, preview )
+				const callback = FLBuilder._saveSettingsComplete.bind( this, render )
 				actions.updateNodeSettings( nodeId, settings, callback )
 
 				// Trigger the hook.
@@ -7112,19 +7112,19 @@
 		 * @access private
 		 * @method _saveSettingsComplete
 		 * @param {Boolean} render Whether the layout should render after saving.
-		 * @param {Object} preview The preview object for this settings save.
 		 * @param {String} response The layout data from the server.
 		 */
-		_saveSettingsComplete: function( render, preview, response )
+		_saveSettingsComplete: function( render, response )
 		{
 			var data 	 	= FLBuilder._jsonParse( response ),
 				type	 	= data.layout.nodeType,
 				moduleType	= data.layout.moduleType,
 				hook	 	= 'didSave' + type.charAt(0).toUpperCase() + type.slice(1) + 'SettingsComplete',
+				preview		= FLBuilder.preview,
 				callback 	= function() {
 					if (preview && data.layout.partial && data.layout.nodeId === preview.nodeId && !FLBuilder._publishAndRemain ) {
 						preview.clear();
-						preview = null;
+						FLBuilder.preview = null;
 					}
 					FLBuilder._publishAndRemain = false;
 				};

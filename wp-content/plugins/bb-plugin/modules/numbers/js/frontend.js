@@ -113,13 +113,13 @@ var FLBuilderNumber;
 							stepNum = (startStep + endStep - counterNum);
 						}
 						locale  = self.locale.replace('_', '-' );
-						stepNum = new Intl.NumberFormat(locale).format(stepNum)
+						stepNumText = new Intl.NumberFormat(locale).format(stepNum)
 						if ( countUp ) {
 							if ( stepNum < endStep ) {
-								$string.text( stepNum );
+								$string.text( stepNumText );
 							}
 						} else {
-							$string.text( stepNum );
+							$string.text( stepNumText );
 						}
 					},
 					complete: function() {
