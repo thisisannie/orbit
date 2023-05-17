@@ -480,8 +480,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Font Size', '%s stands for HTML heading tag.', 'fl-automator' ), 'H1' ),
+						'label'      => __( 'H1 Font Size', 'fl-automator' ),
 						'type'       => 'slider',
 						'priority'   => 5.0,
 						'choices'    => get_font_size_limits(),
@@ -497,8 +496,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Line Height', '%s stands for HTML heading tag.', 'fl-automator' ), 'H1' ),
+						'label'      => __( 'H1 Line Height', 'fl-automator' ),
 						'priority'   => 5.1,
 						'type'       => 'slider',
 						'choices'    => array(
@@ -518,8 +516,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Letter Spacing', '%s stands for HTML heading tag.', 'fl-automator' ), 'H1' ),
+						'label'      => __( 'H1 Letter Spacing', 'fl-automator' ),
 						'priority'   => 5.2,
 						'type'       => 'slider',
 						'choices'    => array(
@@ -548,8 +545,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Font Size', '%s stands for HTML heading tag.', 'fl-automator' ), 'H2' ),
+						'label'      => __( 'H2 Font Size', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => get_font_size_limits(),
 						'responsive' => true,
@@ -564,8 +560,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Line Height', '%s stands for HTML heading tag.', 'fl-automator' ), 'H2' ),
+						'label'      => __( 'H2 Line Height', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => 0.5,
@@ -584,8 +579,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Letter Spacing', '%s stands for HTML heading tag.', 'fl-automator' ), 'H2' ),
+						'label'      => __( 'H2 Letter Spacing', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => -3,
@@ -612,8 +606,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Font Size', '%s stands for HTML heading tag.', 'fl-automator' ), 'H3' ),
+						'label'      => __( 'H3 Font Size', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => get_font_size_limits(),
 						'responsive' => true,
@@ -628,8 +621,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Line Height', '%s stands for HTML heading tag.', 'fl-automator' ), 'H3' ),
+						'label'      => __( 'H3 Line Height', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => 0.5,
@@ -648,8 +640,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Letter Spacing', '%s stands for HTML heading tag.', 'fl-automator' ), 'H3' ),
+						'label'      => __( 'H3 Letter Spacing', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => -3,
@@ -676,8 +667,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Font Size', '%s stands for HTML heading tag.', 'fl-automator' ), 'H4' ),
+						'label'      => __( 'H4 Font Size', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => get_font_size_limits(),
 						'responsive' => true,
@@ -692,8 +682,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Line Height', '%s stands for HTML heading tag.', 'fl-automator' ), 'H4' ),
+						'label'      => __( 'H4 Line Height', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => 0.5,
@@ -712,8 +701,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Letter Spacing', '%s stands for HTML heading tag.', 'fl-automator' ), 'H4' ),
+						'label'      => __( 'H4 Letter Spacing', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => -3,
@@ -740,8 +728,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Font Size', '%s stands for HTML heading tag.', 'fl-automator' ), 'H5' ),
+						'label'      => __( 'H5 Font Size', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => get_font_size_limits(),
 						'responsive' => true,
@@ -756,8 +743,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Line Height', '%s stands for HTML heading tag.', 'fl-automator' ), 'H5' ),
+						'label'      => __( 'H5 Line Height', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => 0.5,
@@ -777,7 +763,7 @@ FLCustomizer::add_panel('fl-general', array(
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
 						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Letter Spacing', '%s stands for HTML heading tag.', 'fl-automator' ), 'H5' ),
+						'label'      => __( 'H5 Letter Spacing', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => -3,
@@ -804,8 +790,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Font Size', '%s stands for HTML heading tag.', 'fl-automator' ), 'H6' ),
+						'label'      => __( 'H6 Font Size', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => get_font_size_limits(),
 						'responsive' => true,
@@ -820,8 +805,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Line Height', '%s stands for HTML heading tag.', 'fl-automator' ), 'H6' ),
+						'label'      => __( 'H6 Line Height', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => 0.5,
@@ -840,8 +824,7 @@ FLCustomizer::add_panel('fl-general', array(
 					),
 					'control' => array(
 						'class'      => 'FLCustomizerControl',
-						/* translators: %s: HTML heading tag */
-						'label'      => sprintf( _x( '%s Letter Spacing', '%s stands for HTML heading tag.', 'fl-automator' ), 'H6' ),
+						'label'      => __( 'H6 Letter Spacing', 'fl-automator' ),
 						'type'       => 'slider',
 						'choices'    => array(
 							'min'  => -3,
@@ -1411,6 +1394,12 @@ FLCustomizer::add_panel('fl-general', array(
 					'control' => array(
 						'class' => 'WP_Customize_Control',
 						'label' => __( 'Spotify', 'fl-automator' ),
+					),
+				),
+				'fl-social-soundcloud'        => array(
+					'control' => array(
+						'class' => 'WP_Customize_Control',
+						'label' => __( 'Soundcloud', 'fl-automator' ),
 					),
 				),
 			),

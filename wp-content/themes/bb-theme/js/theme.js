@@ -1516,7 +1516,7 @@
 			});
 
 			$(window).scroll(function(){
-				if($(this).scrollTop() > 800) {
+				if( $(this).scrollTop() > window.themeopts.scrollTopPosition ) {
 					buttons.fadeIn();
 				} else {
 					buttons.fadeOut();

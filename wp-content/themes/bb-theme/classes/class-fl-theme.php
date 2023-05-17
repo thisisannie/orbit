@@ -250,6 +250,10 @@ final class FLTheme {
 		if ( true === apply_filters( 'fl_theme_disable_smoothscroll_links', false ) ) {
 			$themeopts['smooth'] = 'disabled';
 		}
+
+		// Scroll position for when to display the Scroll To Top button.
+		$themeopts['scrollTopPosition'] = '800';
+		$themeopts                      = apply_filters( 'fl_theme_themeopts', $themeopts );
 		wp_localize_script( 'fl-automator', 'themeopts', $themeopts );
 
 		// Skin
@@ -456,12 +460,12 @@ final class FLTheme {
 	static public function fonts() {
 		$settings = self::get_settings();
 
-		$defaults = array(
+		$defaults = array_unique( array(
 			300,
 			400,
 			700,
 			$settings['fl-body-font-weight'],
-		);
+		) );
 
 		self::add_font( $settings['fl-body-font-family'], apply_filters( 'fl_body_font_family', $defaults ) );
 		self::add_font( $settings['fl-heading-font-family'], $settings['fl-heading-font-weight'] );
@@ -1011,6 +1015,7 @@ final class FLTheme {
 			'wordpress',
 			'tiktok',
 			'spotify',
+			'soundcloud',
 		) );
 
 		FLTheme::enqueue_fontawesome();

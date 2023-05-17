@@ -564,6 +564,8 @@ body.rtl .fl-screen-reader-text {
 
 	.fa-stack.icon-tiktok i.fa-circle.branded, .fa-tiktok.branded { color: #000000; }
 
+	.fa-stack.icon-soundcloud i.fa-circle.branded, .fa-soundcloud.branded { color: #f50; }
+
 	.fa-stack i.branded {
 		color: #fff;
 	}
@@ -1059,6 +1061,7 @@ input[type=text].fl-search-input {
 	button[type=submit].alt.disabled:hover {
 		.fl-woo-button-hover-styles();
 	}
+
 }
 
 /* WooCommerce Gallery Photo Swipe Navigation */
@@ -1150,7 +1153,6 @@ input[type=submit] {
 		border: 1px solid darken(@accent-hover-color, 12%);
 		outline: none;
 		position: relative;
-		top: 1px;
 	}
 	&.btn-default,
 	&.btn-default:hover,
@@ -1769,4 +1771,14 @@ body.fl-framework-bootstrap-4 {
 	nav a.no-menu {
 		display:block;
 	}
+}
+
+body.woocommerce-page.fl-framework-bootstrap {
+
+	.product .label {
+		font-size: @text-size;
+		color: @text-color;
+		padding: 0px;
+	}
+
 }

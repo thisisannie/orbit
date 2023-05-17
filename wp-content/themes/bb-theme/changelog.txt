@@ -1,3 +1,20 @@
+<h4>1.7.13 - 03/07/2023</h4>
+<p><strong>Enhancements</strong></p>
+<ul>
+	<li>Social Icons: Add Soundcloud option (#295)</li>
+	<li>Compatibility enhancements for PHP 8.2 (#302)</li>
+	<li>Add ability to change when Scroll to Top appears via the existing filter <code>fl_theme_themeopts</code> (#300)</li>
+</ul>
+
+<p><strong>Bug Fixes</strong></p>
+<ul>
+	<li>WooCommerce: Fix variation label display when using Full Bootstrap 3 (#294)</li>
+	<li>Fix conflict wit GDPR Cookie Compliance plugin where button moves after clicking (#240)</li>
+	<li>Fix font not loading on LearnDash lesson if focus mode is enabled(#297)</li>
+	<li>Fix duplicate google font variant loading when setting General text to a Google Font (#316)</li>
+	<li>Fix fatal error when using PHP 8+ and TranslatePress (#312)</li>
+</ul>
+
 <h4>1.7.12.1 - 10/25/2022</h4>
 <p><strong>Hotfix</strong></p>
 <ul>

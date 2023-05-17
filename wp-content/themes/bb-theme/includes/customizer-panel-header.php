@@ -42,8 +42,7 @@ FLCustomizer::add_panel('fl-header', array(
 					),
 					'control' => array(
 						'class'   => 'WP_Customize_Control',
-						/* translators: %d: Column order number */
-						'label'   => sprintf( _x( 'Column %d Layout', '%d stands for column order number.', 'fl-automator' ), 1 ),
+						'label'   => __( 'Column 1 Layout', 'fl-automator' ),
 						'type'    => 'select',
 						'choices' => array(
 							'text'        => __( 'Text', 'fl-automator' ),
@@ -63,8 +62,7 @@ FLCustomizer::add_panel('fl-header', array(
 					),
 					'control' => array(
 						'class' => 'WP_Customize_Control',
-						/* translators: %d: Column order number */
-						'label' => sprintf( _x( 'Column %d Text', '%d stands for column order number.', 'fl-automator' ), 1 ),
+						'label' => __( 'Column 2 Text', 'fl-automator' ),
 						'type'  => 'textarea',
 					),
 				),
@@ -84,8 +82,7 @@ FLCustomizer::add_panel('fl-header', array(
 					),
 					'control' => array(
 						'class'   => 'WP_Customize_Control',
-						/* translators: %d: Column order number */
-						'label'   => sprintf( _x( 'Column %d Layout', '%d stands for column order number.', 'fl-automator' ), 2 ),
+						'label'   => __( 'Column 2 Layout', 'fl-automator' ),
 						'type'    => 'select',
 						'choices' => array(
 							'text'        => __( 'Text', 'fl-automator' ),
@@ -105,8 +102,7 @@ FLCustomizer::add_panel('fl-header', array(
 					),
 					'control' => array(
 						'class' => 'WP_Customize_Control',
-						/* translators: %d: Column order number */
-						'label' => sprintf( _x( 'Column %d Text', '%d stands for column order number.', 'fl-automator' ), 2 ),
+						'label' => __( 'Column 2 Text', 'fl-automator' ),
 						'type'  => 'textarea',
 					),
 				),
